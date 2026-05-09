@@ -1,0 +1,206 @@
+"use client"
+import React, { useEffect } from 'react'
+import { gold } from '../colors/color'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { Autoplay, EffectFade } from 'swiper/modules';
+import Image from 'next/image';
+import { useRef } from 'react'
+import Link from 'next/link';
+
+export default function TopSelling() {
+    const swiperRef = useRef(null)
+    const top_selling_data = [
+        {
+            id: 1,
+            title: 'Kundan Bridal Necklace Set',
+            price: '4,999',
+            description: 'Elegant kundan necklace set with matching earrings for bridal look',
+            image: '/p1.jpg',
+            category: 'Necklace',
+        },
+        {
+            id: 2,
+            title: 'Gold Plated Jhumka',
+            price: '799',
+            description: 'Traditional jhumka with antique gold finish',
+            image: '/p1.jpg',
+            category: 'Earrings',
+        },
+        {
+            id: 3,
+            title: 'Polki Choker Set',
+            price: '2,499',
+            description: 'Premium polki choker perfect for wedding functions',
+            image: '/p1.jpg',
+            category: 'Choker',
+        },
+        {
+            id: 4,
+            title: 'Temple Jewellery Necklace',
+            price: '3,299',
+            description: 'South Indian temple design necklace with detailed carvings',
+            image: '/p1.jpg',
+            category: 'Temple Jewellery',
+        },
+        {
+            id: 5,
+            title: 'Oxidised Silver Necklace',
+            price: '1,299',
+            description: 'Trendy oxidised necklace for casual & ethnic wear',
+            image: '/p1.jpg',
+            category: 'Oxidised',
+        },
+        {
+            id: 6,
+            title: 'Bangles Set (Pack of 4)',
+            price: '999',
+            description: 'Stylish bangles set with golden polish',
+            image: '/p1.jpg',
+            category: 'Bangles',
+        },
+        {
+            id: 7,
+            title: 'Maang Tikka Bridal',
+            price: '499',
+            description: 'Beautiful maang tikka for bridal and festive wear',
+            image: '/p1.jpg',
+            category: 'Maang Tikka',
+        },
+    ];
+
+    return (
+        <section style={{ background: 'black' }} className="w-full  lg:py-16 py-6 ">
+
+            <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full left-0'></div>
+            <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full right-0'></div>
+
+            <div className="max-w-330 mx-auto lg:px-6 px-4">
+
+                <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-3">
+
+                    {/* Main Heading */}
+                    <span
+                        className="relative z-10 lg:text-4xl text-3xl font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
+                        style={{
+                            backgroundImage:
+                                "linear-gradient(90deg, #7a5a0a 0%, #b8860b 25%, #d4af37 50%, #c9971a 75%, #8a6a12 100%)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            display: "inline-block",
+                            fontFamily: "serif",
+                            textShadow: "0px 2px 10px rgba(212,175,55,0.22)"
+                        }}
+                    >
+                        Top Selling Products
+                    </span>
+
+                    {/* Glow Effect */}
+                    <div
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
+                        style={{
+                            background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
+                        }}
+                    />
+
+                    {/* Decorative Line */}
+                    <div className="relative mt-5 w-full flex items-center justify-center">
+
+                        {/* Left Line */}
+                        <div
+                            className="h-px lg:w-52 w-20"
+                            style={{
+                                background:
+                                    "linear-gradient(to right, transparent, #d4af37)"
+                            }}
+                        />
+
+                        {/* Diamond Center */}
+                        <div
+                            className="mx-4 w-3 h-3 rotate-45 rounded-sm"
+                            style={{
+                                background:
+                                    "linear-gradient(135deg, #fff2b3, #d4af37, #8a6a12)",
+                                boxShadow: "0 0 12px rgba(212,175,55,0.6)"
+                            }}
+                        />
+
+                        {/* Right Line */}
+                        <div
+                            className="h-px lg:w-52 w-20"
+                            style={{
+                                background:
+                                    "linear-gradient(to left, transparent, #d4af37)"
+                            }}
+                        />
+                    </div>
+                </h1>
+
+                <div className='lg:my-10 my-16'>
+                    <Swiper
+                        modules={[Autoplay]}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        loop={true}
+                        autoplay={{ delay: 2000, disableOnInteraction: false }}
+                        breakpoints={{
+                            320: { slidesPerView: 1 },
+                            640: { slidesPerView: 2 },
+                            1024: { slidesPerView: 4 },
+                        }}
+                    >
+                        {top_selling_data.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <Link href={item.title}>
+                                    <div
+                                        onMouseEnter={() => swiperRef.current?.autoplay.stop()}
+                                        onMouseLeave={() => swiperRef.current?.autoplay.start()}
+                                        style={{ borderColor: gold.base }}
+                                        className="bg-white border-2  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
+
+                                        <div className='p-5 bg-black'>
+                                            <div className='h-[200] relative'>
+                                                <Image src={item.image} alt={item.title} fill className='w-full h-full object-cover duration-300 hover:scale-[1.05] rounded-2xl hover:rounded-none' />
+                                            </div>
+                                        </div>
+
+                                        <div style={{ borderTopColor: gold.base }} className='border-t-2 p-5 bg-black '>
+                                            <h2 className="text-xl text-[#E6C766] font-extrabold mb-3 relative mt-3 duration-300">{item.title}
+
+                                                <div style={{ background: gold.base }} className='absolute top-[105%] left-0 w-[20] h-[3] group-hover:w-[70] duration-500 rounded-full transition-all'></div>
+                                            </h2>
+                                            <p className="text-lg text-white mb-2 line-clamp-1">{item.description}</p>
+                                            <p style={{ color: gold.base }} className="text-2xl font-extrabold ">Price - ₹{item.price}</p>
+                                        </div>
+
+                                        <div className='grid grid-cols-2 gap-3 p-5 bg-black'>
+                                            <button className='border border-gray-200 hover:border-transparent rounded py-1 cursor-pointer bg-gray-200 hover:bg-gray-300'>Add to Cart</button>
+                                            <button
+                                                className="relative px-6 py-2 rounded-md font-semibold text-white cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
+                                                style={{
+                                                    background: 'linear-gradient(190deg,rgba(145, 115, 7, 1) 0%, rgba(201, 169, 52, 1) 48%, rgba(145, 115, 10, 1) 100%)'
+                                                }}
+                                            >
+                                                <span className="relative z-10">Get Now</span>
+
+                                                {/* Shine Effect */}
+                                                <span
+                                                    className="absolute top-0 left-full w-full h-full"
+                                                    style={{
+                                                        background: 'linear-gradient(120deg, transparent, #FFFFFF99, transparent)',
+                                                        transition: 'all 1s'
+                                                    }}
+                                                ></span>
+                                            </button>
+                                        </div>
+                                    </div></Link>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+            </div>
+        </section>
+    )
+}
