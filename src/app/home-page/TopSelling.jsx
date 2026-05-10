@@ -162,7 +162,7 @@ export default function TopSelling() {
 
                                         <div className='p-5 bg-black'>
                                             <div className='h-[200] relative'>
-                                                <Image src={item.image} alt={item.title} fill className='w-full h-full object-cover duration-300 hover:scale-[1.05] rounded-2xl hover:rounded-none' />
+                                                <Image src={item.image} alt={item.title} fill sizes='full' className='w-full h-full object-cover duration-300 hover:scale-[1.05] rounded-2xl hover:rounded-none' />
                                             </div>
                                         </div>
 
@@ -175,8 +175,8 @@ export default function TopSelling() {
                                             <p style={{ color: gold.base }} className="text-2xl font-extrabold ">Price - ₹{item.price}</p>
                                         </div>
 
-                                        <div className='grid grid-cols-2 gap-3 p-5 bg-black'>
-                                            <button className='border border-gray-200 hover:border-transparent rounded py-1 cursor-pointer bg-gray-200 hover:bg-gray-300'>Add to Cart</button>
+                                        <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>
+                                            <button className='border border-gray-200 hover:border-transparent rounded py-1 cursor-pointer bg-white hover:brightness-50 duration-300'>Add to Cart</button>
                                             <button
                                                 className="relative px-6 py-2 rounded-md font-semibold text-white cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
                                                 style={{

@@ -30,7 +30,7 @@ export default function ShopByCategory() {
     return (
         <section className="w-full h-full lg:py-16 py-6 bg-black overflow-hidden relative">
 
-            <div className="absolute w-[800]  h-full bottom-0 right-0">
+            <div className="absolute lg:w-[800] md:w-full w-full  h-full bottom-0 right-0">
                 <Image src={'/designs/d1.png'} alt="designs" fill className="absolute opacity-5 bottom-0 right-0 w-full h-full object-cover object-bottom" />
             </div>
 
@@ -107,6 +107,7 @@ export default function ShopByCategory() {
                     autoplay={{ delay: 2000, disableOnInteraction: false }}
                     breakpoints={{
                         320: { slidesPerView: 1 },
+                        480: { slidesPerView: 2 }, // new breakpoint
                         640: { slidesPerView: 3 },
                         1024: { slidesPerView: 4 },
                     }}
@@ -149,6 +150,7 @@ export default function ShopByCategory() {
                                         <Image
                                             src={item.image}
                                             fill
+                                            sizes="full"
                                             alt={item.title}
                                             className="
                                             object-cover

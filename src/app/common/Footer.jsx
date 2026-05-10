@@ -51,7 +51,7 @@ export default function Footer() {
                     fill
                     alt="design"
                     src="/designs/d1.png"
-                    className="object-contain object-top-left opacity-25 w-full h-full"
+                    className="object-contain object-top-left opacity-15 w-full h-full"
                 />
             </div>
 
@@ -60,7 +60,7 @@ export default function Footer() {
                     fill
                     alt="design"
                     src="/designs/d1.png"
-                    className="object-contain object-top-left opacity-25 w-full h-full"
+                    className="object-contain object-top-left opacity-15 w-full h-full"
                 />
             </div>
 
