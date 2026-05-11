@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
-* {
-    /* font-family: "Playfair Display", serif; */
-      font-family: "Cormorant", serif;
+@import "swiper/css";
+@import "swiper/css/effect-fade";
 
+
+* {
+  /* font-family: "Playfair Display", serif; */
+  font-family: "Cormorant", serif;
 }

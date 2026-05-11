@@ -13,12 +13,12 @@ export default function PcHeader() {
             <div
                 // style={{ background: 'linear-gradient(90deg,rgba(44, 15, 58, 1) 0%, rgba(26, 9, 33, 1) 50%, rgba(44, 15, 58, 1) 100%)', borderBottomColor: gold.base }} 
                 style={{ background: 'black', borderBottomColor: gold.base }}
-                className='lg:block hidden w-full h-full border-b-[3] relative overflow-hidden z-50'>
+                className='lg:block hidden w-full h-full border-b-[1.5] relative overflow-hidden z-50'>
 
                 <div className='absolute top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden '>
                     <Image src={'/designs/d2.png'} sizes='full' alt='designs' fill className='opacity-[0.02] w-full h-full object-cover object-top' />
                 </div>
-                <div className='max-w-330 mx-auto lg:px-6 px-4 lg:py-5 py-3'>
+                <div className='max-w-330 mx-auto lg:px-6 px-4 lg:py-3 py-3'>
                     <div className='flex items-center justify-between'>
                         <Logo />
                         <NavBar />

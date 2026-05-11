@@ -1,13 +1,14 @@
 "use client"
-import React, { useEffect } from 'react'
-import { gold } from '../colors/color'
+import React, { useRef } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from 'swiper/modules';
-import Image from 'next/image';
-import { useRef } from 'react'
 import Link from 'next/link';
+import { gold } from '../colors/color';
+import Image from 'next/image';
 
-export default function TopSelling() {
+
+export default function NewArrivals() {
+
     const swiperRef = useRef(null)
     const top_selling_data = [
         {
@@ -69,73 +70,27 @@ export default function TopSelling() {
     ];
 
     return (
-        <section style={{ background: 'black' }} className="w-full  lg:pb-16 md:pb-10 pb-6 relative ">
+        <section className="w-full bg-black py-0 lg:py-0 overflow-hidden relative">
 
-            {/* <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full left-0'></div>
-            <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full right-0'></div> */}
+            <div className='flex justify-center relative z-40'>
+                <span style={{
+                    background: `
+                    linear-gradient(
+                        to left,
+                        #8a6a12 0%,
+                        #b8860b 20%,
+                        #d4af37 40%,
+                        #fff2b3 50%,
+                        #d4af37 60%,
+                        #b8860b 80%,
+                        #8a6a12 100%
+                    )`}} className='font-semibold bg-black lg:text-3xl text-2xl py-1.5 lg:px-20 md:px-10 px-5 lg:my-10 my-5 '>New Arrivals
+                    <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
+                </span>
+            </div>
+            <div className='max-w-330 mx-auto lg:px-6 px-4 '>
 
-            <div style={{ borderColor: gold.dark }} className="max-w-330 mx-auto lg:px-6 px-4 border-t pt-10">
-
-                <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-3">
-
-                    {/* Main Heading */}
-                    <span
-                        className="relative z-10 lg:text-4xl text-3xl font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(90deg, #7a5a0a 0%, #b8860b 25%, #d4af37 50%, #c9971a 75%, #8a6a12 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            display: "inline-block",
-                            fontFamily: "serif",
-                            textShadow: "0px 2px 10px rgba(212,175,55,0.22)"
-                        }}
-                    >
-                        Top Selling Products
-                    </span>
-
-                    {/* Glow Effect */}
-                    <div
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
-                        style={{
-                            background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
-                        }}
-                    />
-
-                    {/* Decorative Line */}
-                    <div className="relative mt-5 w-full flex items-center justify-center">
-
-                        {/* Left Line */}
-                        <div
-                            className="h-px lg:w-52 w-20"
-                            style={{
-                                background:
-                                    "linear-gradient(to right, transparent, #d4af37)"
-                            }}
-                        />
-
-                        {/* Diamond Center */}
-                        <div
-                            className="mx-4 w-3 h-3 rotate-45 rounded-sm"
-                            style={{
-                                background:
-                                    "linear-gradient(135deg, #fff2b3, #d4af37, #8a6a12)",
-                                boxShadow: "0 0 12px rgba(212,175,55,0.6)"
-                            }}
-                        />
-
-                        {/* Right Line */}
-                        <div
-                            className="h-px lg:w-52 w-20"
-                            style={{
-                                background:
-                                    "linear-gradient(to left, transparent, #d4af37)"
-                            }}
-                        />
-                    </div>
-                </h1>
-
-                <div className='lg:my-10 my-16'>
+                <div className='lg:mb-5 mb-16'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}

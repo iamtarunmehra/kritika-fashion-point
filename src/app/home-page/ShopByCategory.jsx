@@ -6,7 +6,6 @@ import { gold } from "../colors/color";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
-import "swiper/css";
 
 export default function ShopByCategory() {
 
@@ -109,7 +108,7 @@ export default function ShopByCategory() {
                         320: { slidesPerView: 1 },
                         480: { slidesPerView: 2 }, // new breakpoint
                         640: { slidesPerView: 3 },
-                        1024: { slidesPerView: 4 },
+                        1024: { slidesPerView: 5 },
                     }}
                 >
 
