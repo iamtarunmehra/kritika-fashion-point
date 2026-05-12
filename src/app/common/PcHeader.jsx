@@ -33,7 +33,7 @@ export default function PcHeader() {
 
 export function Logo() {
     return (
-        <div>
+        <Link href={'/'}><div className='cursor-pointer'>
             <div className='flex items-center gap-1'>
                 <p style={{ borderBottomColor: gold.light }} className={`p-2 rounded-r-full border-b-2`}><IoDiamond style={{ color: gold.base }} size={25} />
                 </p>
@@ -48,7 +48,7 @@ export function Logo() {
 
             </div>
 
-        </div>
+        </div></Link>
     );
 }
 
@@ -68,8 +68,9 @@ function NavBar() {
                     return (
                         <Link href={item.link} key={index}>
                             <li
-                                className="text-lg  cursor-pointer capitalize text-[#FFF2B3] transition-all duration-100 px-4 hover:scale-[1.1] "
+                                className="text-lg  cursor-pointer capitalize text-[#FFF2B3] transition-all duration-100 px-4 group relative"
                             >
+                                <div style={{ background: gold.light }} className='w-0 group-hover:w-2/4 h-[2] duration-300 absolute top-[105%] left-1/2 -translate-x-1/2  rounded-full '></div>
                                 {item.title}
                             </li>
                         </Link>

@@ -83,7 +83,7 @@ export default function TopSelling() {
                 ) 1`
             }} className="max-w-330 mx-auto lg:px-6 px-4 border-t-[0.5] pt-10">
 
-                <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-3">
+                <h1 className="relative flex flex-col items-center justify-center">
 
                     {/* Main Heading */}
                     <span
@@ -142,7 +142,7 @@ export default function TopSelling() {
                     </div>
                 </h1>
 
-                <div className='lg:my-10 my-16'>
+                <div className='lg:my-10 md:my-7 my-5 lg:p-0 p-3'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -158,7 +158,7 @@ export default function TopSelling() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <Link href={item.title}>
+                                <Link href={`/categories/${item.title}`}>
                                     <div
                                         onMouseEnter={() => swiperRef.current?.autoplay.stop()}
                                         onMouseLeave={() => swiperRef.current?.autoplay.start()}

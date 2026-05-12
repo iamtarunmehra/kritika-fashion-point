@@ -5,6 +5,7 @@ import { gold } from "../colors/color";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import Link from "next/link";
 
 
 export default function ShopByCategory() {
@@ -116,14 +117,15 @@ export default function ShopByCategory() {
                         return (
                             <SwiperSlide key={item.id}>
 
-                                <div className="flex flex-col lg:py-5 py-0 items-center group cursor-pointer">
+                                <Link href={'/categories'}>
+                                    <div className="flex flex-col lg:py-5 py-0 items-center group cursor-pointer">
 
-                                    {/* Image Circle */}
-                                    <div
-                                        style={{
-                                            borderColor: gold.mid,
-                                        }}
-                                        className="
+                                        {/* Image Circle */}
+                                        <div
+                                            style={{
+                                                borderColor: gold.mid,
+                                            }}
+                                            className="
                                         relative 
                                         lg:w-[200] 
                                         lg:h-[200]
@@ -140,28 +142,28 @@ export default function ShopByCategory() {
                                         shadow-[0_0_10px_rgba(212,175,55,0.15)]
                                         hover:shadow-[0_0_25px_rgba(212,175,55,0.55)]
                                     "
-                                    >
+                                        >
 
-                                        {/* Gold Glow Ring */}
-                                        <div className="absolute inset-0 rounded-full border border-[#fff2b3]/30 z-20 scale-90 group-hover:scale-100 duration-500" />
+                                            {/* Gold Glow Ring */}
+                                            <div className="absolute inset-0 rounded-full border border-[#fff2b3]/30 z-20 scale-90 group-hover:scale-100 duration-500" />
 
-                                        {/* Image */}
-                                        <Image
-                                            src={item.image}
-                                            fill
-                                            sizes="full"
-                                            alt={item.title}
-                                            className="
+                                            {/* Image */}
+                                            <Image
+                                                src={item.image}
+                                                fill
+                                                sizes="full"
+                                                alt={item.title}
+                                                className="
                                             object-cover
                                             object-center
                                             group-hover:scale-125
                                             duration-700
                                             w-full h-full
                                         "
-                                        />
+                                            />
 
-                                        {/* Overlay */}
-                                        <div className="
+                                            {/* Overlay */}
+                                            <div className="
                                         absolute 
                                         inset-0 
                                         bg-linear-to-t 
@@ -173,11 +175,11 @@ export default function ShopByCategory() {
                                         duration-500
                                     " />
 
-                                    </div>
+                                        </div>
 
-                                    {/* Title */}
-                                    <h2
-                                        className="
+                                        {/* Title */}
+                                        <h2
+                                            className="
                                         mt-5
                                         text-center
                                         tracking-[0.18em]
@@ -188,18 +190,18 @@ export default function ShopByCategory() {
                                         duration-300
                                         group-hover:scale-110
                                     "
-                                        style={{
-                                            color: gold.light,
-                                            textShadow:
-                                                "0px 0px 12px rgba(212,175,55,0.4)",
-                                        }}
-                                    >
-                                        {item.title}
-                                    </h2>
+                                            style={{
+                                                color: gold.light,
+                                                textShadow:
+                                                    "0px 0px 12px rgba(212,175,55,0.4)",
+                                            }}
+                                        >
+                                            {item.title}
+                                        </h2>
 
-                                    {/* Underline */}
-                                    <div
-                                        className="
+                                        {/* Underline */}
+                                        <div
+                                            className="
                                         mt-2
                                         h-0.5
                                         w-0
@@ -207,12 +209,13 @@ export default function ShopByCategory() {
                                         duration-500
                                         rounded-full
                                     "
-                                        style={{
-                                            background:
-                                                "linear-gradient(to right, #8a6a12, #d4af37, #fff2b3)",
-                                        }}
-                                    />
-                                </div>
+                                            style={{
+                                                background:
+                                                    "linear-gradient(to right, #8a6a12, #d4af37, #fff2b3)",
+                                            }}
+                                        />
+                                    </div>
+                                </Link>
 
                             </SwiperSlide>
                         );

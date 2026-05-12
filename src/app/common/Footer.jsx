@@ -43,7 +43,7 @@ export default function Footer() {
             // style={{ background: `rgba(44, 15, 40, 10)`, borderColor: gold.base }}
             style={{ background: `black`, borderColor: gold.base }}
 
-            className={`tracking-widest w-full h-full border-t border-x py-5 relative overflow-hidden`}>
+            className={`tracking-wide w-full h-full border-t border-x py-5 relative overflow-hidden`}>
 
             <div className="absolute -top-15 -left-15 w-[350] h-[350] pointer-events-none z-0 overflow-hidden">
                 <Image
@@ -75,7 +75,7 @@ export default function Footer() {
                         {QuickLinks.map((item, index) => {
                             return (
                                 <Link key={index} href={item.link}>
-                                    <li className='text-md my-4 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
+                                    <li className='text-lg my-4 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
                                         <b>
                                             {item.title}
                                             <div style={{ background: gold.base }} className='w-0 group-hover:w-[30] rounded-full absolute top-full duration-300 left-0 h-[2]'></div>
@@ -95,7 +95,7 @@ export default function Footer() {
                         {categories.map((item, index) => {
                             return (
                                 <Link key={index} href={item.link}>
-                                    <li className='text-md my-2 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
+                                    <li className='text-lg my-2 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
                                         <b>
                                             {item.title}
                                             <div style={{ background: gold.base }} className='w-0 group-hover:w-[30] rounded-full absolute top-full duration-300 left-0 h-[2]'></div>
@@ -120,35 +120,30 @@ export default function Footer() {
                                 Contact Us
                             </b>
                         </li>
-                        <li className='grid grid-cols-[6.5%_auto] text-[#FFF2B3] my-5 items-center gap-2  text-md  font-semibold tracking-widest'>
+                        <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
                             <FaLocationDot style={{ color: gold.base }} size={20} className='mt-1' />
 
                             New Pal Road Opposite Barktullah khan stadium Jodhpur, Rajasthan
                         </li>
-                        <li className='grid grid-cols-[6.5%_auto] text-[#FFF2B3] my-5 items-center gap-2  text-md  font-semibold tracking-widest'>
+                        <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer  group relative'>
                             <FaPhoneAlt size={20} style={{ color: gold.base }} className='mt-1' />
 
                             <div>
-                                Mobile - +91 80799994755 , <span>+91 80799994755</span>
+                                Mobile - <a href='mailto:-8079092775'><span className='hover:text-[#E6C766] duration-300'> 80799994755</span></a> , {" "}
+                                <a href='mailto:-8079092775'><span className='hover:text-[#E6C766] duration-300'> 80799994755</span></a>
                             </div>
                         </li>
 
-                        <li className='grid grid-cols-[6.5%_auto] text-[#FFF2B3] my-5 items-center gap-2  text-sm  font-semibold tracking-widest'>
+                        <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
                             <MdEmail size={20} style={{ color: gold.base }} className='mt-1' />
-                            tarunmehra80790@gmail.com
+                            kritikafashionpoint@gmail.com
                         </li>
 
-                        <Link target='_blank' href={'https://maps.app.goo.gl/r1r9LLd13biD4sJh8'}><li className='grid grid-cols-[6.5%_auto] cursor-pointer hover:text-[#D4AF37] duration-300 text-[#FFF2B3] my-5 items-center gap-2  text-md  font-semibold tracking-widest'>
-                            <BiLocationPlus size={20} style={{ color: gold.base }} className='mt-1' />
+                        <Link target='_blank' href={'https://maps.app.goo.gl/r1r9LLd13biD4sJh8'}><li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
+                            <BiLocationPlus size={24} style={{ color: gold.base }} className='mt-1' />
                             Live Location
                         </li></Link>
 
-
-
-
-                        {/* <li>
-                            <iframe className='rounded-md my-5' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.2650757375723!2d72.95737367541564!3d26.21718797706857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418900516b59c7%3A0x6e9bade8be3a59da!2sKritika%20fashion%20point!5e1!3m2!1sen!2sin!4v1778040407194!5m2!1sen!2sin" width="100%" height="200" allowFullScreen loading="lazy" ></iframe>
-                        </li> */}
                     </ul>
                 </div>
             </div>

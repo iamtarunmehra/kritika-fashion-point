@@ -37,7 +37,7 @@ export default function LuxuryGlowBanner() {
                             WebkitTextFillColor: "transparent",
                             textShadow: "0 0 25px rgba(212,175,55,0.35)"
                         }}
-                        className="lg:text-6xl md:text-5xl tracking-widest text-3xl font-extrabold tracking leading-tight"
+                        className="lg:text-6xl md:text-5xl text-2xl tracking-widest font-extrabold tracking leading-tight"
                     >
                         Luxury Artificial
                         <span className="block lg:mt-2 mt-1 ">

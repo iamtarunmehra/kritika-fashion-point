@@ -70,9 +70,9 @@ export default function NewArrivals() {
     ];
 
     return (
-        <section className="w-full bg-black lg:mt-12 mt-40 overflow-hidden relative">
+        <section className="w-full bg-black  overflow-hidden relative">
 
-            <div className='flex justify-center relative z-40'>
+            <div className='flex justify-center relative z-40 lg:mt-12 mt-30'>
                 <span style={{
                     background: `
                     linear-gradient(
@@ -84,13 +84,13 @@ export default function NewArrivals() {
                         #d4af37 60%,
                         #b8860b 80%,
                         #8a6a12 100%
-                    )`}} className='font-semibold bg-black lg:text-3xl text-2xl py-1.5 lg:px-20 md:px-10 px-5 lg:my-10 my-5 '>New Arrivals
+                    )`}} className='font-semibold bg-black lg:text-3xl md:text-2xl text-lg py-1.5 lg:px-20 md:px-10 px-5 lg:my-10 my-5'>New Arrivals
                     <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
                 </span>
             </div>
             <div className='max-w-330 mx-auto lg:px-6 px-4 '>
 
-                <div className='lg:mb-5 mb-16'>
+                <div className='lg:mb-5 mb-16 lg:p-0 p-3'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -106,7 +106,7 @@ export default function NewArrivals() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <Link href={item.title}>
+                               <Link href={`/categories/${item.title}`}>
                                     <div
                                         onMouseEnter={() => swiperRef.current?.autoplay.stop()}
                                         onMouseLeave={() => swiperRef.current?.autoplay.start()}
