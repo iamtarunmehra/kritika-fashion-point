@@ -19,7 +19,7 @@ export default function MobileHeader() {
                 className='lg:hidden block w-full h-full py-4 border-b-2 px-4'>
                 <div className='flex items-center justify-between'>
                     <div className='absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden'>
-                        <Image src={'/designs/d2.png'} sizes='full' alt='designs' fill className='opacity-[0.03] w-full h-full object-cover object-top' />
+                        <Image src={'/designs/d2.png'} sizes='full' alt='designs' fill className='opacity-[0.05] w-full h-full object-cover object-top' />
                     </div>
                     <div className=''>
                         <Logo />
@@ -30,7 +30,7 @@ export default function MobileHeader() {
 
             </div>
             {mobileMenu &&
-                <div onClick={() => setMobileMenu(false)} className='w-full h-screen bg-[rgba(0,0,0,0.9)] fixed top-0 left-0'></div>
+                <div onClick={() => setMobileMenu(false)} className='w-full h-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0'></div>
 
             }
             <MobileMenu mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
