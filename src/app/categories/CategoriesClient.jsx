@@ -1,15 +1,21 @@
-"use client"
-import React, { useRef } from 'react'
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade } from 'swiper/modules';
-import Link from 'next/link';
-import { gold } from '../colors/color';
-import Image from 'next/image';
+'use client'
+import React, { useState } from 'react'
+import { gold } from '../colors/color'
+import Link from 'next/link'
+import Image from 'next/image'
 
 
-export default function NewArrivals() {
+export default function CategoriesClient() {
 
-    const swiperRef = useRef(null)
+    const categories = [
+        'Gold',
+        'Sliver',
+        'BajuBand',
+        'Kamarband',
+        'hath chudi',
+        'NeckLace'
+    ]
+
     const top_selling_data = [
         {
             id: 1,
@@ -69,47 +75,98 @@ export default function NewArrivals() {
         },
     ];
 
+    const [selectedCategory, setSelectedCategory] = useState(null)
+
     return (
-        <section className="w-full bg-black lg:mt-12 mt-40 overflow-hidden relative">
+        <section className='w-full h-full relative bg-no-repeat bg-cover bg-center'>
+            <img sizes='full'
+                src='/designs/d3.png'
+                className='absolute top-0 right-0 w-full h-full -z-10 object-cover object-center opacity-[0.02]'
+            />
 
-            <div className='flex justify-center relative z-40'>
-                <span style={{
-                    background: `
-                    linear-gradient(
-                        to left,
-                        #8a6a12 0%,
-                        #b8860b 20%,
-                        #d4af37 40%,
-                        #fff2b3 50%,
-                        #d4af37 60%,
-                        #b8860b 80%,
-                        #8a6a12 100%
-                    )`}} className='font-semibold bg-black lg:text-3xl text-2xl py-1.5 lg:px-20 md:px-10 px-5 lg:my-10 my-5 '>New Arrivals
-                    <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
-                </span>
-            </div>
+            {/* <img sizes='full'
+                src='/designs/d2.png'
+                className='absolute top-0 left-0 w-full h-full -z-10 object-cover object-center opacity-[0.01]'
+            /> */}
+
+            {/* <div className='w-full h-full absolute top-0 left-0 bg-[rgba(0,0,0,0.9)]'></div> */}
             <div className='max-w-330 mx-auto lg:px-6 px-4 '>
-
-                <div className='lg:mb-5 mb-16'>
-                    <Swiper
-                        modules={[Autoplay]}
-                        onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        spaceBetween={20}
-                        slidesPerView={4}
-                        loop={true}
-                        autoplay={{ delay: 2000, disableOnInteraction: false }}
-                        breakpoints={{
-                            320: { slidesPerView: 1 },
-                            640: { slidesPerView: 2 },
-                            1024: { slidesPerView: 4 },
+                <div className=' lg:py-10 py-5'>
+                    <div
+                        style={{
+                            background:
+                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
+                            boxShadow: `0 0 40px ${gold.base}15`,
                         }}
+                        className='w-full h-fit lg:mb-10 mb-5 z-50 border border-[#FFF2B3] rounded-3xl px-6 py-10 backdrop-blur-xl relative overflow-hidden'
                     >
-                        {top_selling_data.map((item, index) => (
-                            <SwiperSlide key={index}>
-                                <Link href={item.title}>
+
+                        {/* Glow Effect */}
+                        <div
+                            style={{ background: gold.base }}
+                            className='absolute -top-10 -right-10 w-40 h-40 rounded-full blur-[100px] opacity-10'
+                        ></div>
+
+                        {/* Heading */}
+                        <div className='flex items-center gap-3 mb-6'>
+
+                            <div
+                                style={{
+                                    background: `linear-gradient(to bottom, ${gold.light}, ${gold.dark})`
+                                }}
+                                className='w-1.5 h-8 rounded-full'
+                            ></div>
+
+                            <h1
+                                style={{ color: gold.light }}
+                                className='text-2xl font-bold tracking-[5px] uppercase'
+                            >
+                                All Categories
+                            </h1>
+                        </div>
+
+                        {/* Categories */}
+                        <ul className='flex flex-wrap items-center gap-4'>
+
+                            <li
+                                style={{
+                                    background: `linear-gradient(135deg, ${gold.base}, ${gold.light})`,
+                                    color: "#000",
+                                    boxShadow: `0 0 25px ${gold.base}35`
+                                }}
+                                className='lg:px-8 lg:py-2 px-5 py-1 uppercase rounded-full backdrop-blur-md font-medium tracking-wide cursor-pointer hover:bg-white/10 hover:scale-105 duration-300'
+                            >
+                                All
+                            </li>
+
+                            {categories.map((item, index) => {
+                                return (
+                                    <li
+                                        key={index}
+                                        style={{
+                                            border: `1px solid ${gold.base}`,
+                                            color: gold.light,
+                                            background: "rgba(255,255,255,0.03)"
+                                        }}
+                                        className='lg:px-8 lg:py-2 px-5 py-1 uppercase rounded-full backdrop-blur-md font-medium tracking-wide cursor-pointer hover:bg-white/10 hover:scale-105 duration-300'
+                                    >
+                                        {item}
+                                    </li>
+                                )
+                            })}
+
+
+
+
+                        </ul>
+                    </div>
+
+                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-7 gap-5 z-50 relative'>
+
+                        {top_selling_data.map((item, index) => {
+                            return (
+                                <Link key={index} href={`/categories/${item.title}`}>
                                     <div
-                                        onMouseEnter={() => swiperRef.current?.autoplay.stop()}
-                                        onMouseLeave={() => swiperRef.current?.autoplay.start()}
                                         style={{ borderColor: gold.base }}
                                         className="bg-white border-2  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
 
@@ -158,11 +215,15 @@ export default function NewArrivals() {
                                             </button>
                                         </div>
                                     </div></Link>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                            )
+                        })}
+                    </div>
+
+
                 </div>
+
             </div>
         </section>
     )
 }
+

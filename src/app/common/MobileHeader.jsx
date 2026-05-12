@@ -16,7 +16,7 @@ export default function MobileHeader() {
                 // style={{ background: 'rgba(44, 15, 58, 1)', borderBottomColor: gold.base }}
                 style={{ background: 'black', borderBottomColor: gold.base }}
 
-                className='lg:hidden block w-full h-full py-4 border-b-2 px-4'>
+                className='lg:hidden block w-full h-full py-3 border-b-2 px-4'>
                 <div className='flex items-center justify-between'>
                     <div className='absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden'>
                         <Image src={'/designs/d2.png'} sizes='full' alt='designs' fill className='opacity-[0.05] w-full h-full object-cover object-top' />

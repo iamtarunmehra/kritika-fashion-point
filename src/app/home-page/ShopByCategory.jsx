@@ -105,7 +105,7 @@ export default function ShopByCategory() {
                     loop={true}
                     autoplay={{ delay: 2000, disableOnInteraction: false }}
                     breakpoints={{
-                        320: { slidesPerView: 1 },
+                        320: { slidesPerView: 2 },
                         480: { slidesPerView: 2 }, // new breakpoint
                         640: { slidesPerView: 3 },
                         1024: { slidesPerView: 5 },
@@ -129,8 +129,8 @@ export default function ShopByCategory() {
                                         lg:h-[200]
                                         sm:w-[180]
                                         sm:h-[180]
-                                        w-[180]
-                                        h-[180]
+                                        w-[150]
+                                        h-[150]
                                         rounded-full 
                                         overflow-hidden 
                                         border-2

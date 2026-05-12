@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { gold } from "../colors/color";
 
 export default function LuxuryGlowBanner() {
@@ -36,10 +37,10 @@ export default function LuxuryGlowBanner() {
                             WebkitTextFillColor: "transparent",
                             textShadow: "0 0 25px rgba(212,175,55,0.35)"
                         }}
-                        className="lg:text-6xl md:text-5xl text-3xl font-extrabold tracking-wide leading-tight"
+                        className="lg:text-6xl md:text-5xl tracking-widest text-3xl font-extrabold tracking leading-tight"
                     >
                         Luxury Artificial
-                        <span className="block lg:mt-2 mt-1">
+                        <span className="block lg:mt-2 mt-1 ">
                             Jewellery Accessories
                         </span>
                     </h1>
@@ -79,27 +80,25 @@ export default function LuxuryGlowBanner() {
 
                     </div>
                     <div className="flex items-center gap-4 justify-center mt-6">
-
-                        <button
+                        <Link href={'/shop-now'}><button
                             style={{
                                 background: gold.base,
                                 boxShadow: `0 0 20px ${gold.base}55`
                             }}
-                            className="px-7 py-3 rounded-full cursor-pointer text-black font-semibold tracking-wide hover:scale-105 duration-300"
+                            className="px-8 py-3 rounded-full cursor-pointer text-black font-semibold tracking-wide hover:scale-105 duration-300"
                         >
                             Shop Now
-                        </button>
+                        </button></Link>
 
-                        <button
+                        <Link href={'/categories'}><button
                             style={{
                                 border: `1px solid ${gold.base}`,
                                 color: gold.light
                             }}
-                            className="px-7 py-3 rounded-full cursor-pointer backdrop-blur-md font-medium tracking-wide hover:bg-white/10 duration-300"
+                            className="px-8 py-3 rounded-full cursor-pointer backdrop-blur-md font-medium tracking-wide hover:bg-white/10 duration-300"
                         >
                             Explore All
-                        </button>
-
+                        </button></Link>
                     </div>
                 </div>
             </section>

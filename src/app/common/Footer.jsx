@@ -43,7 +43,7 @@ export default function Footer() {
             // style={{ background: `rgba(44, 15, 40, 10)`, borderColor: gold.base }}
             style={{ background: `black`, borderColor: gold.base }}
 
-            className={`tracking-widest w-full h-full border-t-4 border-x-4 py-5 relative overflow-hidden`}>
+            className={`tracking-widest w-full h-full border-t border-x py-5 relative overflow-hidden`}>
 
             <div className="absolute -top-15 -left-15 w-[350] h-[350] pointer-events-none z-0 overflow-hidden">
                 <Image

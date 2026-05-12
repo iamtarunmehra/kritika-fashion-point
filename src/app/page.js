@@ -6,13 +6,13 @@ import WeddingShopping from "./home-page/WeddingShopping";
 
 export default function Home() {
   return (
-    <>
+    <div className="bg-black">
       {/* <Slider /> */}
       <LuxuryGlowBanner />
       <NewArrivals />
       {/* <WeddingShopping /> */}
       <ShopByCategory />
       <TopSelling />
-    </>
+    </div>
   );
 }
