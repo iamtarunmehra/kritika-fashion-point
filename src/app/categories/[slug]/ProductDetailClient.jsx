@@ -20,12 +20,6 @@ export default function ProductDetailClient() {
     return (
         <section
             className="w-full min-h-screen bg-black text-white"
-            style={{
-                backgroundImage:
-                    "url('/banner/pattern.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
         >
             <div className="max-w-7xl mx-auto px-4 lg:px-6 py-10">
 
@@ -41,7 +35,7 @@ export default function ProductDetailClient() {
                 </div>
 
                 {/* Main Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
 
                     {/* LEFT IMAGES */}
                     <div className="w-full">
@@ -56,7 +50,7 @@ export default function ProductDetailClient() {
                                 alt="product"
                                 width={800}
                                 height={800}
-                                className="w-full h-[500] object-cover rounded-2xl"
+                                className="w-full lg:h-[500] h-full object-cover rounded-2xl"
                             />
 
                             <button
@@ -73,7 +67,7 @@ export default function ProductDetailClient() {
                         </div>
 
                         {/* Thumbnail Images */}
-                        <div className="grid grid-cols-4 gap-4 mt-5">
+                        <div className="grid md:grid-cols-4  grid-cols-2 gap-4 lg:mt-8 mt-5">
                             {[1, 2, 3, 4].map((item) => (
                                 <div
                                     key={item}
@@ -87,7 +81,7 @@ export default function ProductDetailClient() {
                                         alt="thumb"
                                         width={200}
                                         height={200}
-                                        className="w-full h-28 object-cover"
+                                        className="w-full md:h-28 h-44 object-cover"
                                     />
                                 </div>
                             ))}
@@ -181,11 +175,11 @@ export default function ProductDetailClient() {
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-5 mt-10">
+                        <div className="flex flex-row gap-5 mt-10">
 
                             {/* Add to Cart */}
                             <button
-                                className="flex-1 h-16 rounded-2xl font-semibold text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-3"
+                                className="py-2.5 flex-1 rounded-xl font-semibold text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-3"
                                 style={{
                                     borderColor: gold.base,
                                     color: gold.light,
@@ -197,7 +191,7 @@ export default function ProductDetailClient() {
 
                             {/* Buy Now */}
                             <button
-                                className="flex-1 h-16 rounded-2xl font-bold text-lg hover:scale-[1.02] duration-300"
+                                className="py-2.5 flex-1 rounded-xl font-bold text-lg hover:scale-[1.02] duration-300"
                                 style={{
                                     background:
                                         "linear-gradient(to right,#8B6B00,#F7E7A1,#B8860B)",
@@ -263,11 +257,11 @@ export default function ProductDetailClient() {
                     </div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-10 grid-cols-1">
+                <div className="grid lg:grid-cols-2 lg:gap-10 gap-0 grid-cols-1">
                     {/* Product Description */}
                     <div
                         className="mt-20 border rounded-3xl p-8"
-                        style={{ borderColor: gold.base }}
+                        style={{ borderColor: `${gold.base}` }}
                     >
                         <h2
                             className="text-3xl font-bold mb-6"
@@ -324,13 +318,13 @@ export default function ProductDetailClient() {
                         className="mt-20 rounded-3xl p-[1]"
                         style={{
                             background:
-                                "linear-gradient(135deg, #8A6A12, #F7E7A1, #8A6A12)",
+                                "linear-gradient(135deg, #8A6A01, #F7E7A1, #8A6A01)",
                         }}
                     >
                         <div className="w-full h-full rounded-3xl p-8">
 
                             <h2
-                                className="text-3xl font-bold mb-6"
+                                className="lg:text-3xl text-2xl font-bold mb-6"
                                 style={{ color: "#000" }}
                             >
                                 Read Before Use

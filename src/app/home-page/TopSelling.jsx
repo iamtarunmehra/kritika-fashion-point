@@ -71,6 +71,11 @@ export default function TopSelling() {
     return (
         <section style={{ background: 'black' }} className="w-full  lg:pb-16 md:pb-10 pb-6 relative ">
 
+            <div className="absolute lg:w-[500] md:w-full w-full  h-full bottom-0 left-0">
+                <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-[0.05] bottom-0 right-0 w-full h-full object-cover object-bottom" />
+            </div>
+
+
             {/* <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full left-0'></div>
             <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full right-0'></div> */}
 

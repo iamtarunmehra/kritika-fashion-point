@@ -5,12 +5,12 @@ export default function LuxuryGlowBanner() {
     return (
         <div className="bg-black pb-10 w-full lg:h-[85vh] md:h-[70vh] sm:h-[50vh] h-[40vh]">
             <section style={{
-                backgroundImage: "url('/banner/b4.jpg')",
+                backgroundImage: "url('/banner/b5.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-                className="w-full lg:pb-10 mb-10 lg:h-[60vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
+                className="w-full lg:pb-10 mb-10 lg:h-[55vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
                 <div className="absolute top-0 left-0 bg-linear-to-t from-black via-black/80 to-black/5 w-full h-full">
 
                 </div>
@@ -85,7 +85,7 @@ export default function LuxuryGlowBanner() {
                                 background: gold.base,
                                 boxShadow: `0 0 20px ${gold.base}55`
                             }}
-                            className="px-8 py-3 rounded-full cursor-pointer text-black font-semibold tracking-wide hover:scale-105 duration-300"
+                            className="px-10 py-4 text-xl rounded-full cursor-pointer text-black font-semibold tracking-wide hover:scale-105 duration-300"
                         >
                             Shop Now
                         </button></Link>
@@ -95,7 +95,7 @@ export default function LuxuryGlowBanner() {
                                 border: `1px solid ${gold.base}`,
                                 color: gold.light
                             }}
-                            className="px-8 py-3 rounded-full cursor-pointer backdrop-blur-md font-medium tracking-wide hover:bg-white/10 duration-300"
+                            className="px-10 py-4 text-xl rounded-full cursor-pointer backdrop-blur-md font-medium tracking-wide hover:bg-white/10 duration-300"
                         >
                             Explore All
                         </button></Link>
