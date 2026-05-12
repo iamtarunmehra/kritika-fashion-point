@@ -4,13 +4,13 @@ export default function LuxuryGlowBanner() {
     return (
         <div className="bg-black pb-10 w-full lg:h-[85vh] md:h-[70vh] sm:h-[50vh] h-[40vh]">
             <section style={{
-                backgroundImage: "url('/banner/b1.jpg')",
+                backgroundImage: "url('/banner/b4.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-                className="w-full lg:pb-10 mb-10 lg:h-[70vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
-                <div className="absolute top-0 left-0 bg-linear-to-t from-black via-black/90 to-transparent w-full h-full">
+                className="w-full lg:pb-10 mb-10 lg:h-[60vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
+                <div className="absolute top-0 left-0 bg-linear-to-t from-black via-black/80 to-black/5 w-full h-full">
 
                 </div>
                 <div className="text-white absolute top-3/5 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4">
@@ -59,7 +59,7 @@ export default function LuxuryGlowBanner() {
                             style={{
                                 background: `linear-gradient(to right, transparent, ${gold.base})`
                             }}
-                            className="w-16 h-[1px]"
+                            className="w-16 h-[1]"
                         ></div>
 
                         <div
@@ -74,10 +74,33 @@ export default function LuxuryGlowBanner() {
                             style={{
                                 background: `linear-gradient(to left, transparent, ${gold.base})`
                             }}
-                            className="w-16 h-[1px]"
+                            className="w-16 h-[1]"
                         ></div>
-                    </div>
 
+                    </div>
+                    <div className="flex items-center gap-4 justify-center mt-6">
+
+                        <button
+                            style={{
+                                background: gold.base,
+                                boxShadow: `0 0 20px ${gold.base}55`
+                            }}
+                            className="px-7 py-3 rounded-full cursor-pointer text-black font-semibold tracking-wide hover:scale-105 duration-300"
+                        >
+                            Shop Now
+                        </button>
+
+                        <button
+                            style={{
+                                border: `1px solid ${gold.base}`,
+                                color: gold.light
+                            }}
+                            className="px-7 py-3 rounded-full cursor-pointer backdrop-blur-md font-medium tracking-wide hover:bg-white/10 duration-300"
+                        >
+                            Explore All
+                        </button>
+
+                    </div>
                 </div>
             </section>
         </div>

@@ -135,10 +135,10 @@ export default function ShopByCategory() {
                                         overflow-hidden 
                                         border-2
                                         duration-500
-                                        hover:scale-110
+                                        hover:scale-105
                                         hover:rotate-3
-                                        shadow-[0_0_25px_rgba(212,175,55,0.15)]
-                                        hover:shadow-[0_0_45px_rgba(212,175,55,0.55)]
+                                        shadow-[0_0_10px_rgba(212,175,55,0.15)]
+                                        hover:shadow-[0_0_25px_rgba(212,175,55,0.55)]
                                     "
                                     >
 

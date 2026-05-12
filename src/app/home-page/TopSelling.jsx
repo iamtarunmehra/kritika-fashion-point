@@ -74,7 +74,14 @@ export default function TopSelling() {
             {/* <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full left-0'></div>
             <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full right-0'></div> */}
 
-            <div style={{ borderColor: gold.dark }} className="max-w-330 mx-auto lg:px-6 px-4 border-t pt-10">
+            <div style={{
+                borderImage: `linear-gradient(
+                    to right,
+                    transparent,
+                    ${gold.dark}55,
+                    transparent
+                ) 1`
+            }} className="max-w-330 mx-auto lg:px-6 px-4 border-t-[0.5] pt-10">
 
                 <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-3">
 
