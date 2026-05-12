@@ -47,7 +47,7 @@ export default function Footer() {
 
             <div className="absolute -top-15 -left-15 w-[350] h-[350] pointer-events-none z-0 overflow-hidden">
                 <Image
-
+                    sizes='full'
                     fill
                     alt="design"
                     src="/designs/d1.png"
@@ -57,6 +57,7 @@ export default function Footer() {
 
             <div className="absolute -bottom-15 -right-15 rotate-180 w-[350] h-[350] pointer-events-none z-0 overflow-hidden">
                 <Image
+                    sizes='full'
                     fill
                     alt="design"
                     src="/designs/d1.png"
@@ -120,11 +121,11 @@ export default function Footer() {
                                 Contact Us
                             </b>
                         </li>
-                        <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
+                        <Link target='_blank' href={'https://maps.app.goo.gl/r1r9LLd13biD4sJh8'}><li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
                             <FaLocationDot style={{ color: gold.base }} size={20} className='mt-1' />
 
                             New Pal Road Opposite Barktullah khan stadium Jodhpur, Rajasthan
-                        </li>
+                        </li></Link>
                         <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer  group relative'>
                             <FaPhoneAlt size={20} style={{ color: gold.base }} className='mt-1' />
 

@@ -106,7 +106,7 @@ export default function NewArrivals() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                               <Link href={`/categories/${item.title}`}>
+                                <Link href={`/categories/${item.title}`}>
                                     <div
                                         onMouseEnter={() => swiperRef.current?.autoplay.stop()}
                                         onMouseLeave={() => swiperRef.current?.autoplay.start()}

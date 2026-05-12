@@ -31,7 +31,7 @@ export default function ShopByCategory() {
         <section className="w-full h-full lg:py-16 py-6 bg-black overflow-hidden relative">
 
             <div className="absolute lg:w-[800] md:w-full w-full  h-full bottom-0 right-0">
-                <Image src={'/designs/d1.png'} alt="designs" fill className="absolute opacity-5 bottom-0 right-0 w-full h-full object-cover object-bottom" />
+                <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-5 bottom-0 right-0 w-full h-full object-cover object-bottom" />
             </div>
 
             <div className="max-w-330 mx-auto lg:px-6 px-4">

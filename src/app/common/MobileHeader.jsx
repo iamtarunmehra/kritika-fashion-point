@@ -14,7 +14,7 @@ export default function MobileHeader() {
         <>
             <div
                 // style={{ background: 'rgba(44, 15, 58, 1)', borderBottomColor: gold.base }}
-                style={{ background: 'black', borderBottomColor: gold.base }}
+                style={{ background: 'black', borderColor: gold.base }}
 
                 className='lg:hidden block w-full h-full py-3 border-b-2 px-4'>
                 <div className='flex items-center justify-between'>
@@ -53,7 +53,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu }) {
                 fixed inset-0
                 transform
                 ${mobileMenu ? 'translate-y-0' : '-translate-y-full'}
-                transition-transform duration-500 ease-in-out origin-top
+                transition-transform duration-300 ease-in-out
                 w-full h-fit
                 bg-black text-white border-b-4
                 lg:hidden block
@@ -72,54 +72,54 @@ export function MobileMenu({ mobileMenu, setMobileMenu }) {
                             <li
                                 onClick={() => setMobileMenu(false)}
                                 className="
-            group
-            relative
-            overflow-hidden
-            py-3 px-8
-            rounded-full
-            border border-[#D4AF37]/40
-            bg-white/5
-            backdrop-blur-md
-            text-white
-            capitalize
-            text-lg
-            font-medium
-            tracking-wide
-            transition-all duration-500
-            hover:scale-105
-            hover:border-[#D4AF37]
-            hover:shadow-[0_0_25px_rgba(212,175,55,0.35)]
-        "
+                            group
+                            relative
+                            overflow-hidden
+                            py-3 px-8
+                            rounded-full
+                            border border-[#D4AF37]/40
+                            bg-white/5
+                            backdrop-blur-md
+                            
+                            capitalize
+                            text-lg
+                            font-medium
+                            tracking-wide
+                            transition-all duration-500
+                            hover:scale-105
+                            hover:border-[#D4AF37]
+                            hover:shadow-[0_0_25px_rgba(212,175,55,0.35)]
+                        "
                             >
                                 {/* Glow Background */}
                                 <span
                                     className="
-                absolute inset-0
-                bg-linear-to-r
-                from-[#D4AF37]/0
-                via-[#D4AF37]/20
-                to-[#D4AF37]/0
-                translate-x-[-120%]
-                group-hover:translate-x-[120%]
-                transition-transform duration-1000
-            "
+                                absolute inset-0
+                                bg-linear-to-r
+                                from-[#D4AF37]/0
+                                via-[#D4AF37]/20
+                                to-[#D4AF37]/0
+                                translate-x-[-120%]
+                                group-hover:translate-x-[120%]
+                                transition-transform duration-1000
+                            "
                                 />
 
                                 {/* Dot */}
                                 <span
                                     className="
-                absolute left-4 top-1/2
-                -translate-y-1/2
-                w-2 h-2
-                rounded-full
-                bg-[#D4AF37]
-                shadow-[0_0_10px_#D4AF37]
-            "
+                                absolute left-4 top-1/2
+                                -translate-y-1/2
+                                w-2 h-2
+                                rounded-full
+                                bg-[#D4AF37]
+                                shadow-[0_0_10px_#D4AF37]
+                            "
                                 />
 
                                 {/* Text */}
-                                <span style={{ color: gold.base }} className="relative z-10 pl-3 flex items-center gap-2 ">
-                                    {item.title}  <VscTriangleRight />
+                                <span style={{ color: gold.light }} className="relative z-10 pl-3 flex items-center gap-2 ">
+                                    {item.title}
                                 </span>
                             </li>
                         </Link>
