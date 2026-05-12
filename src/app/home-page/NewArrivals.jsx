@@ -70,7 +70,7 @@ export default function NewArrivals() {
     ];
 
     return (
-        <section className="w-full bg-black lg:pt-10 pt-20 overflow-hidden relative">
+        <section className="w-full bg-black lg:pt-12 pt-40 overflow-hidden relative">
 
             <div className='flex justify-center relative z-40'>
                 <span style={{
