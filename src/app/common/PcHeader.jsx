@@ -4,7 +4,7 @@ import { gold, purple } from '../colors/color'
 import { IoDiamond } from 'react-icons/io5';
 import Link from 'next/link';
 import { FaRegHeart } from 'react-icons/fa';
-import { FaCartShopping } from 'react-icons/fa6';
+import { FaCartShopping, FaUser } from 'react-icons/fa6';
 import Image from 'next/image';
 
 export default function PcHeader() {
@@ -90,11 +90,15 @@ function UserPoints() {
                 className='text-white cursor-pointer hover:text-[#E6C766]'
             />
             <div className='relative'>
-                <FaCartShopping
+                {/* <FaCartShopping
                     size={25}
                     className='hover:scale-110 duration-100 cursor-pointer text-[#FFF2B3] '
-                />
-                <span className='bg-[#8A6A12] absolute -top-2 -right-3.5 rounded-full w-5 h-5 text-white flex items-center justify-center'>0</span>
+                /> */}
+                {/* <span className='bg-[#8A6A12] absolute -top-2 -right-3.5 rounded-full w-5 h-5 text-white flex items-center justify-center'>0</span> */}
+
+                <div style={{ borderColor: gold.light, background: gold.base }} className='p-2 hover:scale-110 duration-300 cursor-pointer group border rounded-full'>
+                    <FaUser className='text-black' size={16} />
+                </div>
             </div>
         </div>
     )

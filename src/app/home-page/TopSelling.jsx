@@ -69,11 +69,11 @@ export default function TopSelling() {
     ];
 
     return (
-        <section style={{ background: 'black' }} className="w-full  lg:pb-16 md:pb-10 pb-6 relative ">
+        <section style={{ background: 'black' }} className="w-screen overflow-x-hidden lg:my-10 my-5  pb-5 relative ">
 
-            <div className="absolute lg:w-[500] md:w-full w-full  h-full bottom-0 left-0">
+            {/* <div className="absolute lg:w-[500] w-full bottom-0 left-0">
                 <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-[0.05] bottom-0 right-0 w-full h-full object-cover object-bottom" />
-            </div>
+            </div> */}
 
 
             {/* <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full left-0'></div>
@@ -86,7 +86,7 @@ export default function TopSelling() {
                     ${gold.dark}55,
                     transparent
                 ) 1`
-            }} className="max-w-330 mx-auto lg:px-6 px-4 border-t-[0.5] pt-10">
+            }} className="max-w-330 mx-auto lg:px-6 px-4 pt-10">
 
                 <h1 className="relative flex flex-col items-center justify-center">
 
@@ -107,12 +107,12 @@ export default function TopSelling() {
                     </span>
 
                     {/* Glow Effect */}
-                    <div
+                    {/* <div
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
                         style={{
                             background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
                         }}
-                    />
+                    /> */}
 
                     {/* Decorative Line */}
                     <div className="relative mt-5 w-full flex items-center justify-center">

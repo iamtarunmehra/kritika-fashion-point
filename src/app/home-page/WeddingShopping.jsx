@@ -3,7 +3,7 @@ import React from 'react'
 export default function WeddingShopping() {
     return (
 
-        <section className="w-full h-full lg:py-16 py-6 bg-black overflow-hidden relative">
+        <section className="w-screen overflow-x-hidden h-full lg:py-16 py-6 bg-black overflow-hidden relative">
             <div className='max-w-330 mx-auto lg:px-6 px-4'>
                 {/* Heading */}
                 <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-8">

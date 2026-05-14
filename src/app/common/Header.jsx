@@ -5,7 +5,7 @@ import MobileHeader from './MobileHeader'
 export default function Header() {
 
     return (
-        <header className='sticky top-0 z-999'>
+        <header className='sticky top-0 z-100'>
             <PcHeader />
             <MobileHeader />
         </header>

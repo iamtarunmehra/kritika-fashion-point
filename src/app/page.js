@@ -1,4 +1,5 @@
 import LuxuryGlowBanner from "./home-page/Banner";
+import Faq from "./home-page/Faq";
 import NewArrivals from "./home-page/NewArrivals";
 import ShopByCategory from "./home-page/ShopByCategory";
 import TopSelling from "./home-page/TopSelling";
@@ -6,13 +7,12 @@ import WeddingShopping from "./home-page/WeddingShopping";
 
 export default function Home() {
   return (
-    <div className="bg-black">
-      {/* <Slider /> */}
+    <div className="bg-black w-screen overflow-x-hidden ">
       <LuxuryGlowBanner />
       <NewArrivals />
-      {/* <WeddingShopping /> */}
       <ShopByCategory />
       <TopSelling />
+      <Faq />
     </div>
   );
 }

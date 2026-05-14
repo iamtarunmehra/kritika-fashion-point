@@ -1,10 +1,12 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from 'swiper/modules';
 import Link from 'next/link';
 import { gold } from '../colors/color';
 import Image from 'next/image';
+import GetNow from '../common/GetNow';
+import Overlay from '../common/Overlay';
 
 
 export default function NewArrivals() {
@@ -69,8 +71,13 @@ export default function NewArrivals() {
         },
     ];
 
+    const [getNowModel, setGetNowModel] = useState(false)
+
     return (
-        <section className="w-full bg-black  overflow-hidden relative">
+        <section className="w-full bg-black lg:mt-10 mt-10 overflow-hidden relative">
+            {getNowModel && <Overlay/>}
+
+            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
 
             <div className='flex justify-center relative z-40 lg:mt-12 mt-30'>
                 <span style={{
@@ -84,7 +91,7 @@ export default function NewArrivals() {
                         #d4af37 60%,
                         #b8860b 80%,
                         #8a6a12 100%
-                    )`}} className='font-semibold bg-black lg:text-3xl md:text-2xl text-lg py-1.5 lg:px-20 md:px-10 px-5 lg:my-10 my-5'>New Arrivals
+                    )`}} className='font-semibold rounded-md bg-black lg:text-3xl md:text-2xl text-lg py-1.5 lg:px-20 md:px-10 px-5 lg:my-10 my-5'>New Arrivals
                     <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
                 </span>
             </div>
@@ -129,8 +136,17 @@ export default function NewArrivals() {
                                         </div>
 
                                         <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>
-                                            <button className='hover:scale-105 rounded py-1 cursor-pointer bg-white duration-300'>Add to Cart</button>
+                                            <button onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                            }}
+                                                className='hover:scale-105 rounded py-1 cursor-pointer bg-white duration-300'>Add to Cart</button>
                                             <button
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    setGetNowModel(true)
+                                                    e.stopPropagation()
+                                                }}
                                                 className="relative px-6 py-2 text-black font-bold rounded-md cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
                                                 style={{
                                                     background: `linear-gradient(

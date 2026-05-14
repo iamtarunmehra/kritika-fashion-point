@@ -28,10 +28,12 @@ export default function ShopByCategory() {
     ];
 
     return (
-        <section className="w-full h-full lg:py-16 py-6 bg-black overflow-hidden relative">
+        <section style={{ background: 'linear-gradient(to right, #161200,#000000,#000000,#000000, #000000)' }} className="w-screen bg-[#161200] h-full lg:my-10 lg:py-10 py-10 relative">
 
-            <div className="absolute lg:w-[500] md:w-full w-full  h-[500] -rotate-90 top-0 -right-30">
-                <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-5 bottom-0 right-0 w-full h-full object-contain object-top" />
+            {/* <div style={{background:gold.dark}} className="absolute top-0 left-1/2 -translate-1/2 w-[200] h-[5] rounded-full "></div> */}
+
+            <div className="absolute lg:w-[500] md:w-full w-full h-[400]  -rotate-90 top-0 -right-30">
+                <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-5 bottom-0 right-0 w-full h-full object-cover object-top" />
             </div>
 
             <div className="max-w-330 mx-auto lg:px-6 px-4">
@@ -55,13 +57,13 @@ export default function ShopByCategory() {
                         Shop By Category
                     </span>
 
-                    {/* Glow Effect */}
+                    {/* Glow Effect
                     <div
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
                         style={{
                             background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
                         }}
-                    />
+                    /> */}
 
                     {/* Decorative Line */}
                     <div className="relative mt-5 w-full flex items-center justify-center">
@@ -100,16 +102,23 @@ export default function ShopByCategory() {
                 {/* Slider */}
                 <Swiper
                     modules={[Autoplay]}
-                    // onSwiper={(swiper) => (swiperRef.current = swiper)}
                     spaceBetween={20}
-                    slidesPerView={4}
                     loop={true}
+                    centeredSlides={true}
                     autoplay={{ delay: 2000, disableOnInteraction: false }}
                     breakpoints={{
-                        320: { slidesPerView: 2 },
-                        480: { slidesPerView: 2 }, // new breakpoint
-                        640: { slidesPerView: 3 },
-                        1024: { slidesPerView: 5 },
+                        320: {
+                            slidesPerView: 2,
+                        },
+                        480: {
+                            slidesPerView: 2,
+                        },
+                        640: {
+                            slidesPerView: 3,
+                        },
+                        1024: {
+                            slidesPerView: 5,
+                        },
                     }}
                 >
 
@@ -118,7 +127,7 @@ export default function ShopByCategory() {
                             <SwiperSlide key={item.id}>
 
                                 <Link href={'/categories'}>
-                                    <div className="flex flex-col lg:py-5 py-0 items-center group cursor-pointer">
+                                    <div className="flex flex-col px-10 lg:py-5 py-0 items-center group cursor-pointer">
 
                                         {/* Image Circle */}
                                         <div
