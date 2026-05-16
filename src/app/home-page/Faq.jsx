@@ -194,7 +194,7 @@ export default function Faq() {
 
                                     <h2
                                         className="
-                                            lg:text-xl
+                                            lg:text-lg
                                             text-base
                                             font-semibold
                                             pr-5

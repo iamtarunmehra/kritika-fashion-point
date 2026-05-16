@@ -1,11 +1,13 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { gold } from '../colors/color'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from 'swiper/modules';
 import Image from 'next/image';
 import { useRef } from 'react'
 import Link from 'next/link';
+import Overlay from '../common/Overlay';
+import GetNow from '../common/GetNow';
 
 export default function TopSelling() {
     const swiperRef = useRef(null)
@@ -68,9 +70,27 @@ export default function TopSelling() {
         },
     ];
 
+    const [getNowModel, setGetNowModel] = useState(false)
+
+    const addToCart = (e) => {
+
+        e.preventDefault()
+        e.stopPropagation()
+        // if (token) {
+        //     add to cart api
+        // }
+        // else {
+        //     redirect login page
+        // }
+    }
+
+
     return (
         <section style={{ background: 'black' }} className="w-screen overflow-x-hidden lg:my-10 my-5  pb-5 relative ">
 
+            {getNowModel && <Overlay />}
+
+            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
             {/* <div className="absolute lg:w-[500] w-full bottom-0 left-0">
                 <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-[0.05] bottom-0 right-0 w-full h-full object-cover object-bottom" />
             </div> */}
@@ -186,8 +206,15 @@ export default function TopSelling() {
                                         </div>
 
                                         <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>
-                                            <button className='hover:scale-105 rounded py-1 cursor-pointer bg-white duration-300'>Add to Cart</button>
                                             <button
+                                                onClick={(e) => addToCart(e)}
+                                                className='hover:scale-105 rounded py-1 cursor-pointer bg-white duration-300'>Add to Cart</button>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.preventDefault()
+                                                    setGetNowModel(true)
+                                                    e.stopPropagation()
+                                                }}
                                                 className="relative px-6 py-2 text-black font-bold rounded-md cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
                                                 style={{
                                                     background: `linear-gradient(

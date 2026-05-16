@@ -96,9 +96,9 @@ function UserPoints() {
                 /> */}
                 {/* <span className='bg-[#8A6A12] absolute -top-2 -right-3.5 rounded-full w-5 h-5 text-white flex items-center justify-center'>0</span> */}
 
-                <div style={{ borderColor: gold.light, background: gold.base }} className='p-2 hover:scale-110 duration-300 cursor-pointer group border rounded-full'>
+                <Link href={'/login'}><div style={{ borderColor: gold.light, background: gold.base }} className='p-2 hover:scale-110 duration-300 cursor-pointer group border rounded-full'>
                     <FaUser className='text-black' size={16} />
-                </div>
+                </div></Link>
             </div>
         </div>
     )

@@ -14,6 +14,22 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
     const [QrCodeOpen, setQrCodeOpen] = useState(false)
 
 
+    const HandleUpiPayment = () => {
+        const isMobile =
+            /Android|iPhone|iPad|iPod/i.test(
+                navigator.userAgent
+            );
+
+        const upiLink =
+            "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
+
+        if (isMobile) {
+            window.location.href = upiLink;
+        } else {
+            setQrCodeOpen(true);
+        }
+    }
+
     return (
         <>
             {/* Backdrop */}
@@ -92,7 +108,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                 w-11 h-11 rounded-full
                                 flex items-center justify-center
                                 bg-white/5 hover:bg-white/10
-                                duration-300 cursor-pointer
+                                duration-300 cursor-pointer 
                             "
                         >
                             <X
@@ -153,6 +169,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
                         {/* Advance Payment */}
                         <button
+                            onClick={HandleUpiPayment}
                             className="
                                 w-full
                                 rounded-2xl
@@ -171,7 +188,9 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             }}
                         >
 
-                            <div className="flex items-center gap-4">
+                            <div
+
+                                className="flex items-center gap-4">
 
                                 <div
                                     className="
@@ -187,21 +206,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                 </div>
 
                                 <div className="text-left"
-                                    onClick={() => {
-                                        const isMobile =
-                                            /Android|iPhone|iPad|iPod/i.test(
-                                                navigator.userAgent
-                                            );
 
-                                        const upiLink =
-                                            "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
-
-                                        if (isMobile) {
-                                            window.location.href = upiLink;
-                                        } else {
-                                            setQrCodeOpen(true);
-                                        }
-                                    }}
                                 >
 
                                     <h3
@@ -236,6 +241,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
                         {/* Full Payment */}
                         <button
+                            onClick={HandleUpiPayment}
                             className="
                                 w-full
                                 rounded-2xl
@@ -402,19 +408,26 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                     }
                 `}
             >
-                <div className="w-[300] h-[300] bg-white rounded-2xl p-4 relative">
+                <div className="w-[400] h-fit bg-[#0D0D0D] rounded-2xl p-10 relative">
 
+                    <p className="text-amber-100 text-lg font-semibold tracking-wide text-center">
+                        Scan to Book Your Exclusive Jewellery Order From KRITIKA FASHION POINT
+                    </p>
+
+                    <p className="text-amber-300 text-sm text-center mt-2 tracking-wider">
+                        Secure Your Advance Payment for Kritika Fashion Point
+                    </p>
                     {/* Close */}
                     <button
                         onClick={() => setQrCodeOpen(false)}
-                        className="absolute top-3 right-3"
+                        className="absolute -top-2 -right-2 cursor-pointer p-1 rounded-full border bg-white hover:scale-110 duration-100"
                     >
                         <X className="text-black" />
                     </button>
 
                     {/* QR Image */}
                     <img
-                        src="/qr.png"
+                        src="/other/qr.png"
                         alt="QR Code"
                         className="w-full h-full object-contain"
                     />

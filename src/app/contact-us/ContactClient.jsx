@@ -86,7 +86,7 @@ export default function ContactClient() {
                         lg:h-[500]
                         md:h-[400]
                         h-[280]
-                        p-10
+                        lg:p-10 md:p-4
                         backdrop-blur-md
                     "
                 >
@@ -111,7 +111,7 @@ export default function ContactClient() {
                         className="
                             border
                             rounded-3xl
-                            p-8
+                            md:p-8 p-5
                             backdrop-blur-md
                             hover:-translate-y-2
                             duration-300
@@ -173,7 +173,7 @@ export default function ContactClient() {
                         className="
                             border
                             rounded-3xl
-                            p-8
+                           md:p-8 p-5
                             backdrop-blur-md
                             hover:-translate-y-2
                             duration-300
@@ -196,6 +196,7 @@ export default function ContactClient() {
                         >
                             Follow Us On Instagram
                         </h2>
+                        <p className="text-sm tracking-wider text-gray-300">For Treding Designs and Updates</p>
 
                         <Link target="_blank" href={'https://www.instagram.com/kritika_fashion_point/'}><h2
                             // style={{ color: gold.base }}
@@ -204,7 +205,7 @@ export default function ContactClient() {
                             @kritika_fashion_point
                         </h2></Link>
 
-                        <img src="/other/instagram.png" className="w-[300] h-[300] cursor-pointer hover:ml-3 duration-300 object-cover object-top my-5 rounded-2xl" />
+                        <div style={{ borderColor: gold.dark }} className="p-5 border-[0.5] rounded-2xl"> <img src="/other/instagram.png" className="w-[200] h-[200] cursor-pointer hover:ml-3 duration-300 object-cover object-top my-5 rounded-2xl" /></div>
 
 
                         {/* <div className="flex flex-wrap gap-4">
@@ -265,7 +266,7 @@ export default function ContactClient() {
                         className="
                             border
                             rounded-3xl
-                            p-8
+                            md:p-8 p-5
                             backdrop-blur-md
                             hover:-translate-y-2
                             duration-300

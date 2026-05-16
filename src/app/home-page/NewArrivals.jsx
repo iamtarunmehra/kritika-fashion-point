@@ -75,7 +75,7 @@ export default function NewArrivals() {
 
     return (
         <section className="w-full bg-black lg:mt-10 mt-10 overflow-hidden relative">
-            {getNowModel && <Overlay/>}
+            {getNowModel && <Overlay />}
 
             <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
 
