@@ -6,6 +6,6 @@ export default function AddToCartButton() {
             e.preventDefault()
             e.stopPropagation()
         }}
-            className='hover:scale-105 rounded-full py-1 cursor-pointer bg-white duration-300 capitalize font-extrabold'>Add to cart</button>
+            className='hover:scale-105 rounded-full text-black py-1 cursor-pointer bg-white duration-300 capitalize font-bold'>Add to cart</button>
     )
 }

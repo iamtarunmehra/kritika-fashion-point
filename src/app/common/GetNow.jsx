@@ -23,8 +23,11 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                 navigator.userAgent
             );
 
+        // const upiLink =
+        //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
+
         const upiLink =
-            "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
+            "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment&cu=INR";
 
         if (isMobile) {
             window.location.href = upiLink;
@@ -41,7 +44,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                 onClick={() => setGetNowModel(false)}
                 className={`
                     fixed inset-0 z-110
-                    bg-black/70 backdrop-blur-sm
+                    bg-black/5 backdrop-blur-sm
                     duration-300
                     ${getNowModel
                         ? "opacity-100 visible"
@@ -112,7 +115,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                 w-11 h-11 rounded-full
                                 flex items-center justify-center
                                 bg-white/5 hover:bg-white/10
-                                duration-300 cursor-pointer 
+                                duration-200 cursor-pointer  hover:rotate-90
                             "
                         >
                             <X

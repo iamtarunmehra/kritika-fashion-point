@@ -7,6 +7,7 @@ import Overlay from '../common/Overlay';
 import GetNow from '../common/GetNow';
 import { FaSortAmountUp } from 'react-icons/fa';
 import AddToCartButton from '../common/AddToCartButton';
+import BuyNowButton from '../common/BuyNowButton';
 
 export default function ShopNowClient() {
 
@@ -248,6 +249,7 @@ export default function ShopNowClient() {
     return (
         <section className='w-full h-full bg-black text-white'>
 
+            <GetNow />
 
             <FilterModel filterModelOpen={filterModelOpen} setFilterModelOpen={setFilterModelOpen} />
             {getNowModel && <Overlay />}
@@ -329,7 +331,7 @@ export default function ShopNowClient() {
 
                                         <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>
                                             <AddToCartButton />
-                                            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+                                            <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
                                         </div>
                                     </div>
                                 </Link>
