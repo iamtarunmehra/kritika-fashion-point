@@ -1,3 +1,4 @@
+import WishListModel from "./common/WishListModel";
 import LuxuryGlowBanner from "./home-page/Banner";
 import CategoryWiseSections from "./home-page/CategoryWiseSection";
 import Faq from "./home-page/Faq";
@@ -9,6 +10,8 @@ import WeddingShopping from "./home-page/WeddingShopping";
 export default function Home() {
   return (
     <div className="bg-black w-screen overflow-x-hidden ">
+
+      <WishListModel/>
       <LuxuryGlowBanner />
       <NewArrivals />
       <ShopByCategory />

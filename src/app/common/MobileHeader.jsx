@@ -96,7 +96,6 @@ export default function MobileHeader() {
                             sm:tracking-[2]
                             tracking-[1]
                             font-extrabold
-                            
                             duration-300
                         '
                                     style={{

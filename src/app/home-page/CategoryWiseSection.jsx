@@ -121,10 +121,8 @@ export default function CategoryWiseSections() {
                             <SwiperSlide key={index}>
                                 <Link key={index} href={`/categories/${item.title}`}>
                                     <div
-                                        onMouseEnter={() => swiperRef.current?.autoplay.stop()}
-                                        onMouseLeave={() => swiperRef.current?.autoplay.start()}
-                                        style={{ borderColor: gold.base }}
-                                        className="bg-white border-2  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
+                                        style={{ borderColor: gold.dark }}
+                                        className="bg-white border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
 
                                         <div className='p-5 bg-black'>
                                             <div className='h-[200] relative'>
@@ -132,13 +130,13 @@ export default function CategoryWiseSections() {
                                             </div>
                                         </div>
 
-                                        <div style={{ borderTopColor: gold.base }} className='border-t-2 p-5 bg-black '>
+                                        <div style={{ borderTopColor: gold.dark }} className='border-t p-5 bg-black '>
                                             <h2 className="text-xl text-[#E6C766] font-extrabold mb-3 relative mt-3 duration-300">{item.title}
 
                                                 <div style={{ background: gold.base }} className='absolute top-[105%] left-0 w-[20] h-[3] group-hover:w-[70] duration-500 rounded-full transition-all'></div>
                                             </h2>
                                             <p className="text-lg text-white mb-2 line-clamp-1">{item.description}</p>
-                                            <p style={{ color: gold.base }} className="text-2xl font-extrabold ">Price - ₹{item.price}</p>
+                                            <p style={{ color: gold.base }} className="text-2xl font-extrabold ">Price - ₹ {item.price}</p>
                                         </div>
 
                                         <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>

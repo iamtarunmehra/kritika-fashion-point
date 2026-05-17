@@ -1,13 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { gold } from '../colors/color'
 import { IoDiamond } from 'react-icons/io5'
 import Link from 'next/link'
 import { FaRegHeart } from 'react-icons/fa'
 import { FaUser } from 'react-icons/fa6'
 import Image from 'next/image'
+import WishListModel from './WishListModel'
 
 export default function PcHeader() {
+
+    const [wishListModelOpen, setWishListModelOpen] = useState(false)
+
 
     const premiumGoldGradient = `
         linear-gradient(
@@ -25,6 +29,7 @@ export default function PcHeader() {
 
     return (
         <>
+            <WishListModel wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} />
             <div
                 className='
                     lg:block hidden
@@ -34,6 +39,7 @@ export default function PcHeader() {
                     overflow-hidden
                     z-50
                     backdrop-blur-xl
+                    
                 '
                 style={{
                     borderBottomColor: 'rgba(230,199,102,0.18)',
@@ -85,7 +91,7 @@ export default function PcHeader() {
 
                         <NavBar premiumGoldGradient={premiumGoldGradient} />
 
-                        <UserPoints premiumGoldGradient={premiumGoldGradient} />
+                        <UserPoints wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} premiumGoldGradient={premiumGoldGradient} />
 
                     </div>
                 </div>
@@ -294,13 +300,14 @@ function NavBar() {
     )
 }
 
-function UserPoints({ premiumGoldGradient }) {
+function UserPoints({ premiumGoldGradient, wishListModelOpen, setWishListModelOpen }) {
 
     return (
         <div className='flex items-center gap-5'>
 
             {/* Wishlist */}
             <div
+                onClick={() => setWishListModelOpen(true)}
                 className='
                     relative
                     w-10
