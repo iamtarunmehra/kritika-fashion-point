@@ -1,29 +1,125 @@
 "use client"
 import React, { useState } from 'react'
-import { Logo } from './PcHeader'
 import { gold } from '../colors/color'
 import Image from 'next/image'
 import { FaBarsProgress } from 'react-icons/fa6'
-import { IoCloseCircleSharp } from 'react-icons/io5'
+import { IoCloseCircleSharp, IoDiamond } from 'react-icons/io5'
 import Link from 'next/link'
 import { VscTriangleRight } from 'react-icons/vsc'
+import { Logo } from './PcHeader'
 
 export default function MobileHeader() {
     const [mobileMenu, setMobileMenu] = useState(false)
+
+    const premiumGoldGradient = `
+        linear-gradient(
+            135deg,
+            #4d3900 0%,
+            #8c670a 18%,
+            #d4af37 38%,
+            #f5df8b 50%,
+            #e6c766 58%,
+            #c9971a 72%,
+            #7a5a08 88%,
+            #4d3900 100%
+        )
+    `
+
+
     return (
         <>
             <div
                 // style={{ background: 'rgba(44, 15, 58, 1)', borderBottomColor: gold.base }}
                 style={{ background: 'black', borderColor: gold.base }}
 
-                className='lg:hidden block w-full h-full py-3 border-b-2 px-4'>
+                className='lg:hidden block w-full h-full py-3.5 border-b-2 px-4'>
                 <div className='flex items-center justify-between'>
                     <div className='absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden'>
                         <Image src={'/designs/d2.png'} sizes='full' alt='designs' fill className='opacity-[0.05] w-full h-full object-cover object-top' />
                     </div>
-                    <div className=''>
-                        <Logo />
-                    </div>
+                    <Link href={'/'}>
+                        <div className='cursor-pointer group'>
+
+                            <div className='flex items-center gap-3'>
+
+                                {/* Premium Diamond */}
+                                <div
+                                    className='
+                            relative
+                            w-10
+                            h-10
+                            rounded-full
+                            flex
+                            items-center
+                            justify-center
+                            overflow-hidden
+                            border
+                            duration-300
+                            group-hover:scale-110
+                            group-hover:rotate-6
+                        '
+                                    style={{
+                                        background: premiumGoldGradient,
+                                        borderColor: '#e6c766',
+                                        boxShadow: '0 0 25px rgba(245,223,139,0.18)'
+                                    }}
+                                >
+
+                                    {/* Shine */}
+                                    <div
+                                        className='
+                                absolute
+                                top-0
+                                -left-full
+                                w-full
+                                h-full
+                                rotate-12
+                                group-hover:left-full
+                                duration-700
+                            '
+                                        style={{
+                                            background:
+                                                'linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)'
+                                        }}
+                                    />
+
+                                    <IoDiamond
+                                        className='relative z-10 text-black'
+                                        size={22}
+                                    />
+                                </div>
+
+                                {/* Logo Text */}
+                                <div
+                                    className='
+                            text-[20px]
+                            sm:tracking-[2]
+                            tracking-[1]
+                            font-extrabold
+                            
+                            duration-300
+                        '
+                                    style={{
+                                        color: '#f5df8b',
+                                        textShadow: '0 0 15px rgba(245,223,139,0.12)'
+                                    }}
+                                >
+
+                                    <span style={{ color: '#fff2b3' }}>K</span>
+                                    ritika{" "}
+
+                                    <span style={{ color: '#fff2b3' }}>F</span>
+                                    ashion{" "}
+
+                                    <span style={{ color: '#fff2b3' }}>P</span>
+                                    oint
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </Link>
 
                     <div onClick={() => setMobileMenu(true)}><FaBarsProgress style={{ color: gold.light }} size={20} /></div>
                 </div>
@@ -33,12 +129,12 @@ export default function MobileHeader() {
                 <div onClick={() => setMobileMenu(false)} className='w-full h-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0'></div>
 
             }
-            <MobileMenu mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
+            <MobileMenu premiumGoldGradient={premiumGoldGradient} mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
         </>
     )
 }
 
-export function MobileMenu({ mobileMenu, setMobileMenu }) {
+export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
     const Data = [
         { title: 'home', link: '/' },
         { title: 'Shop Now', link: '/shop-now' },
@@ -62,7 +158,88 @@ export function MobileMenu({ mobileMenu, setMobileMenu }) {
                             `}
         >
             <div className='flex justify-between items-center py-5 px-3'>
-                <Logo />
+                <Link href={'/'}>
+                    <div className='cursor-pointer group'>
+
+                        <div className='flex items-center gap-3'>
+
+                            {/* Premium Diamond */}
+                            <div
+                                className='
+                            relative
+                            w-10
+                            h-10
+                            rounded-full
+                            flex
+                            items-center
+                            justify-center
+                            overflow-hidden
+                            border
+                            duration-300
+                            group-hover:scale-110
+                            group-hover:rotate-6
+                        '
+                                style={{
+                                    background: premiumGoldGradient,
+                                    borderColor: '#e6c766',
+                                    boxShadow: '0 0 25px rgba(245,223,139,0.18)'
+                                }}
+                            >
+
+                                {/* Shine */}
+                                <div
+                                    className='
+                                absolute
+                                top-0
+                                -left-full
+                                w-full
+                                h-full
+                                rotate-12
+                                group-hover:left-full
+                                duration-700
+                            '
+                                    style={{
+                                        background:
+                                            'linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)'
+                                    }}
+                                />
+
+                                <IoDiamond
+                                    className='relative z-10 text-black'
+                                    size={22}
+                                />
+                            </div>
+
+                            {/* Logo Text */}
+                            <div
+                                className='
+                            text-[20px]
+                            tracking-[2px]
+                            font-extrabold
+                            
+                            duration-300
+                        '
+                                style={{
+                                    color: '#f5df8b',
+                                    textShadow: '0 0 15px rgba(245,223,139,0.12)'
+                                }}
+                            >
+
+                                <span style={{ color: '#fff2b3' }}>K</span>
+                                ritika{" "}
+
+                                <span style={{ color: '#fff2b3' }}>F</span>
+                                ashion{" "}
+
+                                <span style={{ color: '#fff2b3' }}>P</span>
+                                oint
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </Link>
                 <button style={{ color: gold.base }} onClick={() => setMobileMenu(false)}><IoCloseCircleSharp size={25} /></button>
             </div>
             <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-xl font-semibold space-y-10 pb-10'>
