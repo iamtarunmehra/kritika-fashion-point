@@ -26,8 +26,11 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
         // const upiLink =
         //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
 
+        // const upiLink =
+        //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment&cu=INR";
+
         const upiLink =
-            "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment&cu=INR";
+            "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment%20for%20Exclusive%20Jewellery%20Order.%20Premium%20fashion%20accessories%20and%20bridal%20collection.%20Thank%20you%20for%20choosing%20Kritika%20Fashion%20Point.&cu=INR";
 
         if (isMobile) {
             window.location.href = upiLink;
@@ -201,7 +204,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
                                 <div
                                     className="
-                                        w-14 h-14 rounded-full
+                                        w-10 h-10 sm:w-14 sm:h-14 rounded-full
                                         flex items-center justify-center
                                     "
                                     style={{
@@ -236,7 +239,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             </div>
 
                             <span
-                                className="font-bold text-lg"
+                                className="font-bold text-2xl"
                                 style={{
                                     color: "#d4af37"
                                 }}
@@ -271,7 +274,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
                                 <div
                                     className="
-                                        w-14 h-14 rounded-full
+                                        w-10 h-10 sm:w-14 sm:h-14 rounded-full
                                         bg-black/20
                                         flex items-center justify-center
                                     "
@@ -322,7 +325,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
                                 <div
                                     className="
-                                        w-14 h-14 rounded-full
+                                        w-10 h-10 sm:w-14 sm:h-14 rounded-full
                                         bg-[#25D366]
                                         flex items-center justify-center
                                     "

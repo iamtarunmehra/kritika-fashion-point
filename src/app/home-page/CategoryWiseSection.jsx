@@ -93,7 +93,7 @@ export default function CategoryWiseSections() {
                         #d4af37 60%,
                         #b8860b 80%,
                         #8a6a12 100%
-                    )`}} className='font-semibold rounded-full bg-black lg:text-3xl md:text-2xl text-lg lg:py-3 py-1.5 lg:px-20 md:px-12 px-10 lg:my-10 my-5 uppercase'>rings
+                    )`}} className='font-semibold rounded-full bg-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-12 md:px-12 px-10 lg:my-10 my-5 uppercase'>rings
                     <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
                 </span>
             </div>
@@ -103,7 +103,7 @@ export default function CategoryWiseSections() {
 
             <div className='max-w-330 mx-auto lg:px-6 px-4 '>
 
-                <div className='lg:mb-5 mb-16 lg:p-0 p-3'>
+                <div className='lg:mb-5 mb-5 lg:p-0 p-3'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
