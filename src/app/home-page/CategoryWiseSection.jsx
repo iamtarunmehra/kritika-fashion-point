@@ -1,18 +1,19 @@
 "use client"
-import React, { useState } from 'react'
-import { gold } from '../colors/color'
+import React, { useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from 'swiper/modules';
-import Image from 'next/image';
-import { useRef } from 'react'
 import Link from 'next/link';
-import Overlay from '../common/Overlay';
+import { gold } from '../colors/color';
+import Image from 'next/image';
 import GetNow from '../common/GetNow';
+import Overlay from '../common/Overlay';
 import { DecorativeLine } from '../common/DecorativeLine';
 import BuyNowButton from '../common/BuyNowButton';
 import AddToCartButton from '../common/AddToCartButton';
 
-export default function TopSelling() {
+
+export default function CategoryWiseSections() {
+
     const swiperRef = useRef(null)
     const top_selling_data = [
         {
@@ -75,72 +76,34 @@ export default function TopSelling() {
 
     const [getNowModel, setGetNowModel] = useState(false)
 
-    const addToCart = (e) => {
-
-        e.preventDefault()
-        e.stopPropagation()
-        // if (token) {
-        //     add to cart api
-        // }
-        // else {
-        //     redirect login page
-        // }
-    }
-
-
     return (
-        <section style={{ background: 'black' }} className="w-screen overflow-x-hidden  pb-5 relative ">
-
+        <section className="w-full bg-black overflow-hidden relative">
             {getNowModel && <Overlay />}
-
             <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
-            {/* <div className="absolute lg:w-[500] w-full bottom-0 left-0">
-                <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-[0.05] bottom-0 right-0 w-full h-full object-cover object-bottom" />
-            </div> */}
+
+            <div className='flex justify-center relative z-40'>
+                <span style={{
+                    background: `
+                    linear-gradient(
+                        to left,
+                        #8a6a12 0%,
+                        #b8860b 20%,
+                        #d4af37 40%,
+                        #fff2b3 50%,
+                        #d4af37 60%,
+                        #b8860b 80%,
+                        #8a6a12 100%
+                    )`}} className='font-semibold rounded-full bg-black lg:text-3xl md:text-2xl text-lg lg:py-3 py-1.5 lg:px-20 md:px-12 px-10 lg:my-10 my-5 uppercase'>rings
+                    <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
+                </span>
+            </div>
 
 
-            {/* <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full left-0'></div>
-            <div style={{ background: gold.base }} className='w-[300] lg:block hidden mx-auto h-[1.5] rounded-full absolute top-full right-0'></div> */}
 
-            <div style={{
-                borderImage: `linear-gradient(
-                    to right,
-                    transparent,
-                    ${gold.dark}55,
-                    transparent
-                ) 1`
-            }} className="max-w-330 mx-auto lg:px-6 px-4">
 
-                <h1 className="relative flex flex-col items-center justify-center">
+            <div className='max-w-330 mx-auto lg:px-6 px-4 '>
 
-                    {/* Main Heading */}
-                    <span
-                        className="relative z-10 lg:text-4xl text-3xl font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
-                        style={{
-                            backgroundImage:
-                                "linear-gradient(90deg, #7a5a0a 0%, #b8860b 25%, #d4af37 50%, #c9971a 75%, #8a6a12 100%)",
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            display: "inline-block",
-                            fontFamily: "serif",
-                            textShadow: "0px 2px 10px rgba(212,175,55,0.22)"
-                        }}
-                    >
-                        Top Selling Products
-                    </span>
-
-                    {/* <div
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
-                        style={{
-                            background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
-                        }}
-                    />
-
-                    {/* Decorative Line */}
-                    <DecorativeLine />
-                </h1>
-
-                <div className='lg:p-0 p-3'>
+                <div className='lg:mb-5 mb-16 lg:p-0 p-3'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -156,7 +119,7 @@ export default function TopSelling() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <Link href={`/categories/${item.title}`}>
+                                <Link key={index} href={`/categories/${item.title}`}>
                                     <div
                                         onMouseEnter={() => swiperRef.current?.autoplay.stop()}
                                         onMouseLeave={() => swiperRef.current?.autoplay.start()}
@@ -182,7 +145,8 @@ export default function TopSelling() {
                                             <AddToCartButton />
                                             <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
                                         </div>
-                                    </div></Link>
+                                    </div>
+                                </Link>
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -191,5 +155,3 @@ export default function TopSelling() {
         </section>
     )
 }
-
-

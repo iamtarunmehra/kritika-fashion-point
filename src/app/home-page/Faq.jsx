@@ -62,7 +62,7 @@ export default function Faq() {
     ];
 
     return (
-        <section className="w-screen overflow-x-hidden bg-black lg:my-10 my-5 relative">
+        <section className="w-screen overflow-x-hidden bg-black lg:my-20 my-5 relative">
 
             {/* Background Glow */}
             <div
@@ -208,8 +208,8 @@ export default function Faq() {
 
                                     <div
                                         className="
-                                            min-w-[45]
-                                            h-[45]
+                                            min-w-[40]
+                                            h-[40]
                                             rounded-full
                                             flex
                                             items-center
@@ -254,7 +254,6 @@ export default function Faq() {
                                         }
                                     `}
                                 >
-                                    <div style={{ background: gold.base }} className="w-[2]  h-2/4 bg-white rounded-full absolute top-0 left-4"></div>
 
                                     <div className="overflow-hidden">
 

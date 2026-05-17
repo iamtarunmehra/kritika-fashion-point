@@ -6,6 +6,7 @@ import { gold } from "../colors/color";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Link from "next/link";
+import { DecorativeLine } from "../common/DecorativeLine";
 
 
 export default function ShopByCategory() {
@@ -28,7 +29,7 @@ export default function ShopByCategory() {
     ];
 
     return (
-        <section style={{ background: 'linear-gradient(to right, #161200,#000000,#000000,#000000, #000000)' }} className="w-screen bg-[#161200] h-full lg:my-10 lg:py-10 py-10 relative">
+        <section className="w-screen bg-black h-full lg:my-16 my-12 relative">
 
             {/* <div style={{background:gold.dark}} className="absolute top-0 left-1/2 -translate-1/2 w-[200] h-[5] rounded-full "></div> */}
 
@@ -66,36 +67,7 @@ export default function ShopByCategory() {
                     /> */}
 
                     {/* Decorative Line */}
-                    <div className="relative mt-5 w-full flex items-center justify-center">
-
-                        {/* Left Line */}
-                        <div
-                            className="h-px lg:w-52 w-20"
-                            style={{
-                                background:
-                                    "linear-gradient(to right, transparent, #d4af37)"
-                            }}
-                        />
-
-                        {/* Diamond Center */}
-                        <div
-                            className="mx-4 w-3 h-3 rotate-45 rounded-sm"
-                            style={{
-                                background:
-                                    "linear-gradient(135deg, #fff2b3, #d4af37, #8a6a12)",
-                                boxShadow: "0 0 12px rgba(212,175,55,0.6)"
-                            }}
-                        />
-
-                        {/* Right Line */}
-                        <div
-                            className="h-px lg:w-52 w-20"
-                            style={{
-                                background:
-                                    "linear-gradient(to left, transparent, #d4af37)"
-                            }}
-                        />
-                    </div>
+                    <DecorativeLine />
                 </h1>
 
 

@@ -1,23 +1,18 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { gold } from "../colors/color";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { BsInstagram } from "react-icons/bs";
-import { CgInstagram } from "react-icons/cg";
-import { FaFacebook } from "react-icons/fa6";
 import Link from "next/link";
 
-
 export default function ContactClient() {
-
-
 
     return (
         <section className="w-full bg-black text-white relative overflow-hidden">
 
-            {/* Background Design */}
-            <div className="absolute inset-0 -z-10 opacity-[0.04]">
+            {/* Background Texture */}
+            <div className="absolute inset-0 -z-20 opacity-[0.035]">
                 <Image
                     src={"/designs/d3.png"}
                     fill
@@ -26,48 +21,89 @@ export default function ContactClient() {
                 />
             </div>
 
+            {/* Premium Glow */}
+            <div
+                className="
+                    absolute
+                    top-0
+                    left-1/2
+                    -translate-x-1/2
+                    w-[700]
+                    h-[350]
+                    rounded-full
+                    blur-3xl
+                    opacity-[0.08]
+                    -z-10
+                "
+                style={{
+                    background: "#d4af37"
+                }}
+            />
+
             <div className="max-w-330 mx-auto lg:px-6 px-4 lg:py-16 md:py-12 py-10">
 
                 {/* Heading */}
-                <div className="text-center mb-10">
+                <div className="text-center mb-14">
 
                     <p
-                        style={{ color: gold.light }}
-                        className="uppercase tracking-[6px] text-xs mb-3"
+                        className="
+                            uppercase
+                            tracking-[8px]
+                            text-xs
+                            mb-4
+                        "
+                        style={{
+                            color: "#c9971a"
+                        }}
                     >
                         Contact Us
                     </p>
 
                     <h2
-                        style={{ color: gold.base }}
-                        className="lg:text-5xl md:text-4xl text-3xl font-bold"
+                        className="
+                            lg:text-6xl
+                            md:text-5xl
+                            text-4xl
+                            font-bold
+                            leading-tight
+                        "
                     >
-                        Visit Our Store
+                        Visit Our
+                        <span
+                            className="ml-4"
+                            style={{
+                                color: "#e6c766"
+                            }}
+                        >
+                            Store
+                        </span>
                     </h2>
 
-                    <div className="flex items-center justify-center gap-3 mt-5">
+                    <div className="flex items-center justify-center gap-4 mt-6">
 
                         <div
+                            className="w-20 h-[1]"
                             style={{
-                                background: `linear-gradient(to right, transparent, ${gold.base})`,
+                                background:
+                                    "linear-gradient(to right, transparent, #d4af37)"
                             }}
-                            className="w-14 h-[1]"
-                        ></div>
+                        />
 
                         <div
+                            className="w-2.5 h-2.5 rounded-full"
                             style={{
-                                background: gold.base,
-                                boxShadow: `0 0 15px ${gold.base}`,
+                                background: "#d4af37",
+                                boxShadow: "0 0 20px #d4af37"
                             }}
-                            className="w-2 h-2 rounded-full"
-                        ></div>
+                        />
 
                         <div
+                            className="w-20 h-[1]"
                             style={{
-                                background: `linear-gradient(to left, transparent, ${gold.base})`,
+                                background:
+                                    "linear-gradient(to left, transparent, #d4af37)"
                             }}
-                            className="w-14 h-[1]"
-                        ></div>
+                        />
 
                     </div>
 
@@ -75,27 +111,68 @@ export default function ContactClient() {
 
                 {/* Map */}
                 <div
-                    style={{
-                        borderColor: `${gold.base}90`,
-                        boxShadow: `0 0 40px rgba(212,175,55,0.08)`,
-                    }}
                     className="
                         overflow-hidden
                         border
-                        rounded-3xl
-                        lg:h-[500]
-                        md:h-[400]
-                        h-[280]
-                        lg:p-10 md:p-4
-                        backdrop-blur-md
+                        rounded-4xl
+                        lg:h-[520]
+                        md:h-[420]
+                        h-[300]
+                        lg:p-6
+                        p-3
+                        backdrop-blur-xl
+                        relative
                     "
+                    style={{
+                        borderColor: "rgba(212,175,55,0.18)",
+                        background: `
+                            linear-gradient(
+                                145deg,
+                                rgba(10,10,10,0.98) 0%,
+                                rgba(16,16,16,0.98) 35%,
+                                rgba(28,20,5,0.98) 100%
+                            )
+                        `,
+                        boxShadow: `
+                            0 0 50px rgba(212,175,55,0.08),
+                            inset 0 0 40px rgba(255,255,255,0.02)
+                        `
+                    }}
                 >
+
+                    {/* Inner Glow */}
+                    <div
+                        className="
+                            absolute
+                            -top-16
+                            -right-16
+                            w-52
+                            h-52
+                            rounded-full
+                            blur-3xl
+                            opacity-10
+                            pointer-events-none
+                        "
+                        style={{
+                            background: "#d4af37"
+                        }}
+                    />
+
                     <iframe
-                        className="w-full h-full rounded-2xl"
+                        className="
+                            w-full
+                            h-full
+                            rounded-[24]
+                            border
+                        "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.12)"
+                        }}
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.615315924874!2d72.95737832394734!3d26.21720004176421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418900516b59c7%3A0x6e9bade8be3a59da!2sKritika%20fashion%20point!5e1!3m2!1sen!2sin!4v1778667101417!5m2!1sen!2sin"
                         allowFullScreen
                         loading="lazy"
                     ></iframe>
+
                 </div>
 
                 {/* Cards */}
@@ -103,35 +180,80 @@ export default function ContactClient() {
 
                     {/* Visit Us */}
                     <div
-                        style={{
-                            borderColor: `${gold.base}70`,
-                            background:
-                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-                        }}
                         className="
                             border
-                            rounded-3xl
-                            md:p-8 p-5
-                            backdrop-blur-md
+                            rounded-4xl
+                            md:p-8
+                            p-5
+                            backdrop-blur-xl
+                            relative
+                            overflow-hidden
                             hover:-translate-y-2
-                            duration-300
+                            hover:shadow-[0_0_40px_rgba(212,175,55,0.12)]
+                            duration-500
                             group
                         "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.18)",
+                            background: `
+                                linear-gradient(
+                                    145deg,
+                                    rgba(8,8,8,0.98) 0%,
+                                    rgba(16,16,16,0.98) 35%,
+                                    rgba(28,20,5,0.98) 100%
+                                )
+                            `
+                        }}
                     >
 
+                        {/* Glow */}
                         <div
+                            className="
+                                absolute
+                                -top-10
+                                -right-10
+                                w-40
+                                h-40
+                                rounded-full
+                                blur-3xl
+                                opacity-10
+                            "
                             style={{
-                                background: `${gold.base}15`,
-                                color: gold.base,
+                                background: "#d4af37"
                             }}
-                            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                        />
+
+                        <div
+                            className="
+                                w-18
+                                h-18
+                                rounded-[22px]
+                                flex
+                                items-center
+                                justify-center
+                                mb-6
+                                border
+                            "
+                            style={{
+                                borderColor: "rgba(212,175,55,0.18)",
+                                background: `
+                                    linear-gradient(
+                                        135deg,
+                                        rgba(212,175,55,0.12),
+                                        rgba(212,175,55,0.03)
+                                    )
+                                `,
+                                color: "#e6c766"
+                            }}
                         >
                             <MapPin size={30} />
                         </div>
 
                         <h2
-                            style={{ color: gold.base }}
-                            className="text-2xl font-bold mb-5"
+                            className="text-3xl font-bold mb-6"
+                            style={{
+                                color: "#e6c766"
+                            }}
                         >
                             Visit Us
                         </h2>
@@ -142,20 +264,20 @@ export default function ContactClient() {
                             Jodhpur, Rajasthan 342014
                         </p>
 
-                        <div className="mt-6 space-y-4">
+                        <div className="mt-8 space-y-5">
 
-                            <div className="flex items-center gap-3 text-gray-300">
-                                <Phone size={18} />
+                            <div className="flex items-center gap-4 text-gray-300">
+                                <Phone size={18} color="#d4af37" />
                                 <span>+91 8079994755</span>
                             </div>
 
-                            <div className="flex items-center gap-3 text-gray-300">
-                                <Phone size={18} />
+                            <div className="flex items-center gap-4 text-gray-300">
+                                <Phone size={18} color="#d4af37" />
                                 <span>+91 8095684587</span>
                             </div>
 
-                            <div className="flex items-center gap-3 text-gray-300 break-all">
-                                <Mail size={18} />
+                            <div className="flex items-center gap-4 text-gray-300 break-all">
+                                <Mail size={18} color="#d4af37" />
                                 <span>kritikafashionpoint@gmail.com</span>
                             </div>
 
@@ -163,128 +285,197 @@ export default function ContactClient() {
 
                     </div>
 
-                    {/* Social Media */}
+                    {/* Instagram */}
                     <div
-                        style={{
-                            borderColor: `${gold.base}70`,
-                            background:
-                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-                        }}
                         className="
                             border
-                            rounded-3xl
-                           md:p-8 p-5
-                            backdrop-blur-md
+                            rounded-[32]
+                            md:p-8
+                            p-5
+                            backdrop-blur-xl
+                            relative
+                            overflow-hidden
                             hover:-translate-y-2
-                            duration-300
+                            hover:shadow-[0_0_40px_rgba(212,175,55,0.12)]
+                            duration-500
                         "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.18)",
+                            background: `
+                                linear-gradient(
+                                    145deg,
+                                    rgba(8,8,8,0.98) 0%,
+                                    rgba(16,16,16,0.98) 35%,
+                                    rgba(28,20,5,0.98) 100%
+                                )
+                            `
+                        }}
                     >
 
+                        {/* Glow */}
                         <div
+                            className="
+                                absolute
+                                -bottom-10
+                                -left-10
+                                w-40
+                                h-40
+                                rounded-full
+                                blur-3xl
+                                opacity-10
+                            "
                             style={{
-                                background: `${gold.base}15`,
-                                color: gold.base,
+                                background: "#d4af37"
                             }}
-                            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                        />
+
+                        <div
+                            className="
+                                w-18
+                                h-18
+                                rounded-[22px]
+                                flex
+                                items-center
+                                justify-center
+                                mb-6
+                                border
+                            "
+                            style={{
+                                borderColor: "rgba(212,175,55,0.18)",
+                                background: `
+                                    linear-gradient(
+                                        135deg,
+                                        rgba(212,175,55,0.12),
+                                        rgba(212,175,55,0.03)
+                                    )
+                                `,
+                                color: "#e6c766"
+                            }}
                         >
                             <BsInstagram size={30} />
                         </div>
 
                         <h2
-                            style={{ color: gold.base }}
-                            className="text-2xl font-bold mb-2"
+                            className="text-3xl font-bold mb-2"
+                            style={{
+                                color: "#e6c766"
+                            }}
                         >
-                            Follow Us On Instagram
+                            Follow Us
                         </h2>
-                        <p className="text-sm tracking-wider text-gray-300">For Treding Designs and Updates</p>
 
-                        <Link target="_blank" href={'https://www.instagram.com/kritika_fashion_point/'}><h2
-                            // style={{ color: gold.base }}
-                            className="text-lg cursor-pointer hover:scale-105 hover:underline duration-300 font-semibold tracking-widest mb-5"
+                        <p className="text-sm tracking-[3px] text-gray-400 uppercase mb-5">
+                            Trending Designs & Updates
+                        </p>
+
+                        <Link
+                            target="_blank"
+                            href={'https://www.instagram.com/kritika_fashion_point/'}
                         >
-                            @kritika_fashion_point
-                        </h2></Link>
-
-                        <div style={{ borderColor: gold.dark }} className="p-5 border-[0.5] rounded-2xl"> <img src="/other/instagram.png" className="w-[200] h-[200] cursor-pointer hover:ml-3 duration-300 object-cover object-top my-5 rounded-2xl" /></div>
-
-
-                        {/* <div className="flex flex-wrap gap-4">
-
-                            <button
-                                style={{
-                                    borderColor: gold.base,
-                                    color: gold.light,
-                                }}
+                            <h2
                                 className="
-                                    border
-                                    px-5
-                                    py-3
-                                    rounded-full
-                                    flex
-                                    items-center
-                                    gap-2
-                                    hover:bg-white/10
+                                    text-lg
+                                    cursor-pointer
+                                    hover:text-[#e6c766]
+                                    hover:translate-x-1
                                     duration-300
+                                    font-semibold
+                                    tracking-widest
+                                    mb-6
                                 "
                             >
-                                <CgInstagram size={18} />
-                                Instagram
-                            </button>
+                                @kritika_fashion_point
+                            </h2>
+                        </Link>
 
-                            <button
-                                style={{
-                                    borderColor: gold.base,
-                                    color: gold.light,
-                                }}
+                        <div
+                            className="
+                                p-4
+                                rounded-[24]
+                                border
+                                overflow-hidden
+                                bg-[#0b0b0b]
+                            "
+                            style={{
+                                borderColor: "rgba(212,175,55,0.12)"
+                            }}
+                        >
+
+                            <img
+                                src="/other/instagram.png"
                                 className="
-                                    border
-                                    px-5
-                                    py-3
-                                    rounded-full
-                                    flex
-                                    items-center
-                                    gap-2
-                                    hover:bg-white/10
-                                    duration-300
+                                    w-full
+                                    h-[240]
+                                    object-cover
+                                    object-top
+                                    rounded-[18px]
+                                    cursor-pointer
+                                    hover:scale-[1.03]
+                                    duration-500
                                 "
-                            >
-                                <FaFacebook size={18} />
-                                Facebook
-                            </button>
+                            />
 
-                        </div> */}
+                        </div>
 
                     </div>
 
                     {/* Contact Form */}
                     <div
-                        style={{
-                            borderColor: `${gold.base}70`,
-                            background:
-                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-                        }}
                         className="
                             border
-                            rounded-3xl
-                            md:p-8 p-5
-                            backdrop-blur-md
+                            rounded-[32]
+                            md:p-8
+                            p-5
+                            backdrop-blur-xl
+                            relative
+                            overflow-hidden
                             hover:-translate-y-2
-                            duration-300
+                            hover:shadow-[0_0_40px_rgba(212,175,55,0.12)]
+                            duration-500
                         "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.18)",
+                            background: `
+                                linear-gradient(
+                                    145deg,
+                                    rgba(8,8,8,0.98) 0%,
+                                    rgba(16,16,16,0.98) 35%,
+                                    rgba(28,20,5,0.98) 100%
+                                )
+                            `
+                        }}
                     >
 
+                        {/* Glow */}
+                        <div
+                            className="
+                                absolute
+                                top-0
+                                right-0
+                                w-32
+                                h-32
+                                rounded-full
+                                blur-3xl
+                                opacity-10
+                            "
+                            style={{
+                                background: "#d4af37"
+                            }}
+                        />
 
                         <h2
-                            style={{ color: gold.base }}
-                            className="text-2xl font-bold mb-6"
+                            className="text-3xl font-bold mb-8"
+                            style={{
+                                color: "#e6c766"
+                            }}
                         >
                             Send Message
                         </h2>
 
-                        <form className="space-y-3">
+                        <form className="space-y-5">
 
                             <div>
-                                <label className="text-sm text-gray-300 mb-2 block">
+                                <label className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
                                     Full Name
                                 </label>
 
@@ -293,20 +484,25 @@ export default function ContactClient() {
                                     placeholder="Enter your name"
                                     className="
                                         w-full
-                                        bg-white/5
+                                        bg-[#0c0c0c]
                                         border
-                                        border-white/10
-                                        rounded-xl
-                                        px-4
-                                        py-2
+                                        rounded-2xl
+                                        px-5
+                                        py-4
                                         outline-none
-                                        focus:border-yellow-600
+                                        text-white
+                                        placeholder:text-gray-500
+                                        focus:border-[#d4af37]
+                                        duration-300
                                     "
+                                    style={{
+                                        borderColor: "rgba(212,175,55,0.12)"
+                                    }}
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm text-gray-300 mb-2 block">
+                                <label className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
                                     Phone Number
                                 </label>
 
@@ -315,63 +511,110 @@ export default function ContactClient() {
                                     placeholder="Enter phone number"
                                     className="
                                         w-full
-                                        bg-white/5
+                                        bg-[#0c0c0c]
                                         border
-                                        border-white/10
-                                        rounded-xl
-                                        px-4
-                                        py-2
+                                        rounded-2xl
+                                        px-5
+                                        py-4
                                         outline-none
-                                        focus:border-yellow-600
+                                        text-white
+                                        placeholder:text-gray-500
+                                        focus:border-[#d4af37]
+                                        duration-300
                                     "
+                                    style={{
+                                        borderColor: "rgba(212,175,55,0.12)"
+                                    }}
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm text-gray-300 mb-2 block">
+                                <label className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
                                     Message
                                 </label>
 
                                 <textarea
-                                    rows={4}
+                                    rows={5}
                                     placeholder="Write your message..."
                                     className="
                                         w-full
-                                        bg-white/5
+                                        bg-[#0c0c0c]
                                         border
-                                        border-white/10
-                                        rounded-xl
-                                        px-4
-                                        py-2
+                                        rounded-2xl
+                                        px-5
+                                        py-4
                                         outline-none
                                         resize-none
-                                        focus:border-yellow-600
+                                        text-white
+                                        placeholder:text-gray-500
+                                        focus:border-[#d4af37]
+                                        duration-300
                                     "
+                                    style={{
+                                        borderColor: "rgba(212,175,55,0.12)"
+                                    }}
                                 ></textarea>
                             </div>
 
                             <button
-                                style={{
-                                    background: gold.base,
-                                    boxShadow: `0 0 20px ${gold.base}40`,
-                                }}
                                 className="
+                                    relative
+                                    overflow-hidden
                                     w-full
-                                    py-2
-                                    rounded-xl
+                                    py-4
+                                    rounded-2xl
                                     text-black
-                                    font-semibold
+                                    font-bold
                                     text-lg
                                     flex
                                     items-center
                                     justify-center
-                                    gap-2
+                                    gap-3
                                     hover:scale-[1.02]
+                                    active:scale-[0.98]
                                     duration-300
                                 "
+                                style={{
+                                    background: `
+                                        linear-gradient(
+                                            135deg,
+                                            #5c4300 0%,
+                                            #8c670a 15%,
+                                            #b8860b 35%,
+                                            #d4af37 50%,
+                                            #e6c766 62%,
+                                            #c9971a 78%,
+                                            #7a5a08 100%
+                                        )
+                                    `,
+                                    boxShadow:
+                                        "0 0 25px rgba(212,175,55,0.18)"
+                                }}
                             >
-                                <Send size={20} />
-                                Send Message
+
+                                {/* Shine */}
+                                <div
+                                    className="
+                                        absolute
+                                        top-0
+                                        -left-full
+                                        w-full
+                                        h-full
+                                        rotate-12
+                                        hover:left-full
+                                        duration-1000
+                                    "
+                                    style={{
+                                        background:
+                                            "linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent)"
+                                    }}
+                                />
+
+                                <span className="relative z-10 flex items-center gap-3">
+                                    <Send size={20} />
+                                    Send Message
+                                </span>
+
                             </button>
 
                         </form>
@@ -379,8 +622,6 @@ export default function ContactClient() {
                     </div>
 
                 </div>
-
-
 
             </div>
 

@@ -1,14 +1,14 @@
 import React from 'react'
-import { gold, purple } from '../colors/color'
-import { FaLocationDot } from 'react-icons/fa6';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
-import { IoDiamond } from 'react-icons/io5';
-import Image from 'next/image';
-import { BiLocationPlus } from 'react-icons/bi';
-import Link from 'next/link';
+import { gold } from '../colors/color'
+import { FaLocationDot } from 'react-icons/fa6'
+import { FaPhoneAlt } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
+import { BiLocationPlus } from 'react-icons/bi'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
+
     const QuickLinks = [
         { title: 'home', link: '/' },
         { title: 'shop now', link: '/' },
@@ -18,136 +18,530 @@ export default function Footer() {
     ]
 
     const categories = [
-        { id: 1, title: 'Kamar Band', link: '/category/kamar-band' },
-        { id: 2, title: 'Bajuband', link: '/category/bajuband' },
-        { id: 3, title: 'Necklace Set', link: '/category/necklace-set' },
-        { id: 4, title: 'Choker', link: '/category/choker' },
-        { id: 5, title: 'Earrings', link: '/category/earrings' },
-        { id: 6, title: 'Jhumka', link: '/category/jhumka' },
-        { id: 7, title: 'Maang Tikka', link: '/category/maang-tikka' },
-        { id: 8, title: 'Nath (Nose Ring)', link: '/category/nath' },
-        { id: 9, title: 'Bangles', link: '/category/bangles' },
-        { id: 10, title: 'Bracelet', link: '/category/bracelet' },
-        { id: 11, title: 'Anklet (Payal)', link: '/category/anklet' },
-        { id: 12, title: 'Toe Rings', link: '/category/toe-rings' },
-        { id: 13, title: 'Hair Accessories', link: '/category/hair-accessories' },
-        { id: 14, title: 'Brooch', link: '/category/brooch' },
-        { id: 15, title: 'Temple Jewellery', link: '/category/temple-jewellery' },
-        { id: 16, title: 'Oxidised Jewellery', link: '/category/oxidised-jewellery' },
-        { id: 17, title: 'Polki Jewellery', link: '/category/polki-jewellery' },
-        { id: 18, title: 'Kundan Jewellery', link: '/category/kundan-jewellery' },
-    ];
+        { id: 1, title: 'Kamar Band', link: '/categories/kamar-band' },
+        { id: 2, title: 'Bajuband', link: '/categories/bajuband' },
+        { id: 3, title: 'Necklace Set', link: '/categories/necklace-set' },
+        { id: 4, title: 'Choker', link: '/categories/choker' },
+        { id: 5, title: 'Earrings', link: '/categories/earrings' },
+        { id: 6, title: 'Jhumka', link: '/categories/jhumka' },
+        { id: 7, title: 'Maang Tikka', link: '/categories/maang-tikka' },
+        { id: 8, title: 'Nath', link: '/categories/nath' },
+        { id: 9, title: 'Bangles', link: '/categories/bangles' },
+        { id: 10, title: 'Bracelet', link: '/categories/bracelet' },
+        { id: 11, title: 'Anklet', link: '/categories/anklet' },
+        { id: 12, title: 'Temple Jewellery', link: '/categories/temple-jewellery' },
+    ]
 
     return (
         <footer
-            // style={{ background: `rgba(44, 15, 40, 10)`, borderColor: gold.base }}
-            style={{ background: `black`, borderColor: gold.base }}
+            className='
+                relative
+                overflow-hidden
+                border-t
+                border-[#c9971a]/20
+                bg-black
+                text-white
+                lg:mt-20
+                mt-10
+            '
+        >
 
-            className={`tracking-wide w-full h-full border-t border-x py-5 relative overflow-hidden`}>
+            {/* Background Glow */}
+            <div
+                className='
+                    absolute
+                    top-0
+                    left-1/2
+                    -translate-x-1/2
+                    w-[500]
+                    h-[250]
+                    rounded-full
+                    blur-3xl
+                    opacity-[0.08]
+                    pointer-events-none
+                '
+                style={{
+                    background: '#d4af37'
+                }}
+            />
 
-            <div className="absolute -top-15 -left-15 w-[350] h-[350] pointer-events-none z-0 overflow-hidden">
+            {/* Decorative Design */}
+            <div className="absolute -top-10 -left-10 w-[300] h-[300] opacity-[0.1] pointer-events-none">
                 <Image
-                    sizes='full'
-                    fill
-                    alt="design"
                     src="/designs/d1.png"
-                    className="object-contain object-top-left opacity-15 w-full h-full"
+                    alt="design"
+                    fill
+                    sizes='full'
+                    className="object-contain"
                 />
             </div>
 
-            <div className="absolute -bottom-15 -right-15 rotate-180 w-[350] h-[350] pointer-events-none z-0 overflow-hidden">
+            <div className="absolute -bottom-10 -right-10 rotate-180 w-[300] h-[300] opacity-[0.1] pointer-events-none">
                 <Image
-                    sizes='full'
-                    fill
-                    alt="design"
                     src="/designs/d1.png"
-                    className="object-contain object-top-left opacity-15 w-full h-full"
+                    alt="design"
+                    fill
+                    sizes='full'
+                    className="object-contain"
                 />
             </div>
 
-            <div style={{ color: gold }} className="max-w-330 mx-auto lg:px-6 px-4 lg:py-10 py-5">
-                <div className='grid lg:grid-cols-[25%_45%_auto] sm:grid-cols-2 grid-cols-1 justify-between'>
-                    <ul style={{ color: gold.light }}>
-                        <li style={{ color: gold.base }} className='text-2xl my-5 group relative'>
-                            <b>
-                                Quick Links
-                            </b>
-                        </li>
-                        {QuickLinks.map((item, index) => {
-                            return (
-                                <Link key={index} href={item.link}>
-                                    <li className='text-lg my-4 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
-                                        <b>
-                                            {item.title}
-                                            <div style={{ background: gold.base }} className='w-0 group-hover:w-[30] rounded-full absolute top-full duration-300 left-0 h-[2]'></div>
-                                        </b>
-                                    </li>
-                                </Link>
-                            )
-                        })}
-                    </ul>
+            <div className='max-w-330 mx-auto lg:px-6 px-4 lg:py-20 py-12 relative z-10'>
 
-                    <ul style={{ color: gold.light }} className='grid sm:grid-cols-2 grid-cols-1'>
-                        <li style={{ color: gold.base }} className='text-2xl my-5 md:col-span-2 cursor-pointer group relative'>
-                            <b>
-                                Categories
-                            </b>
-                        </li>
-                        {categories.map((item, index) => {
-                            return (
-                                <Link key={index} href={item.link}>
-                                    <li className='text-lg my-2 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
-                                        <b>
-                                            {item.title}
-                                            <div style={{ background: gold.base }} className='w-0 group-hover:w-[30] rounded-full absolute top-full duration-300 left-0 h-[2]'></div>
-                                        </b>
-                                    </li>
-                                </Link>
-                            )
-                        })}
-                    </ul>
+                {/* Top Brand */}
+                <div className='mb-16 text-center'>
 
-                    {/* <ul style={{ color: gold.light }} className='grid grid-cols-2'>
-                        <li style={{ color: gold.base }} className='lg:text-2xl my-5 col-span-2 text-xl cursor-pointer group relative'>
-                            <b>
-                                Top Selling
-                            </b>
-                        </li>
-                    </ul> */}
+                    <p
+                        className='
+                            uppercase
+                            tracking-[8px]
+                            text-xs
+                            mb-4
+                            text-[#d4af37]
+                        '
+                    >
+                        Premium Jewellery Collection
+                    </p>
 
-                    <ul className=''>
-                        <li style={{ color: gold.base }} className='text-2xl my-5 col-span-2 cursor-pointer group relative'>
-                            <b>
-                                Contact Us
-                            </b>
-                        </li>
-                        <Link target='_blank' href={'https://maps.app.goo.gl/r1r9LLd13biD4sJh8'}><li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
-                            <FaLocationDot style={{ color: gold.base }} size={20} className='mt-1' />
+                    <h1
+                        className='
+                            lg:text-5xl
+                            md:text-4xl
+                            text-3xl
+                            font-bold
+                            tracking-wide
+                            text-white
+                        '
+                    >
+                        KRITIKA
+                        <span className='text-[#d4af37] ml-3'>
+                            FASHION POINT
+                        </span>
+                    </h1>
 
-                            New Pal Road Opposite Barktullah khan stadium Jodhpur, Rajasthan
-                        </li></Link>
-                        <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer  group relative'>
-                            <FaPhoneAlt size={20} style={{ color: gold.base }} className='mt-1' />
+                    <div className='flex justify-center mt-5'>
+                        <div
+                            className='w-52 h-[2] rounded-full'
+                            style={{
+                                background: `
+                                    linear-gradient(
+                                        to right,
+                                        transparent,
+                                        #8c670a,
+                                        #d4af37,
+                                        #f5df8b,
+                                        #d4af37,
+                                        #8c670a,
+                                        transparent
+                                    )
+                                `
+                            }}
+                        />
+                    </div>
 
-                            <div>
-                                Mobile - <a href='mailto:-8079092775'><span className='hover:text-[#E6C766] duration-300'> 80799994755</span></a> , {" "}
-                                <a href='mailto:-8079092775'><span className='hover:text-[#E6C766] duration-300'> 80799994755</span></a>
-                            </div>
-                        </li>
-
-                        <li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
-                            <MdEmail size={20} style={{ color: gold.base }} className='mt-1' />
-                            kritikafashionpoint@gmail.com
-                        </li>
-
-                        <Link target='_blank' href={'https://maps.app.goo.gl/r1r9LLd13biD4sJh8'}><li className='grid grid-cols-[6.5%_auto] gap-3 text-[#FFF2B3] text-lg lg:my-5 my-3 capitalize font-light cursor-pointer hover:text-[#E6C766] duration-300 group relative'>
-                            <BiLocationPlus size={24} style={{ color: gold.base }} className='mt-1' />
-                            Live Location
-                        </li></Link>
-
-                    </ul>
                 </div>
+
+                {/* Footer Grid */}
+                <div
+                    className='
+                        grid
+                        lg:grid-cols-[22%_38%_auto]
+                        md:grid-cols-2
+                        grid-cols-1
+                        gap-14
+                    '
+                >
+
+                    {/* Quick Links */}
+                    <div>
+
+                        <h2
+                            className='
+                                text-2xl
+                                font-bold
+                                mb-8
+                                text-[#f5df8b]
+                            '
+                        >
+                            Quick Links
+                        </h2>
+
+                        <ul className=''>
+                            {QuickLinks.map((item, index) => (
+                                <Link key={index} href={item.link}>
+                                    <li
+                                        className='
+                                            relative
+                                            w-fit
+                                            text-[#d9d9d9]
+                                            hover:text-[#f5df8b]
+                                            duration-300
+                                            capitalize
+                                            cursor-pointer
+                                            group
+                                            my-5
+                                            text-lg
+                                        '
+                                    >
+                                        {item.title}
+
+                                        <div
+                                            className='
+                                                absolute
+                                                left-0
+                                                top-[105%]
+                                                w-0
+                                                h-[2]
+                                                rounded-full
+                                                group-hover:w-full
+                                                duration-500
+                                            '
+                                            style={{
+                                                background: `
+                                                    linear-gradient(
+                                                        to right,
+                                                        #8c670a,
+                                                        #d4af37,
+                                                        #f5df8b
+                                                    )
+                                                `
+                                            }}
+                                        />
+                                    </li>
+                                </Link>
+                            ))}
+                        </ul>
+
+                    </div>
+
+                    {/* Categories */}
+                    <div>
+
+                        <h2
+                            className='
+                                text-2xl
+                                font-bold
+                                mb-8
+                                text-[#f5df8b]
+                            '
+                        >
+                            Categories
+                        </h2>
+
+                        <ul className='grid sm:grid-cols-2 gap-x-10 gap-y-4'>
+                            {categories.map((item) => (
+                                <Link key={item.id} href={item.link}>
+                                    <li
+                                        className='
+                                            relative
+                                            w-fit
+                                            text-[#d9d9d9]
+                                            hover:text-[#f5df8b]
+                                            duration-300
+                                            capitalize
+                                            cursor-pointer
+                                            group
+                                            text-lg
+                                        '
+                                    >
+                                        {item.title}
+
+                                        <div
+                                            className='
+                                                absolute
+                                                left-0
+                                                top-[105%]
+                                                w-0
+                                                h-[2]
+                                                rounded-full
+                                                group-hover:w-full
+                                                duration-500
+                                            '
+                                            style={{
+                                                background: `
+                                                    linear-gradient(
+                                                        to right,
+                                                        #8c670a,
+                                                        #d4af37,
+                                                        #f5df8b
+                                                    )
+                                                `
+                                            }}
+                                        />
+                                    </li>
+                                </Link>
+                            ))}
+                        </ul>
+
+                    </div>
+
+                    {/* Contact */}
+                    <div>
+
+                        <h2
+                            className='
+                                text-2xl
+                                font-bold
+                                mb-8
+                                text-[#f5df8b]
+                            '
+                        >
+                            Contact Us
+                        </h2>
+
+                        <div className='space-y-5'>
+
+                            {/* Address */}
+                            <Link
+                                target='_blank'
+                                href='https://maps.app.goo.gl/r1r9LLd13biD4sJh8'
+                            >
+                                <div
+                                    className='
+                                    my-5
+                                        group
+                                        flex
+                                        gap-4
+                                        items-start
+                                        cursor-pointer
+                                    '
+                                >
+
+                                    <div
+                                        className='
+                                            min-w-12
+                                            h-12
+                                            rounded-2xl
+                                            flex
+                                            items-center
+                                            justify-center
+                                            border
+                                            group-hover:scale-110
+                                            duration-300
+                                        '
+                                        style={{
+                                            borderColor: '#c9971a',
+                                            background: `
+                                                linear-gradient(
+                                                    135deg,
+                                                    #4d3900 0%,
+                                                    #8c670a 25%,
+                                                    #d4af37 50%,
+                                                    #f5df8b 65%,
+                                                    #8c670a 100%
+                                                )
+                                            `
+                                        }}
+                                    >
+                                        <FaLocationDot
+                                            className='text-black'
+                                            size={18}
+                                        />
+                                    </div>
+
+                                    <p className='text-[#d9d9d9] leading-7 group-hover:text-white duration-300'>
+                                        New Pal Road Opposite Barkatullah Khan Stadium,
+                                        Jodhpur, Rajasthan
+                                    </p>
+
+                                </div>
+                            </Link>
+
+                            {/* Phone */}
+                            <div className='flex gap-4 items-start'>
+
+                                <div
+                                    className='
+                                        min-w-12
+                                        h-12
+                                        rounded-2xl
+                                        flex
+                                        items-center
+                                        justify-center
+                                        border
+                                    '
+                                    style={{
+                                        borderColor: '#c9971a',
+                                        background: `
+                                            linear-gradient(
+                                                135deg,
+                                                #4d3900 0%,
+                                                #8c670a 25%,
+                                                #d4af37 50%,
+                                                #f5df8b 65%,
+                                                #8c670a 100%
+                                            )
+                                        `
+                                    }}
+                                >
+                                    <FaPhoneAlt
+                                        className='text-black'
+                                        size={16}
+                                    />
+                                </div>
+
+                                <div className='text-[#d9d9d9] leading-8 flex  gap-3'>
+                                    <a
+                                        href='tel:8079994755'
+                                        className='hover:text-[#f5df8b] duration-300 block'
+                                    >
+                                        +91 8079994755 ,
+                                    </a>
+
+                                    <a
+                                        href='tel:8079994755'
+                                        className='hover:text-[#f5df8b] duration-300 block'
+                                    >
+                                        +91 8079994755
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            {/* Email */}
+                            <div className='flex gap-4 items-center group'>
+
+                                <div
+                                    className='
+                                        min-w-12
+                                        h-12
+                                        rounded-2xl
+                                        flex
+                                        items-center
+                                        justify-center
+                                        border
+                                        group-hover:scale-110 duration-300
+                                        
+                                    '
+                                    style={{
+                                        borderColor: '#c9971a',
+                                        background: `
+                                            linear-gradient(
+                                                135deg,
+                                                #4d3900 0%,
+                                                #8c670a 25%,
+                                                #d4af37 50%,
+                                                #f5df8b 65%,
+                                                #8c670a 100%
+                                            )
+                                        `
+                                    }}
+                                >
+                                    <MdEmail
+                                        className='text-black '
+                                        size={18}
+                                    />
+                                </div>
+
+                                <a
+                                    href='mailto:kritikafashionpoint@gmail.com'
+                                    className='
+                                        text-[#d9d9d9]
+                                        hover:text-[#f5df8b]
+                                        duration-300
+                                        break-all
+                                    '
+                                >
+                                    kritikafashionpoint@gmail.com
+                                </a>
+
+                            </div>
+
+                            {/* Live Location */}
+                            <Link
+                                target='_blank'
+                                href='https://maps.app.goo.gl/r1r9LLd13biD4sJh8'
+                            >
+                                <div
+                                    className='
+                                        group
+                                        flex
+                                        gap-4
+                                        items-center
+                                        cursor-pointer
+                                    '
+                                >
+
+                                    <div
+                                        className='
+                                            min-w-12
+                                            h-12
+                                            rounded-2xl
+                                            flex
+                                            items-center
+                                            justify-center
+                                            border
+                                            group-hover:scale-110
+                                            duration-300
+                                        '
+                                        style={{
+                                            borderColor: '#c9971a',
+                                            background: `
+                                                linear-gradient(
+                                                    135deg,
+                                                    #4d3900 0%,
+                                                    #8c670a 25%,
+                                                    #d4af37 50%,
+                                                    #f5df8b 65%,
+                                                    #8c670a 100%
+                                                )
+                                            `
+                                        }}
+                                    >
+                                        <BiLocationPlus
+                                            className='text-black'
+                                            size={22}
+                                        />
+                                    </div>
+
+                                    <span
+                                        className='
+                                            text-[#d9d9d9]
+                                            group-hover:text-[#f5df8b]
+                                            duration-300
+                                            text-lg
+                                        '
+                                    >
+                                        Open Live Location
+                                    </span>
+
+                                </div>
+                            </Link>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {/* Bottom */}
+                <div
+                    className='
+                        mt-16
+                        pt-8
+                        border-t
+                        border-[#c9971a]/10
+                        flex
+                        md:flex-row
+                        flex-col
+                        items-center
+                        justify-between
+                        gap-4
+                    '
+                >
+
+                    <p className='text-[#8b8b8b] text-sm tracking-wide'>
+                        © 2026 Kritika Fashion Point. All Rights Reserved.
+                    </p>
+
+                    <p className='text-[#d4af37] text-sm tracking-[4px] uppercase'>
+                        Luxury • Royal • Premium
+                    </p>
+
+                </div>
+
             </div>
+
         </footer>
     )
 }

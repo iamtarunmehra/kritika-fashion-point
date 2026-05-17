@@ -3,9 +3,15 @@ import React, { useState } from 'react'
 import { gold } from '../colors/color'
 import Link from 'next/link'
 import Image from 'next/image'
+import BuyNowButton from '../common/BuyNowButton'
+import AddToCartButton from '../common/AddToCartButton'
+import Overlay from '../common/Overlay'
+import GetNow from '../common/GetNow'
 
 
 export default function CategoriesClient() {
+
+    const [getNowModel, setGetNowModel] = useState(false)
 
     const categories = [
         'Gold',
@@ -79,6 +85,11 @@ export default function CategoriesClient() {
 
     return (
         <section className='w-full h-full relative bg-no-repeat bg-cover bg-center'>
+
+            {getNowModel && <Overlay />}
+
+            {<GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />}
+
             <img sizes='full'
                 src='/designs/d3.png'
                 className='absolute top-0 right-0 w-full h-full -z-10 object-cover object-center opacity-[0.02]'
@@ -186,33 +197,9 @@ export default function CategoriesClient() {
                                         </div>
 
                                         <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>
-                                            <button className='hover:scale-105 rounded py-1 cursor-pointer bg-white duration-300'>Add to Cart</button>
-                                            <button
-                                                className="relative px-6 py-2 text-black font-bold rounded-md cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
-                                                style={{
-                                                    background: `linear-gradient(
-                                                        to left,
-                                                        #8a6a12 0%,
-                                                        #b8860b 20%,
-                                                        #d4af37 40%,
-                                                        #fff2b3 50%,
-                                                        #d4af37 60%,
-                                                        #b8860b 80%,
-                                                        #8a6a12 100%
-                                                    )`
-                                                }}
-                                            >
-                                                <span className="relative z-10">Get Now</span>
+                                            <AddToCartButton />
 
-                                                {/* Shine Effect */}
-                                                <span
-                                                    className="absolute top-0 left-full w-full h-full"
-                                                    style={{
-                                                        background: 'linear-gradient(120deg, transparent, #FFFFFF99, transparent)',
-                                                        transition: 'all 1s'
-                                                    }}
-                                                ></span>
-                                            </button>
+                                            <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
                                         </div>
                                     </div></Link>
                             )

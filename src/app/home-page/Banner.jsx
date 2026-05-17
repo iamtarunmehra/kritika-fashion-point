@@ -3,15 +3,15 @@ import { gold } from "../colors/color";
 
 export default function LuxuryGlowBanner() {
     return (
-        <div className="bg-black pb-10 w-full lg:h-[85vh] md:h-[70vh] sm:h-[50vh] h-[40vh]">
+        <div className="bg-black pb-10 w-full lg:h-[80vh] md:h-[70vh] sm:h-[50vh] h-[40vh]">
             <section style={{
                 backgroundImage: "url('/banner/b5.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-                className="w-full lg:pb-10 mb-10 lg:h-[60vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
-                <div className="absolute top-0 left-0 bg-linear-to-t from-black via-black/80 to-black/5 w-full h-full">
+                className="w-full lg:pb-10 mb-10 lg:h-[55vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
+                <div className="absolute top-0 left-0 bg-linear-to-t from-black via-black/90 to-black/10 w-full h-full">
 
                 </div>
                 <div className="text-white absolute top-3/5 left-1/2 -translate-x-1/2 z-20 text-center w-full px-4">
@@ -79,13 +79,21 @@ export default function LuxuryGlowBanner() {
                         ></div>
 
                     </div>
-                    <div className="flex items-center gap-4 justify-center mt-6">
+                    <div className="flex items-center gap-4 justify-center mt-6 lg:text-lg text-md">
                         <Link href={'/shop-now'}><button
                             style={{
-                                background: gold.base,
-                                boxShadow: `0 0 20px ${gold.base}55`
-                            }}
-                            className="px-8 py-3 rounded-full cursor-pointer text-black font-semibold tracking-wide hover:scale-105 duration-300"
+                                background: `
+                    linear-gradient(
+                        to left,
+                        #8a6a12 0%,
+                        #b8860b 20%,
+                        #d4af37 40%,
+                        #fff2b3 50%,
+                        #d4af37 60%,
+                        #b8860b 80%,
+                        #8a6a12 100%
+                    )`}}
+                            className="px-8 py-3 rounded-full cursor-pointer text-black font-extrabold tracking-wide hover:scale-105 duration-300"
                         >
                             Shop Now
                         </button></Link>

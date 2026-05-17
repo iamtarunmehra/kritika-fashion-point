@@ -13,8 +13,11 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
     const [QrCodeOpen, setQrCodeOpen] = useState(false)
 
+    const [activePaymentOption, setActivePaymentOption] = useState(null)
+
 
     const HandleUpiPayment = () => {
+
         const isMobile =
             /Android|iPhone|iPad|iPod/i.test(
                 navigator.userAgent
@@ -54,10 +57,11 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     -translate-x-1/2 -translate-y-1/2
                     z-120
                     lg:w-[500]
-                    w-[92%]
+                    sm:w-[90%]
+                    w-full
                     bg-black
                     border
-                    rounded-[32]
+                    sm:rounded-[32]
                     overflow-hidden
                     duration-300
                     origin-center
@@ -346,29 +350,34 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     </div>
 
                     {/* Secure Info */}
-                    <div
-                        className="
+
+                    <div className="lg:block hidden">
+                        <div
+                            className="
+                        
                             mt-7
                             flex items-center gap-3
                             rounded-xl
                             p-4
                         "
-                        style={{
-                            background:
-                                "rgba(212,175,55,0.08)"
-                        }}
-                    >
+                            style={{
+                                background:
+                                    "rgba(212,175,55,0.08)"
+                            }}
+                        >
 
-                        <ShieldCheck
-                            size={22}
-                            color="#d4af37"
-                        />
+                            <ShieldCheck
+                                size={22}
+                                color="#d4af37"
+                            />
 
-                        <p className="text-sm text-gray-300 leading-6">
-                            100% secure checkout with premium customer support.
-                        </p>
+                            <p className=" text-sm text-gray-300 leading-6">
+                                100% secure checkout with premium customer support.
+                            </p>
 
+                        </div>
                     </div>
+
 
                 </div>
             </div>
@@ -408,29 +417,49 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                     }
                 `}
             >
-                <div className="w-[400] h-fit bg-[#0D0D0D] rounded-2xl p-10 relative">
+                <div className="lg:w-[520] w-full h-fit bg-[#0D0D0D] rounded-2xl p-10 relative">
 
-                    <p className="text-amber-100 text-lg font-semibold tracking-wide text-center">
-                        Scan to Book Your Exclusive Jewellery Order From KRITIKA FASHION POINT
-                    </p>
+                    <div>
+                        <div className="relative rounded-3xl border border-amber-500/20 bg-black p-6 overflow-hidden shadow-[0_0_30px_rgba(251,191,36,0.08)]">
 
-                    <p className="text-amber-300 text-sm text-center mt-2 tracking-wider">
-                        Secure Your Advance Payment for Kritika Fashion Point
-                    </p>
-                    {/* Close */}
-                    <button
-                        onClick={() => setQrCodeOpen(false)}
-                        className="absolute -top-2 -right-2 cursor-pointer p-1 rounded-full border bg-white hover:scale-110 duration-100"
-                    >
-                        <X className="text-black" />
-                    </button>
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setQrCodeOpen(false)}
+                                className="absolute top-4 right-4 p-2 cursor-pointer rounded-full border border-amber-400/30 bg-zinc-900 hover:bg-amber-400 hover:text-black duration-300"
+                            >
+                                <X className="w-4 h-4" />
+                            </button>
 
-                    {/* QR Image */}
-                    <img
-                        src="/other/qr.png"
-                        alt="QR Code"
-                        className="w-full h-full object-contain"
-                    />
+                            {/* Brand */}
+                            <div className="text-center mb-6">
+                                <p className="text-amber-400 text-xs tracking-[5px] uppercase mb-2">
+                                    Premium Jewellery
+                                </p>
+
+                                <h1 className="text-3xl font-bold tracking-wide text-white">
+                                    KRITIKA <span className="text-amber-400">FASHION POINT</span>
+                                </h1>
+
+                                <p className="text-zinc-400 text-sm mt-3">
+                                    Scan & Pay for Your Exclusive Order
+                                </p>
+                            </div>
+
+                            {/* QR */}
+                            <div className="bg-white rounded-2xl p-4 w-fit mx-auto">
+                                <img
+                                    src="/other/qr.png"
+                                    alt="QR Code"
+                                    className="w-[240] h-[240] object-contain"
+                                />
+                            </div>
+
+                            {/* Footer */}
+                            <p className="text-center text-zinc-500 text-xs tracking-wide mt-5">
+                                Secure • Trusted • Quick Payment
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

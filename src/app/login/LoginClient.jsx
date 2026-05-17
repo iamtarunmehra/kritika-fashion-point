@@ -13,6 +13,40 @@ export default function LoginClient() {
 
     const [activeTab, setActiveTab] = useState("login");
 
+    const premiumGoldGradient = `
+        linear-gradient(
+            135deg,
+            #4d3900 0%,
+            #8c670a 18%,
+            #d4af37 38%,
+            #f5df8b 50%,
+            #e6c766 58%,
+            #c9971a 72%,
+            #7a5a08 88%,
+            #4d3900 100%
+        )
+    `;
+
+    const PremiumIcon = ({ children }) => (
+        <div
+            className="
+                relative
+                min-w-10
+                h-10
+                rounded-full
+                flex
+                items-center
+                justify-center
+                overflow-hidden
+            "
+            style={{
+                background: premiumGoldGradient,
+            }}
+        >
+            {children}
+        </div>
+    );
+
     return (
         <section
             className="
@@ -27,13 +61,15 @@ export default function LoginClient() {
                 relative
             "
             style={{
-                background:
-                    "linear-gradient(to bottom, #050505, #000000, #050505)"
+                background: `
+                    radial-gradient(circle at top, rgba(212,175,55,0.08), transparent 30%),
+                    linear-gradient(to bottom, #020202, #000000, #050505)
+                `
             }}
         >
 
-            {/* Luxury Glow */}
-            {/* <div
+            {/* Glow */}
+            <div
                 className="
                     absolute
                     top-1/2
@@ -49,7 +85,7 @@ export default function LoginClient() {
                 style={{
                     background: "#d4af37"
                 }}
-            /> */}
+            />
 
             {/* Main Card */}
             <div
@@ -57,18 +93,27 @@ export default function LoginClient() {
                     relative
                     w-full
                     max-w-7xl
-                    rounded-xl
+                    rounded-[32]
                     overflow-hidden
                     border
-                    border-[#d4af37]/20
-                    bg-[#050505]
-                    shadow-[0_0_100px_rgba(212,175,55,0.08)]
+                    backdrop-blur-xl
                     grid
                     lg:grid-cols-2
                 "
+                style={{
+                    borderColor: "rgba(230,199,102,0.25)",
+                    background: `
+                        linear-gradient(
+                            145deg,
+                            rgba(5,5,5,0.96) 0%,
+                            rgba(15,15,15,0.98) 45%,
+                            rgba(26,20,5,1) 100%
+                        )
+                    `
+                }}
             >
 
-                {/* LEFT SIDE */}
+                {/* LEFT */}
                 <div
                     className="
                         hidden
@@ -80,23 +125,12 @@ export default function LoginClient() {
                         relative
                         overflow-hidden
                         border-r
-                        border-[#d4af37]/10
                     "
+                    style={{
+                        borderColor: "rgba(230,199,102,0.10)"
+                    }}
                 >
 
-                    {/* Gradient Overlay */}
-                    <div
-                        className="
-                            absolute
-                            inset-0
-                            bg-linear-to-br
-                            from-[#0a0a0a]
-                            via-black
-                            to-[#111111]
-                        "
-                    />
-
-                    {/* Decorative Circle */}
                     <div
                         className="
                             absolute
@@ -106,7 +140,7 @@ export default function LoginClient() {
                             h-52
                             rounded-full
                             blur-3xl
-                            opacity-10
+                            opacity-20
                         "
                         style={{
                             background: "#d4af37"
@@ -115,28 +149,27 @@ export default function LoginClient() {
 
                     <div className="relative z-10">
 
-                        {/* Small Heading */}
                         <p
                             className="
                                 uppercase
-                                tracking-[10px]
                                 text-sm
                                 mb-6
                             "
                             style={{
-                                color: "#d4af37"
+                                color: "#f5df8b",
+                                letterSpacing: "8px"
                             }}
                         >
                             Kritika Fashion Point
                         </p>
 
-                        {/* Main Heading */}
                         <h1
                             className="
                                 text-6xl
                                 font-bold
                                 leading-[1.15]
                                 mb-8
+                                text-[#f8e7a1]
                             "
                         >
                             Luxury Jewellery
@@ -146,10 +179,9 @@ export default function LoginClient() {
                             Experience
                         </h1>
 
-                        {/* Description */}
                         <p
                             className="
-                                text-gray-400
+                                text-[#b8b8b8]
                                 text-lg
                                 leading-9
                                 max-w-lg
@@ -160,24 +192,23 @@ export default function LoginClient() {
                             exclusive fashion offers.
                         </p>
 
-                        {/* Bottom Premium Text */}
                         <div className="mt-14 flex items-center gap-5">
 
                             <div
                                 className="w-16 h-[2]"
                                 style={{
-                                    background: "#d4af37"
+                                    background: premiumGoldGradient
                                 }}
                             />
 
                             <span
                                 className="
                                     uppercase
-                                    tracking-[6px]
                                     text-sm
+                                    text-[#f5df8b]
                                 "
                                 style={{
-                                    color: "#d4af37"
+                                    letterSpacing: "6px"
                                 }}
                             >
                                 Premium Collection
@@ -189,7 +220,7 @@ export default function LoginClient() {
 
                 </div>
 
-                {/* RIGHT SIDE */}
+                {/* RIGHT */}
                 <div
                     className="
                         flex
@@ -208,12 +239,14 @@ export default function LoginClient() {
                             className="
                                 flex
                                 rounded-2xl
-                                p-1
+                                p-1.5
                                 mb-10
                                 border
-                                border-[#d4af37]/20
-                                bg-[#111111]
+                                bg-[#0b0b0b]
                             "
+                            style={{
+                                borderColor: "rgba(230,199,102,0.15)"
+                            }}
                         >
 
                             <button
@@ -222,15 +255,20 @@ export default function LoginClient() {
                                     flex-1
                                     py-3
                                     rounded-xl
-                                    lg:text-lg
                                     text-md
+                                    lg:text-lg
                                     font-semibold
                                     duration-300
                                     ${activeTab === "login"
-                                        ? "bg-[#d4af37] text-black"
-                                        : "text-white"
+                                        ? "text-black"
+                                        : "text-[#f5df8b]"
                                     }
                                 `}
+                                style={
+                                    activeTab === "login"
+                                        ? { background: premiumGoldGradient }
+                                        : {}
+                                }
                             >
                                 Login
                             </button>
@@ -239,17 +277,22 @@ export default function LoginClient() {
                                 onClick={() => setActiveTab("register")}
                                 className={`
                                     flex-1
-                                    py-4
+                                    py-3
                                     rounded-xl
-                                    lg:text-lg
                                     text-md
+                                    lg:text-lg
                                     font-semibold
                                     duration-300
                                     ${activeTab === "register"
-                                        ? "bg-[#d4af37] text-black"
-                                        : "text-white"
+                                        ? "text-black"
+                                        : "text-[#f5df8b]"
                                     }
                                 `}
+                                style={
+                                    activeTab === "register"
+                                        ? { background: premiumGoldGradient }
+                                        : {}
+                                }
                             >
                                 Register
                             </button>
@@ -257,346 +300,15 @@ export default function LoginClient() {
                         </div>
 
                         {/* LOGIN */}
-                        {activeTab === "login" && (
+                        {activeTab === "login" &&
 
-                            <div className="animate-in fade-in duration-500">
+                            <LoginForm PremiumIcon={PremiumIcon} premiumGoldGradient={premiumGoldGradient} />
+                        }
 
-                                <h2
-                                    className="
-                                        text-5xl
-                                        font-bold
-                                        mb-3
-                                    "
-                                >
-                                    Welcome Back
-                                </h2>
 
-                                <p className="text-gray-400 mb-10 text-lg">
-                                    Login to continue shopping
-                                </p>
-
-                                <form className="space-y-6">
-
-                                    {/* Email */}
-                                    <div>
-
-                                        <label className="text-sm text-gray-300 mb-3 block">
-                                            Email Address
-                                        </label>
-
-                                        <div
-                                            className="
-                                                flex
-                                                items-center
-                                                gap-3
-                                                bg-[#111111]
-                                                border
-                                                border-[#d4af37]/20
-                                                rounded-2xl
-                                                px-5
-                                            "
-                                        >
-                                            <Mail
-                                                size={18}
-                                                color="#d4af37"
-                                            />
-
-                                            <input
-                                                type="email"
-                                                placeholder="Enter your email"
-                                                className="
-                                                    w-full
-                                                    bg-transparent
-                                                    outline-none
-                                                    lg:py-4 py-3
-                                                    text-white
-                                                "
-                                            />
-
-                                        </div>
-
-                                    </div>
-
-                                    {/* Password */}
-                                    <div>
-
-                                        <label className="text-sm text-gray-300 mb-3 block">
-                                            Password
-                                        </label>
-
-                                        <div
-                                            className="
-                                                flex
-                                                items-center
-                                                gap-3
-                                                bg-[#111111]
-                                                border
-                                                border-[#d4af37]/20
-                                                rounded-2xl
-                                                px-5
-                                            "
-                                        >
-                                            <Lock
-                                                size={18}
-                                                color="#d4af37"
-                                            />
-
-                                            <input
-                                                type="password"
-                                                placeholder="Enter password"
-                                                className="
-                                                    w-full
-                                                    bg-transparent
-                                                    outline-none
-                                                    lg:py-4 py-3
-                                                    text-white
-                                                "
-                                            />
-
-                                        </div>
-
-                                    </div>
-
-                                    {/* Button */}
-                                    <button
-                                        className="
-                                            w-full
-                                            mt-4
-                                            lg:py-4 py-3
-                                            rounded-2xl
-                                            text-black
-                                            font-bold
-                                            text-lg
-                                            flex
-                                            items-center
-                                            justify-center
-                                            gap-3
-                                            hover:scale-[1.01]
-                                            duration-300
-                                        "
-                                        style={{
-                                            background: "#d4af37"
-                                        }}
-                                    >
-                                        Login
-                                        <ArrowRight size={20} />
-                                    </button>
-
-                                </form>
-
-                            </div>
-                        )}
 
                         {/* REGISTER */}
-                        {activeTab === "register" && (
-
-                            <div className="animate-in fade-in duration-500">
-
-                                <h2
-                                    className="
-                                        text-5xl
-                                        font-bold
-                                        mb-3
-                                    "
-                                >
-                                    Create Account
-                                </h2>
-
-                                <p className="text-gray-400 mb-10 text-lg">
-                                    Register to start shopping
-                                </p>
-
-                                <form className="space-y-6">
-
-                                    {/* Name */}
-                                    <div>
-
-                                        <label className="text-sm text-gray-300 mb-3 block">
-                                            Full Name
-                                        </label>
-
-                                        <div
-                                            className="
-                                                flex
-                                                items-center
-                                                gap-3
-                                                bg-[#111111]
-                                                border
-                                                border-[#d4af37]/20
-                                                rounded-2xl
-                                                px-5
-                                            "
-                                        >
-                                            <User
-                                                size={18}
-                                                color="#d4af37"
-                                            />
-
-                                            <input
-                                                type="text"
-                                                placeholder="Enter full name"
-                                                className="
-                                                    w-full
-                                                    bg-transparent
-                                                    outline-none
-                                                    lg:py-4 py-3
-                                                    text-white
-                                                "
-                                            />
-
-                                        </div>
-
-                                    </div>
-
-                                    {/* Phone */}
-                                    <div>
-
-                                        <label className="text-sm text-gray-300 mb-3 block">
-                                            Phone Number
-                                        </label>
-
-                                        <div
-                                            className="
-                                                flex
-                                                items-center
-                                                gap-3
-                                                bg-[#111111]
-                                                border
-                                                border-[#d4af37]/20
-                                                rounded-2xl
-                                                px-5
-                                            "
-                                        >
-                                            <Phone
-                                                size={18}
-                                                color="#d4af37"
-                                            />
-
-                                            <input
-                                                type="text"
-                                                placeholder="Enter phone number"
-                                                className="
-                                                    w-full
-                                                    bg-transparent
-                                                    outline-none
-                                                    lg:py-4 py-3
-                                                    text-white
-                                                "
-                                            />
-
-                                        </div>
-
-                                    </div>
-
-                                    {/* Email */}
-                                    <div>
-
-                                        <label className="text-sm text-gray-300 mb-3 block">
-                                            Email Address
-                                        </label>
-
-                                        <div
-                                            className="
-                                                flex
-                                                items-center
-                                                gap-3
-                                                bg-[#111111]
-                                                border
-                                                border-[#d4af37]/20
-                                                rounded-2xl
-                                                px-5
-                                            "
-                                        >
-                                            <Mail
-                                                size={18}
-                                                color="#d4af37"
-                                            />
-
-                                            <input
-                                                type="email"
-                                                placeholder="Enter email"
-                                                className="
-                                                    w-full
-                                                    bg-transparent
-                                                    outline-none
-                                                    lg:py-4 py-3
-                                                    text-white
-                                                "
-                                            />
-
-                                        </div>
-
-                                    </div>
-
-                                    {/* Password */}
-                                    <div>
-
-                                        <label className="text-sm text-gray-300 mb-3 block">
-                                            Password
-                                        </label>
-
-                                        <div
-                                            className="
-                                                flex
-                                                items-center
-                                                gap-3
-                                                bg-[#111111]
-                                                border
-                                                border-[#d4af37]/20
-                                                rounded-2xl
-                                                px-5
-                                            "
-                                        >
-                                            <Lock
-                                                size={18}
-                                                color="#d4af37"
-                                            />
-
-                                            <input
-                                                type="password"
-                                                placeholder="Create password"
-                                                className="
-                                                    w-full
-                                                    bg-transparent
-                                                    outline-none
-                                                    lg:py-4 py-3
-                                                    text-white
-                                                "
-                                            />
-
-                                        </div>
-
-                                    </div>
-
-                                    {/* Button */}
-                                    <button
-                                        className="
-                                            w-full
-                                            mt-4
-                                            lg:py-4 py-3
-                                            rounded-2xl
-                                            text-black
-                                            font-bold
-                                            text-lg
-                                            flex
-                                            items-center
-                                            justify-center
-                                            gap-3
-                                            hover:scale-[1.01]
-                                            duration-300
-                                        "
-                                        style={{
-                                            background: "#d4af37"
-                                        }}
-                                    >
-                                        Register
-                                        <ArrowRight size={20} />
-                                    </button>
-
-                                </form>
-
-                            </div>
-                        )}
+                        {activeTab === 'register' && <RegisterForm />}
 
                     </div>
 
@@ -606,4 +318,576 @@ export default function LoginClient() {
 
         </section>
     );
+}
+
+export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
+    return (
+        <div className="animate-in fade-in duration-500">
+
+            <h2
+                className="
+                                        text-5xl
+                                        font-bold
+                                        mb-3
+                                        text-[#f8e7a1]
+                                    "
+            >
+                Welcome Back
+            </h2>
+
+            <p className="text-[#9e9e9e] mb-10 text-lg">
+                Login to continue shopping
+            </p>
+
+            <form className="space-y-6">
+
+                {/* Email */}
+                <div>
+
+                    <label className="text-sm text-[#d6d6d6] mb-3 block">
+                        Email Address
+                    </label>
+
+                    <div
+                        className="
+                                                flex
+                                                items-center
+                                                gap-4
+                                                bg-[#0b0b0b]
+                                                border
+                                                rounded-2xl
+                                                px-5
+                                                hover:border-[#e6c766]
+                                                focus-within:border-[#f5df8b]
+                                                duration-300
+                                            "
+                        style={{
+                            borderColor: "rgba(230,199,102,0.18)"
+                        }}
+                    >
+
+                        <PremiumIcon>
+                            <Mail
+                                size={17}
+                                className="text-black"
+                            />
+                        </PremiumIcon>
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            className="
+                                                    w-full
+                                                    bg-transparent
+                                                    outline-none
+                                                    lg:py-4 py-3
+                                                    text-white
+                                                    placeholder:text-[#8f8f8f]
+                                                "
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Password */}
+                <div>
+
+                    <label className="text-sm text-[#d6d6d6] mb-3 block">
+                        Password
+                    </label>
+
+                    <div
+                        className="
+                                                flex
+                                                items-center
+                                                gap-4
+                                                bg-[#0b0b0b]
+                                                border
+                                                rounded-2xl
+                                                px-5
+                                                hover:border-[#e6c766]
+                                                focus-within:border-[#f5df8b]
+                                                duration-300
+                                            "
+                        style={{
+                            borderColor: "rgba(230,199,102,0.18)"
+                        }}
+                    >
+
+                        <PremiumIcon>
+                            <Lock
+                                size={17}
+                                className="text-black"
+                            />
+                        </PremiumIcon>
+
+                        <input
+                            type="password"
+                            placeholder="Enter password"
+                            className="
+                                                    w-full
+                                                    bg-transparent
+                                                    outline-none
+                                                    lg:py-4 py-3
+                                                    text-white
+                                                    placeholder:text-[#8f8f8f]
+                                                "
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Button */}
+                <button
+                    className="
+                                            relative
+                                            group
+                                            overflow-hidden
+                                            w-full
+                                            mt-4
+                                            lg:py-4 py-3
+                                            rounded-2xl
+                                            text-black
+                                            font-bold
+                                            text-lg
+                                            flex
+                                            items-center
+                                            justify-center
+                                            gap-3
+                                            hover:scale-[1.015]
+                                            duration-300
+                                        "
+                    style={{
+                        background: premiumGoldGradient
+                    }}
+                >
+
+                    <div
+                        className="
+                                                absolute
+                                                top-0
+                                                -left-full
+                                                w-full
+                                                h-full
+                                                rotate-12
+                                                group-hover:left-full
+                                                duration-700
+                                            "
+                        style={{
+                            background:
+                                "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
+                        }}
+                    />
+
+                    <span className="relative z-10">
+                        Login
+                    </span>
+
+                    <ArrowRight
+                        size={20}
+                        className="relative z-10"
+                    />
+
+                </button>
+
+            </form>
+
+        </div>
+    )
+}
+
+
+
+
+export const RegisterForm = () => {
+
+    const [showOtp, setShowOtp] = React.useState(false)
+
+    return (
+        <div
+            className="
+                w-full
+                rounded-[30px]
+                border
+                overflow-hidden
+                relative
+                backdrop-blur-xl
+                p-6
+                sm:p-8
+                lg:p-10
+            "
+            style={{
+                borderColor: "rgba(212,175,55,0.18)",
+                background: `
+                    linear-gradient(
+                        145deg,
+                        rgba(8,8,8,0.98) 0%,
+                        rgba(15,15,15,0.98) 35%,
+                        rgba(28,20,5,0.98) 100%
+                    )
+                `,
+                boxShadow: `
+                    0 0 40px rgba(212,175,55,0.08),
+                    inset 0 0 30px rgba(255,255,255,0.02)
+                `
+            }}
+        >
+
+            {/* Glow */}
+            <div
+                className="
+                    absolute
+                    -top-24
+                    -right-24
+                    w-72
+                    h-72
+                    rounded-full
+                    blur-3xl
+                    opacity-20
+                    pointer-events-none
+                "
+                style={{
+                    background: "rgba(212,175,55,0.15)"
+                }}
+            />
+
+            {/* Heading */}
+            <div className="relative z-10 mb-8">
+
+                <p
+                    className="
+                        uppercase
+                        tracking-[6px]
+                        text-xs
+                        mb-3
+                    "
+                    style={{
+                        color: "#c9971a"
+                    }}
+                >
+                    Premium Account
+                </p>
+
+                <h2
+                    className="
+                        text-3xl
+                        sm:text-4xl
+                        font-bold
+                        leading-tight
+                    "
+                >
+                    Create Your
+                    <span
+                        className="ml-3"
+                        style={{
+                            color: "#e6c766"
+                        }}
+                    >
+                        Account
+                    </span>
+                </h2>
+
+                <div
+                    className="w-32 h-[2] mt-4 rounded-full"
+                    style={{
+                        background: `
+                            linear-gradient(
+                                to right,
+                                #6a4f00,
+                                #d4af37,
+                                transparent
+                            )
+                        `
+                    }}
+                />
+            </div>
+
+            {/* Form */}
+            <form className="relative z-10 space-y-6">
+
+                {/* Full Name */}
+                <div>
+
+                    <label className="text-[#f5df8b] text-sm tracking-wide mb-3 block">
+                        Full Name
+                    </label>
+
+                    <div
+                        className="
+                            flex
+                            items-center
+                            rounded-2xl
+                            border
+                            px-5
+                            bg-[#0d0d0d]
+                            hover:border-[#d4af37]
+                            focus-within:border-[#e6c766]
+                            duration-300
+                        "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.15)"
+                        }}
+                    >
+
+                        <input
+                            type="text"
+                            placeholder="Enter your full name"
+                            className="
+                                w-full
+                                bg-transparent
+                                outline-none
+                                py-4
+                                text-white
+                                placeholder:text-gray-500
+                            "
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Mobile */}
+                <div>
+
+                    <label className="text-[#f5df8b] text-sm tracking-wide mb-3 block">
+                        Mobile Number
+                    </label>
+
+                    <div
+                        className="
+                            flex
+                            items-center
+                            rounded-2xl
+                            border
+                            px-5
+                            bg-[#0d0d0d]
+                            hover:border-[#d4af37]
+                            focus-within:border-[#e6c766]
+                            duration-300
+                        "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.15)"
+                        }}
+                    >
+
+                        <input
+                            type="text"
+                            placeholder="Enter mobile number"
+                            className="
+                                w-full
+                                bg-transparent
+                                outline-none
+                                py-4
+                                text-white
+                                placeholder:text-gray-500
+                            "
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Email + OTP Button */}
+                <div>
+
+                    <label className="text-[#f5df8b] text-sm tracking-wide mb-3 block">
+                        Email Address
+                    </label>
+
+                    <div className="grid sm:grid-cols-[1fr_150px] gap-4">
+
+                        {/* Email */}
+                        <div
+                            className="
+                                flex
+                                items-center
+                                rounded-2xl
+                                border
+                                px-5
+                                bg-[#0d0d0d]
+                                hover:border-[#d4af37]
+                                focus-within:border-[#e6c766]
+                                duration-300
+                            "
+                            style={{
+                                borderColor: "rgba(212,175,55,0.15)"
+                            }}
+                        >
+
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                className="
+                                    w-full
+                                    bg-transparent
+                                    outline-none
+                                    py-4
+                                    text-white
+                                    placeholder:text-gray-500
+                                "
+                            />
+
+                        </div>
+
+                        {/* Send OTP */}
+                        <button
+                            type="button"
+                            onClick={() => setShowOtp(true)}
+                            className="
+                                relative
+                                overflow-hidden
+                                rounded-2xl
+                                font-semibold
+                                text-black
+                                cursor-pointer
+                                hover:scale-[1.02]
+                                active:scale-[0.98]
+                                duration-300
+                                min-h-[56]
+                            "
+                            style={{
+                                background: `
+                                    linear-gradient(
+                                        135deg,
+                                        #5c4300 0%,
+                                        #8c670a 15%,
+                                        #b8860b 35%,
+                                        #d4af37 50%,
+                                        #e6c766 62%,
+                                        #c9971a 78%,
+                                        #7a5a08 100%
+                                    )
+                                `
+                            }}
+                        >
+
+                           
+
+                            <span className="relative z-10">
+                                Send OTP
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                {/* OTP Input */}
+                <div
+                    className={`
+                        duration-500
+                        overflow-hidden
+                        ${showOtp
+                            ? "max-h-[120] opacity-100 mt-2"
+                            : "max-h-0 opacity-0"
+                        }
+                    `}
+                >
+
+                    <label className="text-[#f5df8b] text-sm tracking-wide mb-3 block">
+                        Enter OTP
+                    </label>
+
+                    <div
+                        className="
+                            flex
+                            items-center
+                            rounded-2xl
+                            border
+                            px-5
+                            bg-[#0d0d0d]
+                            hover:border-[#d4af37]
+                            focus-within:border-[#e6c766]
+                            duration-300
+                        "
+                        style={{
+                            borderColor: "rgba(212,175,55,0.15)"
+                        }}
+                    >
+
+                        <input
+                            type="text"
+                            placeholder="Enter OTP"
+                            className="
+                                w-full
+                                bg-transparent
+                                outline-none
+                                py-4
+                                text-white
+                                tracking-[8px]
+                                placeholder:text-gray-500
+                            "
+                        />
+
+                    </div>
+
+                </div>
+
+                {/* Register Button */}
+                <button
+                    type="submit"
+                    className="
+                        relative
+                        overflow-hidden
+                        w-full
+                        py-4
+                        rounded-2xl
+                        font-bold
+                        text-lg
+                        text-black
+                        mt-3
+                        cursor-pointer
+                        hover:scale-[1.01]
+                        active:scale-[0.99]
+                        duration-300
+                    "
+                    style={{
+                        background: `
+                            linear-gradient(
+                                135deg,
+                                #5c4300 0%,
+                                #8c670a 15%,
+                                #b8860b 35%,
+                                #d4af37 50%,
+                                #f5df8b 60%,
+                                #c9971a 78%,
+                                #7a5a08 100%
+                            )
+                        `,
+                        boxShadow:
+                            "0 0 30px rgba(212,175,55,0.18)"
+                    }}
+                >
+
+                    {/* Shine */}
+                    <div
+                        className="
+                            absolute
+                            top-0
+                            -left-full
+                            w-full
+                            h-full
+                            rotate-12
+                            hover:left-full
+                            duration-1000
+                        "
+                        style={{
+                            background:
+                                "linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent)"
+                        }}
+                    />
+
+                    <span className="relative z-10">
+                        Create Account
+                    </span>
+
+                </button>
+
+            </form>
+
+        </div>
+    )
 }

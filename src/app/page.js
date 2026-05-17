@@ -1,4 +1,5 @@
 import LuxuryGlowBanner from "./home-page/Banner";
+import CategoryWiseSections from "./home-page/CategoryWiseSection";
 import Faq from "./home-page/Faq";
 import NewArrivals from "./home-page/NewArrivals";
 import ShopByCategory from "./home-page/ShopByCategory";
@@ -12,6 +13,13 @@ export default function Home() {
       <NewArrivals />
       <ShopByCategory />
       <TopSelling />
+      <CategoryWiseSections />
+      <CategoryWiseSections />
+      <CategoryWiseSections />
+      <CategoryWiseSections />
+      <CategoryWiseSections />
+      <CategoryWiseSections />
+
       <Faq />
     </div>
   );
