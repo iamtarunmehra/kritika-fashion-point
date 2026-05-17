@@ -29,28 +29,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
 
 
 
-    const HandleUpiPayment = () => {
 
-        const isMobile =
-            /Android|iPhone|iPad|iPod/i.test(
-                navigator.userAgent
-            );
-
-        // const upiLink =
-        //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
-
-        // const upiLink =
-        //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment&cu=INR";
-
-        const upiLink =
-            "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment%20for%20Exclusive%20Jewellery%20Order.%20Premium%20fashion%20accessories%20and%20bridal%20collection.%20Thank%20you%20for%20choosing%20Kritika%20Fashion%20Point.&cu=INR";
-
-        if (isMobile) {
-            window.location.href = upiLink;
-        } else {
-            setQrCodeOpen(true);
-        }
-    }
 
     return (
         <>
@@ -413,6 +392,30 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
     const [bankTransferModel, setBankTransferModel] = useState(null)
     const [QrCodeOpen, setQrCodeOpen] = useState(false)
 
+
+
+    const HandleUpiPayment = () => {
+
+        const isMobile =
+            /Android|iPhone|iPad|iPod/i.test(
+                navigator.userAgent
+            );
+
+        // const upiLink =
+        //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
+
+        // const upiLink =
+        //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment&cu=INR";
+
+        const upiLink =
+            "upi://pay?pa=mehratarun80@ybl&pn=Kritika%20Fashion%20Point&am=499&tn=Advance%20Payment%20for%20Exclusive%20Jewellery%20Order.%20Premium%20fashion%20accessories%20and%20bridal%20collection.%20Thank%20you%20for%20choosing%20Kritika%20Fashion%20Point.&cu=INR";
+
+        if (isMobile) {
+            window.location.href = upiLink;
+        } else {
+            setQrCodeOpen(true);
+        }
+    }
 
     return (
         <>
