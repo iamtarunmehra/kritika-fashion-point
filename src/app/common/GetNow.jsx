@@ -445,7 +445,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                     -translate-x-1/2 -translate-y-1/2
                     z-130
                     duration-300
-                    w-[95%] max-w-[520]
+                    sm:w-[95%] w-full max-w-[520]
                     ${paymentOptionModel
                         ? "opacity-100 scale-100"
                         : "opacity-0 scale-90 pointer-events-none"
@@ -456,7 +456,8 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                     className="
                         relative
                         overflow-hidden
-                        rounded-[32]
+                        sm:rounded-[32]
+                        rounded-none
                         border
                         p-7
                         md:p-8
@@ -570,12 +571,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
 
                         {/* UPI */}
                         <button
-                            onClick={() => {
-                                HandleUpiPayment()
-                                setQrCodeOpen(true)
-                            }
-
-                            }
+                            onClick={HandleUpiPayment}
                             className="
                                 w-full
                                 group
@@ -1142,7 +1138,7 @@ export function BankTransferModel({
                     fixed top-1/2 left-1/2 z-140
                     sm:w-[95%] w-full max-w-[520]
                     -translate-x-1/2 -translate-y-1/2
-                    rounded-3xl overflow-hidden
+                    sm:rounded-3xl overflow-hidden
                     border border-amber-400/30
                     bg-black text-white
                     shadow-[0_0_40px_rgba(251,191,36,0.15)]
