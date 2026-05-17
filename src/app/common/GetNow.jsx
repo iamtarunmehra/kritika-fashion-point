@@ -567,7 +567,12 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
 
                         {/* UPI */}
                         <button
-                            onClick={() => setQrCodeOpen(true)}
+                            onClick={() => {
+                                HandleUpiPayment()
+                                setQrCodeOpen(true)
+                            }
+
+                            }
                             className="
                                 w-full
                                 group
