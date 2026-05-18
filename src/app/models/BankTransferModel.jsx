@@ -1,9 +1,13 @@
 "use client"
 
 import { Building2, Check, Copy, CreditCard, Landmark, ShieldCheck, User, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
+
+    const [copyMessage, setCopyMessage] = useState(false);
+
+
     const bankDetails = {
         accountName: "Kritika Fashion Point",
         bankName: "State Bank of India",
@@ -11,15 +15,15 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
         ifsc: "SBIN0000000",
     };
 
+
+
     const copyText = async (text) => {
         try {
             await navigator.clipboard.writeText(text);
 
             setCopyMessage(true);
 
-            setTimeout(() => {
-                setCopyMessage(false);
-            }, 2000);
+
         } catch (err) {
             // fallback copy method
             const textArea = document.createElement("textarea");
@@ -42,7 +46,20 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
         }
     };
 
-    const [copyMessage, setCopyMessage] = useState(false);
+    useEffect(() => {
+
+        let timer;
+
+        if (copyMessage) {
+            timer = setTimeout(() => {
+                setCopyMessage(false)
+            }, 2000)
+        }
+
+        return () => clearTimeout(timer)
+
+    }, [copyMessage])
+
 
     return (
         <>

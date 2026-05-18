@@ -233,6 +233,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     overflow-hidden
                                 "
                             >
+                                D
                                 {/* Inner Glow */}
                                 <div
                                     className="
@@ -245,6 +246,8 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                             "radial-gradient(circle at top, rgba(245,223,139,0.3), transparent 70%)",
                                     }}
                                 />
+
+
 
                                 <div className="bg-white rounded-2xl p-4 relative z-10">
                                     <img

@@ -113,18 +113,113 @@ export default function LoginClient() {
                 }}
             >
 
+                {/* RIGHT */}
+                <div
+                    className="
+                        flex
+                        items-center
+                        justify-center
+                        p-5
+                        sm:p-10
+                        lg:p-16
+                    "
+                >
+
+                    <div className="w-full max-w-xl">
+
+                        {/* Tabs */}
+                        <div
+                            className="
+                                flex
+                                rounded-2xl
+                                p-1.5
+                                mb-10
+                                border
+                                bg-[#0b0b0b]
+                            "
+                            style={{
+                                borderColor: "rgba(230,199,102,0.15)"
+                            }}
+                        >
+
+                            <button
+                                onClick={() => setActiveTab("login")}
+                                className={`
+                                    flex-1
+                                    py-3
+                                    rounded-xl
+                                    text-md
+                                    lg:text-lg
+                                    font-semibold
+                                    duration-300
+                                    ${activeTab === "login"
+                                        ? "text-black"
+                                        : "text-[#f5df8b]"
+                                    }
+                                `}
+                                style={
+                                    activeTab === "login"
+                                        ? { background: premiumGoldGradient }
+                                        : {}
+                                }
+                            >
+                                Login
+                            </button>
+
+                            <button
+                                onClick={() => setActiveTab("register")}
+                                className={`
+                                    flex-1
+                                    py-3
+                                    rounded-xl
+                                    text-md
+                                    lg:text-lg
+                                    font-semibold
+                                    duration-300
+                                    ${activeTab === "register"
+                                        ? "text-black"
+                                        : "text-[#f5df8b]"
+                                    }
+                                `}
+                                style={
+                                    activeTab === "register"
+                                        ? { background: premiumGoldGradient }
+                                        : {}
+                                }
+                            >
+                                Register
+                            </button>
+
+                        </div>
+
+                        {/* LOGIN */}
+                        {activeTab === "login" &&
+
+                            <LoginForm PremiumIcon={PremiumIcon} premiumGoldGradient={premiumGoldGradient} />
+                        }
+
+
+
+                        {/* REGISTER */}
+                        {activeTab === 'register' && <RegisterForm />}
+
+                    </div>
+
+                </div>
+
                 {/* LEFT */}
                 <div
                     className="
-                        hidden
+                        
                         lg:flex
                         flex-col
                         justify-center
                         px-16
-                        py-20
+                        lg:py-20
+                        py-10
                         relative
                         overflow-hidden
-                        border-r
+                        border-l
                     "
                     style={{
                         borderColor: "rgba(230,199,102,0.10)"
@@ -220,99 +315,7 @@ export default function LoginClient() {
 
                 </div>
 
-                {/* RIGHT */}
-                <div
-                    className="
-                        flex
-                        items-center
-                        justify-center
-                        p-5
-                        sm:p-10
-                        lg:p-16
-                    "
-                >
 
-                    <div className="w-full max-w-xl">
-
-                        {/* Tabs */}
-                        <div
-                            className="
-                                flex
-                                rounded-2xl
-                                p-1.5
-                                mb-10
-                                border
-                                bg-[#0b0b0b]
-                            "
-                            style={{
-                                borderColor: "rgba(230,199,102,0.15)"
-                            }}
-                        >
-
-                            <button
-                                onClick={() => setActiveTab("login")}
-                                className={`
-                                    flex-1
-                                    py-3
-                                    rounded-xl
-                                    text-md
-                                    lg:text-lg
-                                    font-semibold
-                                    duration-300
-                                    ${activeTab === "login"
-                                        ? "text-black"
-                                        : "text-[#f5df8b]"
-                                    }
-                                `}
-                                style={
-                                    activeTab === "login"
-                                        ? { background: premiumGoldGradient }
-                                        : {}
-                                }
-                            >
-                                Login
-                            </button>
-
-                            <button
-                                onClick={() => setActiveTab("register")}
-                                className={`
-                                    flex-1
-                                    py-3
-                                    rounded-xl
-                                    text-md
-                                    lg:text-lg
-                                    font-semibold
-                                    duration-300
-                                    ${activeTab === "register"
-                                        ? "text-black"
-                                        : "text-[#f5df8b]"
-                                    }
-                                `}
-                                style={
-                                    activeTab === "register"
-                                        ? { background: premiumGoldGradient }
-                                        : {}
-                                }
-                            >
-                                Register
-                            </button>
-
-                        </div>
-
-                        {/* LOGIN */}
-                        {activeTab === "login" &&
-
-                            <LoginForm PremiumIcon={PremiumIcon} premiumGoldGradient={premiumGoldGradient} />
-                        }
-
-
-
-                        {/* REGISTER */}
-                        {activeTab === 'register' && <RegisterForm />}
-
-                    </div>
-
-                </div>
 
             </div>
 
@@ -326,7 +329,9 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
 
             <h2
                 className="
-                                        text-5xl
+                                        text-3xl
+                                        md:text-4xl
+                                        lg:text-5xl
                                         font-bold
                                         mb-3
                                         text-[#f8e7a1]
@@ -380,8 +385,10 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                                                     w-full
                                                     bg-transparent
                                                     outline-none
-                                                    lg:py-4 py-3
+                                                    lg:py-5 py-4
                                                     text-white
+                                                    tracking-wider
+                                                    text-lg
                                                     placeholder:text-[#8f8f8f]
                                                 "
                         />
@@ -429,7 +436,9 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                                                     w-full
                                                     bg-transparent
                                                     outline-none
-                                                    lg:py-4 py-3
+                                                    lg:py-5 py-4
+                                                    tracking-wider
+                                                    text-lg
                                                     text-white
                                                     placeholder:text-[#8f8f8f]
                                                 "
@@ -763,7 +772,7 @@ export const RegisterForm = () => {
                             }}
                         >
 
-                           
+
 
                             <span className="relative z-10">
                                 Send OTP
@@ -776,19 +785,56 @@ export const RegisterForm = () => {
                 </div>
 
                 {/* OTP Input */}
-                <div
-                    className={`
-                        duration-500
-                        overflow-hidden
-                        ${showOtp
-                            ? "max-h-[120] opacity-100 mt-2"
-                            : "max-h-0 opacity-0"
-                        }
-                    `}
-                >
+                {
+                    showOtp && (
+                        <div className="animate-in fade-in duration-300 mt-4">
+
+                            <label className="text-[#f5df8b] text-sm tracking-wide mb-3 block">
+                                Enter OTP
+                            </label>
+
+                            <div
+                                className="
+                    flex
+                    items-center
+                    rounded-2xl
+                    border
+                    px-5
+                    bg-[#0d0d0d]
+                    hover:border-[#d4af37]
+                    focus-within:border-[#e6c766]
+                    duration-300
+                "
+                                style={{
+                                    borderColor: "rgba(212,175,55,0.15)"
+                                }}
+                            >
+
+                                <input
+                                    type="text"
+                                    placeholder="Enter OTP"
+                                    className="
+                        w-full
+                        bg-transparent
+                        outline-none
+                        py-4
+                        text-white
+                        tracking-[8px]
+                        placeholder:text-gray-500
+                    "
+                                />
+
+                            </div>
+
+                        </div>
+                    )
+                }
+
+                {/* password */}
+                <div>
 
                     <label className="text-[#f5df8b] text-sm tracking-wide mb-3 block">
-                        Enter OTP
+                        Create a Strong Password
                     </label>
 
                     <div
@@ -810,14 +856,13 @@ export const RegisterForm = () => {
 
                         <input
                             type="text"
-                            placeholder="Enter OTP"
+                            placeholder="Enter your full name"
                             className="
                                 w-full
                                 bg-transparent
                                 outline-none
                                 py-4
                                 text-white
-                                tracking-[8px]
                                 placeholder:text-gray-500
                             "
                         />
