@@ -45,7 +45,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     z-120
                     lg:w-[500]
                     sm:h-fit
-                    sm:w-[50%]
+                    sm:w-[65%]
                     w-full
                     h-screen
                     bg-black
@@ -54,6 +54,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     overflow-hidden
                     duration-300
                     origin-center
+                    
                     ${getNowModel
                         ? "opacity-100 scale-100"
                         : "opacity-0 scale-75 pointer-events-none"
@@ -73,7 +74,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     }}
                 />
 
-                <div className="p-7">
+                <div className="sm:px-10 px-5 py-10">
                     {/* Header */}
                     <div className="flex items-center justify-between mb-5">
                         <div>

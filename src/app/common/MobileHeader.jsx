@@ -2,11 +2,12 @@
 import React, { useState } from 'react'
 import { gold } from '../colors/color'
 import Image from 'next/image'
-import { FaBarsProgress } from 'react-icons/fa6'
+import { FaBars, FaBarsProgress, FaBarsStaggered, FaRegHeart, FaUser } from 'react-icons/fa6'
 import { IoCloseCircleSharp, IoDiamond } from 'react-icons/io5'
 import Link from 'next/link'
 import { VscTriangleRight } from 'react-icons/vsc'
 import { Logo } from './PcHeader'
+import { FaShoppingCart } from 'react-icons/fa'
 
 export default function MobileHeader() {
     const [mobileMenu, setMobileMenu] = useState(false)
@@ -40,24 +41,28 @@ export default function MobileHeader() {
                     <Link href={'/'}>
                         <div className='cursor-pointer group'>
 
-                            <div className='flex items-center gap-3'>
+                            <div className='flex items-center sm:gap-5 gap-3'>
+
+                                <div onClick={() => setMobileMenu(true)}>
+                                    <FaBarsStaggered style={{ color: gold.base }} size={20} />
+                                </div>
 
                                 {/* Premium Diamond */}
                                 <div
                                     className='
-                            relative
-                            w-10
-                            h-10
-                            rounded-full
-                            flex
-                            items-center
-                            justify-center
-                            overflow-hidden
-                            border
-                            duration-300
-                            group-hover:scale-110
-                            group-hover:rotate-6
-                        '
+                                        relative
+                                        w-9
+                                        h-9
+                                        rounded-full
+                                        flex
+                                        items-center
+                                        justify-center
+                                        overflow-hidden
+                                        border
+                                        duration-300
+                                        group-hover:scale-110
+                                        group-hover:rotate-6
+                                    '
                                     style={{
                                         background: premiumGoldGradient,
                                         borderColor: '#e6c766',
@@ -68,15 +73,15 @@ export default function MobileHeader() {
                                     {/* Shine */}
                                     <div
                                         className='
-                                absolute
-                                top-0
-                                -left-full
-                                w-full
-                                h-full
-                                rotate-12
-                                group-hover:left-full
-                                duration-700
-                            '
+                                        absolute
+                                        top-0
+                                        -left-full
+                                        w-full
+                                        h-full
+                                        rotate-12
+                                        group-hover:left-full
+                                        duration-700
+                                    '
                                         style={{
                                             background:
                                                 'linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)'
@@ -92,35 +97,127 @@ export default function MobileHeader() {
                                 {/* Logo Text */}
                                 <div
                                     className='
-                            text-[20px]
-                            sm:tracking-[2]
-                            tracking-[1]
-                            font-extrabold
-                            duration-300
-                        '
+                                            text-[20px]
+                                            sm:tracking-[2]
+                                            tracking-[3]
+                                            font-extrabold
+                                            duration-300
+                                            '
                                     style={{
                                         color: '#f5df8b',
-                                        textShadow: '0 0 15px rgba(245,223,139,0.12)'
+                                        textShadow: `
+            0 2px 4px rgba(0,0,0,0.9),
+            0 6px 12px rgba(0,0,0,0.8),
+            0 0 25px rgba(0,0,0,0.7)
+        `
+
                                     }}
                                 >
 
                                     <span style={{ color: '#fff2b3' }}>K</span>
-                                    ritika{" "}
+                                    <span className='sm:inline hidden'>ritika{" "}</span>
 
                                     <span style={{ color: '#fff2b3' }}>F</span>
-                                    ashion{" "}
+                                    <span className='sm:inline hidden'>ashion{" "}</span>
 
                                     <span style={{ color: '#fff2b3' }}>P</span>
-                                    oint
+                                    <span className='sm:inline hidden'>oint</span>
 
                                 </div>
+
+
 
                             </div>
 
                         </div>
                     </Link>
 
-                    <div onClick={() => setMobileMenu(true)}><FaBarsProgress style={{ color: gold.light }} size={20} /></div>
+                    <div className='flex items-center sm:gap-5 gap-4'>
+
+                        <FaRegHeart
+                            style={{ color: gold.base }}
+                            size={25}
+                            className='relative z-10 text-[#f5df8b]'
+                        />
+
+                        <FaShoppingCart
+                            style={{ color: gold.base }}
+                            size={22}
+                            className='relative z-10 '
+                        />
+
+                        <Link href="/login">
+
+                            <div
+                                className="
+                        relative
+                        w-7
+                        h-7
+                        flex
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        overflow-hidden
+                        cursor-pointer
+                        group
+                        duration-300
+                        hover:scale-110
+                        hover:shadow-[0_0_25px_rgba(245,223,139,0.28)]
+                    "
+                                style={{
+                                    borderColor: "#c9971a",
+                                    background: premiumGoldGradient
+                                }}
+                            >
+
+                                {/* Glow */}
+                                <div
+                                    className="
+                            absolute inset-0
+                            opacity-0
+                            group-hover:opacity-100
+                            duration-500
+                        "
+                                    style={{
+                                        background:
+                                            "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)"
+                                    }}
+                                />
+
+                                {/* Shine */}
+                                <div
+                                    className="
+                            absolute
+                            top-0
+                            -left-full
+                            w-full
+                            h-full
+                            rotate-12
+                            group-hover:left-full
+                            duration-700
+                        "
+                                    style={{
+                                        background:
+                                            "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
+                                    }}
+                                />
+
+                                <FaUser
+                                    className="
+                            relative z-10
+                            text-black
+                            group-hover:scale-110
+                            duration-300
+                        "
+                                    size={16}
+                                />
+                            </div>
+
+                        </Link>
+
+
+                    </div>
                 </div>
 
             </div>

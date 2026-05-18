@@ -52,7 +52,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                 className={`
                     fixed top-1/2 left-1/2
                     -translate-x-1/2 -translate-y-1/2
-                    z-130
+                    z-130 
                     duration-300
                     sm:w-[70%] w-full max-w-[520]
                     ${paymentOptionModel
@@ -67,8 +67,11 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                         overflow-hidden
                         sm:rounded-[32]
                         rounded-none
+                        sm:h-fit
+                        h-screen 
+                        py-10
+                        px-5
                         border
-                        p-7
                         md:p-8
                     "
                     style={{

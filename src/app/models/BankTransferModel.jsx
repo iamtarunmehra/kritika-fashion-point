@@ -86,6 +86,7 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                 className={`
                     fixed top-1/2 left-1/2 z-140
                     sm:w-[95%] w-full max-w-[520]
+                    sm:h-fit h-screen
                     -translate-x-1/2 -translate-y-1/2
                     sm:rounded-3xl overflow-hidden
                     border border-amber-400/30
@@ -102,7 +103,7 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                 <div className="absolute inset-0 bg-linear-to-br from-amber-500/10 via-transparent to-yellow-300/10 pointer-events-none" />
 
                 {/* Header */}
-                <div className="relative flex items-center justify-between px-6 sm:py-4 py-2 border-b border-amber-400/20">
+                <div className="relative flex items-center justify-between px-6 py-5 border-b border-amber-400/20">
                     <div>
                         <h2 className="text-2xl font-bold tracking-wide text-amber-200">
                             Bank Transfer
@@ -122,9 +123,9 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                 </div>
 
                 {/* Content */}
-                <div className="relative p-6 space-y-5">
+                <div className="relative p-6 space-y-0">
                     {/* Account Holder */}
-                    <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
+                    <div className="border border-amber-400/20 rounded-0 px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <User className="text-amber-300" size={20} />
                             <h3 className="text-amber-200 font-semibold">Account Holder</h3>
@@ -145,7 +146,7 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                     </div>
 
                     {/* Bank Name */}
-                    <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
+                    <div className="border border-amber-400/20 rounded-0 px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <Building2 className="text-amber-300" size={20} />
                             <h3 className="text-amber-200 font-semibold">Bank Name</h3>
@@ -164,7 +165,7 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                     </div>
 
                     {/* Account Number */}
-                    <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
+                    <div className="border border-amber-400/20 rounded-0 px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <CreditCard className="text-amber-300" size={20} />
                             <h3 className="text-amber-200 font-semibold">Account Number</h3>
@@ -188,7 +189,7 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                     </div>
 
                     {/* IFSC */}
-                    <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
+                    <div className="border border-amber-400/20 rounded-0 px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <Landmark className="text-amber-300" size={20} />
                             <h3 className="text-amber-200 font-semibold">IFSC Code</h3>
@@ -207,7 +208,7 @@ export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
                     </div>
 
                     {/* Security Note */}
-                    <div className="rounded-2xl border border-green-500/20 bg-green-500/10 p-4 flex gap-3">
+                    <div className="rounded-0 my-6 border border-green-500/20 bg-green-500/10 p-4 flex gap-3">
                         <ShieldCheck className="text-green-400 shrink-0 mt-1" size={22} />
 
                         <div>
