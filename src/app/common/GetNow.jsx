@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import {
@@ -7,35 +7,21 @@ import {
     BadgeIndianRupee,
     MessageCircle,
     ShieldCheck,
-    Check
+    Check,
 } from "lucide-react";
 
-
-import {
-    Building2,
-    User,
-    Landmark,
-    CreditCard,
-    Copy,
-} from "lucide-react";
-
-
+import { Building2, User, Landmark, CreditCard, Copy } from "lucide-react";
 
 export default function GetNow({ getNowModel, setGetNowModel }) {
-
-
-    const [paymentOptionModel, setPaymentOptionModel] = useState(false)
-
-
-
-
-
+    const [paymentOptionModel, setPaymentOptionModel] = useState(false);
 
     return (
         <>
-
             {/* payment option model */}
-            <PaymentOption paymentOptionModel={paymentOptionModel} setPaymentOptionModel={setPaymentOptionModel} />
+            <PaymentOption
+                paymentOptionModel={paymentOptionModel}
+                setPaymentOptionModel={setPaymentOptionModel}
+            />
 
             {/* Backdrop */}
             <div
@@ -58,8 +44,10 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     -translate-x-1/2 -translate-y-1/2
                     z-120
                     lg:w-[500]
+                    sm:h-full
                     sm:w-[90%]
                     w-full
+                    h-screen
                     bg-black
                     border
                     sm:rounded-[32]
@@ -76,26 +64,23 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     boxShadow: "0 0 40px rgba(212,175,55,0.18)",
                 }}
             >
-
                 {/* Top Gradient */}
                 <div
                     className="h-1 w-full"
                     style={{
                         background:
-                            "linear-gradient(to right,#8a6a12,#d4af37,#fff2b3,#b8860b)"
+                            "linear-gradient(to right,#8a6a12,#d4af37,#fff2b3,#b8860b)",
                     }}
                 />
 
                 <div className="p-7">
-
                     {/* Header */}
                     <div className="flex items-center justify-between mb-5">
-
                         <div>
                             <h2
                                 className="lg:text-3xl text-2xl font-bold"
                                 style={{
-                                    color: "#f5d97b"
+                                    color: "#f5d97b",
                                 }}
                             >
                                 Complete Your Order
@@ -116,12 +101,8 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                 duration-200 cursor-pointer  hover:rotate-90
                             "
                         >
-                            <X
-                                size={22}
-                                color="#f5d97b"
-                            />
+                            <X size={22} color="#f5d97b" />
                         </button>
-
                     </div>
 
                     {/* Product Summary */}
@@ -135,43 +116,36 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                         style={{
                             borderColor: "rgba(212,175,55,0.25)",
                             background:
-                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))"
+                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
                         }}
                     >
-
                         <div className="flex items-center justify-between">
-
                             <div>
                                 <h3
                                     className="text-lg font-semibold"
                                     style={{
-                                        color: "#f5d97b"
+                                        color: "#f5d97b",
                                     }}
                                 >
                                     Premium Jewellery Set
                                 </h3>
 
-                                <p className="text-gray-400 text-sm mt-1">
-                                    Luxury Collection
-                                </p>
+                                <p className="text-gray-400 text-sm mt-1">Luxury Collection</p>
                             </div>
 
                             <h2
                                 className="text-2xl font-bold"
                                 style={{
-                                    color: "#d4af37"
+                                    color: "#d4af37",
                                 }}
                             >
                                 ₹2,499
                             </h2>
-
                         </div>
-
                     </div>
 
                     {/* Payment Options */}
                     <div className="space-y-4">
-
                         {/* Advance Payment */}
                         <button
                             onClick={() => setPaymentOptionModel(true)}
@@ -189,14 +163,10 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             style={{
                                 borderColor: "#d4af37",
                                 background:
-                                    "linear-gradient(to right, rgba(212,175,55,0.08), transparent)"
+                                    "linear-gradient(to right, rgba(212,175,55,0.08), transparent)",
                             }}
                         >
-
-                            <div
-
-                                className="flex items-center gap-4">
-
+                            <div className="flex items-center gap-4">
                                 <div
                                     className="
                                         w-10 h-10 sm:w-14 sm:h-14 rounded-full
@@ -204,22 +174,17 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                     "
                                     style={{
                                         background:
-                                            "linear-gradient(135deg,#8a6a12,#d4af37,#fff2b3)"
+                                            "linear-gradient(135deg,#8a6a12,#d4af37,#fff2b3)",
                                     }}
                                 >
                                     <Wallet color="#000" />
                                 </div>
 
-                                <div className="text-left"
-
-                                >
-
+                                <div className="text-left">
                                     <h3
-
-
                                         className="font-bold text-lg"
                                         style={{
-                                            color: "#f5d97b"
+                                            color: "#f5d97b",
                                         }}
                                     >
                                         Pay Advance
@@ -228,20 +193,17 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                     <p className="text-gray-400 text-sm">
                                         Book product with partial payment
                                     </p>
-
                                 </div>
-
                             </div>
 
                             <span
                                 className="font-bold text-2xl"
                                 style={{
-                                    color: "#d4af37"
+                                    color: "#d4af37",
                                 }}
                             >
                                 ₹499
                             </span>
-
                         </button>
 
                         {/* Full Payment */}
@@ -261,12 +223,10 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             "
                             style={{
                                 background:
-                                    "linear-gradient(to right,#8a6a12,#b8860b,#d4af37,#fff2b3,#d4af37)"
+                                    "linear-gradient(to right,#8a6a12,#b8860b,#d4af37,#fff2b3,#d4af37)",
                             }}
                         >
-
                             <div className="flex items-center gap-4 relative z-10">
-
                                 <div
                                     className="
                                         w-10 h-10 sm:w-14 sm:h-14 rounded-full
@@ -278,7 +238,6 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                 </div>
 
                                 <div className="text-left">
-
                                     <h3 className="font-bold text-lg text-black">
                                         Pay Full Payment
                                     </h3>
@@ -286,15 +245,12 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                     <p className="text-black/70 text-sm">
                                         Instant order confirmation
                                     </p>
-
                                 </div>
-
                             </div>
 
                             <span className="font-bold text-2xl text-black relative z-10">
                                 ₹2,499
                             </span>
-
                         </button>
 
                         {/* WhatsApp */}
@@ -312,12 +268,10 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             style={{
                                 borderColor: "#25D366",
                                 background:
-                                    "linear-gradient(to right, rgba(37,211,102,0.15), transparent)"
+                                    "linear-gradient(to right, rgba(37,211,102,0.15), transparent)",
                             }}
                         >
-
                             <div className="flex items-center gap-4">
-
                                 <div
                                     className="
                                         w-10 h-10 sm:w-14 sm:h-14 rounded-full
@@ -329,7 +283,6 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                 </div>
 
                                 <div className="text-left">
-
                                     <h3 className="font-bold text-lg text-white">
                                         Order via WhatsApp
                                     </h3>
@@ -337,17 +290,13 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                     <p className="text-gray-400 text-sm">
                                         Talk directly with our team
                                     </p>
-
                                 </div>
-
                             </div>
 
                             <span className="bg-[#25D366] text-white px-4 py-1 rounded font-semibold">
                                 Send
                             </span>
-
                         </button>
-
                     </div>
 
                     {/* Secure Info */}
@@ -362,44 +311,28 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             p-4
                         "
                             style={{
-                                background:
-                                    "rgba(212,175,55,0.08)"
+                                background: "rgba(212,175,55,0.08)",
                             }}
                         >
-
-                            <ShieldCheck
-                                size={22}
-                                color="#d4af37"
-                            />
+                            <ShieldCheck size={22} color="#d4af37" />
 
                             <p className=" text-sm text-gray-300 leading-6">
                                 100% secure checkout with premium customer support.
                             </p>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </>
     );
 }
 
-
 export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
-
-    const [bankTransferModel, setBankTransferModel] = useState(null)
-    const [QrCodeOpen, setQrCodeOpen] = useState(false)
-
-
+    const [bankTransferModel, setBankTransferModel] = useState(null);
+    const [QrCodeOpen, setQrCodeOpen] = useState(false);
 
     const HandleUpiPayment = () => {
-
-        const isMobile =
-            /Android|iPhone|iPad|iPod/i.test(
-                navigator.userAgent
-            );
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
         // const upiLink =
         //     "upi://pay?pa=mehratarun80@ybl&pn=Kritika Fashion Point&am=499&tn=Advance Payment&cu=INR";
@@ -415,14 +348,15 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
         } else {
             setQrCodeOpen(true);
         }
-    }
+    };
 
     return (
         <>
-
             <QrCodeModel QrCodeOpen={QrCodeOpen} setQrCodeOpen={setQrCodeOpen} />
-            <BankTransferModel bankTransferModel={bankTransferModel} setBankTransferModel={setBankTransferModel} />
-
+            <BankTransferModel
+                bankTransferModel={bankTransferModel}
+                setBankTransferModel={setBankTransferModel}
+            />
 
             {/* Overlay */}
             <div
@@ -472,10 +406,9 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                 #120d02 100%
                             )
                         `,
-                        boxShadow: "0 0 60px rgba(212,175,55,0.08)"
+                        boxShadow: "0 0 60px rgba(212,175,55,0.08)",
                     }}
                 >
-
                     {/* Glow */}
                     <div
                         className="
@@ -490,7 +423,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                             pointer-events-none
                         "
                         style={{
-                            background: "#d4af37"
+                            background: "#d4af37",
                         }}
                     />
 
@@ -516,7 +449,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                         "
                         style={{
                             borderColor: "rgba(245,223,139,0.18)",
-                            background: "rgba(255,255,255,0.03)"
+                            background: "rgba(255,255,255,0.03)",
                         }}
                     >
                         ✕
@@ -524,25 +457,20 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
 
                     {/* Heading */}
                     <div className="text-center mb-8">
-
                         <p className="text-[#c9971a] tracking-[5px] uppercase text-xs mb-3">
                             Secure Payment
                         </p>
 
                         <h2 className="text-3xl md:text-4xl font-bold text-white">
                             Choose
-                            <span className="text-[#f5df8b] ml-2">
-                                Payment Method
-                            </span>
+                            <span className="text-[#f5df8b] ml-2">Payment Method</span>
                         </h2>
 
                         <div className="flex items-center justify-center gap-3 mt-5">
-
                             <div
                                 className="w-16 h-[1]"
                                 style={{
-                                    background:
-                                        "linear-gradient(to right, transparent, #d4af37)"
+                                    background: "linear-gradient(to right, transparent, #d4af37)",
                                 }}
                             />
 
@@ -550,25 +478,21 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                 className="w-2 h-2 rounded-full"
                                 style={{
                                     background: "#d4af37",
-                                    boxShadow: "0 0 15px #d4af37"
+                                    boxShadow: "0 0 15px #d4af37",
                                 }}
                             />
 
                             <div
                                 className="w-16 h-[1]"
                                 style={{
-                                    background:
-                                        "linear-gradient(to left, transparent, #d4af37)"
+                                    background: "linear-gradient(to left, transparent, #d4af37)",
                                 }}
                             />
-
                         </div>
-
                     </div>
 
                     {/* Options */}
                     <div className="space-y-5">
-
                         {/* UPI */}
                         <button
                             onClick={HandleUpiPayment}
@@ -593,10 +517,9 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                         rgba(255,255,255,0.03),
                                         rgba(255,255,255,0.01)
                                     )
-                                `
+                                `,
                             }}
                         >
-
                             {/* Shine */}
                             <div
                                 className="
@@ -610,12 +533,11 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                 "
                                 style={{
                                     background:
-                                        "linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)"
+                                        "linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)",
                                 }}
                             />
 
                             <div className="relative z-10 flex items-center gap-5">
-
                                 <div
                                     className="
                                         min-w-[65]
@@ -636,7 +558,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                                 #fff2b3 70%,
                                                 #7a5a08 100%
                                             )
-                                        `
+                                        `,
                                     }}
                                 >
                                     💳
@@ -648,13 +570,11 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                     </h3>
 
                                     <p className="text-gray-400 text-sm mt-2 leading-6">
-                                        Fast & secure payment using any UPI app
-                                        or scan QR code instantly.
+                                        Fast & secure payment using any UPI app or scan QR code
+                                        instantly.
                                     </p>
                                 </div>
-
                             </div>
-
                         </button>
 
                         {/* Bank Transfer */}
@@ -681,10 +601,9 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                         rgba(255,255,255,0.03),
                                         rgba(255,255,255,0.01)
                                     )
-                                `
+                                `,
                             }}
                         >
-
                             {/* Shine */}
                             <div
                                 className="
@@ -698,12 +617,11 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                 "
                                 style={{
                                     background:
-                                        "linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)"
+                                        "linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)",
                                 }}
                             />
 
                             <div className="relative z-10 flex items-center gap-5">
-
                                 <div
                                     className="
                                         min-w-[65]
@@ -724,7 +642,7 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                                 #fff2b3 70%,
                                                 #7a5a08 100%
                                             )
-                                        `
+                                        `,
                                     }}
                                 >
                                     🏦
@@ -736,28 +654,23 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
                                     </h3>
 
                                     <p className="text-gray-400 text-sm mt-2 leading-6">
-                                        Transfer payment directly to our bank
-                                        account with complete security.
+                                        Transfer payment directly to our bank account with complete
+                                        security.
                                     </p>
                                 </div>
-
                             </div>
-
                         </button>
-
                     </div>
 
                     {/* Footer */}
                     <p className="text-center text-gray-500 text-xs tracking-wide mt-7">
                         100% Secure • Trusted Payment Gateway
                     </p>
-
                 </div>
             </div>
         </>
-    )
+    );
 }
-
 
 export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
     return (
@@ -769,9 +682,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                     fixed inset-0 z-130
                     bg-black/90 backdrop-blur-md
                     duration-300
-                    ${QrCodeOpen
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
+                    ${QrCodeOpen ? "opacity-100 visible" : "opacity-0 invisible"
                     }
                 `}
             />
@@ -810,10 +721,9 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                 #4d3900 100%
                             )
                         `,
-                        boxShadow: "0 0 60px rgba(212,175,55,0.15)"
+                        boxShadow: "0 0 60px rgba(212,175,55,0.15)",
                     }}
                 >
-
                     {/* Main Box */}
                     <div
                         className="
@@ -825,7 +735,6 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                             overflow-hidden
                         "
                     >
-
                         {/* Glow Effects */}
                         <div
                             className="
@@ -839,7 +748,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                 opacity-20
                             "
                             style={{
-                                background: "#d4af37"
+                                background: "#d4af37",
                             }}
                         />
 
@@ -855,7 +764,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                 opacity-10
                             "
                             style={{
-                                background: "#f5df8b"
+                                background: "#f5df8b",
                             }}
                         />
 
@@ -872,7 +781,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                             "
                             style={{
                                 background:
-                                    "linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)"
+                                    "linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent)",
                             }}
                         />
 
@@ -897,9 +806,8 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                             "
                             style={{
                                 borderColor: "rgba(245,223,139,0.25)",
-                                background:
-                                    "linear-gradient(to bottom, #111, #050505)",
-                                color: "#f5df8b"
+                                background: "linear-gradient(to bottom, #111, #050505)",
+                                color: "#f5df8b",
                             }}
                         >
                             <X className="w-4 h-4" />
@@ -907,7 +815,6 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
 
                         {/* Brand */}
                         <div className="text-center mb-8 relative z-10">
-
                             <p
                                 className="
                                     text-xs
@@ -916,7 +823,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     mb-3
                                 "
                                 style={{
-                                    color: "#d4af37"
+                                    color: "#d4af37",
                                 }}
                             >
                                 Premium Jewellery
@@ -931,23 +838,18 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                 "
                                 style={{
                                     color: "#fff2b3",
-                                    textShadow:
-                                        "0 0 20px rgba(245,223,139,0.15)"
+                                    textShadow: "0 0 20px rgba(245,223,139,0.15)",
                                 }}
                             >
-                                KRITIKA{" "}
-                                <span style={{ color: "#d4af37" }}>
-                                    FASHION POINT
-                                </span>
+                                KRITIKA <span style={{ color: "#d4af37" }}>FASHION POINT</span>
                             </h1>
 
                             <div className="flex items-center justify-center gap-3 mt-5">
-
                                 <div
                                     className="w-14 h-[1]"
                                     style={{
                                         background:
-                                            "linear-gradient(to right, transparent, #d4af37)"
+                                            "linear-gradient(to right, transparent, #d4af37)",
                                     }}
                                 />
 
@@ -955,8 +857,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     className="w-2 h-2 rounded-full"
                                     style={{
                                         background: "#d4af37",
-                                        boxShadow:
-                                            "0 0 15px rgba(212,175,55,0.8)"
+                                        boxShadow: "0 0 15px rgba(212,175,55,0.8)",
                                     }}
                                 />
 
@@ -964,16 +865,14 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     className="w-14 h-[1]"
                                     style={{
                                         background:
-                                            "linear-gradient(to left, transparent, #d4af37)"
+                                            "linear-gradient(to left, transparent, #d4af37)",
                                     }}
                                 />
-
                             </div>
 
                             <p className="text-zinc-400 text-sm mt-5 tracking-wide">
                                 Scan & Pay for Your Exclusive Order
                             </p>
-
                         </div>
 
                         {/* QR Section */}
@@ -995,11 +894,9 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                         #b8860b
                                     )
                                 `,
-                                boxShadow:
-                                    "0 0 40px rgba(212,175,55,0.18)"
+                                boxShadow: "0 0 40px rgba(212,175,55,0.18)",
                             }}
                         >
-
                             <div
                                 className="
                                     bg-[#0b0b0b]
@@ -1009,7 +906,6 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     overflow-hidden
                                 "
                             >
-
                                 {/* Inner Glow */}
                                 <div
                                     className="
@@ -1019,7 +915,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     "
                                     style={{
                                         background:
-                                            "radial-gradient(circle at top, rgba(245,223,139,0.3), transparent 70%)"
+                                            "radial-gradient(circle at top, rgba(245,223,139,0.3), transparent 70%)",
                                     }}
                                 />
 
@@ -1036,14 +932,11 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                         "
                                     />
                                 </div>
-
                             </div>
-
                         </div>
 
                         {/* Footer */}
                         <div className="mt-7 text-center relative z-10">
-
                             <p
                                 className="
                                     text-xs
@@ -1051,14 +944,12 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     uppercase
                                 "
                                 style={{
-                                    color: "#b8860b"
+                                    color: "#b8860b",
                                 }}
                             >
                                 Secure • Trusted • Quick Payment
                             </p>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -1066,12 +957,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
     );
 }
 
-
-export function BankTransferModel({
-    bankTransferModel,
-    setBankTransferModel
-}) {
-
+export function BankTransferModel({ bankTransferModel, setBankTransferModel }) {
     const bankDetails = {
         accountName: "Kritika Fashion Point",
         bankName: "State Bank of India",
@@ -1080,19 +966,15 @@ export function BankTransferModel({
     };
 
     const copyText = async (text) => {
-
         try {
-
             await navigator.clipboard.writeText(text);
 
-            setCopyMessage(true)
+            setCopyMessage(true);
 
             setTimeout(() => {
-                setCopyMessage(false)
-            }, 2000)
-
+                setCopyMessage(false);
+            }, 2000);
         } catch (err) {
-
             // fallback copy method
             const textArea = document.createElement("textarea");
 
@@ -1106,19 +988,22 @@ export function BankTransferModel({
 
             document.body.removeChild(textArea);
 
-            setCopyMessage(true)
+            setCopyMessage(true);
 
             setTimeout(() => {
-                setCopyMessage(false)
-            }, 2000)
+                setCopyMessage(false);
+            }, 2000);
         }
     };
 
-    const [copyMessage, setCopyMessage] = useState(false)
+    const [copyMessage, setCopyMessage] = useState(false);
 
     return (
         <>
-            <CopyMessageText copyMessage={copyMessage} setCopyMessage={setCopyMessage} />
+            <CopyMessageText
+                copyMessage={copyMessage}
+                setCopyMessage={setCopyMessage}
+            />
             {/* Backdrop */}
             <div
                 onClick={() => setBankTransferModel(false)}
@@ -1128,7 +1013,8 @@ export function BankTransferModel({
                     duration-300
                     ${bankTransferModel
                         ? "opacity-100 visible"
-                        : "opacity-0 invisible"}
+                        : "opacity-0 invisible"
+                    }
                 `}
             />
 
@@ -1145,10 +1031,10 @@ export function BankTransferModel({
                     duration-300
                     ${bankTransferModel
                         ? "opacity-100 scale-100"
-                        : "opacity-0 scale-90 pointer-events-none"}
+                        : "opacity-0 scale-90 pointer-events-none"
+                    }
                 `}
             >
-
                 {/* Golden Glow */}
                 <div className="absolute inset-0 bg-linear-to-br from-amber-500/10 via-transparent to-yellow-300/10 pointer-events-none" />
 
@@ -1174,14 +1060,11 @@ export function BankTransferModel({
 
                 {/* Content */}
                 <div className="relative p-6 space-y-5">
-
                     {/* Account Holder */}
                     <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <User className="text-amber-300" size={20} />
-                            <h3 className="text-amber-200 font-semibold">
-                                Account Holder
-                            </h3>
+                            <h3 className="text-amber-200 font-semibold">Account Holder</h3>
                         </div>
 
                         <div className="flex items-center justify-between">
@@ -1202,15 +1085,11 @@ export function BankTransferModel({
                     <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <Building2 className="text-amber-300" size={20} />
-                            <h3 className="text-amber-200 font-semibold">
-                                Bank Name
-                            </h3>
+                            <h3 className="text-amber-200 font-semibold">Bank Name</h3>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <p className="text-white tracking-wide">
-                                {bankDetails.bankName}
-                            </p>
+                            <p className="text-white tracking-wide">{bankDetails.bankName}</p>
 
                             <button
                                 onClick={() => copyText(bankDetails.bankName)}
@@ -1225,9 +1104,7 @@ export function BankTransferModel({
                     <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <CreditCard className="text-amber-300" size={20} />
-                            <h3 className="text-amber-200 font-semibold">
-                                Account Number
-                            </h3>
+                            <h3 className="text-amber-200 font-semibold">Account Number</h3>
                         </div>
 
                         <div className="flex items-center justify-between">
@@ -1237,8 +1114,8 @@ export function BankTransferModel({
 
                             <button
                                 onClick={() => {
-                                    copyText(bankDetails.accountNumber)
-                                    setCopyMessage(true)
+                                    copyText(bankDetails.accountNumber);
+                                    setCopyMessage(true);
                                 }}
                                 className="text-amber-300 hover:text-amber-200 duration-300 cursor-pointer hover:scale-110"
                             >
@@ -1251,15 +1128,11 @@ export function BankTransferModel({
                     <div className="border border-amber-400/20 rounded-2xl px-4 py-3 bg-white/3">
                         <div className="flex items-center gap-3 mb-2">
                             <Landmark className="text-amber-300" size={20} />
-                            <h3 className="text-amber-200 font-semibold">
-                                IFSC Code
-                            </h3>
+                            <h3 className="text-amber-200 font-semibold">IFSC Code</h3>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <p className="text-white tracking-widest">
-                                {bankDetails.ifsc}
-                            </p>
+                            <p className="text-white tracking-widest">{bankDetails.ifsc}</p>
 
                             <button
                                 onClick={() => copyText(bankDetails.ifsc)}
@@ -1270,35 +1143,26 @@ export function BankTransferModel({
                         </div>
                     </div>
 
-
                     {/* Security Note */}
                     <div className="rounded-2xl border border-green-500/20 bg-green-500/10 p-4 flex gap-3">
                         <ShieldCheck className="text-green-400 shrink-0 mt-1" size={22} />
 
                         <div>
-                            <p className="text-green-300 font-semibold">
-                                Secure Payment
-                            </p>
+                            <p className="text-green-300 font-semibold">Secure Payment</p>
 
                             <p className="text-sm text-green-100/70 mt-1 leading-relaxed">
-                                After completing your payment, share the payment
-                                screenshot with our support team for quick order
-                                confirmation.
+                                After completing your payment, share the payment screenshot with
+                                our support team for quick order confirmation.
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </>
     );
 }
 
-
-
-
 export function CopyMessageText({ copyMessage, setCopyMessage }) {
-
     return (
         <div
             className={`
@@ -1307,21 +1171,26 @@ export function CopyMessageText({ copyMessage, setCopyMessage }) {
                 duration-300
                 ${copyMessage
                     ? "opacity-100 translate-y-0"
-                    : "opacity-0 -translate-y-5 pointer-events-none"}
+                    : "opacity-0 -translate-y-5 pointer-events-none"
+                }
             `}
         >
-            <div className="
+            <div
+                className="
                 flex items-center gap-3
                 bg-black border border-amber-400/30
                 px-5 py-3 rounded-2xl
                 shadow-[0_0_25px_rgba(251,191,36,0.15)]
                 backdrop-blur-md
-            ">
-                <div className="
+            "
+            >
+                <div
+                    className="
                     w-8 h-8 rounded-full
                     bg-amber-400/10
                     flex items-center justify-center
-                ">
+                "
+                >
                     <Check size={18} className="text-amber-300" />
                 </div>
 
