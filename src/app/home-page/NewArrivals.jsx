@@ -94,7 +94,31 @@ export default function NewArrivals() {
                         #b8860b 80%,
                         #8a6a12 100%
                     )`}} className='font-semibold rounded-full bg-black lg:text-3xl md:text-2xl text-lg lg:py-3 py-1.5 lg:px-20 md:px-12 px-10 lg:my-10 my-5'>New Arrivals
-                    <div style={{ background: gold.base }} className='absolute top-1/2 left-0 w-screen h-px -z-10'></div>
+                    <div
+                        className="
+                                    absolute
+                                    top-1/2
+                                    left-1/2
+                                    -translate-x-1/2
+                                    w-screen
+                                    h-[0.5px]
+                                    -z-10
+                                "
+                        style={{
+                            background: `
+                                        linear-gradient(
+                                            90deg,
+                                            transparent 0%,
+                                            rgba(245,223,139,0.15) 20%,
+                                            rgba(245,223,139,1) 50%,
+                                            rgba(245,223,139,0.15) 80%,
+                                            transparent 100%
+                                        )
+                                    `
+                        }}
+                    >
+
+                    </div>
                 </span>
             </div>
 
@@ -119,10 +143,13 @@ export default function NewArrivals() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                              <Link key={index} href={`/categories/${item.title}`}>
+                                <Link key={index} href={`/categories/${item.title}`}>
                                     <div
                                         style={{ borderColor: gold.dark }}
-                                        className="bg-white border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
+                                        className="border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden relative">
+
+                                               {/* DISCOUNT BUTTON */}
+                                        <button style={{ background: 'linear-gradient(135deg, #ff3b3b, #8b0000)' }} className='absolute top-0 right-0 py-1  z-50 px-5 rounded-l-lg text-white'>Discount -35%</button>
 
                                         <div className='p-5 bg-black'>
                                             <div className='h-[200] relative'>

@@ -27,8 +27,8 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
             <div
                 onClick={() => setGetNowModel(false)}
                 className={`
-                    fixed inset-0 z-110
-                    bg-black/5 backdrop-blur-sm
+                    fixed inset-0 z-120
+                    bg-black/50 backdrop-blur-sm
                     duration-300
                     ${getNowModel
                         ? "opacity-100 visible"

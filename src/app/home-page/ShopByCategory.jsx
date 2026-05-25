@@ -47,12 +47,11 @@ export default function ShopByCategory() {
                         className="relative z-10 lg:text-4xl text-3xl font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
                         style={{
                             backgroundImage:
-                                "linear-gradient(90deg, #7a5a0a 0%, #b8860b 25%, #d4af37 50%, #c9971a 75%, #8a6a12 100%)",
+                                `linear-gradient(90deg,${gold.dark},${gold.base},${gold.dark})`,
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor: "transparent",
                             display: "inline-block",
                             fontFamily: "serif",
-                            textShadow: "0px 2px 10px rgba(212,175,55,0.22)"
                         }}
                     >
                         Shop By Category

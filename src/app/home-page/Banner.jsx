@@ -1,16 +1,29 @@
 import Link from "next/link";
 import { gold } from "../colors/color";
+import Image from "next/image";
 
 export default function LuxuryGlowBanner() {
     return (
-        <div className="bg-black pb-10 w-full lg:h-[80vh] md:h-[70vh] sm:h-[50vh] h-[40vh]">
+        <div className="bg-black pb-10 w-screen lg:h-[75vh] md:h-[70vh] sm:h-[50vh] h-[55vh] relative">
+
+            <div className="lg:block hidden w-[350] h-[400] absolute -bottom-30 left-10 opacity-10 rotate-x-180 z-50">
+                <Image fill sizes="full" alt="designs" src={'/designs/d1.png'} className="absolute top-0 left-0 object-contain object-center w-full h-full " />
+            </div>
+
+            <div className="lg:block hidden w-[350] h-[400] absolute -bottom-30 right-10 opacity-10 rotate-180 z-50">
+                <Image fill sizes="full" alt="designs" src={'/designs/d1.png'} className="absolute top-0 left-0 object-contain object-center w-full h-full " />
+            </div>
+
             <section style={{
                 backgroundImage: "url('/banner/b5.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-                className="w-full lg:pb-10 mb-10 lg:h-[55vh] md:h-[60vh] sm:h-[40vh] h-[30vh] py-16 lg:py-24 overflow-hidde n relative z-40">
+                className="w-full lg:pb-10 mb-10 lg:h-[45vh] md:h-[60vh] sm:h-[40vh] h-[50vh] py-16 lg:py-24 relative z-40">
+
+
+                {/* overlay */}
                 <div className="absolute top-0 left-0 bg-linear-to-t from-black via-black/90 to-black/10 w-full h-full">
 
                 </div>
@@ -22,7 +35,7 @@ export default function LuxuryGlowBanner() {
                             borderColor: gold.base,
                             color: gold.light,
                             background: "rgba(255,255,255,0.08)",
-                            boxShadow: `0 0 30px ${gold.base}30`
+                            boxShadow: `0 0 10px ${gold.base}30`
                         }}
                         className="inline-flex items-center gap-2 border px-5 py-2 rounded-full backdrop-blur-md mb-5 lg:text-sm text-[10px] tracking-[4px] uppercase font-medium"
                     >
@@ -30,20 +43,21 @@ export default function LuxuryGlowBanner() {
                     </div>
 
                     {/* Main Heading */}
-                    <h1
-                        style={{
-                            background: `linear-gradient(to right, ${gold.light}, ${gold.base}, #fff7d6, ${gold.base})`,
-                            WebkitBackgroundClip: "text",
-                            WebkitTextFillColor: "transparent",
-                            textShadow: "0 0 25px rgba(212,175,55,0.35)"
-                        }}
-                        className="lg:text-6xl md:text-5xl text-3xl font-extrabold tracking-wide leading-tight"
-                    >
-                        Luxury Artificial
-                        <span className="block lg:mt-2 mt-1 tracking-wider  ">
-                            Jewellery Accessories
-                        </span>
-                    </h1>
+                    <div className="flex items-center justify-center">
+                        <h1
+                            style={{
+                                background: `linear-gradient(to left, ${gold.dark}, ${gold.light}, ${gold.dark})`,
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                            }}
+                            className="lg:text-6xl md:text-5xl text-3xl w-fit font-extrabold tracking-wide leading-tight"
+                        >
+                            Luxury Artificial
+                            <span className="block lg:mt-2 mt-1 tracking-wider  ">
+                                Jewellery Accessories
+                            </span>
+                        </h1>
+                    </div>
 
                     {/* Subtitle */}
                     <p
@@ -95,7 +109,7 @@ export default function LuxuryGlowBanner() {
                     )`}}
                             className="px-8 py-3 rounded-full cursor-pointer text-black font-extrabold tracking-wide hover:scale-105 duration-300"
                         >
-                            Shop Now
+                            Shop <span className="sm:inline hidden">Now</span>
                         </button></Link>
 
                         <Link href={'/categories'}><button
@@ -105,7 +119,7 @@ export default function LuxuryGlowBanner() {
                             }}
                             className="px-8 py-3 rounded-full cursor-pointer backdrop-blur-md font-medium tracking-wide hover:bg-white/10 duration-300"
                         >
-                            Explore All
+                            Explore <span className="sm:inline hidden">All</span>
                         </button></Link>
                     </div>
                 </div>

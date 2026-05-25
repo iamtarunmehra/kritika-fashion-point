@@ -118,25 +118,16 @@ export default function TopSelling() {
                         className="relative z-10 lg:text-4xl text-3xl font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
                         style={{
                             backgroundImage:
-                                "linear-gradient(90deg, #7a5a0a 0%, #b8860b 25%, #d4af37 50%, #c9971a 75%, #8a6a12 100%)",
+                                `linear-gradient(90deg,${gold.dark},${gold.base},${gold.dark})`,
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor: "transparent",
                             display: "inline-block",
                             fontFamily: "serif",
-                            textShadow: "0px 2px 10px rgba(212,175,55,0.22)"
                         }}
                     >
                         Top Selling Products
                     </span>
 
-                    {/* <div
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
-                        style={{
-                            background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
-                        }}
-                    />
-
-                    {/* Decorative Line */}
                     <DecorativeLine />
                 </h1>
 
@@ -156,10 +147,13 @@ export default function TopSelling() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                               <Link key={index} href={`/categories/${item.title}`}>
+                                <Link key={index} href={`/categories/${item.title}`}>
                                     <div
                                         style={{ borderColor: gold.dark }}
-                                        className="bg-white border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
+                                        className="bg-white border lg:my-7 my-0 cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden relative">
+
+                                               {/* DISCOUNT BUTTON */}
+                                        <button style={{ background: 'linear-gradient(135deg, #ff3b3b, #8b0000)' }} className='absolute top-0 right-0 py-1  z-50 px-5 rounded-l-lg text-white'>Discount -35%</button>
 
                                         <div className='p-5 bg-black'>
                                             <div className='h-[200] relative'>

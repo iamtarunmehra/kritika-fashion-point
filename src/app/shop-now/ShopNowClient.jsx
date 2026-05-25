@@ -9,6 +9,7 @@ import { FaSortAmountUp } from 'react-icons/fa';
 import AddToCartButton from '../common/AddToCartButton';
 import BuyNowButton from '../common/BuyNowButton';
 import { FilterModel } from '../common/FilterModel';
+import { BiSolidCategory } from 'react-icons/bi';
 
 export default function ShopNowClient() {
 
@@ -278,15 +279,11 @@ export default function ShopNowClient() {
                             </div>
                         </div>
 
-                        <button
-                            onClick={() => setFilterModelOpen(true)}
-                            // style={{
-                            //     borderColor: "rgba(212,175,55,0.25)",
-                            //     background:
-                            //         `linear-gradient(to bottom, ${gold.dark},${'black'}`
-                            // }}
-                            style={{
-                                background: `linear-gradient(
+                        <div className='flex items-center gap-5'>
+                            <button
+                                onClick={() => setFilterModelOpen(true)}
+                                style={{
+                                    background: `linear-gradient(
                                     135deg,
                                     #4d3900 0%,
                                     #7a5a08 18%,
@@ -297,23 +294,47 @@ export default function ShopNowClient() {
                                     #7a5a08 88%,
                                     #4d3900 100%
                                 )`
-                            }}
-                            className='flex text-black  hover:scale-[1.05] duration-100 ease-in-out items-center sm:px-10 px-2 py-1.5 rounded-md cursor-pointer gap-2 text-lg'>
-                            <span className='sm:block hidden font-extrabold'>Filter
-                            </span>
-                            <FaSortAmountUp />
+                                }}
+                                className='flex text-black  hover:scale-[1.05] duration-300 ease-in-out items-center sm:px-10 px-2 py-1.5 rounded-md cursor-pointer gap-2 text-lg'>
+                                <span className='sm:block hidden font-extrabold'>Filter
+                                </span>
+                                <FaSortAmountUp />
+                            </button>
 
-                        </button>
+                            <Link href={'/categories'}>
+                            <button
+                                // onClick={() => setFilterModelOpen(true)}
+                                style={{
+                                    background: `linear-gradient(
+                                    135deg,
+                                    #4d3900 0%,
+                                    #7a5a08 18%,
+                                    #b8860b 38%,
+                                    #d4af37 50%,
+                                    #e8cf6a 58%,
+                                    #c9971a 72%,
+                                    #7a5a08 88%,
+                                    #4d3900 100%
+                                )`
+                                }}
+
+                                className='flex text-black  hover:scale-[1.05] duration-300 ease-in-out items-center sm:px-10 px-2 py-1.5 rounded-md cursor-pointer gap-2 text-lg'>
+                                <BiSolidCategory />
+                                <span className='sm:block hidden font-extrabold'>All Categories
+                                </span>
+                            </button>
+                            </Link>
+                        </div>
                     </div>
 
 
-                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-5 gap-3 lg:my-10 my-5'>
+                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 md:gap-5 gap-8 lg:my-10 my-5'>
                         {top_selling_data.map((item, index) => {
                             return (
                                 <Link key={index} href={`/categories/${item.title}`}>
                                     <div
                                         style={{ borderColor: gold.dark }}
-                                        className="bg-white border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
+                                        className="bg-white border cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
 
                                         <div className='p-5 bg-black'>
                                             <div className='h-[200] relative'>

@@ -33,7 +33,7 @@ export default function MobileHeader() {
                 // style={{ background: 'rgba(44, 15, 58, 1)', borderBottomColor: gold.base }}
                 style={{ background: 'black', borderColor: gold.base }}
 
-                className='lg:hidden block w-full h-full py-3.5 border-b-2 px-4'>
+                className='lg:hidden block w-full h-full py-3.5 border-b px-4'>
                 <div className='flex items-center justify-between'>
                     <div className='absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden'>
                         <Image src={'/designs/d2.png'} sizes='full' alt='designs' fill className='opacity-[0.05] w-full h-full object-cover object-top' />
@@ -124,8 +124,6 @@ export default function MobileHeader() {
                                     <span className='sm:inline hidden'>oint</span>
 
                                 </div>
-
-
 
                             </div>
 
@@ -222,7 +220,7 @@ export default function MobileHeader() {
 
             </div>
             {mobileMenu &&
-                <div onClick={() => setMobileMenu(false)} className='w-full h-screen bg-[rgba(0,0,0,0.8)] fixed top-0 left-0'></div>
+                <div onClick={() => setMobileMenu(false)} className='w-full h-screen bg-[rgba(0,0,0,0.6)] backdrop-blur-sm fixed top-0 left-0'></div>
 
             }
             <MobileMenu premiumGoldGradient={premiumGoldGradient} mobileMenu={mobileMenu} setMobileMenu={setMobileMenu} />
@@ -244,7 +242,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
             className={`
                 fixed inset-0
                 transform
-                ${mobileMenu ? 'translate-y-0' : '-translate-y-full'}
+                ${mobileMenu ? 'translate-x-0' : '-translate-x-full'}
                 transition-transform duration-300 ease-in-out
                 w-full h-fit
                 bg-black text-white border-b-4
@@ -253,7 +251,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 z-50
                             `}
         >
-            <div className='flex justify-between items-center py-5 px-3'>
+            <div className='flex justify-between items-center py-7 px-5'>
                 <Link href={'/'}>
                     <div className='cursor-pointer group'>
 
@@ -338,7 +336,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 </Link>
                 <button style={{ color: gold.base }} onClick={() => setMobileMenu(false)}><IoCloseCircleSharp size={25} /></button>
             </div>
-            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-xl font-semibold space-y-10 pb-10'>
+            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-xl font-semibold space-y-7 pb-10'>
                 {Data.map((item, index) => {
                     return (
                         <Link key={index} href={item.link}>

@@ -57,7 +57,7 @@ export default function Footer() {
                     h-[250]
                     rounded-full
                     blur-3xl
-                    opacity-[0.08]
+                    opacity-[0.05]
                     pointer-events-none
                 '
                 style={{
@@ -148,7 +148,11 @@ export default function Footer() {
                         lg:grid-cols-[22%_38%_auto]
                         md:grid-cols-2
                         grid-cols-1
-                        gap-14
+                        lg:gap-14
+                        sm:gap-7
+                        gap-5
+                        lg:pb-10
+                        pb-5
                     '
                 >
 
@@ -159,11 +163,28 @@ export default function Footer() {
                             className='
                                 text-2xl
                                 font-bold
-                                mb-8
+                                lg:mb-8
+                                mb-2
                                 text-[#f5df8b]
+                                relative
+                                w-fit
                             '
                         >
                             Quick Links
+
+                            <div style={{
+                                background: `
+                                                    linear-gradient(
+                                                        to left,
+                                                        #8c670a,
+                                                        #d4af37,
+                                                        #f5df8b
+                                                    )
+                                                `
+                            }}
+                                className='w-1/3 h-[1] absolute top-[115%] left-0 rounded-full'
+                            >
+                            </div>
                         </h2>
 
                         <ul className=''>
@@ -221,11 +242,28 @@ export default function Footer() {
                             className='
                                 text-2xl
                                 font-bold
-                                mb-8
+                                lg:mb-8
+                                mb-7
                                 text-[#f5df8b]
+                                relative
+                                w-fit
                             '
                         >
                             Categories
+
+                            <div style={{
+                                background: `
+                                                    linear-gradient(
+                                                        to left,
+                                                        #8c670a,
+                                                        #d4af37,
+                                                        #f5df8b
+                                                    )
+                                                `
+                            }}
+                                className='w-1/3 h-[1] absolute top-[115%] left-0 rounded-full'
+                            >
+                            </div>
                         </h2>
 
                         <ul className='grid sm:grid-cols-2 gap-x-10 gap-y-4'>
@@ -282,11 +320,28 @@ export default function Footer() {
                             className='
                                 text-2xl
                                 font-bold
-                                mb-8
+                                lg:mb-8
+                                mb-7
                                 text-[#f5df8b]
+                                relative
+                                w-fit
                             '
                         >
                             Contact Us
+
+                            <div style={{
+                                background: `
+                                                    linear-gradient(
+                                                        to left,
+                                                        #8c670a,
+                                                        #d4af37,
+                                                        #f5df8b
+                                                    )
+                                                `
+                            }}
+                                className='w-1/3 h-[1] absolute top-[115%] left-0 rounded-full'
+                            >
+                            </div>
                         </h2>
 
                         <div className='space-y-5'>
@@ -302,7 +357,7 @@ export default function Footer() {
                                         group
                                         flex
                                         gap-4
-                                        items-start
+                                        items-center
                                         cursor-pointer
                                     '
                                 >
@@ -348,7 +403,7 @@ export default function Footer() {
                             </Link>
 
                             {/* Phone */}
-                            <div className='flex gap-4 items-start'>
+                            <div className='flex gap-4 items-center'>
 
                                 <div
                                     className='
@@ -380,7 +435,7 @@ export default function Footer() {
                                     />
                                 </div>
 
-                                <div className='text-[#d9d9d9] leading-8 flex  gap-3'>
+                                <div className='text-[#d9d9d9] leading-8 flex items-center  gap-3'>
                                     <a
                                         href='tel:8079994755'
                                         className='hover:text-[#f5df8b] duration-300 block'
@@ -517,7 +572,7 @@ export default function Footer() {
                 {/* Bottom */}
                 <div
                     className='
-                        mt-16
+                       
                         pt-8
                         border-t
                         border-[#c9971a]/10

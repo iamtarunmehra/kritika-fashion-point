@@ -62,7 +62,7 @@ export default function Faq() {
     ];
 
     return (
-        <section className="w-screen overflow-x-hidden bg-black lg:my-20 my-5 relative">
+        <section className="w-screen overflow-x-hidden bg-black lg:my-15 md:my-10 my-5 relative">
 
             {/* Background Glow */}
             <div
@@ -142,7 +142,7 @@ export default function Faq() {
                 </div>
 
                 {/* FAQ Items */}
-                <div className="space-y-5">
+                <div className="">
 
                     {faqs.map((faq, index) => {
 
@@ -158,6 +158,8 @@ export default function Faq() {
                                     backdrop-blur-xl
                                     transition-all
                                     duration-500
+                                    lg:my-7
+                                    my-5
                                 "
                                 style={{
                                     borderColor: isOpen

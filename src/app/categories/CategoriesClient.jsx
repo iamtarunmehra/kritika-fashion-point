@@ -90,85 +90,67 @@ export default function CategoriesClient() {
 
             {<GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />}
 
-            <img sizes='full'
-                src='/designs/d3.png'
-                className='absolute top-0 right-0 w-full h-full -z-10 object-cover object-center opacity-[0.02]'
-            />
 
-            {/* <img sizes='full'
-                src='/designs/d2.png'
-                className='absolute top-0 left-0 w-full h-full -z-10 object-cover object-center opacity-[0.01]'
-            /> */}
 
             {/* <div className='w-full h-full absolute top-0 left-0 bg-[rgba(0,0,0,0.9)]'></div> */}
             <div className='max-w-330 mx-auto lg:px-6 px-4 '>
                 <div className=' lg:py-10 py-5'>
                     <div
+                        className="w-full h-fit lg:mb-10 mb-5 z-50 rounded-3xl px-6 py-10 relative overflow-hidden border border-[#FFF2B320] backdrop-blur-2xl"
                         style={{
                             background:
-                                "linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-                            boxShadow: `0 0 40px ${gold.base}15`,
+                                "linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01))",
                         }}
-                        className='w-full h-fit lg:mb-10 mb-5 z-50 border border-[#FFF2B3] rounded-3xl px-6 py-10 backdrop-blur-xl relative overflow-hidden'
                     >
 
-                        {/* Glow Effect */}
-                        <div
-                            style={{ background: gold.base }}
-                            className='absolute -top-10 -right-10 w-40 h-40 rounded-full blur-[100px] opacity-10'
-                        ></div>
-
                         {/* Heading */}
-                        <div className='flex items-center gap-3 mb-6'>
-
+                        <div className="flex items-center gap-4 mb-8 relative z-10">
                             <div
+                                className="w-2 h-10 rounded-full shadow-lg"
                                 style={{
-                                    background: `linear-gradient(to bottom, ${gold.light}, ${gold.dark})`
+                                    background: `linear-gradient(to bottom, ${gold.light}, ${gold.dark})`,
                                 }}
-                                className='w-1.5 h-8 rounded-full'
-                            ></div>
+                            />
 
                             <h1
-                                style={{ color: gold.light }}
-                                className='text-2xl font-bold tracking-[5px] uppercase'
+                                className="text-2xl font-bold tracking-[6px] uppercase"
+                                style={{
+                                    color: gold.light,
+                                    textShadow: `0 0 20px ${gold.base}40`,
+                                }}
                             >
                                 All Categories
                             </h1>
                         </div>
 
                         {/* Categories */}
-                        <ul className='flex flex-wrap items-center gap-4'>
-
+                        <ul className="flex flex-wrap items-center gap-4 relative z-10">
+                            {/* ALL BUTTON */}
                             <li
+                                className="lg:px-8 lg:py-2 px-5 py-1 uppercase rounded-full font-semibold tracking-wide cursor-pointer transition-all duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95"
                                 style={{
                                     background: `linear-gradient(135deg, ${gold.base}, ${gold.light})`,
                                     color: "#000",
-                                    boxShadow: `0 0 25px ${gold.base}35`
                                 }}
-                                className='lg:px-8 lg:py-2 px-5 py-1 uppercase rounded-full backdrop-blur-md font-medium tracking-wide cursor-pointer hover:bg-white/10 hover:scale-105 duration-300'
                             >
                                 All
                             </li>
 
-                            {categories.map((item, index) => {
-                                return (
-                                    <li
-                                        key={index}
-                                        style={{
-                                            border: `1px solid ${gold.base}`,
-                                            color: gold.light,
-                                            background: "rgba(255,255,255,0.03)"
-                                        }}
-                                        className='lg:px-8 lg:py-2 px-5 py-1 uppercase rounded-full backdrop-blur-md font-medium tracking-wide cursor-pointer hover:bg-white/10 hover:scale-105 duration-300'
-                                    >
-                                        {item}
-                                    </li>
-                                )
-                            })}
+                            {categories.map((item, index) => (
+                                <li
+                                    key={index}
+                                    className="lg:px-8 lg:py-2 px-5 py-1 uppercase rounded-full font-medium tracking-wide cursor-pointer transition-all duration-300 hover:scale-110 hover:-translate-y-1 active:scale-95 backdrop-blur-md"
+                                    style={{
+                                        border: `1px solid ${gold.base}50`,
+                                        color: gold.light,
+                                        background:
+                                            "linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))",
+                                    }}
+                                >
+                                    {item}
 
-
-
-
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -178,8 +160,11 @@ export default function CategoriesClient() {
                             return (
                                 <Link key={index} href={`/categories/${item.title}`}>
                                     <div
-                                        style={{ borderColor: gold.base }}
-                                        className="bg-white border-2  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden">
+                                        style={{ borderColor: gold.dark }}
+                                        className="bg-white border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden relative">
+
+                                        {/* DISCOUNT BUTTON */}
+                                        <button style={{ background: 'linear-gradient(135deg, #ff3b3b, #8b0000)' }} className='absolute top-0 right-0 py-1  z-50 px-5 rounded-l-lg text-white'>Discount -35%</button>
 
                                         <div className='p-5 bg-black'>
                                             <div className='h-[200] relative'>
@@ -187,7 +172,7 @@ export default function CategoriesClient() {
                                             </div>
                                         </div>
 
-                                        <div style={{ borderTopColor: gold.base }} className='border-t-2 p-5 bg-black '>
+                                        <div style={{ borderTopColor: gold.dark }} className='border-t p-5 bg-black '>
                                             <h2 className="text-xl text-[#E6C766] font-extrabold mb-3 relative mt-3 duration-300">{item.title}
 
                                                 <div style={{ background: gold.base }} className='absolute top-[105%] left-0 w-[20] h-[3] group-hover:w-[70] duration-500 rounded-full transition-all'></div>

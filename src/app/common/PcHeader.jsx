@@ -3,14 +3,19 @@ import React, { useState } from 'react'
 import { gold } from '../colors/color'
 import { IoDiamond } from 'react-icons/io5'
 import Link from 'next/link'
-import { FaRegHeart } from 'react-icons/fa'
-import { FaUser } from 'react-icons/fa6'
+import { FaRegHeart, FaSearch, FaShoppingCart } from 'react-icons/fa'
+import { FaAngleDown, FaAngleUp, FaUser } from 'react-icons/fa6'
 import Image from 'next/image'
 import WishListModel from './WishListModel'
+import CartModel from './CartModel'
 
 export default function PcHeader() {
 
     const [wishListModelOpen, setWishListModelOpen] = useState(false)
+
+    const [cartModelOpen, setCartModelOpen] = useState(false)
+
+    const [search, setSearch] = useState(false)
 
 
     const premiumGoldGradient = `
@@ -30,6 +35,10 @@ export default function PcHeader() {
     return (
         <>
             <WishListModel wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} />
+            <CartModel cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
+
+            <SearchModel search={search} setSearch={setSearch} />
+
             <div
                 className='
                     lg:block hidden
@@ -38,7 +47,7 @@ export default function PcHeader() {
                     relative
                     overflow-hidden
                     z-50
-                    backdrop-blur-xl
+                    backdrop-blur-2xl
                     
                 '
                 style={{
@@ -89,10 +98,11 @@ export default function PcHeader() {
 
                         <Logo premiumGoldGradient={premiumGoldGradient} />
 
-                        <NavBar premiumGoldGradient={premiumGoldGradient} />
+                        <NavBar search={search} premiumGoldGradient={premiumGoldGradient} />
 
-                        <UserPoints wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} premiumGoldGradient={premiumGoldGradient} />
-
+                        <UserPoints
+                            cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen}
+                            search={search} setSearch={setSearch} wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} premiumGoldGradient={premiumGoldGradient} />
                     </div>
                 </div>
             </div>
@@ -199,9 +209,13 @@ const nav_bar_data = [
 function NavBar() {
 
     return (
-        <div>
-            <ul
-                className='
+        <div
+            className={`
+                duration-500
+                transition-all
+            `}
+        >            <ul
+            className='
                     flex
                     items-center
                     gap-5
@@ -212,10 +226,10 @@ function NavBar() {
                     py-2
                     backdrop-blur-xl
                 '
-                style={{
-                    borderColor: 'rgba(230,199,102,0.10)'
-                }}
-            >
+            style={{
+                borderColor: 'rgba(230,199,102,0.10)'
+            }}
+        >
 
                 {nav_bar_data.map((item, index) => {
 
@@ -300,10 +314,57 @@ function NavBar() {
     )
 }
 
-function UserPoints({ premiumGoldGradient, wishListModelOpen, setWishListModelOpen }) {
+function UserPoints({ premiumGoldGradient, setSearch, setWishListModelOpen, cartModelOpen, setCartModelOpen }) {
 
     return (
         <div className='flex items-center gap-5'>
+
+            {/* SEARCH ICON */}
+            <div
+                onClick={() => setSearch(true)}
+                className='
+                    relative
+                    w-10
+                    h-10
+                    rounded-full
+                    flex
+                    items-center
+                    justify-center
+                    border
+                    bg-[#0b0b0b]
+                    cursor-pointer
+                    overflow-hidden
+                    duration-300
+                    hover:scale-110
+                    hover:border-[#f5df8b]
+                '
+                style={{
+                    borderColor: 'rgba(230,199,102,0.18)'
+                }}
+            >
+
+                {/* Glow */}
+                <div
+                    className='
+                        absolute
+                        inset-0
+                        opacity-0
+                        hover:opacity-100
+                        duration-500
+                    '
+                    style={{
+                        background:
+                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                    }}
+                />
+
+                <FaSearch
+                    size={17}
+                    className='relative z-10 text-[#f5df8b]'
+                />
+
+
+            </div>
 
             {/* Wishlist */}
             <div
@@ -348,6 +409,57 @@ function UserPoints({ premiumGoldGradient, wishListModelOpen, setWishListModelOp
                     size={17}
                     className='relative z-10 text-[#f5df8b]'
                 />
+
+
+            </div>
+
+            {/* SHOPPING CART */}
+            <div
+                onClick={() => setCartModelOpen(true)}
+                className='
+                    relative
+                    w-10
+                    h-10
+                    rounded-full
+                    flex
+                    items-center
+                    justify-center
+                    border
+                    bg-[#0b0b0b]
+                    cursor-pointer
+                    overflow-hidden
+                    duration-300
+                    hover:scale-110
+                    hover:border-[#f5df8b]
+                '
+                style={{
+                    borderColor: 'rgba(230,199,102,0.18)'
+                }}
+            >
+
+                {/* Glow */}
+                <div
+                    className='
+                        absolute
+                        inset-0
+                        opacity-0
+                        hover:opacity-100
+                        duration-500
+                    '
+                    style={{
+                        background:
+                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                    }}
+                />
+
+                <div>
+                    <FaShoppingCart
+                        size={20}
+                        className='relative z-10 text-[#f5df8b]'
+                    />
+                </div>
+
+
             </div>
 
             {/* User */}
@@ -421,6 +533,149 @@ function UserPoints({ premiumGoldGradient, wishListModelOpen, setWishListModelOp
 
             </Link>
 
+        </div>
+    )
+}
+
+function SearchModel({ search, setSearch }) {
+    return (
+
+        <div className='relative'>
+            {/* Overlay */}
+            <div
+                onClick={() => setSearch(false)}
+                className={`
+                    fixed inset-0 z-105
+                    bg-black/90 backdrop-blur-sm
+                    duration-300
+                    top-0 left-0
+                    ${search
+                        ? 'opacity-100 visible'
+                        : 'opacity-0 invisible'}
+                `}
+            />
+            <div
+                className={`
+        fixed
+        top-0
+        left-1/2
+        -translate-x-1/2
+        w-[500]
+        h-[40vh]
+        z-160
+        duration-500
+        transition-all
+        rounded-b-[30px]
+        overflow-hidden
+        border
+        backdrop-blur-xl
+        p-6
+        ${search
+                        ? 'opacity-100 translate-y-0'
+                        : 'opacity-0 -translate-y-full pointer-events-none'
+                    }
+    `}
+                style={{
+                    background: `
+            linear-gradient(
+                to bottom,
+                rgba(12,12,12,0.98),
+                rgba(0,0,0,0.96)
+            )
+        `,
+                    borderColor: 'rgba(245,223,139,0.15)'
+                }}
+            >
+
+                {/* SEARCH FORM */}
+                <form
+                    className='
+            flex
+            items-center
+            gap-3
+            border
+            rounded-full
+            px-5
+            h-14
+            bg-[#0b0b0b]
+        '
+                    style={{
+                        borderColor: 'rgba(245,223,139,0.12)'
+                    }}
+                >
+
+                    <FaSearch
+                        size={18}
+                        className='text-[#f5df8b]'
+                    />
+
+                    <input
+                        type="text"
+                        placeholder="Search luxury jewellery..."
+                        className='
+                w-full
+                bg-transparent
+                outline-none
+                text-[#f5df8b]
+                placeholder:text-[#8f7a45]
+                text-lg
+                tracking-widest
+            '
+                    />
+
+                </form>
+
+                {/* SUGGESTIONS */}
+                <div className='mt-8'>
+
+                    <p
+                        className='
+                text-xs
+                tracking-[4px]
+                uppercase
+                mb-4
+            '
+                        style={{ color: gold.mid }}
+                    >
+                        Popular Searches
+                    </p>
+
+                    <div className='flex flex-wrap gap-3'>
+
+                        {[
+                            'Bridal Set',
+                            'Luxury Necklace',
+                            'Gold Earrings',
+                            'Wedding Collection',
+                            'Bangles',
+                            'Traditional Jewellery'
+                        ].map((item, index) => (
+                            <button
+                                key={index}
+                                className='
+                        px-5
+                        py-2
+                        rounded-full
+                        text-sm
+                        border
+                        duration-300
+                        hover:bg-[#111]
+                    '
+                                style={{
+                                    color: '#f5df8b',
+                                    borderColor: 'rgba(245,223,139,0.12)'
+                                }}
+                            >
+                                {item}
+                            </button>
+                        ))}
+
+                    </div>
+
+                </div>
+
+                <FaAngleUp size={100} className='text-white absolute top-full left-1/2' />
+            </div>
         </div>
     )
 }
