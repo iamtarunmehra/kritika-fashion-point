@@ -93,7 +93,7 @@ export default function NewArrivals() {
                         #d4af37 60%,
                         #b8860b 80%,
                         #8a6a12 100%
-                    )`}} className='font-semibold rounded-full bg-black lg:text-3xl md:text-2xl text-lg lg:py-3 py-1.5 lg:px-20 md:px-12 px-10 lg:my-10 my-5'>New Arrivals
+                    )`}} className='font-semibold rounded-full bg-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-16 md:px-12 px-10 lg:my-10 my-10 capitalize'>New Arrivals
                     <div
                         className="
                                     absolute
@@ -148,7 +148,7 @@ export default function NewArrivals() {
                                         style={{ borderColor: gold.dark }}
                                         className="border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden relative">
 
-                                               {/* DISCOUNT BUTTON */}
+                                        {/* DISCOUNT BUTTON */}
                                         <button style={{ background: 'linear-gradient(135deg, #ff3b3b, #8b0000)' }} className='absolute top-0 right-0 py-1  z-50 px-5 rounded-l-lg text-white'>Discount -35%</button>
 
                                         <div className='p-5 bg-black'>

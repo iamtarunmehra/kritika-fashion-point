@@ -152,7 +152,7 @@ export default function TopSelling() {
                                         style={{ borderColor: gold.dark }}
                                         className="bg-white border lg:my-7 my-0 cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden relative">
 
-                                               {/* DISCOUNT BUTTON */}
+                                        {/* DISCOUNT BUTTON */}
                                         <button style={{ background: 'linear-gradient(135deg, #ff3b3b, #8b0000)' }} className='absolute top-0 right-0 py-1  z-50 px-5 rounded-l-lg text-white'>Discount -35%</button>
 
                                         <div className='p-5 bg-black'>

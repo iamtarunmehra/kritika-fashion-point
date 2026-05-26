@@ -336,7 +336,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 </Link>
                 <button style={{ color: gold.base }} onClick={() => setMobileMenu(false)}><IoCloseCircleSharp size={25} /></button>
             </div>
-            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 text-xl font-semibold space-y-7 pb-10'>
+            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-5 text-xl font-semibold space-y-7 pb-10'>
                 {Data.map((item, index) => {
                     return (
                         <Link key={index} href={item.link}>

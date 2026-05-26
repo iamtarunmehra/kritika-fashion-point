@@ -102,7 +102,7 @@ export default function WhyChooseUs() {
                 mx-auto
                 grid
                 lg:grid-cols-4
-                md:grid-cols-2
+                sm:grid-cols-2
                 grid-cols-1
                 gap-6
                 mt-16

@@ -93,7 +93,7 @@ export default function CategoryWiseSections() {
                         #d4af37 60%,
                         #b8860b 80%,
                         #8a6a12 100%
-                    )`}} className='rounded-full bg-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-12 md:px-12 px-10 lg:my-10 my-5 capitalize tracking-widest font-bold'>rings
+                    )`}} className='font-semibold rounded-full bg-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-16 md:px-12 px-10 lg:my-10 my-5 capitalize'>rings
                     <div
                         className="
                                     absolute
