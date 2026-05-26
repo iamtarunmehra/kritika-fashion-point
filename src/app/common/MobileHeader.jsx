@@ -248,7 +248,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 bg-black text-white border-b-4
                 lg:hidden block
                 transform-gpu
-                z-50
+                z-100
                             `}
         >
             <div className='flex justify-between items-center py-7 px-5'>

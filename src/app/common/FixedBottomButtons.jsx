@@ -5,7 +5,7 @@ import { IoChatbubble } from 'react-icons/io5'
 
 export function FixedButtons() {
     return (
-        <div className='relative z-100'>
+        <div className='relative z-80'>
             <div
                 className="w-14 h-14 rounded-full cursor-pointer fixed bottom-[110] lg:right-10 md:right-5 right-3 z-40 
                     flex items-center justify-center

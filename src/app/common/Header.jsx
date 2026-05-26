@@ -7,7 +7,7 @@ export default function Header() {
 
     return (
         <>
-            <div className="offer-strip fixed bottom-0 left-0 w-full z-999 bg-black/80 backdrop-blur-md overflow-hidden">
+            <div className="offer-strip fixed bottom-0 left-0 w-full z-100 bg-black/80 backdrop-blur-md overflow-hidden">
 
                 <div className="marquee-track flex whitespace-nowrap animate-marquee">
 
