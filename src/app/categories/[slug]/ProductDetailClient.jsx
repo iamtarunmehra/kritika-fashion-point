@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
     Heart,
     ShoppingCart,
@@ -14,14 +14,88 @@ import {
 } from "lucide-react";
 import { gold } from "@/app/colors/color";
 import Link from "next/link";
+import AddToCartButton from "@/app/common/AddToCartButton";
+import BuyNowButton from "@/app/common/BuyNowButton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from 'swiper/modules';
+import Overlay from "@/app/common/Overlay";
+import GetNow from "@/app/common/GetNow";
+import ProductCard from "./ProductCard";
 
 export default function ProductDetailClient() {
+
+    const swiperRef = useRef(null)
+    const top_selling_data = [
+        {
+            id: 1,
+            title: 'Kundan Bridal Necklace Set',
+            price: '4,999',
+            description: 'Elegant kundan necklace set with matching earrings for bridal look',
+            image: '/p1.jpg',
+            category: 'Necklace',
+        },
+        {
+            id: 2,
+            title: 'Gold Plated Jhumka',
+            price: '799',
+            description: 'Traditional jhumka with antique gold finish',
+            image: '/p1.jpg',
+            category: 'Earrings',
+        },
+        {
+            id: 3,
+            title: 'Polki Choker Set',
+            price: '2,499',
+            description: 'Premium polki choker perfect for wedding functions',
+            image: '/p1.jpg',
+            category: 'Choker',
+        },
+        {
+            id: 4,
+            title: 'Temple Jewellery Necklace',
+            price: '3,299',
+            description: 'South Indian temple design necklace with detailed carvings',
+            image: '/p1.jpg',
+            category: 'Temple Jewellery',
+        },
+        {
+            id: 5,
+            title: 'Oxidised Silver Necklace',
+            price: '1,299',
+            description: 'Trendy oxidised necklace for casual & ethnic wear',
+            image: '/p1.jpg',
+            category: 'Oxidised',
+        },
+        {
+            id: 6,
+            title: 'Bangles Set (Pack of 4)',
+            price: '999',
+            description: 'Stylish bangles set with golden polish',
+            image: '/p1.jpg',
+            category: 'Bangles',
+        },
+        {
+            id: 7,
+            title: 'Maang Tikka Bridal',
+            price: '499',
+            description: 'Beautiful maang tikka for bridal and festive wear',
+            image: '/p1.jpg',
+            category: 'Maang Tikka',
+        },
+    ];
+
+    const [getNowModel, setGetNowModel] = useState(false)
+
+    const customClasses = 'py-3'
 
     return (
         <section
             className="w-full min-h-screen bg-black text-white"
         >
-            <div className="max-w-7xl mx-auto px-4 lg:px-6 py-10">
+            {getNowModel && <Overlay />}
+            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+
+            <div className="max-w-330 mx-auto px-4 lg:px-6 py-10">
 
                 {/* Breadcrumb */}
                 <div className="flex items-center gap-2 text-lg text-white mb-8">
@@ -175,31 +249,13 @@ export default function ProductDetailClient() {
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex flex-row gap-5 mt-10">
+                        <div className="grid md:grid-cols-2 gap-5 mt-10">
 
                             {/* Add to Cart */}
-                            <button
-                                className="py-2.5 flex-1 rounded-xl font-semibold text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-3"
-                                style={{
-                                    borderColor: gold.base,
-                                    color: gold.light,
-                                }}
-                            >
-                                <ShoppingCart size={22} />
-                                Add To Cart
-                            </button>
+                            <AddToCartButton customClasses={customClasses} icon={'true'} />
 
                             {/* Buy Now */}
-                            <button
-                                className="py-2.5 flex-1 rounded-xl font-bold text-lg hover:scale-[1.02] duration-300"
-                                style={{
-                                    background:
-                                        "linear-gradient(to right,#8B6B00,#F7E7A1,#B8860B)",
-                                    color: "#000",
-                                }}
-                            >
-                                Buy Now
-                            </button>
+                            <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
                         </div>
 
                         {/* Features */}
@@ -217,7 +273,7 @@ export default function ProductDetailClient() {
                                     className="mt-3 font-semibold"
                                     style={{ color: gold.light }}
                                 >
-                                    Free Delivery
+                                    Safe Delivery
                                 </h4>
                             </div>
 
@@ -257,104 +313,263 @@ export default function ProductDetailClient() {
                     </div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 lg:gap-10 gap-0 grid-cols-1">
-                    {/* Product Description */}
+                <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 lg:gap-10 mt-20">
+
+                    {/* Product Details Card */}
                     <div
-                        className="mt-20 border rounded-3xl p-8"
-                        style={{ borderColor: `${gold.base}` }}
+                        className="relative overflow-hidden rounded-[30px] border p-px shadow-2xl"
+                        style={{
+                            borderColor: gold.base,
+                            background: `linear-gradient(135deg, ${gold.dark}30, transparent, ${gold.base}40)`
+                        }}
                     >
-                        <h2
-                            className="text-3xl font-bold mb-6"
-                            style={{ color: gold.base }}
-                        >
-                            Product Details
-                        </h2>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 bg-black backdrop-blur-2xl gap-3 text-[17px] text-gray-300 leading-8">
+                        {/* Glow Effect */}
+                        <div
+                            className="absolute -top-20 -right-20 w-52 h-52 rounded-full blur-3xl opacity-20"
+                            style={{ background: gold.base }}
+                        ></div>
 
-                            <div>
-                                <p>
-                                    • Category : Artificial Jewellery
-                                </p>
+                        <div className="relative h-full rounded-[30px] bg-[#050505]/95 backdrop-blur-2xl p-6 lg:p-8">
 
-                                <p>
-                                    • Type : Polki Choker Set
-                                </p>
+                            {/* Heading */}
+                            <div className="flex items-center gap-3 mb-8">
 
-                                <p>
-                                    • Material : Premium Alloy
-                                </p>
+                                <div
+                                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
+                                    style={{
+                                        background: `linear-gradient(135deg, ${gold.base}, ${gold.light})`,
+                                        color: "#000"
+                                    }}
+                                >
+                                    ✨
+                                </div>
 
-                                <p>
-                                    • Finish : Gold Plated
-                                </p>
+                                <div>
+                                    <h2
+                                        className="lg:text-3xl text-2xl font-extrabold tracking-wide"
+                                        style={{ color: gold.base }}
+                                    >
+                                        Product Details
+                                    </h2>
 
-                                <p>
-                                    • Occasion : Wedding / Party / Festive
-                                </p>
+                                    <p className="text-gray-500 text-sm mt-1 tracking-wide">
+                                        Premium handcrafted jewellery information
+                                    </p>
+                                </div>
                             </div>
 
-                            <div>
+                            {/* Details Grid */}
+                            <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
 
+                                {/* Left */}
+                                <div className="space-y-4">
 
-                                <p>
-                                    • Package Includes : Necklace + Earrings
-                                </p>
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Category</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            Artificial Jewellery
+                                        </h4>
+                                    </div>
 
-                                <p>
-                                    • Dispatch Time : 2-3 Working Days
-                                </p>
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Type</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            Polki Choker Set
+                                        </h4>
+                                    </div>
 
-                                <p>
-                                    • Cash On Delivery Available
-                                </p>
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Material</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            Premium Alloy
+                                        </h4>
+                                    </div>
+
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Finish</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            Gold Plated
+                                        </h4>
+                                    </div>
+
+                                </div>
+
+                                {/* Right */}
+                                <div className="space-y-4">
+
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Occasion</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            Wedding / Party / Festive
+                                        </h4>
+                                    </div>
+
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Package Includes</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            Necklace + Earrings
+                                        </h4>
+                                    </div>
+
+                                    <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
+                                        <p className="text-gray-400 text-sm">Dispatch Time</p>
+                                        <h4 className="text-white text-lg font-semibold mt-1">
+                                            2-3 Working Days
+                                        </h4>
+                                    </div>
+
+                                    <div
+                                        className="rounded-2xl p-4"
+                                        style={{
+                                            background: `linear-gradient(135deg, ${gold.base}, ${gold.light})`
+                                        }}
+                                    >
+                                        <p className="text-black text-sm font-medium">
+                                            Payment Option
+                                        </p>
+
+                                        <h4 className="text-black text-lg font-extrabold mt-1">
+                                            Pay Advance for Your Item
+                                        </h4>
+                                    </div>
+
+                                </div>
                             </div>
-
                         </div>
                     </div>
 
-                    {/*Note*/}
+                    {/* Read Before Use */}
                     <div
-                        className="mt-20 rounded-3xl p-[1]"
+                        className="relative overflow-hidden rounded-[30px] p-[1] shadow-2xl"
                         style={{
                             background:
-                                "linear-gradient(135deg, #8A6A01, #F7E7A1, #8A6A01)",
+                                "linear-gradient(135deg, #8A6A01, #F7E7A1, #8A6A01)"
                         }}
                     >
-                        <div className="w-full h-full rounded-3xl p-8">
 
-                            <h2
-                                className="lg:text-3xl text-2xl font-bold mb-6"
-                                style={{ color: "#000" }}
-                            >
-                                Read Before Use
-                            </h2>
+                        {/* Glow */}
+                        <div className="absolute -bottom-20 -left-20 w-56 h-56 rounded-full bg-yellow-200/20 blur-3xl"></div>
 
-                            <div className="text-black leading-8 text-[17px]">
+                        <div className="relative w-full h-full rounded-[30px] bg-black text-white p-6 lg:p-8">
 
-                                <p>
-                                    • Keep the jewellery away from water, perfume, and
-                                    chemicals to maintain its shine and finish.
-                                </p>
+                            {/* Heading */}
+                            <div className="flex items-center gap-3 mb-8">
 
-                                <p>
-                                    • Store the product in an airtight box or soft pouch
-                                    after use to avoid scratches and tarnishing.
-                                </p>
+                                <div className="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center text-2xl">
+                                    ⚜️
+                                </div>
 
-                                <p>
-                                    • This jewellery is crafted for fashion and occasional
-                                    wear, not for daily rough usage.
-                                </p>
+                                <div>
+                                    <h2 style={{ color: gold.mid }} className="lg:text-3xl text-2xl font-extrabold text-black">
+                                        Read Before Use
+                                    </h2>
 
-                                <p>
-                                    • Cash On Delivery Available
-                                </p>
+                                    <p style={{ color: gold.base }} className="text-black/60 text-sm mt-1 tracking-wide">
+                                        Jewellery care instructions & important notes
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Notes */}
+                            <div className="space-y-4 text-white">
+
+                                <div className="bg-black/5 rounded-2xl p-4 border border-white">
+                                    <p className=" leading-7">
+                                        ✨ Keep the jewellery away from water, perfume, and chemicals
+                                        to maintain its shine and finish.
+                                    </p>
+                                </div>
+
+                                <div className="bg-black/5 rounded-2xl p-4 border border-white">
+                                    <p className=" leading-7">
+                                        ✨ Store the product in an airtight box or soft pouch after use
+                                        to avoid scratches and tarnishing.
+                                    </p>
+                                </div>
+
+                                <div className="bg-black/5 rounded-2xl p-4 border border-white">
+                                    <p className=" leading-7">
+                                        ✨ Crafted for fashion and occasional wear, not intended for
+                                        rough daily usage.
+                                    </p>
+                                </div>
+
+                                <div className="bg-black border border-white text-white rounded-2xl p-5">
+                                    <p className="font-semibold tracking-wide">
+                                        🚚 Safe Packaging & Fast Delivery Available
+                                    </p>
+                                </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div className='max-w-330 mx-auto lg:px-6 px-4 lg:my-10 my-5'>
+
+                <div className="flex items-center justify-between mb-8">
+
+                    <div>
+
+                        <div className="flex items-center gap-3 mb-3">
+
+                            <div
+                                style={{
+                                    background: `linear-gradient(to bottom, ${gold.light}, ${gold.dark})`
+                                }}
+                                className="w-2 h-14 rounded-full"
+                            ></div>
+
+                            <div>
+
+                                <h2
+                                    style={{
+                                        background: `linear-gradient(to right, ${gold.dark}, ${gold.light}, ${gold.base})`,
+                                        WebkitBackgroundClip: "text",
+                                        WebkitTextFillColor: "transparent",
+                                    }}
+                                    className="lg:text-5xl md:text-4xl text-3xl font-extrabold tracking-wide leading-tight"
+                                >
+                                    You May Also Like
+                                </h2>
+
+                            </div>
+                        </div>
+
+                        <p className="text-gray-200 lg:text-base text-lg tracking-wider leading-7">
+                            Discover more timeless jewellery pieces crafted to elevate your elegance and complete your luxury collection.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div className='lg:mb-5 mb-5 lg:p-0 p-3'>
+                    <Swiper
+                        modules={[Autoplay]}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        spaceBetween={20}
+                        slidesPerView={4}
+                        loop={true}
+                        autoplay={{ delay: 2000, disableOnInteraction: false }}
+                        breakpoints={{
+                            320: { slidesPerView: 1 },
+                            640: { slidesPerView: 2 },
+                            1024: { slidesPerView: 4 },
+                        }}
+                    >
+                        {top_selling_data.map((item, index) => (
+                            <SwiperSlide key={index}>
+                                <ProductCard item={item} index={index} getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
+
+
 
             </div>
         </section>

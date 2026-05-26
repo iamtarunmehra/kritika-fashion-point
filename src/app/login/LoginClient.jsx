@@ -217,7 +217,8 @@ export default function LoginClient() {
                         lg:flex
                         flex-col
                         justify-center
-                        px-16
+                        px-5
+                        lg:px-10
                         lg:py-20
                         py-10
                         relative
@@ -263,9 +264,12 @@ export default function LoginClient() {
 
                         <h1
                             className="
-                                text-6xl
+                                lg:text-6xl
+                                md:text-4xl
+                                text-2xl
                                 font-bold
-                                leading-[1.15]
+                                lg:leading-[1.15]
+                                leading-normal
                                 mb-8
                                 text-[#f8e7a1]
                             "

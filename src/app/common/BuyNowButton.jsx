@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function BuyNowButton({ getNowModel, setGetNowModel }) {
 
@@ -13,7 +13,7 @@ export default function BuyNowButton({ getNowModel, setGetNowModel }) {
             className="relative px-6 py-2 text-black font-bold rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
                 background: `
-                                                linear-gradient(
+                linear-gradient(
                                                     145deg,
                                                     #3a2a00 0%,
                                                     #5a4200 12%,

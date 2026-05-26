@@ -1,19 +1,21 @@
 'use client'
 import { FaPhone } from 'react-icons/fa6'
-import { gold } from '../colors/color'
 import { IoChatbubble } from 'react-icons/io5'
+import Link from 'next/link'
 
 export function FixedButtons() {
+    const Phone_Number = process.env.NEXT_PUBLIC_PHONE_NUMBER
     return (
         <div className='relative z-80'>
-            <div
-                className="w-14 h-14 rounded-full cursor-pointer fixed bottom-[110] lg:right-10 md:right-5 right-3 z-40 
+            <Link href={`tel:+91${Phone_Number}`}>
+                <div
+                    className="lg:w-14 lg:h-14 w-12 h-12 rounded-full cursor-pointer fixed bottom-[110] lg:right-10 md:right-5 right-3 z-40 
                     flex items-center justify-center
-                    shadow-[0_0_25px_rgba(0,0,0,0.25)]
+                    shadow-[0_0_25px_rgba(0,0,  0,0.25)]
                     hover:scale-110 transition-all duration-300 ease-in-out
                     border border-white/10"
-                style={{
-                    background: `
+                    style={{
+                        background: `
                     linear-gradient(
                         to bottom right,
                         #8a6a12 0%,
@@ -24,12 +26,13 @@ export function FixedButtons() {
                         #b8860b 80%,
                         #8a6a12 100%
                     )`}}
-            >
-                <FaPhone size={25} className="text-black" />
-            </div>
+                >
+                    <FaPhone size={25} className="text-black" />
+                </div>
+            </Link>
 
             <div
-                className="w-14 h-14 rounded-full fixed bottom-[40] lg:right-10 md:right-5 right-3 z-40 
+                className="lg:w-14 lg:h-14 w-12 h-12 rounded-full fixed bottom-[40] lg:right-10 md:right-5 right-3 z-40 
                     flex items-center justify-center
                     shadow-[0_0_25px_rgba(0,0,0,0.25)]
                     hover:scale-110 transition-all duration-300 cursor-pointer ease-in-out
