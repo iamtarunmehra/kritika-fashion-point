@@ -113,7 +113,7 @@ export default function TopSelling() {
                                     ?
 
                                     <SwiperSlide>
-                                        <NoNewArrFound />
+                                        <NoNewArrFound title={'No Top Selling Products Yet'} />
                                     </SwiperSlide>
 
                                     :

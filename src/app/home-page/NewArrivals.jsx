@@ -129,7 +129,7 @@ export default function NewArrivals() {
     )
 }
 
-export function NoNewArrFound() {
+export function NoNewArrFound({ title }) {
     return (
         <div
             className='
@@ -151,7 +151,7 @@ export function NoNewArrFound() {
             px-10
             py-5
             text-center
-            max-w-2xl
+            max-w-4xl
             w-full
             shadow-2xl
         '
@@ -220,7 +220,7 @@ export function NoNewArrFound() {
                         color: "#E6C766"
                     }}
                 >
-                    No New Arrivals Found
+                    {title ? title : 'No Products Found'}
                 </h2>
 
                 {/* DESCRIPTION */}
