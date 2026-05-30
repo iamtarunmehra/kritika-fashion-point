@@ -1,9 +1,84 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import PcHeader from './PcHeader'
 import MobileHeader from './MobileHeader'
 import { FixedButtons } from './FixedBottomButtons'
+import { setCategories, setCategoryLoading } from '../redux/slices/categorySlice'
+import { useDispatch } from 'react-redux'
+import { get_api } from '../api_helper/api_helper'
+import { setProductLoading, setProducts } from '../redux/slices/productSlice'
 
 export default function Header() {
+
+    const dispatch = useDispatch();
+
+    const fetchCategories = async () => {
+
+        try {
+
+            dispatch(setCategoryLoading(true));
+
+            const response = await get_api({
+                path: "admin/category/view-categories",
+            });
+
+            if (response.data.success) {
+
+                dispatch(
+                    setCategories(
+                        response.data.data
+                    )
+                );
+            }
+
+        } catch (error) {
+            console.log(error);
+        } finally {
+
+            dispatch(
+                setCategoryLoading(false)
+            );
+        }
+    };
+
+    const fetchProducts = async () => {
+
+        try {
+
+            dispatch(setProductLoading(true));
+
+            const response = await get_api({
+                path: "admin/product/view-products",
+            });
+
+            if (response.data.success) {
+
+                dispatch(
+                    setProducts(
+                        response.data.data
+                    )
+                );
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        } finally {
+
+            dispatch(
+                setProductLoading(false)
+            );
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts()
+    }, [])
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
     return (
         <>

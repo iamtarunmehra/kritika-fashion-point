@@ -9,7 +9,7 @@ export function FixedButtons() {
         <div className='relative z-80'>
             <Link href={`tel:+91${Phone_Number}`}>
                 <div
-                    className="lg:w-14 lg:h-14 w-12 h-12 rounded-full cursor-pointer fixed bottom-[110] lg:right-10 md:right-5 right-3 z-40 
+                    className="lg:w-14 lg:h-14 w-12 h-12 rounded-full cursor-pointer fixed md:bottom-[115] bottom-[95] shadow-sm shadow-amber-300 lg:right-7 md:right-5 right-3 z-40 
                     flex items-center justify-center
                     shadow-[0_0_25px_rgba(0,0,  0,0.25)]
                     hover:scale-110 transition-all duration-300 ease-in-out
@@ -32,9 +32,10 @@ export function FixedButtons() {
             </Link>
 
             <div
-                className="lg:w-14 lg:h-14 w-12 h-12 rounded-full fixed bottom-[40] lg:right-10 md:right-5 right-3 z-40 
+                className="lg:w-14 lg:h-14 w-12 h-12 rounded-full fixed md:bottom-[40] bottom-[30] lg:right-7 md:right-5 right-3 z-40 
                     flex items-center justify-center
-                    shadow-[0_0_25px_rgba(0,0,0,0.25)]
+                    shadow-amber-300
+                    shadow-sm
                     hover:scale-110 transition-all duration-300 cursor-pointer ease-in-out
                     border border-white/10"
                 style={{

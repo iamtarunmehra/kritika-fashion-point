@@ -1,6 +1,7 @@
 import CartModel from "./common/CartModel";
 import WishListModel from "./common/WishListModel";
 import LuxuryGlowBanner from "./home-page/Banner";
+import CategoryIndex from "./home-page/CategoryIndex";
 import CategoryWiseSections from "./home-page/CategoryWiseSection";
 import Faq from "./home-page/Faq";
 import NewArrivals from "./home-page/NewArrivals";
@@ -12,22 +13,16 @@ export default function Home() {
   return (
     <div className="bg-black w-screen overflow-x-hidden ">
 
-      <WishListModel/>
-      <CartModel/>
+      <WishListModel />
+      <CartModel />
 
       <LuxuryGlowBanner />
       <NewArrivals />
-      <WhyChooseUs/>
+      <WhyChooseUs />
 
       <ShopByCategory />
       <TopSelling />
-      <CategoryWiseSections />
-      <CategoryWiseSections />
-      <CategoryWiseSections />
-      <CategoryWiseSections />
-      <CategoryWiseSections />
-      <CategoryWiseSections />
-
+      <CategoryIndex />
       <Faq />
     </div>
   );

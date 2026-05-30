@@ -7,26 +7,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Link from "next/link";
 import { DecorativeLine } from "../common/DecorativeLine";
+import { useSelector } from "react-redux";
 
 
 export default function ShopByCategory() {
 
-    const categories = [
-        { id: 1, title: "Kundan", image: "/p2.webp" },
-        { id: 2, title: "Choker", image: "/p2.webp" },
-        { id: 3, title: "Jhumka", image: "/p2.webp" },
-        { id: 4, title: "Necklace", image: "/p2.webp" },
-        { id: 5, title: "Bangles", image: "/p2.webp" },
-        { id: 6, title: "Maang Tikka", image: "/p2.webp" },
-        { id: 7, title: "Temple", image: "/p2.webp" },
-        { id: 8, title: "Temple", image: "/p2.webp" },
-        { id: 9, title: "Temple", image: "/p2.webp" },
-        { id: 10, title: "Temple", image: "/p2.webp" },
-        { id: 11, title: "Temple", image: "/p2.webp" },
-        { id: 12, title: "Temple", image: "/p2.webp" },
-        { id: 13, title: "Temple", image: "/p2.webp" },
-        { id: 14, title: "Temple", image: "/p2.webp" },
-    ];
+    const { categories, category_loading } = useSelector(
+        (state) => state.categories
+    );
 
     return (
         <section className="w-screen bg-black h-full lg:my-16 my-12 relative">
@@ -75,44 +63,243 @@ export default function ShopByCategory() {
                     modules={[Autoplay]}
                     spaceBetween={20}
                     loop={true}
-                    centeredSlides={true}
-                    autoplay={{ delay: 2000, disableOnInteraction: false }}
+                    speed={500}
+                    autoplay={{
+                        delay: 1000,
+                        disableOnInteraction: false,
+                    }}
                     breakpoints={{
                         320: {
                             slidesPerView: 2,
                         },
                         480: {
-                            slidesPerView: 2,
-                        },
-                        640: {
                             slidesPerView: 3,
                         },
+                        640: {
+                            slidesPerView: 4,
+                        },
                         1024: {
-                            slidesPerView: 5,
+                            slidesPerView: 6,
                         },
                     }}
                 >
 
-                    {categories.map((item) => {
-                        return (
-                            <SwiperSlide key={item.id}>
+                    {
+                        category_loading
+                            ?
 
-                                <Link href={'/categories'}>
-                                    <div className="flex flex-col px-10 lg:py-5 py-0 items-center group cursor-pointer">
+                            [...Array(5)].map((_, index) => (
+                                <SwiperSlide key={index}>
 
-                                        {/* Image Circle */}
+                                    <div className="flex flex-col items-center animate-pulse">
+
+                                        {/* IMAGE SKELETON */}
                                         <div
-                                            style={{
-                                                borderColor: gold.mid,
-                                            }}
                                             className="
+                            relative
+                            lg:w-[200]
+                            lg:h-[200]
+                            md:w-[150]
+                            md:h-[150]
+                            sm:w-[130]
+                            sm:h-[130]
+                            w-[150]
+                            h-[150]
+                            rounded-full
+                            overflow-hidden 
+                            bg-linear-to-br
+                            from-[#1a1a1a]
+                            via-[#2b2b2b]
+                            to-[#1a1a1a]
+                        "
+                                        />
+
+                                        {/* TITLE SKELETON */}
+                                        <div
+                                            className="
+                            mt-5
+                            h-4
+                            w-24
+                            rounded-full
+                            bg-linear-to-r
+                            from-[#5c4308]
+                            via-[#b8860b]
+                            to-[#5c4308]
+                        "
+                                        />
+
+                                        {/* LINE */}
+                                        <div
+                                            className="
+                            mt-3
+                            h-[2]
+                            w-16
+                            rounded-full
+                            bg-[#3d2d08]
+                        "
+                                        />
+                                    </div>
+
+                                </SwiperSlide>
+                            ))
+
+                            :
+
+                            categories.length === 0
+
+                                ?
+
+                                <div className="w-full flex justify-center py-10">
+
+                                    <div
+                                        className="
+                        relative
+                        overflow-hidden
+                        rounded-3xl
+                        border
+                        border-[#5c4308]
+                        bg-black
+                        px-10
+                        py-14
+                        text-center
+                        max-w-2xl
+                        w-full
+                        shadow-2xl
+                    "
+                                    >
+
+                                        {/* GLOW */}
+                                        <div
+                                            className="
+                            absolute
+                            top-[-100]
+                            left-1/2
+                            -translate-x-1/2
+                            w-[300]
+                            h-[300]
+                            rounded-full
+                            blur-3xl
+                            opacity-20
+                        "
+                                            style={{
+                                                background:
+                                                    "linear-gradient(135deg,#d4af37,#fff2b3)"
+                                            }}
+                                        />
+
+                                        {/* ICON */}
+                                        <div
+                                            className="
+                            relative
+                            z-10
+                            w-20
+                            h-20
+                            mx-auto
+                            rounded-full
+                            flex
+                            items-center
+                            justify-center
+                            text-4xl
+                            mb-6
+                        "
+                                            style={{
+                                                background: `
+                                linear-gradient(
+                                    135deg,
+                                    #8a6a12,
+                                    #d4af37,
+                                    #fff2b3
+                                )
+                            `,
+                                                color: "#000"
+                                            }}
+                                        >
+                                            ✦
+                                        </div>
+
+                                        {/* TITLE */}
+                                        <h2
+                                            className="
+                            relative
+                            z-10
+                            text-3xl
+                            font-extrabold
+                            mb-4
+                            tracking-wide
+                        "
+                                            style={{
+                                                color: "#E6C766"
+                                            }}
+                                        >
+                                            No Categories Found
+                                        </h2>
+
+                                        {/* DESC */}
+                                        <p
+                                            className="
+                            relative
+                            z-10
+                            text-gray-400
+                            text-lg
+                            leading-relaxed
+                            max-w-xl
+                            mx-auto
+                        "
+                                        >
+                                            New premium collections and luxury
+                                            categories will be available soon.
+                                        </p>
+
+                                        {/* LINE */}
+                                        <div
+                                            className="
+                            relative
+                            z-10
+                            w-40
+                            h-[2]
+                            mx-auto
+                            mt-8
+                            rounded-full
+                        "
+                                            style={{
+                                                background: `
+                                linear-gradient(
+                                    to right,
+                                    transparent,
+                                    #d4af37,
+                                    transparent
+                                )
+                            `
+                                            }}
+                                        />
+                                    </div>
+                                </div>
+
+                                :
+
+                                categories.map((item) => {
+                                    return (
+                                        <SwiperSlide key={item.category_id}>
+
+                                            <Link href={'/categories'}>
+
+                                                <div className="flex flex-col items-center group cursor-pointer">
+
+                                                    {/* IMAGE CIRCLE */}
+                                                    <div
+                                                        style={{
+                                                            borderColor: gold.mid,
+                                                        }}
+                                                        className="
                                         relative 
-                                        lg:w-[200] 
-                                        lg:h-[200]
-                                        sm:w-[180]
-                                        sm:h-[180]
-                                        w-[150]
-                                        h-[150]
+                                        lg:w-[150]
+                            lg:h-[150]
+                            md:w-[150]
+                            md:h-[150]
+                            sm:w-[130]
+                            sm:h-[130]
+                            w-[150]
+                            h-[150]
                                         rounded-full 
                                         overflow-hidden 
                                         border-2
@@ -122,28 +309,28 @@ export default function ShopByCategory() {
                                         shadow-[0_0_10px_rgba(212,175,55,0.15)]
                                         hover:shadow-[0_0_25px_rgba(212,175,55,0.55)]
                                     "
-                                        >
+                                                    >
 
-                                            {/* Gold Glow Ring */}
-                                            <div className="absolute inset-0 rounded-full border border-[#fff2b3]/30 z-20 scale-90 group-hover:scale-100 duration-500" />
+                                                        {/* GLOW RING */}
+                                                        <div className="absolute inset-0 rounded-full border border-[#fff2b3]/30 z-20 scale-90 group-hover:scale-100 duration-500" />
 
-                                            {/* Image */}
-                                            <Image
-                                                src={item.image}
-                                                fill
-                                                sizes="full"
-                                                alt={item.title}
-                                                className="
+                                                        {/* IMAGE */}
+                                                        <Image
+                                                            src={item.category_image}
+                                                            fill
+                                                            sizes="100vw"
+                                                            alt={item.category_name}
+                                                            className="
                                             object-cover
                                             object-center
                                             group-hover:scale-125
                                             duration-700
                                             w-full h-full
                                         "
-                                            />
+                                                        />
 
-                                            {/* Overlay */}
-                                            <div className="
+                                                        {/* OVERLAY */}
+                                                        <div className="
                                         absolute 
                                         inset-0 
                                         bg-linear-to-t 
@@ -155,11 +342,11 @@ export default function ShopByCategory() {
                                         duration-500
                                     " />
 
-                                        </div>
+                                                    </div>
 
-                                        {/* Title */}
-                                        <h2
-                                            className="
+                                                    {/* TITLE */}
+                                                    <h2
+                                                        className="
                                         mt-5
                                         text-center
                                         tracking-[0.18em]
@@ -170,18 +357,16 @@ export default function ShopByCategory() {
                                         duration-300
                                         group-hover:scale-110
                                     "
-                                            style={{
-                                                color: gold.light,
-                                                textShadow:
-                                                    "0px 0px 12px rgba(212,175,55,0.4)",
-                                            }}
-                                        >
-                                            {item.title}
-                                        </h2>
+                                                        style={{
+                                                            color: gold.base,
+                                                        }}
+                                                    >
+                                                        {item.category_name}
+                                                    </h2>
 
-                                        {/* Underline */}
-                                        <div
-                                            className="
+                                                    {/* UNDERLINE */}
+                                                    <div
+                                                        className="
                                         mt-2
                                         h-0.5
                                         w-0
@@ -189,17 +374,19 @@ export default function ShopByCategory() {
                                         duration-500
                                         rounded-full
                                     "
-                                            style={{
-                                                background:
-                                                    "linear-gradient(to right, #8a6a12, #d4af37, #fff2b3)",
-                                            }}
-                                        />
-                                    </div>
-                                </Link>
+                                                        style={{
+                                                            background:
+                                                                "linear-gradient(to right, #8a6a12, #d4af37, #fff2b3)",
+                                                        }}
+                                                    />
+                                                </div>
 
-                            </SwiperSlide>
-                        );
-                    })}
+                                            </Link>
+
+                                        </SwiperSlide>
+                                    );
+                                })
+                    }
                 </Swiper>
 
             </div>

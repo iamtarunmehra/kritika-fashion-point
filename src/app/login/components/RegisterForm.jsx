@@ -145,7 +145,9 @@ export const RegisterForm = () => {
                                 w-full
                                 bg-transparent
                                 outline-none
-                                py-4
+                                py-3
+                                tracking-wider
+                                text-lg
                                 text-white
                                 placeholder:text-gray-500
                             "
@@ -186,7 +188,9 @@ export const RegisterForm = () => {
                                 w-full
                                 bg-transparent
                                 outline-none
-                                py-4
+                                py-3
+                                tracking-wider
+                                text-lg
                                 text-white
                                 placeholder:text-gray-500
                             "
@@ -230,7 +234,9 @@ export const RegisterForm = () => {
                                     w-full
                                     bg-transparent
                                     outline-none
-                                    py-4
+                                    py-3
+                                    tracking-wide
+                                    text-lg
                                     text-white
                                     placeholder:text-gray-500
                                 "
@@ -252,7 +258,7 @@ export const RegisterForm = () => {
                                 hover:scale-[1.02]
                                 active:scale-[0.98]
                                 duration-300
-                                min-h-[56]
+                                py-3
                             "
                             style={{
                                 background: `
@@ -315,7 +321,7 @@ export const RegisterForm = () => {
                         w-full
                         bg-transparent
                         outline-none
-                        py-4
+                        py-3
                         text-white
                         tracking-[8px]
                         placeholder:text-gray-500
@@ -359,7 +365,9 @@ export const RegisterForm = () => {
                                 w-full
                                 bg-transparent
                                 outline-none
-                                py-4
+                                py-3
+                                tracking-wider
+                                text-lg
                                 text-white
                                 placeholder:text-gray-500
                             "
@@ -376,7 +384,7 @@ export const RegisterForm = () => {
                         relative
                         overflow-hidden
                         w-full
-                        py-4
+                        py-3
                         rounded-2xl
                         font-bold
                         text-lg

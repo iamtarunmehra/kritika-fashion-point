@@ -10,15 +10,15 @@ export default function AddToCartButton({ customClasses, icon }) {
             alert('Successfully Added to Cart')
         }}
 
-            className={`${customClasses} rounded-full cursor-pointer font-normal text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-3`}
+            className={`${customClasses} rounded-full cursor-pointer text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-2`}
             style={{
                 borderColor: gold.base,
                 color: gold.light,
             }}
 
         >
-            {icon && <ShoppingCart size={22} />}
-            Add to cart
+            <ShoppingCart size={18} />
+            Cart
         </button>
     )
 }

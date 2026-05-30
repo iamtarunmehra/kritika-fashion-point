@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from 'swiper/modules';
 import Link from 'next/link';
@@ -10,117 +10,68 @@ import Overlay from '../common/Overlay';
 import { DecorativeLine } from '../common/DecorativeLine';
 import BuyNowButton from '../common/BuyNowButton';
 import AddToCartButton from '../common/AddToCartButton';
+import ProductCard from '../categories/[slug]/ProductCard';
+import { get_api } from '../api_helper/api_helper';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategories, setCategoryLoading } from '../redux/slices/categorySlice';
+import { setProductLoading, setProducts } from '../redux/slices/productSlice';
+import ProductCardSkeleton from '../categories/[slug]/ProductSkelaton';
 
 
 export default function NewArrivals() {
 
+
+    //get products and categories
+    const { categories, category_loading } = useSelector(
+        (state) => state.categories
+    );
+    const { products, products_loading } = useSelector(
+        (state) => state.products
+    );
+
+    const new_arrivals = products.slice(0, 10)
+    // console.log('check', products, new_arrivals)
+
+
     const swiperRef = useRef(null)
-    const top_selling_data = [
-        {
-            id: 1,
-            title: 'Kundan Bridal Necklace Set',
-            price: '4,999',
-            description: 'Elegant kundan necklace set with matching earrings for bridal look',
-            image: '/p1.jpg',
-            category: 'Necklace',
-        },
-        {
-            id: 2,
-            title: 'Gold Plated Jhumka',
-            price: '799',
-            description: 'Traditional jhumka with antique gold finish',
-            image: '/p1.jpg',
-            category: 'Earrings',
-        },
-        {
-            id: 3,
-            title: 'Polki Choker Set',
-            price: '2,499',
-            description: 'Premium polki choker perfect for wedding functions',
-            image: '/p1.jpg',
-            category: 'Choker',
-        },
-        {
-            id: 4,
-            title: 'Temple Jewellery Necklace',
-            price: '3,299',
-            description: 'South Indian temple design necklace with detailed carvings',
-            image: '/p1.jpg',
-            category: 'Temple Jewellery',
-        },
-        {
-            id: 5,
-            title: 'Oxidised Silver Necklace',
-            price: '1,299',
-            description: 'Trendy oxidised necklace for casual & ethnic wear',
-            image: '/p1.jpg',
-            category: 'Oxidised',
-        },
-        {
-            id: 6,
-            title: 'Bangles Set (Pack of 4)',
-            price: '999',
-            description: 'Stylish bangles set with golden polish',
-            image: '/p1.jpg',
-            category: 'Bangles',
-        },
-        {
-            id: 7,
-            title: 'Maang Tikka Bridal',
-            price: '499',
-            description: 'Beautiful maang tikka for bridal and festive wear',
-            image: '/p1.jpg',
-            category: 'Maang Tikka',
-        },
-    ];
 
     const [getNowModel, setGetNowModel] = useState(false)
 
     return (
-        <section className="w-full bg-black lg:mt-10 mt-10 overflow-hidden relative">
+        <section className="w-full bg-black lg:mt-28 md:mt-40 mt-48 overflow-hidden relative">
             {getNowModel && <Overlay />}
             <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
 
-            <div className='flex justify-center relative z-40 lg:my-12 mt-30'>
-                <span style={{
-                    background: `
-                    linear-gradient(
-                        to left,
-                        #8a6a12 0%,
-                        #b8860b 20%,
-                        #d4af37 40%,
-                        #fff2b3 50%,
-                        #d4af37 60%,
-                        #b8860b 80%,
-                        #8a6a12 100%
-                    )`}} className='font-semibold rounded-full bg-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-16 md:px-12 px-10 lg:my-10 my-10 capitalize'>New Arrivals
-                    <div
-                        className="
-                                    absolute
-                                    top-1/2
-                                    left-1/2
-                                    -translate-x-1/2
-                                    w-screen
-                                    h-[0.5px]
-                                    -z-10
-                                "
-                        style={{
-                            background: `
-                                        linear-gradient(
-                                            90deg,
-                                            transparent 0%,
-                                            rgba(245,223,139,0.15) 20%,
-                                            rgba(245,223,139,1) 50%,
-                                            rgba(245,223,139,0.15) 80%,
-                                            transparent 100%
-                                        )
-                                    `
-                        }}
-                    >
+            {/* Heading */}
+            <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-8">
 
-                    </div>
+                {/* Main Heading */}
+                <span
+                    className="relative z-10 lg:text-4xl text-3xl border-x-[4] rounded-tr-full  rounded-bl-full rounded-md lg:px-16 md:px-10 px-10 py-2 font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
+                    style={{
+                        borderColor: gold.dark,
+                        backgroundImage:
+                            `linear-gradient(90deg,${gold.dark},${gold.base},${gold.dark})`,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        display: "inline-block",
+                        fontFamily: "serif",
+                    }}
+                >
+                    New Arrivals
                 </span>
-            </div>
+
+                {/* Glow Effect
+                               <div
+                                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
+                                   style={{
+                                       background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
+                                   }}
+                               /> */}
+
+                {/* Decorative Line */}
+                {/* <DecorativeLine /> */}
+            </h1>
 
 
 
@@ -138,45 +89,180 @@ export default function NewArrivals() {
                         breakpoints={{
                             320: { slidesPerView: 1 },
                             640: { slidesPerView: 2 },
-                            1024: { slidesPerView: 4 },
+                            1024: { slidesPerView: 5 },
                         }}
                     >
-                        {top_selling_data.map((item, index) => (
-                            <SwiperSlide key={index}>
-                                <Link key={index} href={`/categories/${item.title}`}>
-                                    <div
-                                        style={{ borderColor: gold.dark }}
-                                        className="border  cursor-pointer rounded-xl shadow-md hover:shadow-xl transition group h-auto flex flex-col justify-between overflow-hidden relative">
+                        {
+                            products_loading
+                                ?
+                                [...Array(5)].map((_, index) => (
+                                    <SwiperSlide key={index}>
+                                        <ProductCardSkeleton />
+                                    </SwiperSlide>
+                                ))
 
-                                        {/* DISCOUNT BUTTON */}
-                                        <button style={{ background: 'linear-gradient(135deg, #ff3b3b, #8b0000)' }} className='absolute top-0 right-0 py-1  z-50 px-5 rounded-l-lg text-white'>Discount -35%</button>
+                                :
 
-                                        <div className='p-5 bg-black'>
-                                            <div className='h-[200] relative'>
-                                                <Image src={item.image} alt={item.title} fill sizes='full' className='w-full h-full object-cover duration-300 hover:scale-[1.05] rounded-2xl hover:rounded-none' />
-                                            </div>
-                                        </div>
+                                new_arrivals.length === 0
 
-                                        <div style={{ borderTopColor: gold.dark }} className='border-t p-5 bg-black '>
-                                            <h2 className="text-xl text-[#E6C766] font-extrabold mb-3 relative mt-3 duration-300">{item.title}
+                                    ?
 
-                                                <div style={{ background: gold.base }} className='absolute top-[105%] left-0 w-[20] h-[3] group-hover:w-[70] duration-500 rounded-full transition-all'></div>
-                                            </h2>
-                                            <p className="text-lg text-white mb-2 line-clamp-1">{item.description}</p>
-                                            <p style={{ color: gold.base }} className="text-2xl font-extrabold ">Price - ₹ {item.price}</p>
-                                        </div>
+                                    <NoNewArrFound />
 
-                                        <div className='grid grid-cols-2 gap-3 px-5 pb-5 bg-black'>
-                                            <AddToCartButton />
-                                            <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
-                                        </div>
-                                    </div>
-                                </Link>
-                            </SwiperSlide>
-                        ))}
+                                    :
+
+                                    new_arrivals.map((item, index) => (
+                                        <SwiperSlide key={index}>
+                                            <ProductCard
+                                                item={item}
+                                                index={index}
+                                                getNowModel={getNowModel}
+                                                setGetNowModel={setGetNowModel}
+                                            />
+                                        </SwiperSlide>
+                                    ))
+                        }
                     </Swiper>
                 </div>
             </div>
         </section>
     )
 }
+
+export function NoNewArrFound() {
+    return (
+        <div
+            className='
+        w-full
+        flex
+        items-center
+        justify-center
+        px-6
+    '
+        >
+            <div
+                className='
+            relative
+            overflow-hidden
+            rounded-3xl
+            border
+            border-[#5c4308]
+            bg-black
+            px-10
+            py-5
+            text-center
+            max-w-2xl
+            w-full
+            shadow-2xl
+        '
+            >
+
+                {/* GLOW EFFECT */}
+                <div
+                    className='
+                absolute
+                top-[-100]
+                left-1/2
+                -translate-x-1/2
+                w-[300]
+                h-[300]
+                rounded-full
+                blur-3xl
+                opacity-20
+            '
+                    style={{
+                        background:
+                            "linear-gradient(135deg,#d4af37,#fff2b3)"
+                    }}
+                />
+
+                {/* ICON */}
+                <div
+                    className='
+                relative
+                z-10
+                w-20
+                h-20
+                mx-auto
+                rounded-full
+                flex
+                items-center
+                justify-center
+                text-4xl
+                mb-6
+            '
+                    style={{
+                        background: `
+                    linear-gradient(
+                        135deg,
+                        #8a6a12,
+                        #d4af37,
+                        #fff2b3
+                    )
+                `,
+                        color: "#000"
+                    }}
+                >
+                    ✦
+                </div>
+
+                {/* TITLE */}
+                <h2
+                    className='
+                relative
+                z-10
+                text-3xl
+                font-extrabold
+                mb-4
+                tracking-wide
+            '
+                    style={{
+                        color: "#E6C766"
+                    }}
+                >
+                    No New Arrivals Found
+                </h2>
+
+                {/* DESCRIPTION */}
+                <p
+                    className='
+                relative
+                z-10
+                text-gray-400
+                text-lg
+                leading-relaxed
+                max-w-xl
+                mx-auto
+            '
+                >
+                    Fresh luxury collections are on the way.
+                    Stay tuned for our latest premium arrivals and
+                    exclusive designs.
+                </p>
+
+                {/* DECORATIVE LINE */}
+                <div
+                    className='
+                relative
+                z-10
+                w-40
+                h-[2]
+                mx-auto
+                mt-8
+                rounded-full
+            '
+                    style={{
+                        background: `
+                    linear-gradient(
+                        to right,
+                        transparent,
+                        #d4af37,
+                        transparent
+                    )
+                `
+                    }}
+                />
+            </div>
+        </div>
+    )
+} 

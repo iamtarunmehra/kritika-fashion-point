@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-export default function BuyNowButton({ getNowModel, setGetNowModel }) {
+export default function BuyNowButton({ getNowModel, setGetNowModel, customClasses }) {
 
     return (
         <button
@@ -10,7 +10,7 @@ export default function BuyNowButton({ getNowModel, setGetNowModel }) {
                 setGetNowModel(true)
                 e.stopPropagation()
             }}
-            className="relative px-6 py-2 text-black font-bold rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
+            className={`${customClasses} relative px-6 py-2 text-black font-bold rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95`}
             style={{
                 background: `
                 linear-gradient(

@@ -1,4 +1,80 @@
-export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
+'use client'
+import { useState } from "react"
+
+export function FilterModel({ products, filterModelOpen, setFilterModelOpen, categories, filteredProducts, setFilteredProducts }) {
+
+
+    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedPriceRange, setSelectedPriceRange] = useState("");
+    const [selectedType, setSelectedType] = useState("");
+    const [priceType, setPriceType] = useState("");
+
+
+    const checkPriceRange = (price) => {
+        switch (selectedPriceRange) {
+            case "0-499":
+                return price >= 0 && price <= 499;
+
+            case "499-999":
+                return price > 499 && price <= 999;
+
+            case "999-1499":
+                return price > 999 && price <= 1499;
+
+            case "1499-1999":
+                return price > 1499 && price <= 1999;
+
+            case "1999+":
+                return price > 1999;
+
+            default:
+                return true;
+        }
+    };
+
+
+    const applyFilter = () => {
+        let filtered = [...products].filter((product) => {
+
+            const categoryMatch = selectedCategory
+                ? String(product.category_id) === String(selectedCategory)
+                : true;
+
+            const typeMatch = selectedType
+                ? product.p_type?.toLowerCase() === selectedType.toLowerCase()
+                : true;
+
+            const priceMatch = selectedPriceRange
+                ? checkPriceRange(Number(product.sale_price))
+                : true;
+
+            return (
+                categoryMatch &&
+                typeMatch &&
+                priceMatch
+            );
+        });
+
+        if (priceType === "low-high") {
+            filtered.sort(
+                (a, b) =>
+                    Number(a.sale_price) -
+                    Number(b.sale_price)
+            );
+        }
+
+        if (priceType === "high-low") {
+            filtered.sort(
+                (a, b) =>
+                    Number(b.sale_price) -
+                    Number(a.sale_price)
+            );
+        }
+
+        setFilteredProducts(filtered);
+        setFilterModelOpen(false);
+    };
+
     return (
         <>
             {/* Overlay */}
@@ -16,6 +92,7 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
             {/* Modal */}
             <div
                 className={`
+                    sm:h-fit h-screen
                     fixed top-1/2 left-1/2
                     -translate-x-1/2 -translate-y-1/2
                     z-130
@@ -71,8 +148,8 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
 
                     {/* Category */}
                     <div>
-                        <h3 className="text-[#E6C766] font-semibold mb-3 tracking-wide">
-                            Category
+                        <h3 style={{ fontFamily: 'Poppins' }} className="text-[#E6C766] font-semibold mb-3 tracking-wide">
+                            Select Category
                         </h3>
 
                         <div
@@ -85,58 +162,54 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                                     pr-3
                                     custom-scrollbar
                                 "
-                        >                            {
-                                [
-                                    "Necklace",
-                                    "Jhumka",
-                                    "Choker",
-                                    "Bangles",
-                                    "Temple",
-                                    "Bridal",
+                        >
 
-                                    "Kundan",
-                                    "Polki",
-                                    "Oxidised",
-                                    "Anklet",
-                                    "Bracelet",
-                                    "Pendant",
-                                    "Chain",
-                                    "Ring",
-                                    "Nose Ring",
-                                    "Maang Tikka",
-                                    "Passa",
-                                    "Matha Patti",
-                                    "Earcuff",
-                                    "Stud Earrings",
-                                    "Hoop Earrings",
-                                    "Pearl Set",
-                                    "American Diamond",
-                                    "Minimal Jewellery",
-                                    "Cocktail Ring",
-                                    "Layered Necklace",
-                                    "Hasli",
-                                    "Traditional Set",
-                                    "Rajwadi",
-                                    "Meenakari",
-                                    "Stone Work",
-                                ]
-                                    .map((item, index) => (
-                                        <button
-                                            key={index}
-                                            className="
+                            <button
+                                style={{ fontFamily: 'Poppins' }}
+                                onClick={() => setSelectedCategory(null)}
+                                className={
+                                    `
+        ${selectedCategory === null
+                                        ? 'bg-amber-300 text-black'
+                                        : 'bg-transparent border-amber-300 text-amber-300'}
                                         px-4 py-2
+                                        font-semibold
                                         rounded-full
                                         border
-                                        border-[#7a5a08]
                                         text-sm
-                                        text-[#E6C766]
-                                        hover:bg-[#D4AF37]
                                         hover:text-black
+                                        hover:bg-amber-300
+                                        hover:border-transparent
                                         duration-300
                                         cursor-pointer
-                                    "
+                                            `
+                                }
+                            >
+                                All
+                            </button>
+
+                            {
+                                categories
+                                    .map((item, index) => (
+                                        <button
+                                            onClick={() => setSelectedCategory(item.category_id)}
+                                            style={{ fontFamily: 'Poppins' }}
+                                            key={index}
+                                            className={`
+                                                ${selectedCategory == item.category_id ? 'bg-amber-300 text-black' : 'bg-transparent border-amber-300 text-amber-300'}
+                                        px-4 py-2
+                                        font-semibold
+                                        rounded-full
+                                        border
+                                        text-sm
+                                        hover:text-black
+                                        hover:bg-amber-300
+                                        hover:border-transparent
+                                        duration-300
+                                        cursor-pointer
+                                    `}
                                         >
-                                            {item}
+                                            {item.category_name}
                                         </button>
                                     ))}
                         </div>
@@ -150,6 +223,8 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
 
                         <div className="relative">
                             <select
+                                value={selectedPriceRange}
+                                onChange={(e) => setSelectedPriceRange(e.target.value)}
                                 className="
                                 w-full
                                 appearance-none
@@ -168,27 +243,27 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                                 duration-300
                             "
                             >
-                                <option className="bg-black text-white">
+                                <option value={""} className="bg-black text-white">
                                     Select Price Range
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"0-499"} className="bg-black text-white">
                                     ₹0 - ₹499
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"499-999"} className="bg-black text-white">
                                     ₹499 - ₹999
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"999-1499"} className="bg-black text-white">
                                     ₹999 - ₹1499
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"1499-1999"} className="bg-black text-white">
                                     ₹1499 - ₹1999
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"1999+"} className="bg-black text-white">
                                     ₹1999 Above
                                 </option>
                             </select>
@@ -208,6 +283,8 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
 
                         <div className="relative">
                             <select
+                                value={priceType}
+                                onChange={(e) => setPriceType(e.target.value)}
                                 className="
                                 w-full
                                 appearance-none
@@ -226,15 +303,15 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                                 duration-300
                             "
                             >
-                                <option className="bg-black text-white">
+                                <option value={""} className="bg-black text-white">
                                     Select Price Type
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"low-high"} className="bg-black text-white">
                                     Low To High
                                 </option>
 
-                                <option className="bg-black text-white">
+                                <option value={"high-low"} className="bg-black text-white">
                                     High To Low
                                 </option>
                             </select>
@@ -274,9 +351,11 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                                 <input
                                     type="radio"
                                     name="item-type"
+                                    value="single"
+                                    checked={selectedType === "single"}
+                                    onChange={(e) => setSelectedType(e.target.value)}
                                     className="hidden peer"
                                 />
-
                                 {/* Custom Radio */}
                                 <div
                                     className="
@@ -322,6 +401,9 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                                 <input
                                     type="radio"
                                     name="item-type"
+                                    value="combo"
+                                    checked={selectedType === "combo"}
+                                    onChange={(e) => setSelectedType(e.target.value)}
                                     className="hidden peer"
                                 />
 
@@ -361,6 +443,14 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                     <div className="grid grid-cols-2 gap-4 pt-3">
 
                         <button
+                            onClick={() => {
+                                setSelectedCategory(null);
+                                setSelectedPriceRange("");
+                                setSelectedType("");
+                                setPriceType("");
+                                setFilteredProducts(products);
+                                setFilterModelOpen(false);
+                            }}
                             className="
                                 py-3 rounded-xl
                                 bg-[#111]
@@ -375,6 +465,7 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                         </button>
 
                         <button
+                            onClick={applyFilter}
                             style={{
                                 background: `linear-gradient(
                                     135deg,
@@ -397,7 +488,7 @@ export function FilterModel({ filterModelOpen, setFilterModelOpen }) {
                                 cursor-pointer
                             "
                         >
-                            Apply Filter
+                            Show Results
                         </button>
                     </div>
                 </div>

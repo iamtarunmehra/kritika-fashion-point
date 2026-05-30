@@ -255,7 +255,7 @@ export default function ProductDetailClient() {
                             <AddToCartButton customClasses={customClasses} icon={'true'} />
 
                             {/* Buy Now */}
-                            <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+                            <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} customClasses={'py-3'} />
                         </div>
 
                         {/* Features */}
@@ -563,7 +563,7 @@ export default function ProductDetailClient() {
                     >
                         {top_selling_data.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <ProductCard item={item} index={index} getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+                                <ProductCard key={index} item={item} index={index} getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

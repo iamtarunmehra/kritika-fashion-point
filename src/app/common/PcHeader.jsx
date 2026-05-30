@@ -201,9 +201,9 @@ export function Logo({ premiumGoldGradient }) {
 const nav_bar_data = [
     { title: 'home', link: '/' },
     { title: 'about', link: '/about' },
-    { title: 'shop now', link: '/shop-now' },
+    { title: 'shop', link: '/shop-now' },
     { title: 'categories', link: '/categories' },
-    { title: 'contact us', link: '/contact-us' },
+    { title: 'contact', link: '/contact-us' },
 ]
 
 function NavBar() {
