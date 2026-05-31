@@ -213,7 +213,7 @@ export default function ProductCard({
                 </div>
 
                 {/* BUTTONS */}
-                <div className="grid grid-cols-2 gap-2 px-5 pb-5 bg-black">
+                <div className="grid grid-cols-2  gap-2 px-5 pb-5 bg-black">
 
                     <AddToCartButton item={item} />
 

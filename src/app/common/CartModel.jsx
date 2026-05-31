@@ -62,7 +62,7 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
             <div
                 className={`
                     fixed top-0 right-0
-                    lg:w-[32%] sm:w-[65%] w-full
+                    lg:w-[25%] md:w-[40%] sm:w-[40%] w-[80%]
                     h-screen
                     z-110
                     duration-500
@@ -195,7 +195,7 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                 }}
                             /> */}
 
-                            <div className='flex gap-4 relative z-10'>
+                            <div className='flex flex-col gap-4 relative z-10'>
 
                                 {/* Image */}
                                 <Link href={`/categories/${item.title}`}>
@@ -206,14 +206,14 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                         style={{
                                             border: `1px solid ${gold.base}30`
                                         }}
-                                        className='relative min-w-[110] h-[120] rounded-2xl overflow-hidden bg-black'
+                                        className='relative min-w-[110] h-[200] rounded-2xl overflow-hidden bg-black'
                                     >
                                         <Image
                                             src={item.image}
                                             alt={item.title}
                                             fill
                                             sizes='full'
-                                            className='object-cover hover:scale-105 duration-500'
+                                            className='sm:object-cover object-contain object-center hover:scale-105 duration-500'
                                         />
                                     </div>
                                 </Link>

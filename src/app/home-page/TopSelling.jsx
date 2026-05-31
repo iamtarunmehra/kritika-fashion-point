@@ -83,53 +83,49 @@ export default function TopSelling() {
                     <DecorativeLine />
                 </h1>
 
-                <div className='lg:p-0 p-3'>
-                    <Swiper
-                        modules={[Autoplay]}
-                        onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        spaceBetween={20}
-                        slidesPerView={4}
-                        loop={true}
-                        autoplay={{ delay: 2000, disableOnInteraction: false }}
-                        breakpoints={{
-                            320: { slidesPerView: 1 },
-                            640: { slidesPerView: 2 },
-                            1024: { slidesPerView: 5 },
-                        }}
-                    >
-                        {
-                            products_loading
-                                ?
-                                [...Array(4)].map((_, index) => (
-                                    <SwiperSlide key={index}>
-                                        <ProductCardSkeleton />
-                                    </SwiperSlide>
-                                ))
+                <div>
+                    {products_loading ? (
 
-                                :
+                        <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-1 gap-x-5 gap-y-8'>
+                            {[...Array(10)].map((_, index) => (
+                                <ProductCardSkeleton key={index} />
+                            ))}
+                        </div>
 
-                                top_selling.length === 0
+                    ) : top_selling.length === 0 ? (
 
-                                    ?
+                        <NoNewArrFound title={'No Top Selling Products Yet'} />
 
-                                    <SwiperSlide>
-                                        <NoNewArrFound title={'No Top Selling Products Yet'} />
-                                    </SwiperSlide>
+                    ) : (
 
-                                    :
-
-                                    top_selling.map((item, index) => (
-                                        <SwiperSlide key={index}>
-                                            <ProductCard
-                                                item={item}
-                                                index={index}
-                                                getNowModel={getNowModel}
-                                                setGetNowModel={setGetNowModel}
-                                            />
-                                        </SwiperSlide>
-                                    ))
-                        }
-                    </Swiper>
+                        <Swiper
+                            modules={[Autoplay]}
+                            onSwiper={(swiper) => (swiperRef.current = swiper)}
+                            spaceBetween={20}
+                            slidesPerView={4}
+                            loop={true}
+                            autoplay={{
+                                delay: 2000,
+                                disableOnInteraction: false,
+                            }}
+                            breakpoints={{
+                                320: { slidesPerView: 1 },
+                                640: { slidesPerView: 3 },
+                                1024: { slidesPerView: 5 },
+                            }}
+                        >
+                            {top_selling.map((item, index) => (
+                                <SwiperSlide key={item.product_id || index}>
+                                    <ProductCard
+                                        item={item}
+                                        index={index}
+                                        getNowModel={getNowModel}
+                                        setGetNowModel={setGetNowModel}
+                                    />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    )}
                 </div>
             </div>
         </section>

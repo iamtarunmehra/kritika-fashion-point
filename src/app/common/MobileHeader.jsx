@@ -8,9 +8,12 @@ import Link from 'next/link'
 import { VscTriangleRight } from 'react-icons/vsc'
 import { Logo } from './PcHeader'
 import { FaShoppingCart } from 'react-icons/fa'
+import WishListModel from './WishListModel'
+import CartModel from './CartModel'
 
 export default function MobileHeader() {
     const [mobileMenu, setMobileMenu] = useState(false)
+    const [wishListModelOpen, setWishListModelOpen] = useState(false)
 
     const premiumGoldGradient = `
         linear-gradient(
@@ -26,9 +29,12 @@ export default function MobileHeader() {
         )
     `
 
-
+    const [cartModelOpen, setCartModelOpen] = useState(false)
     return (
         <>
+            <WishListModel wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} />
+            <CartModel cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
+
             <div
                 // style={{ background: 'rgba(44, 15, 58, 1)', borderBottomColor: gold.base }}
                 style={{ background: 'black', borderColor: gold.base }}
@@ -133,12 +139,14 @@ export default function MobileHeader() {
                     <div className='flex items-center sm:gap-5 gap-4'>
 
                         <FaRegHeart
+                            onClick={() => setWishListModelOpen(true)}
                             style={{ color: gold.base }}
                             size={25}
                             className='relative z-10 text-[#f5df8b]'
                         />
 
                         <FaShoppingCart
+                            onClick={() => setCartModelOpen(true)}
                             style={{ color: gold.base }}
                             size={22}
                             className='relative z-10 '

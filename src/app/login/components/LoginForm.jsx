@@ -1,10 +1,96 @@
+'use client'
+import { post_api } from "@/app/api_helper/api_helper";
+import { loginSuccess } from "@/app/redux/slices/userSlice";
 import {
     Mail,
     Lock,
     ArrowRight
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
+
+    const dispatch = useDispatch();
+
+    const token = useSelector((store) => store.user.token)
+
+    const router = useRouter();
+
+    const [loading, setLoading] = useState(false);
+
+    const [loginData, setLoginData] = useState({
+        email: "",
+        password: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setLoginData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const { email, password } = loginData;
+
+        if (!email.trim()) {
+            return toast.warning("Please enter email");
+        }
+
+        if (!password.trim()) {
+            return toast.warning("Please enter password");
+        }
+
+        try {
+            setLoading(true);
+
+            const response = await post_api({
+                body: loginData,
+                params: null,
+                path: "user/login",
+            });
+
+            if (response.data.status) {
+
+                toast.success(
+                    response.data.message || "Login Successful"
+                );
+
+                dispatch(
+                    loginSuccess({
+                        user: response.data.data,
+                        token: response.data.token,
+                    })
+                );
+
+                setTimeout(() => {
+                    router.push("/dashboard");
+                }, 1000);
+
+            } else {
+                toast.error(response.data.message);
+            }
+
+        } catch (error) {
+
+            toast.error(
+                error?.response?.data?.message ||
+                error?.message ||
+                "Login Failed"
+            );
+
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="animate-in fade-in duration-500">
 
@@ -25,7 +111,9 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                 Login to continue shopping
             </p>
 
-            <form className="space-y-6">
+            <form
+                onSubmit={handleSubmit}
+                className="space-y-6">
 
                 {/* Email */}
                 <div>
@@ -60,6 +148,9 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                         </PremiumIcon>
 
                         <input
+                            name="email"
+                            value={loginData.email}
+                            onChange={handleChange}
                             type="email"
                             placeholder="Enter your email"
                             className="
@@ -111,6 +202,9 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                         </PremiumIcon>
 
                         <input
+                            name="password"
+                            value={loginData.password}
+                            onChange={handleChange}
                             type="password"
                             placeholder="Enter password"
                             className="
@@ -176,7 +270,7 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                     />
 
                     <span className="relative z-10">
-                        Login
+                        {loading ? "Logging In..." : "Login"}
                     </span>
 
                     <ArrowRight

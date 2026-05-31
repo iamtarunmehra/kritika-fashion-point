@@ -547,7 +547,7 @@ export default function ProductDetailClient() {
 
                 </div>
 
-                <div className='lg:mb-5 mb-5 lg:p-0 p-3'>
+                <div className='lg:mb-5 mb-5'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}

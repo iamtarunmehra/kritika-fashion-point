@@ -10,7 +10,7 @@ export default function AddToCartButton({ customClasses, icon }) {
             alert('Successfully Added to Cart')
         }}
 
-            className={`${customClasses} rounded-full cursor-pointer text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-2`}
+            className={`${customClasses} py-1 rounded-full cursor-pointer text-lg border-2 hover:scale-[1.02] duration-300 flex items-center justify-center gap-2`}
             style={{
                 borderColor: gold.base,
                 color: gold.light,

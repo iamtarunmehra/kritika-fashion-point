@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { gold } from '../colors/color'
 import { FaLocationDot } from 'react-icons/fa6'
@@ -6,6 +7,7 @@ import { MdEmail } from 'react-icons/md'
 import { BiLocationPlus } from 'react-icons/bi'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
 
 export default function Footer() {
 
@@ -17,20 +19,9 @@ export default function Footer() {
         { title: 'contact us', link: '/' },
     ]
 
-    const categories = [
-        { id: 1, title: 'Kamar Band', link: '/categories/kamar-band' },
-        { id: 2, title: 'Bajuband', link: '/categories/bajuband' },
-        { id: 3, title: 'Necklace Set', link: '/categories/necklace-set' },
-        { id: 4, title: 'Choker', link: '/categories/choker' },
-        { id: 5, title: 'Earrings', link: '/categories/earrings' },
-        { id: 6, title: 'Jhumka', link: '/categories/jhumka' },
-        { id: 7, title: 'Maang Tikka', link: '/categories/maang-tikka' },
-        { id: 8, title: 'Nath', link: '/categories/nath' },
-        { id: 9, title: 'Bangles', link: '/categories/bangles' },
-        { id: 10, title: 'Bracelet', link: '/categories/bracelet' },
-        { id: 11, title: 'Anklet', link: '/categories/anklet' },
-        { id: 12, title: 'Temple Jewellery', link: '/categories/temple-jewellery' },
-    ]
+    const { products, products_loading } = useSelector(
+        (state) => state.products
+    );
 
     return (
         <footer
@@ -249,7 +240,7 @@ export default function Footer() {
                                 w-fit
                             '
                         >
-                            Categories
+                            Top Selling Proudcts
 
                             <div style={{
                                 background: `
@@ -267,8 +258,8 @@ export default function Footer() {
                         </h2>
 
                         <ul className='grid sm:grid-cols-2 gap-x-10 gap-y-4'>
-                            {categories.map((item) => (
-                                <Link key={item.id} href={item.link}>
+                            {products.map((item) => (
+                                <Link key={item.id} href={`/categories/${item.p_slug}`}>
                                     <li
                                         className='
                                             relative
@@ -282,7 +273,7 @@ export default function Footer() {
                                             text-lg
                                         '
                                     >
-                                        {item.title}
+                                        {item.p_title}
 
                                         <div
                                             className='
@@ -394,7 +385,7 @@ export default function Footer() {
                                         />
                                     </div>
 
-                                    <p className='text-[#d9d9d9] leading-7 group-hover:text-white duration-300'>
+                                    <p className='text-[#d9d9d9] text-lg leading-7 group-hover:text-white duration-300'>
                                         New Pal Road Opposite Barkatullah Khan Stadium,
                                         Jodhpur, Rajasthan
                                     </p>
@@ -435,19 +426,18 @@ export default function Footer() {
                                     />
                                 </div>
 
-                                <div className='text-[#d9d9d9] leading-8 flex items-center  gap-3'>
+                                <div className='text-[#d9d9d9] text-lg leading-8 flex items-center gap-1'>
                                     <a
                                         href='tel:8079994755'
                                         className='hover:text-[#f5df8b] duration-300 block'
                                     >
-                                        +91 8079994755 ,
+                                        8079994755 ,
                                     </a>
-
                                     <a
                                         href='tel:8079994755'
                                         className='hover:text-[#f5df8b] duration-300 block'
                                     >
-                                        +91 8079994755
+                                        8079994755
                                     </a>
                                 </div>
 
@@ -495,6 +485,7 @@ export default function Footer() {
                                         hover:text-[#f5df8b]
                                         duration-300
                                         break-all
+                                        text-lg
                                     '
                                 >
                                     kritikafashionpoint@gmail.com

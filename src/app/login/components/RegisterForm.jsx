@@ -1,3 +1,4 @@
+import { post_api } from "@/app/api_helper/api_helper";
 import {
     Mail,
     Lock,
@@ -5,12 +6,247 @@ import {
     Phone,
     ArrowRight
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-export const RegisterForm = () => {
+export const RegisterForm = ({ setActiveTab }) => {
 
+
+    const [resendTimer, setResendTimer] = useState(0);
+    const [otpSent, setOtpSent] = useState(false);
     const [showOtp, setShowOtp] = useState(false)
+    const [otpVerified, setOtpVerified] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [otpLoading, setOtpLoading] = useState(false);
+    const [verifyOtpLoading, setverifyOtpLoading] = useState(false)
+
+
+
+    useEffect(() => {
+        let interval;
+
+        if (resendTimer > 0) {
+            interval = setInterval(() => {
+                setResendTimer((prev) => prev - 1);
+            }, 1000);
+        }
+
+        return () => clearInterval(interval);
+    }, [resendTimer]);
+
+    const [registerData, setRegisterData] = useState({
+        name: "",
+        mobile: "",
+        email: "",
+        otp: "",
+        password: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setRegisterData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const {
+            name,
+            mobile,
+            email,
+            otp,
+            password,
+        } = registerData;
+
+        if (!name.trim()) {
+            return toast.warning("Please enter your name");
+        }
+
+        if (!mobile.trim()) {
+            return toast.warning("Please enter mobile number");
+        }
+
+        if (!/^[6-9]\d{9}$/.test(mobile)) {
+            return toast.warning("Please enter valid mobile number");
+        }
+
+        if (!email.trim()) {
+            return toast.warning("Please enter email");
+        }
+
+        if (!otp.trim()) {
+            return toast.warning("Please enter OTP");
+        }
+
+        if (!password.trim()) {
+            return toast.warning("Please enter password");
+        }
+
+        if (password.length < 6) {
+            return toast.warning(
+                "Password must be at least 6 characters"
+            );
+        }
+
+        if (!otpVerified) {
+            return toast.warning(
+                "Please verify OTP before registration"
+            );
+        }
+
+        try {
+            setLoading(true);
+
+            const response = await post_api({
+                body: registerData,
+                params: null,
+                path: "user/create-user",
+            });
+
+            if (response.data.status) {
+
+                toast.success(response.data.message);
+
+                setRegisterData({
+                    name: "",
+                    mobile: "",
+                    email: "",
+                    otp: "",
+                    password: "",
+                });
+
+                setActiveTab('login')
+
+                setShowOtp(false);
+                setOtpVerified(false);
+
+            } else {
+                toast.error(response.data.message);
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            toast.error(
+                error?.response?.data?.message ||
+                error?.message ||
+                "Something went wrong"
+            );
+
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const sendOtp = async () => {
+        console.log("Send OTP Clicked");
+
+        const { name, mobile, email } = registerData;
+
+        try {
+            setOtpLoading(true);
+
+            const response = await post_api({
+                body: {
+                    name,
+                    mobile,
+                    email,
+                },
+                params: null,
+                path: "user/send-otp",
+            });
+
+            console.log(response);
+
+            if (response.data.status) {
+                toast.success(response.data.message);
+
+                setShowOtp(true);
+                setOtpSent(true);
+                setResendTimer(60);
+
+                // Reset verification on resend
+                setOtpVerified(false);
+
+                // Clear old OTP
+                setRegisterData((prev) => ({
+                    ...prev,
+                    otp: "",
+                }));
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(
+                error?.response?.data?.message ||
+                "Failed to send OTP"
+            );
+        } finally {
+            setOtpLoading(false);
+        }
+    };
+
+    const verifyOtp = async () => {
+
+        if (!registerData.email.trim()) {
+            return toast.warning("Please enter email");
+        }
+
+        if (!registerData.otp.trim()) {
+            return toast.warning("Please enter OTP");
+        }
+
+        try {
+            setverifyOtpLoading(true);
+
+            const response = await post_api({
+                body: {
+                    email: registerData.email,
+                    otp: registerData.otp,
+                },
+                params: null,
+                path: "user/verify-otp",
+            });
+
+            switch (response.data.code) {
+
+                case 200:
+                    toast.success(response.data.message);
+                    setOtpVerified(true);
+                    break;
+
+                case 401:
+                    toast.error(response.data.message);
+                    break;
+
+                case 404:
+                    toast.error(response.data.message);
+                    break;
+
+                case 410:
+                    toast.error(response.data.message);
+                    break;
+
+                default:
+                    toast.error(response.data.message);
+            }
+
+        } catch (error) {
+            toast.error(
+                error?.response?.data?.message ||
+                "OTP verification failed"
+            );
+        } finally {
+            setverifyOtpLoading(false);
+        }
+    };
+
 
     return (
         <div
@@ -112,7 +348,7 @@ export const RegisterForm = () => {
             </div>
 
             {/* Form */}
-            <form className="relative z-10 space-y-6">
+            <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
 
                 {/* Full Name */}
                 <div>
@@ -139,6 +375,9 @@ export const RegisterForm = () => {
                     >
 
                         <input
+                            name="name"
+                            onChange={handleChange}
+                            value={registerData.name}
                             type="text"
                             placeholder="Enter your full name"
                             className="
@@ -182,6 +421,9 @@ export const RegisterForm = () => {
                     >
 
                         <input
+                            name="mobile"
+                            onChange={handleChange}
+                            value={registerData.mobile}
                             type="text"
                             placeholder="Enter mobile number"
                             className="
@@ -228,6 +470,10 @@ export const RegisterForm = () => {
                         >
 
                             <input
+                                name="email"
+
+                                onChange={handleChange}
+                                value={registerData.email}
                                 type="email"
                                 placeholder="Enter your email"
                                 className="
@@ -247,7 +493,15 @@ export const RegisterForm = () => {
                         {/* Send OTP */}
                         <button
                             type="button"
-                            onClick={() => setShowOtp(true)}
+                            onClick={() => {
+                                sendOtp()
+                                setShowOtp(true)
+                            }}
+                            disabled={
+                                otpLoading ||
+                                resendTimer > 0 ||
+                                otpVerified
+                            }
                             className="
                                 relative
                                 overflow-hidden
@@ -279,8 +533,15 @@ export const RegisterForm = () => {
 
 
                             <span className="relative z-10">
-                                Send OTP
-                            </span>
+                                {
+                                    otpLoading
+                                        ? "Sending..."
+                                        : resendTimer > 0
+                                            ? `Resend (${resendTimer}s)`
+                                            : otpSent
+                                                ? "Resend OTP"
+                                                : "Send OTP"
+                                }                            </span>
 
                         </button>
 
@@ -297,8 +558,9 @@ export const RegisterForm = () => {
                                 Enter OTP
                             </label>
 
-                            <div
-                                className="
+                            <div className="grid sm:grid-cols-[1fr_150px] gap-4 items-center">
+                                <div
+                                    className="
                     flex
                     items-center
                     rounded-2xl
@@ -309,15 +571,18 @@ export const RegisterForm = () => {
                     focus-within:border-[#e6c766]
                     duration-300
                 "
-                                style={{
-                                    borderColor: "rgba(212,175,55,0.15)"
-                                }}
-                            >
+                                    style={{
+                                        borderColor: "rgba(212,175,55,0.15)"
+                                    }}
+                                >
 
-                                <input
-                                    type="text"
-                                    placeholder="Enter OTP"
-                                    className="
+                                    <input
+                                        name="otp"
+                                        onChange={handleChange}
+                                        value={registerData.otp}
+                                        type="text"
+                                        placeholder="Enter OTP"
+                                        className="
                         w-full
                         bg-transparent
                         outline-none
@@ -326,13 +591,63 @@ export const RegisterForm = () => {
                         tracking-[8px]
                         placeholder:text-gray-500
                     "
-                                />
+                                    />
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={verifyOtp}
+                                    disabled={verifyOtpLoading || otpVerified}
+                                    className="
+                                relative
+                                overflow-hidden
+                                rounded-2xl
+                                font-semibold
+                                text-black
+                                cursor-pointer
+                                hover:scale-[1.02]
+                                active:scale-[0.98]
+                                duration-300
+                                py-3
+                            "
+                                    style={{
+                                        background: `
+                                    linear-gradient(
+                                        135deg,
+                                        #5c4300 0%,
+                                        #8c670a 15%,
+                                        #b8860b 35%,
+                                        #d4af37 50%,
+                                        #e6c766 62%,
+                                        #c9971a 78%,
+                                        #7a5a08 100%
+                                    )
+                                `
+                                    }}
+                                >
+
+
+
+                                    <span className="relative z-10">
+                                        {
+                                            otpVerified
+                                                ? "Verified ✓"
+                                                : verifyOtpLoading
+                                                    ? "Verifying..."
+                                                    : "Verify OTP"
+                                        }                                    </span>
+
+                                </button>
 
                             </div>
+
+
 
                         </div>
                     )
                 }
+
 
                 {/* password */}
                 <div>
@@ -359,8 +674,11 @@ export const RegisterForm = () => {
                     >
 
                         <input
+                            name="password"
+                            onChange={handleChange}
+                            value={registerData.password}
                             type="text"
-                            placeholder="Enter your full name"
+                            placeholder="Create a Strong Password"
                             className="
                                 w-full
                                 bg-transparent
@@ -432,7 +750,9 @@ export const RegisterForm = () => {
                     />
 
                     <span className="relative z-10">
-                        Create Account
+                        {loading
+                            ? "Creating Account..."
+                            : "Create Account"}
                     </span>
 
                 </button>

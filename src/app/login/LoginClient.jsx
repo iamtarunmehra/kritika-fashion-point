@@ -96,15 +96,15 @@ export default function LoginClient() {
                     relative
                     w-full
                     max-w-7xl
-                    rounded-[32]
                     overflow-hidden
-                    border
+                    border-y-4
                     backdrop-blur-xl
                     grid
                     lg:grid-cols-2
+                    border-amber-300                    
                 "
                 style={{
-                    borderColor: "rgba(230,199,102,0.25)",
+                    // borderColor: "rgba(230,199,102,0.25)",
                     background: `
                         linear-gradient(
                             145deg,
@@ -204,7 +204,7 @@ export default function LoginClient() {
 
 
                         {/* REGISTER */}
-                        {activeTab === 'register' && <RegisterForm />}
+                        {activeTab === 'register' && <RegisterForm  setActiveTab={setActiveTab} />}
 
                     </div>
 

@@ -1,15 +1,162 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { gold } from "../colors/color";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
+import Loading from "../../../Loading";
+import { post_api } from "../api_helper/api_helper";
+import { toast } from "react-toastify";
 
 export default function ContactClient() {
 
+    const [loading, setLoading] = useState(false)
+
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        message: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!formData.name.trim()) {
+            return toast.warning("Please enter your name");
+        }
+
+        if (!formData.phone.trim()) {
+            return toast.warning("Please enter your phone number");
+        }
+
+        if (!formData.message.trim()) {
+            return toast.warning("Please enter your message");
+        }
+
+        try {
+            setLoading(true);
+
+            const response = await post_api({
+                body: formData,
+                params: null,
+                path: "contact/save-contact",
+            });
+
+            switch (response.data.status) {
+                case true:
+                case 200:
+                case 201:
+                    toast.success(response.data.message);
+
+                    setFormData({
+                        name: "",
+                        phone: "",
+                        message: "",
+                    });
+                    break;
+
+                case 400:
+                    toast.error(response.data.message || "Bad Request");
+                    break;
+
+                case 401:
+                    toast.error(response.data.message || "Unauthorized");
+                    break;
+
+                case 403:
+                    toast.error(response.data.message || "Forbidden");
+                    break;
+
+                case 404:
+                    toast.error(response.data.message || "Resource Not Found");
+                    break;
+
+                case 409:
+                    toast.error(response.data.message || "Conflict");
+                    break;
+
+                case 422:
+                    toast.error(response.data.message || "Validation Failed");
+                    break;
+
+                case 500:
+                    toast.error(response.data.message || "Internal Server Error");
+                    break;
+
+                default:
+                    toast.error(
+                        response.data.message || "Something went wrong"
+                    );
+            }
+        } catch (error) {
+            console.error(error);
+
+            if (error.response) {
+                switch (error.response.status) {
+                    case 400:
+                        toast.error(
+                            error.response.data?.message || "Bad Request"
+                        );
+                        break;
+
+                    case 401:
+                        toast.error(
+                            error.response.data?.message || "Unauthorized"
+                        );
+                        break;
+
+                    case 403:
+                        toast.error(
+                            error.response.data?.message || "Forbidden"
+                        );
+                        break;
+
+                    case 404:
+                        toast.error(
+                            error.response.data?.message ||
+                            "Resource Not Found"
+                        );
+                        break;
+
+                    case 500:
+                        toast.error(
+                            error.response.data?.message ||
+                            "Internal Server Error"
+                        );
+                        break;
+
+                    default:
+                        toast.error(
+                            error.response.data?.message ||
+                            "Something went wrong"
+                        );
+                }
+            } else if (error.request) {
+                toast.error("Server is not responding");
+            } else {
+                toast.error(
+                    error.message || "Unexpected error occurred"
+                );
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <section className="w-full bg-black text-white relative overflow-hidden">
+
+            {loading && <Loading />}
 
             {/* Background Texture */}
             <div className="absolute inset-0 -z-20 opacity-[0.035]">
@@ -60,11 +207,13 @@ export default function ContactClient() {
                     </p>
 
                     <h2
+                        style={{ fontFamily: 'Poppins' }}
                         className="
                             lg:text-6xl
                             md:text-5xl
                             text-4xl
-                            font-bold
+                            font-extrabold
+                            tracking-wide
                             leading-tight
                         "
                     >
@@ -72,7 +221,8 @@ export default function ContactClient() {
                         <span
                             className="ml-4"
                             style={{
-                                color: "#e6c766"
+                                color: "#e6c766",
+                                fontFamily: 'Poppins'
                             }}
                         >
                             Store
@@ -252,7 +402,8 @@ export default function ContactClient() {
                         <h2
                             className="text-3xl font-bold mb-6"
                             style={{
-                                color: "#e6c766"
+                                color: "#e6c766",
+                                fontFamily: 'Poppins'
                             }}
                         >
                             Visit Us
@@ -358,7 +509,8 @@ export default function ContactClient() {
                         <h2
                             className="text-3xl font-bold mb-2"
                             style={{
-                                color: "#e6c766"
+                                color: "#e6c766",
+                                fontFamily: 'Poppins'
                             }}
                         >
                             Follow Us
@@ -373,6 +525,7 @@ export default function ContactClient() {
                             href={'https://www.instagram.com/kritika_fashion_point/'}
                         >
                             <h2
+                                style={{ fontFamily: 'Poppins' }}
                                 className="
                                     text-lg
                                     cursor-pointer
@@ -401,9 +554,13 @@ export default function ContactClient() {
                             }}
                         >
 
-                            <img
-                                src="/other/instagram.png"
-                                className="
+                            <Link
+                                target="_blank"
+                                href={'https://www.instagram.com/kritika_fashion_point/'}
+                            >
+                                <img
+                                    src="/other/instagram.png"
+                                    className="
                                     w-full
                                     h-[240]
                                     object-cover
@@ -413,7 +570,8 @@ export default function ContactClient() {
                                     hover:scale-[1.03]
                                     duration-500
                                 "
-                            />
+                                />
+                            </Link>
 
                         </div>
 
@@ -464,23 +622,27 @@ export default function ContactClient() {
                         />
 
                         <h2
-                            className="text-3xl font-bold mb-8"
+                            className="text-3xl font-bold mb-3"
                             style={{
-                                color: "#e6c766"
+                                color: "#e6c766",
+                                fontFamily: 'Poppins'
                             }}
                         >
                             Send Message
                         </h2>
 
-                        <form className="space-y-5">
+                        <form onSubmit={handleSubmit} className="space-y-2">
 
                             <div>
-                                <label className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
+                                <label style={{ fontFamily: 'Poppins' }} className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
                                     Full Name
                                 </label>
 
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     placeholder="Enter your name"
                                     className="
                                         w-full
@@ -496,18 +658,22 @@ export default function ContactClient() {
                                         duration-300
                                     "
                                     style={{
+                                        fontFamily: 'Poppins',
                                         borderColor: "rgba(212,175,55,0.12)"
                                     }}
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
+                                <label style={{ fontFamily: 'Poppins' }} className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
                                     Phone Number
                                 </label>
 
                                 <input
-                                    type="text"
+                                    onChange={handleChange}
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
                                     placeholder="Enter phone number"
                                     className="
                                         w-full
@@ -523,18 +689,22 @@ export default function ContactClient() {
                                         duration-300
                                     "
                                     style={{
+                                        fontFamily: 'Poppins',
                                         borderColor: "rgba(212,175,55,0.12)"
                                     }}
                                 />
                             </div>
 
                             <div>
-                                <label className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
+                                <label style={{ fontFamily: 'Poppins' }} className="text-sm text-[#f5df8b] tracking-wide mb-3 block">
                                     Message
                                 </label>
 
                                 <textarea
                                     rows={5}
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     placeholder="Write your message..."
                                     className="
                                         w-full
@@ -551,7 +721,8 @@ export default function ContactClient() {
                                         duration-300
                                     "
                                     style={{
-                                        borderColor: "rgba(212,175,55,0.12)"
+                                        borderColor: "rgba(212,175,55,0.12)",
+                                        fontFamily: 'Poppins'
                                     }}
                                 ></textarea>
                             </div>
@@ -610,7 +781,7 @@ export default function ContactClient() {
                                     }}
                                 />
 
-                                <span className="relative z-10 flex items-center gap-3">
+                                <span style={{ fontFamily: 'Poppins' }} className="relative z-10 flex items-center gap-3">
                                     <Send size={20} />
                                     Send Message
                                 </span>

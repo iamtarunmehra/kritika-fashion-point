@@ -95,7 +95,7 @@ export default function CategoryWiseSections({ item, index, loading, setLoading 
                         #d4af37 60%,
                         #b8860b 80%,
                         #8a6a12 100%
-                    )`}} className='font-semibold rounded-full text-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-16 md:px-12 px-10 lg:my-10 my-5 capitalize'>{item.category_name}
+                    )`}} className='font-bold rounded-full text-black lg:text-2xl md:text-xl text-lg lg:py-2 py-1.5 lg:px-16 md:px-12 px-10 lg:my-10 my-5 capitalize'>{item.category_name}
                     <div
                         className="
                                     absolute
@@ -129,7 +129,7 @@ export default function CategoryWiseSections({ item, index, loading, setLoading 
 
             <div className='max-w-330 mx-auto lg:px-6 px-4 '>
 
-                <div className='lg:mb-5 mb-5 lg:p-0 p-3'>
+                <div className='lg:mb-5 mb-5'>
                     <Swiper
                         modules={[Autoplay]}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
