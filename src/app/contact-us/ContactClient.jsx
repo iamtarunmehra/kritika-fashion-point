@@ -161,6 +161,7 @@ export default function ContactClient() {
             {/* Background Texture */}
             <div className="absolute inset-0 -z-20 opacity-[0.035]">
                 <Image
+                sizes='full'
                     src={"/designs/d3.png"}
                     fill
                     alt="design"

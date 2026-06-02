@@ -38,7 +38,6 @@ export default function TopSelling() {
     );
 
     const top_selling = products.filter(item => item.is_top_selling === true)
-    // console.log('top_selling', top_selling)
 
     return (
         <section style={{ background: 'black' }} className="w-screen overflow-x-hidden  pb-5 relative ">

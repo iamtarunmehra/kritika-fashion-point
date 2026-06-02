@@ -8,14 +8,19 @@ import { FaAngleDown, FaAngleUp, FaUser } from 'react-icons/fa6'
 import Image from 'next/image'
 import WishListModel from './WishListModel'
 import CartModel from './CartModel'
+import { useSelector } from 'react-redux'
 
-export default function PcHeader() {
+export default function PcHeader({ fetchAllCartItems }) {
 
     const [wishListModelOpen, setWishListModelOpen] = useState(false)
 
     const [cartModelOpen, setCartModelOpen] = useState(false)
 
     const [search, setSearch] = useState(false)
+
+    const token = useSelector((store) => store.user.token)
+
+    const cartData = useSelector((store) => store.cart.cartData)
 
 
     const premiumGoldGradient = `
@@ -35,7 +40,7 @@ export default function PcHeader() {
     return (
         <>
             <WishListModel wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} />
-            <CartModel cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
+            <CartModel fetchAllCartItems={fetchAllCartItems} cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
 
             <SearchModel search={search} setSearch={setSearch} />
 
@@ -101,6 +106,8 @@ export default function PcHeader() {
                         <NavBar search={search} premiumGoldGradient={premiumGoldGradient} />
 
                         <UserPoints
+                            cartData={cartData}
+                            token={token}
                             cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen}
                             search={search} setSearch={setSearch} wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} premiumGoldGradient={premiumGoldGradient} />
                     </div>
@@ -314,7 +321,7 @@ function NavBar() {
     )
 }
 
-function UserPoints({ premiumGoldGradient, setSearch, setWishListModelOpen, cartModelOpen, setCartModelOpen }) {
+function UserPoints({ token, cartData, premiumGoldGradient, setSearch, setWishListModelOpen, cartModelOpen, setCartModelOpen }) {
 
     return (
         <div className='flex items-center gap-5'>
@@ -366,178 +373,187 @@ function UserPoints({ premiumGoldGradient, setSearch, setWishListModelOpen, cart
 
             </div>
 
-            {/* Wishlist */}
-            <div
-                onClick={() => setWishListModelOpen(true)}
-                className='
-                    relative
-                    w-10
-                    h-10
-                    rounded-full
-                    flex
-                    items-center
-                    justify-center
-                    border
-                    bg-[#0b0b0b]
-                    cursor-pointer
-                    overflow-hidden
-                    duration-300
-                    hover:scale-110
-                    hover:border-[#f5df8b]
-                '
-                style={{
-                    borderColor: 'rgba(230,199,102,0.18)'
-                }}
-            >
-
-                {/* Glow */}
-                <div
-                    className='
-                        absolute
-                        inset-0
-                        opacity-0
-                        hover:opacity-100
-                        duration-500
-                    '
-                    style={{
-                        background:
-                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                    }}
-                />
-
-                <FaRegHeart
-                    size={17}
-                    className='relative z-10 text-[#f5df8b]'
-                />
-
-
-            </div>
-
-            {/* SHOPPING CART */}
-            <div
-                onClick={() => setCartModelOpen(true)}
-                className='
-                    relative
-                    w-10
-                    h-10
-                    rounded-full
-                    flex
-                    items-center
-                    justify-center
-                    border
-                    bg-[#0b0b0b]
-                    cursor-pointer
-                    overflow-hidden
-                    duration-300
-                    hover:scale-110
-                    hover:border-[#f5df8b]
-                '
-                style={{
-                    borderColor: 'rgba(230,199,102,0.18)'
-                }}
-            >
-
-                {/* Glow */}
-                <div
-                    className='
-                        absolute
-                        inset-0
-                        opacity-0
-                        hover:opacity-100
-                        duration-500
-                    '
-                    style={{
-                        background:
-                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                    }}
-                />
-
-                <div>
-                    <FaShoppingCart
-                        size={20}
-                        className='relative z-10 text-[#f5df8b]'
-                    />
-                </div>
-
-
-            </div>
-
-            {/* User */}
-            <Link href="/login">
-
-                <div
-                    className="
+            {token
+                ?
+                <div className='flex items-center gap-5'>
+                    {/* Wishlist */}
+                    <div
+                        onClick={() => setWishListModelOpen(true)}
+                        className='
                         relative
                         w-10
                         h-10
+                        rounded-full
                         flex
                         items-center
                         justify-center
-                        rounded-full
                         border
-                        overflow-hidden
+                        bg-[#0b0b0b]
                         cursor-pointer
-                        group
+                        overflow-hidden
                         duration-300
                         hover:scale-110
-                        hover:shadow-[0_0_25px_rgba(245,223,139,0.28)]
-                    "
-                    style={{
-                        borderColor: "#c9971a",
-                        background: premiumGoldGradient
-                    }}
-                >
-
-                    {/* Glow */}
-                    <div
-                        className="
-                            absolute inset-0
-                            opacity-0
-                            group-hover:opacity-100
-                            duration-500
-                        "
+                        hover:border-[#f5df8b]
+                    '
                         style={{
-                            background:
-                                "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)"
+                            borderColor: 'rgba(230,199,102,0.18)'
                         }}
-                    />
+                    >
 
-                    {/* Shine */}
-                    <div
-                        className="
+                        {/* Glow */}
+                        <div
+                            className='
                             absolute
-                            top-0
-                            -left-full
-                            w-full
-                            h-full
-                            rotate-12
-                            group-hover:left-full
-                            duration-700
+                            inset-0
+                            opacity-0
+                            hover:opacity-100
+                            duration-500
+                        '
+                            style={{
+                                background:
+                                    'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                            }}
+                        />
+
+                        <FaRegHeart
+                            size={17}
+                            className='relative z-10 text-[#f5df8b]'
+                        />
+
+
+                    </div>
+
+                    {/* SHOPPING CART */}
+                    <div
+                        onClick={() => setCartModelOpen(true)}
+                        className='
+                        relative
+                        w-10
+                        h-10
+                        rounded-full
+                        flex
+                        items-center
+                        justify-center
+                        border
+                        bg-[#0b0b0b]
+                        cursor-pointer
+                        duration-300
+                        hover:scale-110
+                        hover:border-[#f5df8b]
+                    '
+                        style={{
+                            borderColor: 'rgba(230,199,102,0.18)'
+                        }}
+                    >
+
+                        <span style={{ background: premiumGoldGradient }} className='font-bold flex items-center justify-center z-99 absolute -top-2 -right-2 w-5 h-5 rounded-full'>{cartData.length}</span>
+
+                        {/* Glow */}
+                        <div
+                            className='
+                            absolute
+                            inset-0
+                            opacity-0
+                            hover:opacity-100
+                            duration-500
+                        '
+                            style={{
+                                background:
+                                    'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                            }}
+                        />
+
+                        <div>
+                            <FaShoppingCart
+                                size={20}
+                                className='relative z-10 text-[#f5df8b]'
+                            />
+                        </div>
+
+
+                    </div>
+
+                    <span style={{ background: premiumGoldGradient, fontFamily: 'Poppins' }} className='rounded-full hover:scale-[1.03] duration-100 font-bold cursor-pointer px-5 py-2'> My Account</span>
+                </div>
+                :
+
+                <Link href="/login">
+
+                    <div
+                        className="
+                            relative
+                            w-10
+                            h-10
+                            flex
+                            items-center
+                            justify-center
+                            rounded-full
+                            border
+                            overflow-hidden
+                            cursor-pointer
+                            group
+                            duration-300
+                            hover:scale-110
+                            hover:shadow-[0_0_25px_rgba(245,223,139,0.28)]
                         "
                         style={{
-                            background:
-                                "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
+                            borderColor: "#c9971a",
+                            background: premiumGoldGradient
                         }}
-                    />
+                    >
 
-                    <FaUser
-                        className="
-                            relative z-10
-                            text-black
-                            group-hover:scale-110
-                            duration-300
-                        "
-                        size={16}
-                    />
-                </div>
+                        {/* Glow */}
+                        <div
+                            className="
+                                absolute inset-0
+                                opacity-0
+                                group-hover:opacity-100
+                                duration-500
+                            "
+                            style={{
+                                background:
+                                    "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)"
+                            }}
+                        />
 
-            </Link>
+                        {/* Shine */}
+                        <div
+                            className="
+                                absolute
+                                top-0
+                                -left-full
+                                w-full
+                                h-full
+                                rotate-12
+                                group-hover:left-full
+                                duration-700
+                            "
+                            style={{
+                                background:
+                                    "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
+                            }}
+                        />
+
+                        <FaUser
+                            className="
+                                relative z-10
+                                text-black
+                                group-hover:scale-110
+                                duration-300
+                            "
+                            size={16}
+                        />
+                    </div>
+
+                </Link>
+            }
+
 
         </div>
     )
 }
 
-function SearchModel({ search, setSearch }) {
+export function SearchModel({ search, setSearch }) {
     return (
 
         <div className='relative'>
@@ -560,13 +576,15 @@ function SearchModel({ search, setSearch }) {
         top-0
         left-1/2
         -translate-x-1/2
-        w-[500]
-        h-[40vh]
+        w-[90%]        
+        h-[50%]
+        custom-scrollbar
         z-160
+        overflow-y-scroll
         duration-500
         transition-all
         rounded-b-[30px]
-        overflow-hidden
+        overflow-x-hidden
         border
         backdrop-blur-xl
         p-6
@@ -674,7 +692,6 @@ function SearchModel({ search, setSearch }) {
 
                 </div>
 
-                <FaAngleUp size={100} className='text-white absolute top-full left-1/2' />
             </div>
         </div>
     )

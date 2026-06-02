@@ -30,7 +30,6 @@ export default function NewArrivals() {
     );
 
     const new_arrivals = products.slice(0, 10)
-    // console.log('check', products, new_arrivals)
 
 
     const swiperRef = useRef(null)
@@ -100,7 +99,7 @@ export default function NewArrivals() {
                             slidesPerView={4}
                             loop={true}
                             autoplay={{
-                                delay: 2000,
+                                delay: 4000,
                                 disableOnInteraction: false,
                             }}
                             breakpoints={{

@@ -1,16 +1,20 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PcHeader from './PcHeader'
 import MobileHeader from './MobileHeader'
 import { FixedButtons } from './FixedBottomButtons'
 import { setCategories, setCategoryLoading } from '../redux/slices/categorySlice'
-import { useDispatch } from 'react-redux'
-import { get_api } from '../api_helper/api_helper'
+import { useDispatch, useSelector } from 'react-redux'
+import { get_api, post_api } from '../api_helper/api_helper'
 import { setProductLoading, setProducts } from '../redux/slices/productSlice'
+import { setCartData, setCartDataLoading, setTotalAmountOfCart } from '../redux/slices/cartSlice'
 
 export default function Header() {
 
     const dispatch = useDispatch();
+
+    const token = useSelector((state) => state.user.token)
+
 
     const fetchCategories = async () => {
 
@@ -72,6 +76,45 @@ export default function Header() {
         }
     };
 
+    const fetchAllCartItems = async () => {
+        try {
+            dispatch(setCartDataLoading(true));
+
+            const response = await post_api({
+                body: {},
+                params: null,
+                path: "user/view-cart",
+                token,
+            })
+            console.log('response', response.data.data.total)
+
+            if (response?.data?.success) {
+
+                dispatch(
+                    setTotalAmountOfCart(
+                        response.data.data.total || 0
+                    )
+                )
+
+                dispatch(
+                    setCartData(
+                        response?.data?.data?.items || []
+                    )
+                );
+            }
+
+        } catch (error) {
+            console.log(error);
+
+        } finally {
+            dispatch(setCartDataLoading(false));
+        }
+    };
+
+    useEffect(() => {
+        fetchAllCartItems()
+    }, [])
+
     useEffect(() => {
         fetchProducts()
     }, [])
@@ -97,7 +140,7 @@ export default function Header() {
                 </div>
             </div>
             <header className='sticky top-0 z-100'>
-                <PcHeader />
+                <PcHeader fetchAllCartItems={fetchAllCartItems} />
                 <MobileHeader />
             </header>
 

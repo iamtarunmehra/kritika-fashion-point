@@ -146,8 +146,6 @@ export const RegisterForm = ({ setActiveTab }) => {
     };
 
     const sendOtp = async () => {
-        console.log("Send OTP Clicked");
-
         const { name, mobile, email } = registerData;
 
         try {
@@ -163,7 +161,6 @@ export const RegisterForm = ({ setActiveTab }) => {
                 path: "user/send-otp",
             });
 
-            console.log(response);
 
             if (response.data.status) {
                 toast.success(response.data.message);

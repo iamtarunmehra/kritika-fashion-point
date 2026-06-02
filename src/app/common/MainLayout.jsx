@@ -13,14 +13,14 @@ export default function MainLayout({ children }) {
     return (
         <Provider store={store}>
             <ToastContainer
-                position="top-right"
-                autoClose={5000}
+                position="top-center"
+                autoClose={3000}
                 hideProgressBar={false}
                 newestOnTop
                 closeOnClick
                 pauseOnHover
                 draggable
-                theme="light"
+                theme="dark"
             />
             <Header />
             {children}

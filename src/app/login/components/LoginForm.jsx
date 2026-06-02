@@ -69,10 +69,9 @@ export const LoginForm = ({ PremiumIcon, premiumGoldGradient }) => {
                         token: response.data.token,
                     })
                 );
-
-                setTimeout(() => {
-                    router.push("/dashboard");
-                }, 1000);
+                // setTimeout(() => {
+                //     router.push("/dashboard");
+                // }, 1000);
 
             } else {
                 toast.error(response.data.message);

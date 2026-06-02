@@ -30,7 +30,7 @@ export default function ProductCard({
 
     return (
         <Link
-            href={`/categories/${p_slug || ""}`}
+            href={`/categories/${p_slug}`}
             className="block h-full"
         >
             <article

@@ -6,14 +6,21 @@ import { FaBars, FaBarsProgress, FaBarsStaggered, FaRegHeart, FaUser } from 'rea
 import { IoCloseCircleSharp, IoDiamond } from 'react-icons/io5'
 import Link from 'next/link'
 import { VscTriangleRight } from 'react-icons/vsc'
-import { Logo } from './PcHeader'
-import { FaShoppingCart } from 'react-icons/fa'
+import { Logo, SearchModel } from './PcHeader'
+import { FaSearch, FaShoppingCart } from 'react-icons/fa'
 import WishListModel from './WishListModel'
 import CartModel from './CartModel'
+import { useSelector } from 'react-redux'
 
 export default function MobileHeader() {
     const [mobileMenu, setMobileMenu] = useState(false)
     const [wishListModelOpen, setWishListModelOpen] = useState(false)
+
+    const cartData = useSelector((store) => store.cart.cartData)
+    const token = useSelector((store) => store.user.token)
+
+    const [search, setSearch] = useState(false)
+
 
     const premiumGoldGradient = `
         linear-gradient(
@@ -34,6 +41,7 @@ export default function MobileHeader() {
         <>
             <WishListModel wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} />
             <CartModel cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
+            <SearchModel search={search} setSearch={setSearch} />
 
             <div
                 // style={{ background: 'rgba(44, 15, 58, 1)', borderBottomColor: gold.base }}
@@ -136,41 +144,174 @@ export default function MobileHeader() {
                         </div>
                     </Link>
 
-                    <div className='flex items-center sm:gap-5 gap-4'>
+                    <div
+                        onClick={() => setSearch(true)}
+                        className='
+                                        relative
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        flex
+                                        items-center
+                                        justify-center
+                                        border
+                                        bg-[#0b0b0b]
+                                        cursor-pointer
+                                        overflow-hidden
+                                        duration-300
+                                        hover:scale-110
+                                        hover:border-[#f5df8b]
+                                    '
+                        style={{
+                            borderColor: 'rgba(230,199,102,0.18)'
+                        }}
+                    >
 
-                        <FaRegHeart
-                            onClick={() => setWishListModelOpen(true)}
-                            style={{ color: gold.base }}
-                            size={25}
+                        {/* Glow */}
+                        <div
+                            className='
+                                            absolute
+                                            inset-0
+                                            opacity-0
+                                            hover:opacity-100
+                                            duration-500
+                                        '
+                            style={{
+                                background:
+                                    'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                            }}
+                        />
+
+                        <FaSearch
+                            size={17}
                             className='relative z-10 text-[#f5df8b]'
                         />
 
-                        <FaShoppingCart
-                            onClick={() => setCartModelOpen(true)}
-                            style={{ color: gold.base }}
-                            size={22}
-                            className='relative z-10 '
-                        />
+
+                    </div>
+
+                    {token
+                        ?
+                        <div className='flex items-center gap-3'>
+                            {/* Wishlist */}
+                            <div
+                                onClick={() => setWishListModelOpen(true)}
+                                className='
+                                          relative
+                                          w-10
+                                          h-10
+                                          rounded-full
+                                          flex
+                                          items-center
+                                          justify-center
+                                          border
+                                          bg-[#0b0b0b]
+                                          cursor-pointer
+                                          overflow-hidden
+                                          duration-300
+                                          hover:scale-110
+                                          hover:border-[#f5df8b]
+                                      '
+                                style={{
+                                    borderColor: 'rgba(230,199,102,0.18)'
+                                }}
+                            >
+
+                                {/* Glow */}
+                                <div
+                                    className='
+                                              absolute
+                                              inset-0
+                                              opacity-0
+                                              hover:opacity-100
+                                              duration-500
+                                          '
+                                    style={{
+                                        background:
+                                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                                    }}
+                                />
+
+                                <FaRegHeart
+                                    size={17}
+                                    className='relative z-10 text-[#f5df8b]'
+                                />
+
+
+                            </div>
+
+                            {/* SHOPPING CART */}
+                            <div
+                                onClick={() => setCartModelOpen(true)}
+                                className='
+                                          relative
+                                          w-10
+                                          h-10
+                                          rounded-full
+                                          flex
+                                          items-center
+                                          justify-center
+                                          border
+                                          bg-[#0b0b0b]
+                                          cursor-pointer
+                                          duration-300
+                                          hover:scale-110
+                                          hover:border-[#f5df8b]
+                                      '
+                                style={{
+                                    borderColor: 'rgba(230,199,102,0.18)'
+                                }}
+                            >
+
+                                <span style={{ background: premiumGoldGradient }} className='font-bold flex items-center justify-center z-99 absolute -top-2 -right-2 w-5 h-5 rounded-full'>{cartData.length}</span>
+
+                                {/* Glow */}
+                                <div
+                                    className='
+                                              absolute
+                                              inset-0
+                                              opacity-0
+                                              hover:opacity-100
+                                              duration-500
+                                          '
+                                    style={{
+                                        background:
+                                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                                    }}
+                                />
+
+                                <div>
+                                    <FaShoppingCart
+                                        size={20}
+                                        className='relative z-10 text-[#f5df8b]'
+                                    />
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        :
 
                         <Link href="/login">
 
                             <div
                                 className="
-                        relative
-                        w-7
-                        h-7
-                        flex
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        overflow-hidden
-                        cursor-pointer
-                        group
-                        duration-300
-                        hover:scale-110
-                        hover:shadow-[0_0_25px_rgba(245,223,139,0.28)]
-                    "
+                                              relative
+                                              w-10
+                                              h-10
+                                              flex
+                                              items-center
+                                              justify-center
+                                              rounded-full
+                                              border
+                                              overflow-hidden
+                                              cursor-pointer
+                                              group
+                                              duration-300
+                                              hover:scale-110
+                                              hover:shadow-[0_0_25px_rgba(245,223,139,0.28)]
+                                          "
                                 style={{
                                     borderColor: "#c9971a",
                                     background: premiumGoldGradient
@@ -180,11 +321,11 @@ export default function MobileHeader() {
                                 {/* Glow */}
                                 <div
                                     className="
-                            absolute inset-0
-                            opacity-0
-                            group-hover:opacity-100
-                            duration-500
-                        "
+                                                  absolute inset-0
+                                                  opacity-0
+                                                  group-hover:opacity-100
+                                                  duration-500
+                                              "
                                     style={{
                                         background:
                                             "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)"
@@ -194,15 +335,15 @@ export default function MobileHeader() {
                                 {/* Shine */}
                                 <div
                                     className="
-                            absolute
-                            top-0
-                            -left-full
-                            w-full
-                            h-full
-                            rotate-12
-                            group-hover:left-full
-                            duration-700
-                        "
+                                                  absolute
+                                                  top-0
+                                                  -left-full
+                                                  w-full
+                                                  h-full
+                                                  rotate-12
+                                                  group-hover:left-full
+                                                  duration-700
+                                              "
                                     style={{
                                         background:
                                             "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
@@ -211,19 +352,17 @@ export default function MobileHeader() {
 
                                 <FaUser
                                     className="
-                            relative z-10
-                            text-black
-                            group-hover:scale-110
-                            duration-300
-                        "
+                                                  relative z-10
+                                                  text-black
+                                                  group-hover:scale-110
+                                                  duration-300
+                                              "
                                     size={16}
                                 />
                             </div>
 
                         </Link>
-
-
-                    </div>
+                    }
                 </div>
 
             </div>
@@ -243,6 +382,10 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
         { title: 'Categories', link: '/categories' },
         { title: 'About', link: '/about' },
         { title: 'Contact Us', link: '/contact-us' },
+        { title: 'My Account', link: '/my-account' },
+        { title: 'Dashboard', link: '/dashboard' },
+
+
     ]
     return (
         <div
@@ -252,7 +395,7 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 transform
                 ${mobileMenu ? 'translate-x-0' : '-translate-x-full'}
                 transition-transform duration-300 ease-in-out
-                w-full h-fit
+                w-full h-screen
                 bg-black text-white border-b-4
                 lg:hidden block
                 transform-gpu
@@ -344,11 +487,12 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 </Link>
                 <button style={{ color: gold.base }} onClick={() => setMobileMenu(false)}><IoCloseCircleSharp size={25} /></button>
             </div>
-            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-5 text-xl font-semibold space-y-7 pb-10'>
+            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-5 text-xl font-semibold space-y-5'>
                 {Data.map((item, index) => {
                     return (
                         <Link key={index} href={item.link}>
                             <li
+
                                 onClick={() => setMobileMenu(false)}
                                 className="
                             group

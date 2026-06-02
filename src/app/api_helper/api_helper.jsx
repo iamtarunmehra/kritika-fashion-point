@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api_base_url = process.env.NEXT_PUBLIC_API_BASE;
 
-export const post_api = async ({ body, params, path }) => {
+export const post_api = async ({ body, params, path, token }) => {
     try {
 
         const url = params
@@ -16,6 +16,8 @@ export const post_api = async ({ body, params, path }) => {
                 "Content-Type": isFormData
                     ? "multipart/form-data"
                     : "application/json",
+
+                Authorization: `Bearer ${token}`
             },
         });
 
