@@ -112,8 +112,10 @@ export default function Header() {
     };
 
     useEffect(() => {
-        fetchAllCartItems()
-    }, [])
+        if (token) {
+            fetchAllCartItems();
+        }
+    }, [token]);
 
     useEffect(() => {
         fetchProducts()
@@ -140,7 +142,7 @@ export default function Header() {
                 </div>
             </div>
             <header className='sticky top-0 z-100'>
-                <PcHeader fetchAllCartItems={fetchAllCartItems} />
+                <PcHeader />
                 <MobileHeader />
             </header>
 

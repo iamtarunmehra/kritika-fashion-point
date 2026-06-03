@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { gold } from "../colors/color";
 import {
     Heart,
@@ -37,6 +37,7 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
     const cartDataLoading = useSelector((state) => state.cart.cart_data_loading)
 
     const dispatch = useDispatch()
+
 
     const removeFromCart = async (id) => {
 
@@ -209,6 +210,54 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                     }}
                                                     className="rounded-3xl p-4 backdrop-blur-xl hover:-translate-y-1 duration-300 group relative overflow-hidden"
                                                 >
+
+                                                    {/* TOP SELLING BADGE */}
+                                                    {item.is_top_selling && (
+                                                        <div className="absolute top-3 left-3 z-40">
+                                                            <p
+                                                                style={{ fontFamily: "Poppins" }}
+                                                                className="
+                                                                    text-black
+                                                                    bg-amber-300
+                                                                    tracking-wide
+                                                                    py-1
+                                                                    px-3
+                                                                    rounded-full
+                                                                    font-semibold
+                                                                    text-sm
+                                                                    shadow-md
+                                                                    shadow-black/30
+                                                                "
+                                                            >
+                                                                Top Selling
+                                                            </p>
+                                                        </div>
+                                                    )}
+
+                                                    <div
+                                                        style={{
+                                                            background:
+                                                                "linear-gradient(135deg, #CC1B1B, #540202)",
+                                                            fontFamily: "Poppins",
+                                                        }}
+                                                        className="
+                                                                    absolute
+                                                                    top-0
+                                                                    right-0
+                                                                    py-1
+                                                                    px-5
+                                                                    rounded-bl-lg
+                                                                    tracking-wider
+                                                                    text-white
+                                                                    z-50
+                                                                    text-md
+                                                                    font-normal
+                                                            "
+                                                    >
+                                                        - {item.p_discount}%
+                                                    </div>
+
+
                                                     <div className="flex flex-col gap-4 relative z-10">
                                                         {/* IMAGE */}
                                                         <Link href={`/product/${item.p_slug}`}>
@@ -239,6 +288,28 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                                 </p>
                                                             </div>
 
+                                                            <div className="mt-3 flex items-center gap-2">
+                                                                <span className="text-gray-200 text-[18px] tracking-wide">
+                                                                    Quantity
+                                                                </span>
+
+                                                                <div
+                                                                    className="
+                                                                                    w-6 h-6
+                                                                                    flex items-center justify-center
+                                                                                    rounded-full
+                                                                                    text-sm font-normal
+                                                                                    shadow-lg
+                                                                                    bg-green-800 text-white border border-green-700
+                                                                                "
+                                                                    style={{
+                                                                        fontFamily: "Poppins",
+                                                                    }}
+                                                                >
+                                                                    {item.quantity}
+                                                                </div>
+                                                            </div>
+
                                                             <div className="mt-4">
                                                                 <h2
                                                                     style={{ color: gold.base }}
@@ -253,14 +324,12 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                         </div>
                                                     </div>
 
-
-
                                                     {/* ACTIONS */}
                                                     <div className="grid grid-cols-2 gap-3 mt-5 relative z-10">
                                                         <button
                                                             disabled={removingId === item.product_id}
                                                             onClick={() => removeFromCart(item.product_id)}
-                                                            className="w-full h-full px-4 py-1 rounded-full bg-red-600 hover:bg-red-500 text-white flex items-center justify-center"
+                                                            className="w-full h-full cursor-pointer px-4 py-1 rounded-full bg-red-600 hover:bg-red-700 text-white flex items-center justify-center font-bold"
                                                         >
                                                             {removingId === item.product_id ? "Removing..." : "Remove"}
                                                         </button>
@@ -284,9 +353,9 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
 
                                             <span
                                                 style={{ fontFamily: "Poppins" }}
-                                                className="text-3xl font-extrabold text-amber-400"
+                                                className="text-3xl font-semibold tracking-wider text-amber-300"
                                             >
-                                                ₹ {TotalAmount}
+                                                ₹ {TotalAmount}.00
                                             </span>
                                         </div>
                                     </div>
@@ -355,11 +424,11 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
 
 export function CartEmpty({ setCartModelOpen }) {
     return (
-        <div className="flex flex-col items-center justify-center h-full py-20 px-6 text-center">
+        <div className="flex flex-col items-center justify-center h-[68vh] py-10 px-6 text-center">
             {/* Icon */}
             <div
                 className="
-            w-28 h-28
+            w-20 h-20
             rounded-full
             flex items-center justify-center
             bg-linear-to-tl
@@ -368,7 +437,7 @@ export function CartEmpty({ setCartModelOpen }) {
             to-[#D4AF37]
         "
             >
-                <ShoppingCart size={50} className="text-black" />
+                <ShoppingCart size={40} className="text-black" />
             </div>
 
             {/* Title */}
@@ -377,26 +446,23 @@ export function CartEmpty({ setCartModelOpen }) {
             </h2>
 
             {/* Subtitle */}
-            <p className="mt-3 text-gray-400 max-w-sm leading-relaxed">
-                Looks like you haven't added any premium items to your cart yet.
-                Explore our collection and discover something special.
-            </p>
+
 
             {/* Button */}
             <Link href="/shop-now">
                 <button
                     onClick={() => setCartModelOpen(false)}
                     className="
-                mt-8
-                px-10
-                py-3
-                rounded-full
-                text-black
-                font-bold
-                tracking-wide
-                hover:scale-105
-                duration-300
-            "
+                        mt-8
+                        px-10
+                        py-3
+                        rounded-full
+                        text-black
+                        font-bold
+                        tracking-wide
+                        hover:scale-105
+                        duration-300
+                    "
                     style={{
                         background: `
                     linear-gradient(

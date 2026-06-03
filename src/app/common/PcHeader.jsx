@@ -10,7 +10,7 @@ import WishListModel from './WishListModel'
 import CartModel from './CartModel'
 import { useSelector } from 'react-redux'
 
-export default function PcHeader({ fetchAllCartItems }) {
+export default function PcHeader() {
 
     const [wishListModelOpen, setWishListModelOpen] = useState(false)
 
@@ -40,7 +40,7 @@ export default function PcHeader({ fetchAllCartItems }) {
     return (
         <>
             <WishListModel wishListModelOpen={wishListModelOpen} setWishListModelOpen={setWishListModelOpen} />
-            <CartModel fetchAllCartItems={fetchAllCartItems} cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
+            <CartModel cartModelOpen={cartModelOpen} setCartModelOpen={setCartModelOpen} />
 
             <SearchModel search={search} setSearch={setSearch} />
 

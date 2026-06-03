@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 
-export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
+export function QrCodeModel({ QrCodeOpen, setQrCodeOpen, selectedProduct, selectedTabPaymentTab }) {
     return (
         <>
             {/* Backdrop */}
@@ -57,8 +57,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                         className="
                             bg-[#050505]
                             rounded-[31px]
-                            lg:p-10
-                            p-6
+                            lg:p-6 p-4
                             relative
                             overflow-hidden
                         "
@@ -117,9 +116,11 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                         <button
                             onClick={() => setQrCodeOpen(false)}
                             className="
+                            bg-amber-300
                                 absolute
                                 top-5
                                 right-5
+                                z-50
                                 p-3
                                 rounded-full
                                 border
@@ -141,13 +142,13 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                         </button>
 
                         {/* Brand */}
-                        <div className="text-center mb-8 relative z-10">
+                        <div className="text-center mb-4 relative z-10">
                             <p
                                 className="
                                     text-xs
                                     tracking-[6px]
                                     uppercase
-                                    mb-3
+                                    mb-2
                                 "
                                 style={{
                                     color: "#d4af37",
@@ -171,7 +172,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                 KRITIKA <span style={{ color: "#d4af37" }}>FASHION POINT</span>
                             </h1>
 
-                            <div className="flex items-center justify-center gap-3 mt-5">
+                            <div className="flex items-center justify-center gap-3 my-3">
                                 <div
                                     className="w-14 h-[1]"
                                     style={{
@@ -197,9 +198,23 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                 />
                             </div>
 
-                            <p className="text-zinc-400 text-sm mt-5 tracking-wide">
-                                Scan & Pay for Your Exclusive Order
-                            </p>
+                            {
+                                selectedTabPaymentTab == 'advance' ?
+                                    (
+                                        <span className="text-white font-bold text-2xl"> Pay Advance For Book Your Jwellery At
+                                            <span className="text-amber-300 text-4xl"><br /> ₹{selectedProduct?.p_advance_payment}.00</span>
+                                        </span>
+                                    )
+                                    :
+                                    (
+
+                                        <span className="text-white font-bold text-2xl"> Pay Full Get Payment For Your Jwellery At
+                                            <span className="text-amber-300 text-4xl"><br /> ₹{selectedProduct?.p_customer_price}</span>
+                                        </span>
+                                    )
+                            }
+
+
                         </div>
 
                         {/* QR Section */}
@@ -233,7 +248,7 @@ export function QrCodeModel({ QrCodeOpen, setQrCodeOpen }) {
                                     overflow-hidden
                                 "
                             >
-                                D
+
                                 {/* Inner Glow */}
                                 <div
                                     className="

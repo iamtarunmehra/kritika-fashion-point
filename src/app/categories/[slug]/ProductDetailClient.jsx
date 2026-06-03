@@ -79,10 +79,11 @@ export default function ProductDetailClient() {
     const allImages = [index_image, ...(gallery_images || [])];
 
     const occasions = p_occasion.split(" ")
+    const include_items = p_include_items.split(" ")
+    const finishing = p_finishing.split(" ")
+    const material = p_material.split(" ")
+
     console.log('occasions', occasions)
-
-
-
 
     return (
         <>
@@ -214,10 +215,12 @@ export default function ProductDetailClient() {
 
                                 {/* Description */}
                                 <p className="text-gray-300 leading-8 mt-6 text-lg">
-                                    Elegant handcrafted Polki Choker Set designed
-                                    with premium stones and luxury gold plating.
-                                    Perfect for weddings, festive occasions,
-                                    parties, and royal traditional looks.
+                                    {p_short_description}
+                                </p>
+
+                                {/* Description */}
+                                <p className="text-gray-300 leading-8 mt-6 text-lg">
+                                    {p_full_description}
                                 </p>
 
                                 {/* Quantity */}
@@ -235,7 +238,10 @@ export default function ProductDetailClient() {
                                             borderColor: gold.base,
                                         }}
                                     >
-                                        <button onClick={() => setQuantity(quantity + 1)} className="w-14 h-14 flex items-center justify-center hover:bg-[#111] duration-300">
+                                        <button
+                                            onClick={() => setQuantity(quantity > 0 ? quantity - 1 : 0)}
+                                            className="w-14 h-14 flex items-center justify-center hover:bg-[#111] duration-300"
+                                        >
                                             <Minus />
                                         </button>
 
@@ -382,16 +388,24 @@ export default function ProductDetailClient() {
 
                                             <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
                                                 <p className="text-gray-400 text-sm">Material</p>
-                                                <h4 className="text-white text-lg font-semibold mt-1">
-                                                    {p_material}
-                                                </h4>
+                                                <ul className="text-white text-lg font-semibold mt-1 flex items-center capitalize tracking-wide flex-wrap ">
+                                                    {material.map((item, index) => {
+                                                        return (
+                                                            <li className="flex gap-3 flex-wrap" key={index}>{item}, <span>{" "}</span></li>
+                                                        )
+                                                    })}
+                                                </ul>
                                             </div>
 
                                             <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
                                                 <p className="text-gray-400 text-sm">Finish</p>
-                                                <h4 className="text-white text-lg font-semibold mt-1">
-                                                    {p_finishing}
-                                                </h4>
+                                                <ul className="text-white text-lg font-semibold mt-1 flex items-center capitalize tracking-wide flex-wrap ">
+                                                    {finishing.map((item, index) => {
+                                                        return (
+                                                            <li className="flex gap-3 flex-wrap" key={index}>{item}, <span>{" "}</span></li>
+                                                        )
+                                                    })}
+                                                </ul>
                                             </div>
 
                                         </div>
@@ -412,9 +426,13 @@ export default function ProductDetailClient() {
 
                                             <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
                                                 <p className="text-gray-400 text-sm">Package Includes</p>
-                                                <h4 className="text-white text-lg font-semibold mt-1">
-                                                    Necklace + Earrings
-                                                </h4>
+                                                <ul className="text-white text-lg font-semibold mt-1 flex items-center capitalize tracking-wide flex-wrap ">
+                                                    {include_items.map((item, index) => {
+                                                        return (
+                                                            <li className="flex gap-3 flex-wrap" key={index}>{item}, <span>{" "}</span></li>
+                                                        )
+                                                    })}
+                                                </ul>
                                             </div>
 
                                             <div className="bg-white/3 border border-white/5 rounded-2xl p-4">
@@ -424,7 +442,7 @@ export default function ProductDetailClient() {
                                                 </h4>
                                             </div>
 
-                                            <div
+                                            {/* <div
                                                 className="rounded-2xl p-4"
                                                 style={{
                                                     background: `linear-gradient(135deg, ${gold.base}, ${gold.light})`
@@ -437,7 +455,7 @@ export default function ProductDetailClient() {
                                                 <h4 className="text-black text-lg font-extrabold mt-1">
                                                     Pay Advance for Your Item
                                                 </h4>
-                                            </div>
+                                            </div> */}
 
                                         </div>
                                     </div>

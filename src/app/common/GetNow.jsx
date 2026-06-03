@@ -12,13 +12,20 @@ import {
 import { PaymentOption } from "../models/PaymentOptionModel";
 import Link from "next/link";
 
-export default function GetNow({ getNowModel, setGetNowModel }) {
+export default function GetNow({ getNowModel, setGetNowModel, selectedProduct }) {
     const [paymentOptionModel, setPaymentOptionModel] = useState(false);
+
+    console.log('selectedProduct', selectedProduct)
+
+    const [selectedTabPaymentTab, setSelectedPaymentTab] = useState(null)
+
 
     return (
         <>
             {/* payment option model */}
             <PaymentOption
+                selectedTabPaymentTab={selectedTabPaymentTab}
+                selectedProduct={selectedProduct}
                 paymentOptionModel={paymentOptionModel}
                 setPaymentOptionModel={setPaymentOptionModel}
             />
@@ -140,7 +147,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                     color: "#d4af37",
                                 }}
                             >
-                                ₹2,499
+                                ₹{selectedProduct?.p_customer_price}
                             </h2>
                         </div>
                     </div>
@@ -149,7 +156,10 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                     <div className="space-y-4">
                         {/* Advance Payment */}
                         <button
-                            onClick={() => setPaymentOptionModel(true)}
+                            onClick={() => {
+                                setPaymentOptionModel(true)
+                                setSelectedPaymentTab('advance')
+                            }}
                             className="
                                 w-full
                                 rounded-2xl
@@ -203,13 +213,16 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                                     color: "#d4af37",
                                 }}
                             >
-                                ₹499
+                                ₹{selectedProduct?.p_advance_payment}.00
                             </span>
                         </button>
 
                         {/* Full Payment */}
                         <button
-                            onClick={() => setPaymentOptionModel(true)}
+                            onClick={() => {
+                                setPaymentOptionModel(true)
+                                setSelectedPaymentTab('full')
+                            }}
                             className="
                                 w-full
                                 rounded-2xl
@@ -250,7 +263,7 @@ export default function GetNow({ getNowModel, setGetNowModel }) {
                             </div>
 
                             <span className="font-bold text-2xl text-black relative z-10">
-                                ₹2,499
+                                ₹{selectedProduct?.p_customer_price}
                             </span>
                         </button>
 

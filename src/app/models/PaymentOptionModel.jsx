@@ -2,9 +2,10 @@ import { useState } from "react";
 import { BankTransferModel } from "./BankTransferModel";
 import { QrCodeModel } from "./QrCodeModel";
 
-export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
+export function PaymentOption({ paymentOptionModel, setPaymentOptionModel, selectedProduct, selectedTabPaymentTab }) {
     const [bankTransferModel, setBankTransferModel] = useState(null);
     const [QrCodeOpen, setQrCodeOpen] = useState(false);
+
 
     const HandleUpiPayment = () => {
         const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -27,7 +28,12 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
 
     return (
         <>
-            <QrCodeModel QrCodeOpen={QrCodeOpen} setQrCodeOpen={setQrCodeOpen} />
+            <QrCodeModel
+                selectedTabPaymentTab={selectedTabPaymentTab}
+                QrCodeOpen={QrCodeOpen}
+                setQrCodeOpen={setQrCodeOpen}
+                selectedProduct={selectedProduct}
+            />
             <BankTransferModel
                 bankTransferModel={bankTransferModel}
                 setBankTransferModel={setBankTransferModel}
@@ -260,7 +266,9 @@ export function PaymentOption({ paymentOptionModel, setPaymentOptionModel }) {
 
                         {/* Bank Transfer */}
                         <button
-                            onClick={() => setBankTransferModel(true)}
+                            onClick={() => {
+                                setBankTransferModel(true)
+                            }}
                             className="
                                 w-full
                                 group

@@ -13,6 +13,8 @@ export default function ProductCard({
     index,
     getNowModel,
     setGetNowModel,
+    setSelectedProduct
+
 }) {
 
     if (!item) return null;
@@ -95,7 +97,7 @@ export default function ProductCard({
                             text-white
                             z-50
                             text-md
-                            font-semibold
+                            font-normal
                         "
                     >
                         - {p_discount}%
@@ -201,12 +203,12 @@ export default function ProductCard({
                             style={{ color: gold.base }}
                             className="text-2xl font-extrabold"
                         >
-                            ₹ {p_sale_price || 0}
+                            ₹ {p_customer_price || 0}
                         </p>
 
                         {!!p_customer_price && (
                             <p className="text-sm text-gray-400 line-through">
-                                ₹ {p_customer_price}
+                                ₹ {p_sale_price}
                             </p>
                         )}
                     </div>
@@ -218,6 +220,8 @@ export default function ProductCard({
                     <AddToCartButton item={item} />
 
                     <BuyNowButton
+                        setSelectedProduct={setSelectedProduct}
+
                         item={item}
                         getNowModel={getNowModel}
                         setGetNowModel={setGetNowModel}

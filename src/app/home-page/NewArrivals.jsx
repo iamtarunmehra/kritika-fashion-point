@@ -20,6 +20,7 @@ import ProductCardSkeleton from '../categories/[slug]/ProductSkelaton';
 
 export default function NewArrivals() {
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     //get products and categories
     const { categories, category_loading } = useSelector(
@@ -37,40 +38,110 @@ export default function NewArrivals() {
     const [getNowModel, setGetNowModel] = useState(false)
 
     return (
-        <section className="w-full bg-black lg:mt-28 md:mt-40 mt-48 overflow-hidden relative">
+        <section className="w-full bg-black pt-10 lg:mt-10 md:mt-10 mt-5 overflow-hidden relative">
             {getNowModel && <Overlay />}
-            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+            <GetNow 
+            selectedProduct={selectedProduct}
+            getNowModel={getNowModel}
+             setGetNowModel={setGetNowModel}
+              />
 
-            {/* Heading */}
-            <h1 className="relative flex flex-col items-center justify-center lg:mb-14 mb-8">
+            {/* Premium Heading */}
+            <div className="relative flex flex-col items-center lg:mb-16 mb-10 overflow-hidden">
 
-                {/* Main Heading */}
-                <span
-                    className="relative z-10 lg:text-4xl text-3xl border-x-[4] rounded-tr-full  rounded-bl-full rounded-md lg:px-16 md:px-10 px-10 py-2 font-extrabold tracking-wide inline-block bg-clip-text text-transparent"
+                {/* Luxury Label */}
+                <div
+                    className="uppercase tracking-[0.4em] text-xs mb-3 font-semibold"
+                    style={{ color: gold.base }}
+                >
+                    Latest Collection
+                </div>
+
+                {/* Side Lines */}
+                <div className="flex items-center gap-5">
+
+                    <div
+                        className="lg:w-28 w-16 h-[1]"
+                        style={{
+                            background: `linear-gradient(to right, transparent, ${gold.base})`
+                        }}
+                    />
+
+                    {/* Main Heading */}
+                    <h1 className="relative">
+
+                        {/* Glow */}
+                        <div
+                            className="absolute inset-0 blur-3xl opacity-40"
+                            style={{
+                                background: `radial-gradient(circle, ${gold.base}60, transparent 70%)`
+                            }}
+                        />
+
+                        <span
+                            className="relative z-10 block lg:text-5xl md:text-3xl text-2xl font-black tracking-wider uppercase"
+                            style={{
+                                fontFamily: "serif",
+                                background: `linear-gradient(
+                        180deg,
+                        #fff5c2 0%,
+                        ${gold.light} 25%,
+                        ${gold.base} 50%,
+                        ${gold.dark} 100%
+                    )`,
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                            }}
+                        >
+                            New Arrivals
+                        </span>
+
+                        {/* Underline Accent */}
+                        <div className="flex justify-center mt-3">
+                            <div
+                                className="h-[3] rounded-full"
+                                style={{
+                                    width: "90px",
+                                    background: `linear-gradient(
+                            90deg,
+                            transparent,
+                            ${gold.base},
+                            transparent
+                        )`
+                                }}
+                            />
+                        </div>
+
+                    </h1>
+
+                    <div
+                        className="lg:w-28 w-16 h-[1]"
+                        style={{
+                            background: `linear-gradient(to left, transparent, ${gold.base})`
+                        }}
+                    />
+
+                </div>
+
+                {/* Floating Sparkles */}
+                <div
+                    className="lg:block hidden absolute top-5 left-[45%] text-lg animate-pulse"
+                    style={{ color: gold.light }}
+                >
+                    ✦
+                </div>
+
+                <div
+                    className="lg:block hidden absolute top-6 right-[36.6%] text-sm animate-pulse"
                     style={{
-                        borderColor: gold.dark,
-                        backgroundImage:
-                            `linear-gradient(90deg,${gold.dark},${gold.base},${gold.dark})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        display: "inline-block",
-                        fontFamily: "serif",
+                        color: gold.base,
+                        animationDelay: "1s"
                     }}
                 >
-                    New Arrivals
-                </span>
+                    ✦
+                </div>
 
-                {/* Glow Effect
-                               <div
-                                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-3xl opacity-20 w-72 h-16 rounded-full"
-                                   style={{
-                                       background: "linear-gradient(90deg, #d4af37, #fff2b3, #d4af37)"
-                                   }}
-                               /> */}
-
-                {/* Decorative Line */}
-                {/* <DecorativeLine /> */}
-            </h1>
+            </div>
 
 
 
@@ -81,7 +152,7 @@ export default function NewArrivals() {
                     {products_loading ? (
 
                         <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-1 gap-x-5 gap-y-8'>
-                            {[...Array(10)].map((_, index) => (
+                            {[...Array(5)].map((_, index) => (
                                 <ProductCardSkeleton key={index} />
                             ))}
                         </div>
@@ -111,6 +182,8 @@ export default function NewArrivals() {
                             {new_arrivals.map((item, index) => (
                                 <SwiperSlide key={item.product_id || index}>
                                     <ProductCard
+                                    setSelectedProduct={setSelectedProduct}
+
                                         item={item}
                                         index={index}
                                         getNowModel={getNowModel}

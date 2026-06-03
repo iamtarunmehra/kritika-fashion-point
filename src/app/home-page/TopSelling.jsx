@@ -19,6 +19,8 @@ import ProductCardSkeleton from '../categories/[slug]/ProductSkelaton';
 export default function TopSelling() {
     const swiperRef = useRef(null)
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
     const [getNowModel, setGetNowModel] = useState(false)
 
     // const addToCart = (e) => {
@@ -44,7 +46,7 @@ export default function TopSelling() {
 
             {getNowModel && <Overlay />}
 
-            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+            <GetNow selectedProduct={selectedProduct} getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
             {/* <div className="absolute lg:w-[500] w-full bottom-0 left-0">
                 <Image src={'/designs/d1.png'} sizes="full" alt="designs" fill className="absolute opacity-[0.05] bottom-0 right-0 w-full h-full object-cover object-bottom" />
             </div> */}
@@ -86,7 +88,7 @@ export default function TopSelling() {
                     {products_loading ? (
 
                         <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-3 grid-cols-1 gap-x-5 gap-y-8'>
-                            {[...Array(10)].map((_, index) => (
+                            {[...Array(5)].map((_, index) => (
                                 <ProductCardSkeleton key={index} />
                             ))}
                         </div>
@@ -116,6 +118,7 @@ export default function TopSelling() {
                             {top_selling.map((item, index) => (
                                 <SwiperSlide key={item.product_id || index}>
                                     <ProductCard
+                                        setSelectedProduct={setSelectedProduct}
                                         item={item}
                                         index={index}
                                         getNowModel={getNowModel}

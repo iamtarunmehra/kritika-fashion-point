@@ -88,10 +88,10 @@ export default function ShopByCategory() {
                         category_loading
                             ?
 
-                            [...Array(5)].map((_, index) => (
+                            [...Array(6)].map((_, index) => (
                                 <SwiperSlide key={index}>
 
-                                    <div className="flex flex-col items-center animate-pulse">
+                                    <div className="flex flex-col gap-10 items-center animate-pulse">
 
                                         {/* IMAGE SKELETON */}
                                         <div
@@ -128,20 +128,12 @@ export default function ShopByCategory() {
                         "
                                         />
 
-                                        {/* LINE */}
-                                        <div
-                                            className="
-                            mt-3
-                            h-[2]
-                            w-16
-                            rounded-full
-                            bg-[#3d2d08]
-                        "
-                                        />
                                     </div>
 
                                 </SwiperSlide>
-                            ))
+                            )
+
+                            )
 
                             :
 

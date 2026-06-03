@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ShoppingCart, Loader2 } from "lucide-react";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { post_api } from "../api_helper/api_helper";
 import { gold } from "../colors/color";
+import { fetchCartData } from "../redux/thunks/cartThunk";
 
 export default function AddToCartButton({
     quantity,
@@ -15,7 +16,7 @@ export default function AddToCartButton({
     item,
 }) {
 
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
 
     const user = useSelector(
         (state) => state.user.user
@@ -24,6 +25,17 @@ export default function AddToCartButton({
     const token = useSelector(
         (state) => state.user.token
     );
+
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+
+        if (token) {
+            dispatch(fetchCartData(token));
+        }
+
+    }, [token, dispatch]);
+
 
     const handleAddToCart = async (e) => {
         e.preventDefault();
@@ -37,6 +49,7 @@ export default function AddToCartButton({
         }
 
         try {
+
             setLoading(true);
 
             const response = await post_api({
@@ -44,83 +57,140 @@ export default function AddToCartButton({
                 params: null,
                 body: {
                     product_id: item.id,
-                    quantity: quantity ? quantity : 1,
+                    quantity: quantity || 1,
                 },
                 token,
             });
 
-            // 🔥 IMPORTANT FIX: normalize response
-            const res = response?.data ? response.data : response;
+            const res = response?.data
+                ? response.data
+                : response;
 
-            console.log("ADD TO CART RESPONSE:", res);
+            console.log(
+                "ADD TO CART RESPONSE:",
+                res
+            );
 
-            // ✅ SUCCESS CASE (REAL FIX)
             if (res?.success) {
-                toast.success(res?.message || "Product added to cart successfully");
+
+                toast.success(
+                    res?.message ||
+                    "Product added to cart successfully"
+                );
+
+                await dispatch(
+                    fetchCartData(token)
+                );
+
                 return;
             }
 
-            // ❌ ERROR CASES (backend controlled)
             switch (res?.code) {
+
                 case 400:
-                    toast.error(res?.message || "Invalid request");
+                    toast.error(
+                        res?.message ||
+                        "Invalid request"
+                    );
                     break;
 
                 case 401:
-                    toast.error("Please login again");
+                    toast.error(
+                        "Please login again"
+                    );
                     break;
 
                 case 404:
-                    toast.error(res?.message || "Product not found");
+                    toast.error(
+                        res?.message ||
+                        "Product not found"
+                    );
                     break;
 
                 case 409:
-                    toast.warning(res?.message || "Item already exists");
+                    toast.warning(
+                        res?.message ||
+                        "Item already exists"
+                    );
                     break;
 
                 default:
-                    toast.error(res?.message || "Something went wrong");
+                    toast.error(
+                        res?.message ||
+                        "Something went wrong"
+                    );
             }
 
         } catch (error) {
-            console.error("ADD TO CART ERROR:", error);
 
-            const status = error?.response?.status;
-            const message = error?.response?.data?.message;
+            console.error(
+                "ADD TO CART ERROR:",
+                error
+            );
+
+            const status =
+                error?.response?.status;
+
+            const message =
+                error?.response?.data?.message;
 
             switch (status) {
+
                 case 400:
-                    toast.error(message || "Invalid request");
+                    toast.error(
+                        message ||
+                        "Invalid request"
+                    );
                     break;
 
                 case 401:
-                    toast.error(message || "Unauthorized access");
+                    toast.error(
+                        message ||
+                        "Unauthorized access"
+                    );
                     break;
 
                 case 403:
-                    toast.error(message || "Access denied");
+                    toast.error(
+                        message ||
+                        "Access denied"
+                    );
                     break;
 
                 case 404:
-                    toast.error(message || "Product not found");
+                    toast.error(
+                        message ||
+                        "Product not found"
+                    );
                     break;
 
                 case 409:
-                    toast.warning(message || "Item already exists");
+                    toast.warning(
+                        message ||
+                        "Item already exists"
+                    );
                     break;
 
                 case 500:
-                    toast.error(message || "Server error");
+                    toast.error(
+                        message ||
+                        "Server error"
+                    );
                     break;
 
                 default:
-                    toast.error(message || "Failed to add item to cart");
+                    toast.error(
+                        message ||
+                        "Failed to add item to cart"
+                    );
             }
+
         } finally {
+
             setLoading(false);
+
         }
     };
-
 
     return (
         <button
@@ -135,6 +205,7 @@ export default function AddToCartButton({
                 flex
                 items-center
                 justify-center
+                cursor-pointer
                 gap-2
                 duration-300
                 hover:scale-[1.02]
@@ -146,7 +217,6 @@ export default function AddToCartButton({
                 color: gold.light,
             }}
         >
-
             {loading ? (
                 <Loader2
                     size={18}
@@ -159,7 +229,6 @@ export default function AddToCartButton({
             {loading
                 ? "Adding..."
                 : "Cart"}
-
         </button>
     );
 }
