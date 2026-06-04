@@ -353,12 +353,14 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                                             "0 0 20px rgba(245,223,139,.18)"
                                     }}
                                 >
-                                    <span style={{ color: "#fff2b3" }}>K</span>
-                                    ritika{" "}
-                                    <span style={{ color: "#fff2b3" }}>F</span>
-                                    ashion{" "}
-                                    <span style={{ color: "#fff2b3" }}>P</span>
-                                    oint
+                                    <span style={{ color: '#fff2b3' }}>K</span>
+                                    <span className='sm:inline hidden'>ritika{" "}</span>
+
+                                    <span style={{ color: '#fff2b3' }}>F</span>
+                                    <span className='sm:inline hidden'>ashion{" "}</span>
+
+                                    <span style={{ color: '#fff2b3' }}>P</span>
+                                    <span className='sm:inline hidden'>oint</span>
                                 </h2>
 
                                 <p
@@ -473,7 +475,8 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                                                 }}
                                                 className="
                                     text-white
-                                    font-norm
+                                    font-normal
+                                    text-[16px]
                                     tracking-wide
                                 "
                                             >

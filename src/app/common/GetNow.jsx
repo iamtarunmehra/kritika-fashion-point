@@ -13,7 +13,8 @@ import { Package2 } from "lucide-react";
 
 import { PaymentOption } from "../models/PaymentOptionModel";
 import Link from "next/link";
-import { handleAdvancePayment, handleFullPayment } from "../payment/Phone_Pay";
+import { post_api } from "../api_helper/api_helper";
+import { useSelector } from "react-redux";
 
 export default function GetNow({ getNowModel, setGetNowModel, selectedProduct, quantity }) {
     const [paymentOptionModel, setPaymentOptionModel] = useState(false);
@@ -22,6 +23,54 @@ export default function GetNow({ getNowModel, setGetNowModel, selectedProduct, q
 
     const [selectedTabPaymentTab, setSelectedPaymentTab] = useState(null)
     const actualQuantity = quantity ? quantity : 1
+
+    const token = useSelector((store) => store.user.token)
+
+    console.log(selectedProduct)
+
+    const handleAdvancePayment = async (selectedProduct, actualQuantity) => {
+        try {
+
+            const response = await post_api({
+                path: "payment/create-order",
+                token,
+                body: {
+                    amount: selectedProduct.p_advance_payment,
+                    product_id: selectedProduct.id,
+                    actualQuantity,
+                    payment_type: 'advance'
+                }
+            });
+
+
+            window.location.href = response.data.paymentUrl;
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleFullPayment = async ({ selectedProduct, actualQuantity }) => {
+        try {
+            const totalAmount =
+                selectedProduct.p_customer_price * actualQuantity;
+
+            const response = await post_api({
+                path: "payment/create-order",
+                token,
+                body: {
+                    amount: totalAmount,
+                    product_id: selectedProduct.id,
+                    actualQuantity,
+                    payment_type: "full",
+                },
+            });
+
+            window.location.href = response.data.paymentUrl;
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <>

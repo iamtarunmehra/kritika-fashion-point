@@ -61,16 +61,18 @@ export default function ProductCard({
                         <p
                             style={{ fontFamily: "Poppins" }}
                             className="
-                                text-black
-                                bg-amber-300
+                                text-white
+                                bg-linear-to-t
+                                from-amber-950
+                                to-amber-400
                                 tracking-wide
                                 py-1
                                 px-3
                                 rounded-full
-                                font-semibold
+                                font-normal
                                 text-sm
-                                shadow-md
-                                shadow-black/30
+                                shadow-2xl
+                                shadow-black/70
                             "
                         >
                             Top Selling
@@ -91,16 +93,16 @@ export default function ProductCard({
                             top-0
                             right-0
                             py-1
-                            px-5
+                            px-2
                             rounded-bl-lg
                             tracking-wider
                             text-white
                             z-50
-                            text-md
+                            text-[13px]
                             font-normal
                         "
                     >
-                        - {p_discount}%
+                        -{p_discount}%
                     </div>
                 )}
 
