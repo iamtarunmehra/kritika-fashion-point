@@ -27,6 +27,8 @@ export default function ShopNowClient() {
 
     const [getNowModel, setGetNowModel] = useState(false)
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
     const [filterModelOpen, setFilterModelOpen] = useState(false)
 
     const [filteredProducts, setFilteredProducts] = useState(products)
@@ -40,7 +42,7 @@ export default function ShopNowClient() {
     return (
         <section className='w-full h-full bg-black text-white'>
 
-            <GetNow />
+            <GetNow selectedProduct={selectedProduct} getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
 
             <FilterModel
                 products={products}
@@ -51,8 +53,10 @@ export default function ShopNowClient() {
                 filteredProducts={filteredProducts}
                 setFilteredProducts={setFilteredProducts}
             />
+
+            
             {getNowModel && <Overlay />}
-            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+            
             <div className='max-w-330 mx-auto lg:px-6 px-4'>
                 <div className='lg:my-10 my-5'>
                     <div className='flex gap-3 justify-between items-center'>
@@ -143,7 +147,7 @@ export default function ShopNowClient() {
                             <div className='grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-5 gap-y-8'>
                                 {filteredProducts.map((item, index) => (
                                     <ProductCard
-                                        key={item.product_id || index}
+                                        setSelectedProduct={setSelectedProduct}
                                         item={item}
                                         index={index}
                                         getNowModel={getNowModel}

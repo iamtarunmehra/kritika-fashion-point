@@ -321,15 +321,22 @@ function NavBar() {
     )
 }
 
-function UserPoints({ token, cartData, premiumGoldGradient, setSearch, setWishListModelOpen, cartModelOpen, setCartModelOpen }) {
-
+export function UserPoints({
+    ismobile,
+    token,
+    cartData,
+    premiumGoldGradient,
+    setSearch,
+    setWishListModelOpen,
+    setCartModelOpen,
+}) {
     return (
-        <div className='flex items-center gap-5'>
+        <div className={`flex items-center ${ismobile ? 'gap-3' : 'gap-5'}`}>
 
-            {/* SEARCH ICON */}
+            {/* SEARCH ICON - ALWAYS VISIBLE */}
             <div
                 onClick={() => setSearch(true)}
-                className='
+                className="
                     relative
                     w-10
                     h-10
@@ -344,141 +351,138 @@ function UserPoints({ token, cartData, premiumGoldGradient, setSearch, setWishLi
                     duration-300
                     hover:scale-110
                     hover:border-[#f5df8b]
-                '
+                "
                 style={{
-                    borderColor: 'rgba(230,199,102,0.18)'
+                    borderColor: "rgba(230,199,102,0.18)",
                 }}
             >
-
-                {/* Glow */}
                 <div
-                    className='
+                    className="
                         absolute
                         inset-0
                         opacity-0
                         hover:opacity-100
                         duration-500
-                    '
+                    "
                     style={{
                         background:
-                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
+                            "radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)",
                     }}
                 />
 
                 <FaSearch
                     size={17}
-                    className='relative z-10 text-[#f5df8b]'
+                    className="relative z-10 text-[#f5df8b]"
                 />
-
-
             </div>
 
-            {token
-                ?
-                <div className='flex items-center gap-5'>
-                    {/* Wishlist */}
+            {token ? (
+                <>
+                    {/* WISHLIST */}
                     <div
                         onClick={() => setWishListModelOpen(true)}
-                        className='
-                        relative
-                        w-10
-                        h-10
-                        rounded-full
-                        flex
-                        items-center
-                        justify-center
-                        border
-                        bg-[#0b0b0b]
-                        cursor-pointer
-                        overflow-hidden
-                        duration-300
-                        hover:scale-110
-                        hover:border-[#f5df8b]
-                    '
+                        className="
+                            relative
+                            w-10
+                            h-10
+                            rounded-full
+                            flex
+                            items-center
+                            justify-center
+                            border
+                            bg-[#0b0b0b]
+                            cursor-pointer
+                            overflow-hidden
+                            duration-300
+                            hover:scale-110
+                            hover:border-[#f5df8b]
+                        "
                         style={{
-                            borderColor: 'rgba(230,199,102,0.18)'
+                            borderColor: "rgba(230,199,102,0.18)",
                         }}
                     >
-
-                        {/* Glow */}
-                        <div
-                            className='
-                            absolute
-                            inset-0
-                            opacity-0
-                            hover:opacity-100
-                            duration-500
-                        '
-                            style={{
-                                background:
-                                    'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                            }}
-                        />
-
                         <FaRegHeart
                             size={17}
-                            className='relative z-10 text-[#f5df8b]'
+                            className="relative z-10 text-[#f5df8b]"
                         />
-
-
                     </div>
 
-                    {/* SHOPPING CART */}
+                    {/* CART */}
                     <div
                         onClick={() => setCartModelOpen(true)}
-                        className='
-                        relative
-                        w-10
-                        h-10
-                        rounded-full
-                        flex
-                        items-center
-                        justify-center
-                        border
-                        bg-[#0b0b0b]
-                        cursor-pointer
-                        duration-300
-                        hover:scale-110
-                        hover:border-[#f5df8b]
-                    '
+                        className="
+                            relative
+                            w-10
+                            h-10
+                            rounded-full
+                            flex
+                            items-center
+                            justify-center
+                            border
+                            bg-[#0b0b0b]
+                            cursor-pointer
+                            duration-300
+                            hover:scale-110
+                            hover:border-[#f5df8b]
+                        "
                         style={{
-                            borderColor: 'rgba(230,199,102,0.18)'
+                            borderColor: "rgba(230,199,102,0.18)",
                         }}
                     >
+                        <span
+                            style={{ background: premiumGoldGradient }}
+                            className="
+                                absolute
+                                -top-2
+                                -right-2
+                                w-5
+                                h-5
+                                rounded-full
+                                flex
+                                items-center
+                                justify-center
+                                text-black
+                                text-xs
+                                font-bold
+                            "
+                        >
+                            {cartData?.length || 0}
+                        </span>
 
-                        <span style={{ background: premiumGoldGradient }} className='font-bold flex items-center justify-center z-99 absolute -top-2 -right-2 w-5 h-5 rounded-full'>{cartData.length}</span>
-
-                        {/* Glow */}
-                        <div
-                            className='
-                            absolute
-                            inset-0
-                            opacity-0
-                            hover:opacity-100
-                            duration-500
-                        '
-                            style={{
-                                background:
-                                    'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                            }}
+                        <FaShoppingCart
+                            size={20}
+                            className="relative z-10 text-[#f5df8b]"
                         />
-
-                        <div>
-                            <FaShoppingCart
-                                size={20}
-                                className='relative z-10 text-[#f5df8b]'
-                            />
-                        </div>
-
-
                     </div>
 
-                    <span style={{ background: premiumGoldGradient, fontFamily: 'Poppins' }} className='rounded-full hover:scale-[1.03] duration-100 font-bold cursor-pointer px-5 py-2'> My Account</span>
-                </div>
-                :
+                    {
+                        !ismobile &&
 
+                        (
+                            <span
+                                style={{
+                                    background: premiumGoldGradient,
+                                    fontFamily: "Poppins",
+                                }}
+                                className="
+                            rounded-full
+                            hover:scale-[1.03]
+                            duration-100
+                            font-bold
+                            cursor-pointer
+                            px-5
+                            py-2
+                            text-black
+                        "
+                            >
+                                My Account
+                            </span>
+                        )
+                    }
+
+                </>
+            ) : (
                 <Link href="/login">
-
                     <div
                         className="
                             relative
@@ -498,25 +502,23 @@ function UserPoints({ token, cartData, premiumGoldGradient, setSearch, setWishLi
                         "
                         style={{
                             borderColor: "#c9971a",
-                            background: premiumGoldGradient
+                            background: premiumGoldGradient,
                         }}
                     >
-
-                        {/* Glow */}
                         <div
                             className="
-                                absolute inset-0
+                                absolute
+                                inset-0
                                 opacity-0
                                 group-hover:opacity-100
                                 duration-500
                             "
                             style={{
                                 background:
-                                    "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)"
+                                    "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)",
                             }}
                         />
 
-                        {/* Shine */}
                         <div
                             className="
                                 absolute
@@ -530,13 +532,14 @@ function UserPoints({ token, cartData, premiumGoldGradient, setSearch, setWishLi
                             "
                             style={{
                                 background:
-                                    "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
+                                    "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)",
                             }}
                         />
 
                         <FaUser
                             className="
-                                relative z-10
+                                relative
+                                z-10
                                 text-black
                                 group-hover:scale-110
                                 duration-300
@@ -544,13 +547,10 @@ function UserPoints({ token, cartData, premiumGoldGradient, setSearch, setWishLi
                             size={16}
                         />
                     </div>
-
                 </Link>
-            }
-
-
+            )}
         </div>
-    )
+    );
 }
 
 export function SearchModel({ search, setSearch }) {

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-export default function BuyNowButton({ getNowModel, item, setGetNowModel, customClasses, setSelectedProduct }) {
+export default function BuyNowButton({ setQuantity, getNowModel, item, setGetNowModel, customClasses, setSelectedProduct }) {
 
 
     return (
@@ -11,6 +11,7 @@ export default function BuyNowButton({ getNowModel, item, setGetNowModel, custom
                 e.stopPropagation()
                 setSelectedProduct(item)
                 setGetNowModel(true)
+                setQuantity && setQuantity(item.quantity)
             }}
             className={`${customClasses} relative px-6 py-2 text-black font-bold rounded-full cursor-pointer overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95`}
             style={{

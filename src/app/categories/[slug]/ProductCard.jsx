@@ -221,7 +221,6 @@ export default function ProductCard({
 
                     <BuyNowButton
                         setSelectedProduct={setSelectedProduct}
-
                         item={item}
                         getNowModel={getNowModel}
                         setGetNowModel={setGetNowModel}

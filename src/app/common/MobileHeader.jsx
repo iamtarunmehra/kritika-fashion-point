@@ -6,7 +6,7 @@ import { FaBars, FaBarsProgress, FaBarsStaggered, FaRegHeart, FaUser } from 'rea
 import { IoCloseCircleSharp, IoDiamond } from 'react-icons/io5'
 import Link from 'next/link'
 import { VscTriangleRight } from 'react-icons/vsc'
-import { Logo, SearchModel } from './PcHeader'
+import { Logo, SearchModel, UserPoints } from './PcHeader'
 import { FaSearch, FaShoppingCart } from 'react-icons/fa'
 import WishListModel from './WishListModel'
 import CartModel from './CartModel'
@@ -144,225 +144,9 @@ export default function MobileHeader() {
                         </div>
                     </Link>
 
-                    <div
-                        onClick={() => setSearch(true)}
-                        className='
-                                        relative
-                                        w-10
-                                        h-10
-                                        rounded-full
-                                        flex
-                                        items-center
-                                        justify-center
-                                        border
-                                        bg-[#0b0b0b]
-                                        cursor-pointer
-                                        overflow-hidden
-                                        duration-300
-                                        hover:scale-110
-                                        hover:border-[#f5df8b]
-                                    '
-                        style={{
-                            borderColor: 'rgba(230,199,102,0.18)'
-                        }}
-                    >
-
-                        {/* Glow */}
-                        <div
-                            className='
-                                            absolute
-                                            inset-0
-                                            opacity-0
-                                            hover:opacity-100
-                                            duration-500
-                                        '
-                            style={{
-                                background:
-                                    'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                            }}
-                        />
-
-                        <FaSearch
-                            size={17}
-                            className='relative z-10 text-[#f5df8b]'
-                        />
-
-
+                    <div>
+                        <UserPoints ismobile={true} token={token} cartData={cartData} premiumGoldGradient={premiumGoldGradient} setSearch={setSearch} setWishListModelOpen={setWishListModelOpen} setCartModelOpen={setCartModelOpen} />
                     </div>
-
-                    {token
-                        ?
-                        <div className='flex items-center gap-3'>
-                            {/* Wishlist */}
-                            <div
-                                onClick={() => setWishListModelOpen(true)}
-                                className='
-                                          relative
-                                          w-10
-                                          h-10
-                                          rounded-full
-                                          flex
-                                          items-center
-                                          justify-center
-                                          border
-                                          bg-[#0b0b0b]
-                                          cursor-pointer
-                                          overflow-hidden
-                                          duration-300
-                                          hover:scale-110
-                                          hover:border-[#f5df8b]
-                                      '
-                                style={{
-                                    borderColor: 'rgba(230,199,102,0.18)'
-                                }}
-                            >
-
-                                {/* Glow */}
-                                <div
-                                    className='
-                                              absolute
-                                              inset-0
-                                              opacity-0
-                                              hover:opacity-100
-                                              duration-500
-                                          '
-                                    style={{
-                                        background:
-                                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                                    }}
-                                />
-
-                                <FaRegHeart
-                                    size={17}
-                                    className='relative z-10 text-[#f5df8b]'
-                                />
-
-
-                            </div>
-
-                            {/* SHOPPING CART */}
-                            <div
-                                onClick={() => setCartModelOpen(true)}
-                                className='
-                                          relative
-                                          w-10
-                                          h-10
-                                          rounded-full
-                                          flex
-                                          items-center
-                                          justify-center
-                                          border
-                                          bg-[#0b0b0b]
-                                          cursor-pointer
-                                          duration-300
-                                          hover:scale-110
-                                          hover:border-[#f5df8b]
-                                      '
-                                style={{
-                                    borderColor: 'rgba(230,199,102,0.18)'
-                                }}
-                            >
-
-                                <span style={{ background: premiumGoldGradient }} className='font-bold flex items-center justify-center z-99 absolute -top-2 -right-2 w-5 h-5 rounded-full'>{cartData.length}</span>
-
-                                {/* Glow */}
-                                <div
-                                    className='
-                                              absolute
-                                              inset-0
-                                              opacity-0
-                                              hover:opacity-100
-                                              duration-500
-                                          '
-                                    style={{
-                                        background:
-                                            'radial-gradient(circle, rgba(255,235,160,0.20) 0%, transparent 70%)'
-                                    }}
-                                />
-
-                                <div>
-                                    <FaShoppingCart
-                                        size={20}
-                                        className='relative z-10 text-[#f5df8b]'
-                                    />
-                                </div>
-
-
-                            </div>
-
-                        </div>
-                        :
-
-                        <Link href="/login">
-
-                            <div
-                                className="
-                                              relative
-                                              w-10
-                                              h-10
-                                              flex
-                                              items-center
-                                              justify-center
-                                              rounded-full
-                                              border
-                                              overflow-hidden
-                                              cursor-pointer
-                                              group
-                                              duration-300
-                                              hover:scale-110
-                                              hover:shadow-[0_0_25px_rgba(245,223,139,0.28)]
-                                          "
-                                style={{
-                                    borderColor: "#c9971a",
-                                    background: premiumGoldGradient
-                                }}
-                            >
-
-                                {/* Glow */}
-                                <div
-                                    className="
-                                                  absolute inset-0
-                                                  opacity-0
-                                                  group-hover:opacity-100
-                                                  duration-500
-                                              "
-                                    style={{
-                                        background:
-                                            "radial-gradient(circle, rgba(255,235,160,0.35) 0%, transparent 70%)"
-                                    }}
-                                />
-
-                                {/* Shine */}
-                                <div
-                                    className="
-                                                  absolute
-                                                  top-0
-                                                  -left-full
-                                                  w-full
-                                                  h-full
-                                                  rotate-12
-                                                  group-hover:left-full
-                                                  duration-700
-                                              "
-                                    style={{
-                                        background:
-                                            "linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)"
-                                    }}
-                                />
-
-                                <FaUser
-                                    className="
-                                                  relative z-10
-                                                  text-black
-                                                  group-hover:scale-110
-                                                  duration-300
-                                              "
-                                    size={16}
-                                />
-                            </div>
-
-                        </Link>
-                    }
                 </div>
 
             </div>
@@ -375,18 +159,79 @@ export default function MobileHeader() {
     )
 }
 
+import {
+    Home,
+    ShoppingBag,
+    Grid3X3,
+    Info,
+    Phone,
+    User,
+    LayoutDashboard,
+    ChevronRight
+} from "lucide-react";
+
 export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
+
     const Data = [
-        { title: 'home', link: '/' },
-        { title: 'Shop Now', link: '/shop-now' },
-        { title: 'Categories', link: '/categories' },
-        { title: 'About', link: '/about' },
-        { title: 'Contact Us', link: '/contact-us' },
-        { title: 'My Account', link: '/my-account' },
-        { title: 'Dashboard', link: '/dashboard' },
+        {
+            title: "home",
+            link: "/",
+            icon: Home,
+            border: "#22c55e",
+            glow: "rgba(34,197,94,.25)",
+            bg: "from-green-500/10 to-transparent"
+        },
+        {
+            title: "Shop Now",
+            link: "/shop-now",
+            icon: ShoppingBag,
+            border: "#D4AF37",
+            glow: "rgba(212,175,55,.25)",
+            bg: "from-yellow-500/10 to-transparent"
+        },
+        {
+            title: "Categories",
+            link: "/categories",
+            icon: Grid3X3,
+            border: "#a855f7",
+            glow: "rgba(168,85,247,.25)",
+            bg: "from-purple-500/10 to-transparent"
+        },
+        {
+            title: "About",
+            link: "/about",
+            icon: Info,
+            border: "#3b82f6",
+            glow: "rgba(59,130,246,.25)",
+            bg: "from-blue-500/10 to-transparent"
+        },
+        {
+            title: "Contact Us",
+            link: "/contact-us",
+            icon: Phone,
+            border: "#06b6d4",
+            glow: "rgba(6,182,212,.25)",
+            bg: "from-cyan-500/10 to-transparent"
+        },
+        {
+            title: "My Account",
+            link: "/my-account",
+            icon: User,
+            border: "#ec4899",
+            glow: "rgba(236,72,153,.25)",
+            bg: "from-pink-500/10 to-transparent"
+        },
+        {
+            title: "Dashboard",
+            link: "/dashboard",
+            icon: LayoutDashboard,
+            border: "#f97316",
+            glow: "rgba(249,115,22,.25)",
+            bg: "from-orange-500/10 to-transparent"
+        }
+    ];
 
 
-    ]
     return (
         <div
             style={{ borderBottomColor: gold.base }}
@@ -395,89 +240,140 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
                 transform
                 ${mobileMenu ? 'translate-x-0' : '-translate-x-full'}
                 transition-transform duration-300 ease-in-out
-                w-full h-screen
+                w-full h-[85vh] overflow-y-scroll
+                custom-scrollbar
                 bg-black text-white border-b-4
                 lg:hidden block
                 transform-gpu
                 z-100
                             `}
         >
-            <div className='flex justify-between items-center py-7 px-5'>
-                <Link href={'/'}>
-                    <div className='cursor-pointer group'>
+            <div
+                className="
+        relative
+        flex
+        justify-between
+        items-center
+        py-5
+        px-5
+        overflow-hidden
+        border-b
+        backdrop-blur-xl
+    "
+                style={{
+                    borderBottomColor: "rgba(212,175,55,.25)",
+                    background:
+                        "linear-gradient(to right, rgba(255,255,255,.03), rgba(255,255,255,.01))",
+                }}
+            >
 
-                        <div className='flex items-center gap-3'>
+                {/* Background Glow */}
+                <div
+                    className="
+            absolute
+            -left-10
+            -top-10
+            w-32
+            h-32
+            rounded-full
+            blur-3xl
+            opacity-20
+        "
+                    style={{
+                        background: gold.base,
+                    }}
+                />
+
+                <Link href={"/"}>
+                    <div className="cursor-pointer group relative z-10">
+
+                        <div className="flex items-center gap-4">
 
                             {/* Premium Diamond */}
                             <div
-                                className='
-                            relative
-                            w-10
-                            h-10
-                            rounded-full
-                            flex
-                            items-center
-                            justify-center
-                            overflow-hidden
-                            border
-                            duration-300
-                            group-hover:scale-110
-                            group-hover:rotate-6
-                        '
+                                className="
+                        relative
+                        w-12
+                        h-12
+                        rounded-full
+                        flex
+                        items-center
+                        justify-center
+                        overflow-hidden
+                        border
+                        duration-500
+                        group-hover:scale-110
+                        group-hover:rotate-6
+                    "
                                 style={{
                                     background: premiumGoldGradient,
-                                    borderColor: '#e6c766',
-                                    boxShadow: '0 0 25px rgba(245,223,139,0.18)'
+                                    borderColor: "#e6c766",
+                                    boxShadow:
+                                        "0 0 30px rgba(245,223,139,.25)"
                                 }}
                             >
 
                                 {/* Shine */}
                                 <div
-                                    className='
-                                absolute
-                                top-0
-                                -left-full
-                                w-full
-                                h-full
-                                rotate-12
-                                group-hover:left-full
-                                duration-700
-                            '
+                                    className="
+                            absolute
+                            top-0
+                            -left-full
+                            w-full
+                            h-full
+                            rotate-12
+                            group-hover:left-full
+                            duration-1000
+                        "
                                     style={{
                                         background:
-                                            'linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent)'
+                                            "linear-gradient(120deg, transparent, rgba(255,255,255,.45), transparent)"
                                     }}
                                 />
 
                                 <IoDiamond
-                                    className='relative z-10 text-black'
-                                    size={22}
+                                    className="relative z-10 text-black"
+                                    size={24}
                                 />
                             </div>
 
                             {/* Logo Text */}
-                            <div
-                                className='
-                            text-[20px]
+                            <div>
+
+                                <h2
+                                    className="
+                            text-[22px]
+                            font-black
                             tracking-[2px]
-                            font-extrabold
-                            
-                            duration-300
-                        '
-                                style={{
-                                    color: '#f5df8b',
-                                    textShadow: '0 0 15px rgba(245,223,139,0.12)'
-                                }}
-                            >
+                            leading-none
+                        "
+                                    style={{
+                                        color: "#f5df8b",
+                                        textShadow:
+                                            "0 0 20px rgba(245,223,139,.18)"
+                                    }}
+                                >
+                                    <span style={{ color: "#fff2b3" }}>K</span>
+                                    ritika{" "}
+                                    <span style={{ color: "#fff2b3" }}>F</span>
+                                    ashion{" "}
+                                    <span style={{ color: "#fff2b3" }}>P</span>
+                                    oint
+                                </h2>
 
-                                <span style={{ color: '#fff2b3' }}>K</span>
-                                ritika{" "}
-
-                                <span style={{ color: '#fff2b3' }}>F</span>
-                                ashion{" "}
-
-                                <span style={{ color: '#fff2b3' }}>P</span>
-                                oint
+                                <p
+                                    className="
+                            text-[11px]
+                            tracking-[3px]
+                            uppercase
+                            mt-1
+                        "
+                                    style={{
+                                        color: "rgba(245,223,139,.65)"
+                                    }}
+                                >
+                                    Premium Jewellery
+                                </p>
 
                             </div>
 
@@ -485,68 +381,122 @@ export function MobileMenu({ mobileMenu, setMobileMenu, premiumGoldGradient }) {
 
                     </div>
                 </Link>
-                <button style={{ color: gold.base }} onClick={() => setMobileMenu(false)}><IoCloseCircleSharp size={25} /></button>
+
+                {/* Premium Close Button */}
+                <button
+                    onClick={() => setMobileMenu(false)}
+                    className="
+            relative
+            z-10
+            w-11
+            h-11
+            rounded-full
+            flex
+            items-center
+            justify-center
+            border
+            duration-300
+            hover:rotate-90
+            hover:scale-110
+        "
+                    style={{
+                        color: gold.base,
+                        borderColor: "rgba(212,175,55,.25)",
+                        background: "rgba(255,255,255,.03)",
+                        boxShadow:
+                            "0 0 20px rgba(212,175,55,.12)"
+                    }}
+                >
+                    <IoCloseCircleSharp size={24} />
+                </button>
             </div>
-            <ul className='px-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-5 text-xl font-semibold space-y-5'>
+            <ul className='px-5 py-5 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-5 text-xl font-semibold space-y-4'>
                 {Data.map((item, index) => {
+
+                    const Icon = item.icon;
+
                     return (
                         <Link key={index} href={item.link}>
                             <li
-
                                 onClick={() => setMobileMenu(false)}
                                 className="
-                            group
-                            relative
-                            overflow-hidden
-                            py-3 px-8
-                            rounded-full
-                            border border-[#D4AF37]/40
-                            bg-white/5
-                            backdrop-blur-md
-                            
-                            capitalize
-                            text-lg
-                            font-medium
-                            tracking-wide
-                            transition-all duration-500
-                            hover:scale-105
-                            hover:border-[#D4AF37]
-                            hover:shadow-[0_0_25px_rgba(212,175,55,0.35)]
-                        "
+                    relative
+                    overflow-hidden
+                    capitalize
+                    rounded-xl
+                    px-5
+                    py-2.5
+                    backdrop-blur-xl
+                    group
+                    cursor-pointer
+                    duration-500
+                    hover:scale-[1.03]
+                "
+                                style={{
+                                    border: `1px solid ${item.border}50`,
+                                    background:
+                                        "linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01))",
+                                    boxShadow: `0 0 0px ${item.glow}`,
+                                }}
                             >
-                                {/* Glow Background */}
-                                <span
-                                    className="
-                                absolute inset-0
-                                bg-linear-to-r
-                                from-[#D4AF37]/0
-                                via-[#D4AF37]/20
-                                to-[#D4AF37]/0
-                                translate-x-[-120%]
-                                group-hover:translate-x-[120%]
-                                transition-transform duration-1000
-                            "
-                                />
 
-                                {/* Dot */}
-                                <span
-                                    className="
-                                absolute left-4 top-1/2
-                                -translate-y-1/2
-                                w-2 h-2
-                                rounded-full
-                                bg-[#D4AF37]
-                                shadow-[0_0_10px_#D4AF37]
-                            "
-                                />
+                                <div className="relative z-10 flex items-center justify-between">
 
-                                {/* Text */}
-                                <span style={{ color: gold.light }} className="relative z-10 pl-3 flex items-center gap-2 ">
-                                    {item.title}
-                                </span>
+                                    <div className="flex items-center gap-3">
+
+                                        <div
+                                            className="
+                                w-10
+                                h-10
+                                rounded-xl
+                                flex
+                                items-center
+                                justify-center
+                            "
+                                            style={{
+                                                background: `${item.border}20`,
+                                                border: `1px solid ${item.border}50`
+                                            }}
+                                        >
+                                            <Icon
+                                                size={20}
+                                                style={{
+                                                    color: item.border
+                                                }}
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <h3
+                                                style={{
+                                                    fontFamily: 'Poppins'
+                                                }}
+                                                className="
+                                    text-white
+                                    font-norm
+                                    tracking-wide
+                                "
+                                            >
+                                                {item.title}
+                                            </h3>
+
+                                        </div>
+                                    </div>
+
+                                    <ChevronRight
+                                        size={20}
+                                        style={{
+                                            color: item.border
+                                        }}
+                                        className="
+                            group-hover:translate-x-1
+                            duration-300
+                        "
+                                    />
+                                </div>
                             </li>
                         </Link>
-                    )
+                    );
                 })}
             </ul>
         </div>

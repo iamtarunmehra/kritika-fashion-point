@@ -20,6 +20,8 @@ export default function CategoriesClient() {
     const [getNowModel, setGetNowModel] = useState(false)
     const swiperRef = useRef(null)
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
 
 
     const { categories, category_loading } = useSelector(
@@ -45,7 +47,7 @@ export default function CategoriesClient() {
 
             {getNowModel && <Overlay />}
 
-            {<GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />}
+            {<GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} selectedProduct={selectedProduct} />}
 
 
 
@@ -127,6 +129,7 @@ export default function CategoriesClient() {
                             <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-x-5 gap-y-8">
                                 {filteredProducts.map((item, index) => (
                                     <ProductCard
+                                    setSelectedProduct={setSelectedProduct}
                                         key={item.product_id || index}
                                         item={item}
                                         index={index}

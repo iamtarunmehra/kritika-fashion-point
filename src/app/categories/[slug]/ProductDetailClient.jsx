@@ -35,6 +35,9 @@ export default function ProductDetailClient() {
         (state) => state.products
     );
 
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+
     const [getNowModel, setGetNowModel] = useState(false);
     const [quantity, setQuantity] = useState(1);
 
@@ -52,7 +55,6 @@ export default function ProductDetailClient() {
         }
     }, [ProductBySlug]);
 
-    console.log("ProductBySlug", ProductBySlug);
 
     if (!ProductBySlug) {
         return <div style={{ fontFamily: 'Poppins' }} className="text-white text-lg lg:px-6 px-4 lg:py-10 py-5 animate-pulse max-w-330 mx-auto">Loading Product...</div>;
@@ -83,8 +85,6 @@ export default function ProductDetailClient() {
     const finishing = p_finishing.split(" ")
     const material = p_material.split(" ")
 
-    console.log('occasions', occasions)
-
     return (
         <>
             {ProductBySlug ?
@@ -92,7 +92,8 @@ export default function ProductDetailClient() {
                     className="w-full min-h-screen bg-black text-white"
                 >
                     {getNowModel && <Overlay />}
-                    <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+                    <GetNow quantity={quantity}
+                        getNowModel={getNowModel} setGetNowModel={setGetNowModel} selectedProduct={selectedProduct} />
 
                     <div className="max-w-330 mx-auto px-4 lg:px-6 py-10">
 
@@ -262,7 +263,8 @@ export default function ProductDetailClient() {
                                     <AddToCartButton item={ProductBySlug} customClasses={'py-3'} quantity={quantity} />
 
                                     {/* Buy Now */}
-                                    <BuyNowButton getNowModel={getNowModel} setGetNowModel={setGetNowModel} customClasses={'py-3'} />
+                                    <BuyNowButton
+                                        setSelectedProduct={setSelectedProduct} item={ProductBySlug} getNowModel={getNowModel} setGetNowModel={setGetNowModel} customClasses={'py-3'} />
                                 </div>
 
                                 {/* Features */}
@@ -604,6 +606,7 @@ export default function ProductDetailClient() {
                                     {products.map((item, index) => (
                                         <SwiperSlide key={item.product_id || index}>
                                             <ProductCard
+                                                setSelectedProduct={setSelectedProduct}
                                                 item={item}
                                                 index={index}
                                                 getNowModel={getNowModel}

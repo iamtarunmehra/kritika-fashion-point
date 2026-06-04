@@ -40,11 +40,11 @@ export default function NewArrivals() {
     return (
         <section className="w-full bg-black pt-10 lg:mt-10 md:mt-10 mt-5 overflow-hidden relative">
             {getNowModel && <Overlay />}
-            <GetNow 
-            selectedProduct={selectedProduct}
-            getNowModel={getNowModel}
-             setGetNowModel={setGetNowModel}
-              />
+            <GetNow
+                selectedProduct={selectedProduct}
+                getNowModel={getNowModel}
+                setGetNowModel={setGetNowModel}
+            />
 
             {/* Premium Heading */}
             <div className="relative flex flex-col items-center lg:mb-16 mb-10 overflow-hidden">
@@ -182,7 +182,7 @@ export default function NewArrivals() {
                             {new_arrivals.map((item, index) => (
                                 <SwiperSlide key={item.product_id || index}>
                                     <ProductCard
-                                    setSelectedProduct={setSelectedProduct}
+                                        setSelectedProduct={setSelectedProduct}
 
                                         item={item}
                                         index={index}

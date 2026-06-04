@@ -86,8 +86,7 @@ export default function Header() {
                 path: "user/view-cart",
                 token,
             })
-            console.log('response', response.data.data.total)
-
+            
             if (response?.data?.success) {
 
                 dispatch(

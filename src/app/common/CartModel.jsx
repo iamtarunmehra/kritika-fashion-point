@@ -29,10 +29,13 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
 
     const token = useSelector((state) => state.user.token)
 
-    console.log("total amount", TotalAmount);
-
     const [getNowModel, setGetNowModel] = useState(false);
     const [removingId, setRemovingId] = useState(null);
+
+    const [selectedProduct, setSelectedProduct] = useState(null);
+
+    const [quantity, setQuantity] = useState(null)
+
 
     const cartDataLoading = useSelector((state) => state.cart.cart_data_loading)
 
@@ -76,7 +79,7 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
 
     return (
         <>
-            <GetNow getNowModel={getNowModel} setGetNowModel={setGetNowModel} />
+            <GetNow quantity={quantity} getNowModel={getNowModel} setGetNowModel={setGetNowModel} selectedProduct={selectedProduct} />
 
             {/* Overlay */}
             <div
@@ -335,6 +338,9 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                         </button>
 
                                                         <BuyNowButton
+                                                            setQuantity={setQuantity}
+                                                            setSelectedProduct={setSelectedProduct}
+                                                            item={item}
                                                             getNowModel={getNowModel}
                                                             setGetNowModel={setGetNowModel}
                                                         />
@@ -343,17 +349,17 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                             );
                                         })}
 
-                                        <div className="flex items-center justify-between px-8 py-5 rounded-2xl bg-black border border-amber-500/30 shadow-[0_0_20px_rgba(245,158,11,0.15)]">
+                                        <div className="flex items-center justify-between px-5 py-5 rounded-2xl bg-black border border-amber-500/30 shadow-[0_0_20px_rgba(245,158,11,0.15)]">
                                             <div
                                                 style={{ fontFamily: "Poppins" }}
-                                                className="text-xl font-semibold tracking-wide text-amber-100"
+                                                className="text-lg font-semibold tracking-wide text-amber-100"
                                             >
                                                 Total
                                             </div>
 
                                             <span
                                                 style={{ fontFamily: "Poppins" }}
-                                                className="text-3xl font-semibold tracking-wider text-amber-300"
+                                                className="text-3xl font-semibold tracking-normal text-amber-300"
                                             >
                                                 ₹ {TotalAmount}.00
                                             </span>

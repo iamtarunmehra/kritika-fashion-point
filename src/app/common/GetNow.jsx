@@ -8,17 +8,20 @@ import {
     MessageCircle,
     ShieldCheck,
 } from "lucide-react";
+import { Package2 } from "lucide-react";
+
 
 import { PaymentOption } from "../models/PaymentOptionModel";
 import Link from "next/link";
+import { handleAdvancePayment, handleFullPayment } from "../payment/Phone_Pay";
 
-export default function GetNow({ getNowModel, setGetNowModel, selectedProduct }) {
+export default function GetNow({ getNowModel, setGetNowModel, selectedProduct, quantity }) {
     const [paymentOptionModel, setPaymentOptionModel] = useState(false);
 
-    console.log('selectedProduct', selectedProduct)
+    // console.log('selectedProduct', selectedProduct)
 
     const [selectedTabPaymentTab, setSelectedPaymentTab] = useState(null)
-
+    const actualQuantity = quantity ? quantity : 1
 
     return (
         <>
@@ -147,7 +150,8 @@ export default function GetNow({ getNowModel, setGetNowModel, selectedProduct })
                                     color: "#d4af37",
                                 }}
                             >
-                                ₹{selectedProduct?.p_customer_price}
+                                <span> ₹{selectedProduct?.p_customer_price}</span>
+
                             </h2>
                         </div>
                     </div>
@@ -157,8 +161,9 @@ export default function GetNow({ getNowModel, setGetNowModel, selectedProduct })
                         {/* Advance Payment */}
                         <button
                             onClick={() => {
-                                setPaymentOptionModel(true)
-                                setSelectedPaymentTab('advance')
+                                // setPaymentOptionModel(true)
+                                // setSelectedPaymentTab('advance')
+                                handleAdvancePayment(selectedProduct, actualQuantity)
                             }}
                             className="
                                 w-full
@@ -217,11 +222,93 @@ export default function GetNow({ getNowModel, setGetNowModel, selectedProduct })
                             </span>
                         </button>
 
+                        {/* Quantity */}
+
+                        <div
+                            className="
+        relative
+        overflow-hidden
+        py-4
+        px-5
+        rounded-2xl
+        border
+        flex
+        items-center
+        justify-between
+        group
+    "
+                            style={{
+                                background:
+                                    "linear-gradient(135deg,#14001f 0%,#220033 40%,#120018 100%)",
+                                borderColor: "rgba(192,132,252,0.35)",
+                                boxShadow: "0 0 30px rgba(168,85,247,0.15)",
+                            }}
+                        >
+                            {/* Glow */}
+                            <div
+                                className="absolute top-0 right-0 w-24 h-24 rounded-full blur-3xl opacity-20"
+                                style={{
+                                    background: "#a855f7",
+                                }}
+                            />
+
+                            <div className="flex items-center gap-4 relative z-10">
+                                <div
+                                    className="
+                w-12
+                h-12
+                rounded-full
+                flex
+                items-center
+                justify-center
+            "
+                                    style={{
+                                        background:
+                                            "linear-gradient(135deg,#7e22ce,#a855f7,#d8b4fe)",
+                                    }}
+                                >
+                                    <Package2 size={22} className="text-white" />
+                                </div>
+
+                                <div>
+                                    <h3 className="text-white font-semibold text-lg">
+                                        Quantity
+                                    </h3>
+
+                                    <p className="text-purple-300 text-sm">
+                                        Selected Items
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                className="
+                                    min-w-11
+                                    h-11
+                                    px-4
+                                    rounded-full
+                                    flex
+                                    items-center
+                                    justify-center
+                                    text-2xl
+                                    font-bold
+                                    text-white
+                                "
+                                style={{
+                                    background:
+                                        "linear-gradient(135deg,#6b21a8,#9333ea,#c084fc)"
+                                }}
+                            >
+                                {actualQuantity}
+                            </div>
+                        </div>
+
                         {/* Full Payment */}
                         <button
                             onClick={() => {
-                                setPaymentOptionModel(true)
-                                setSelectedPaymentTab('full')
+                                // setPaymentOptionModel(true)
+                                // setSelectedPaymentTab('full')
+                                handleFullPayment(selectedProduct, actualQuantity)
                             }}
                             className="
                                 w-full
@@ -262,8 +349,9 @@ export default function GetNow({ getNowModel, setGetNowModel, selectedProduct })
                                 </div>
                             </div>
 
+
                             <span className="font-bold text-2xl text-black relative z-10">
-                                ₹{selectedProduct?.p_customer_price}
+                                <span>₹{selectedProduct?.p_customer_price * actualQuantity}</span>
                             </span>
                         </button>
 
