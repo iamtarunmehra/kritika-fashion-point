@@ -59,17 +59,26 @@ export default function ProductCard({
                 {is_top_selling && (
                     <div className="absolute top-3 left-3 z-40">
                         <p
-                            style={{ fontFamily: "Poppins" }}
+                            style={{
+                                fontFamily: "Poppins",
+                                background: `linear-gradient(
+                        135deg,
+    #7a5a08 0%,
+    #a67c1b 15%,
+    #d4af37 35%,
+    #f5d97b 50%,
+    #d4af37 65%,
+    #a67c1b 85%,
+    #7a5a08 100%
+                    )`,
+                            }}
                             className="
-                                text-white
-                                bg-linear-to-t
-                                from-amber-950
-                                to-amber-400
+                                text-black
                                 tracking-wide
                                 py-1
                                 px-3
                                 rounded-full
-                                font-normal
+                                font-semibold
                                 text-sm
                                 shadow-2xl
                                 shadow-black/70

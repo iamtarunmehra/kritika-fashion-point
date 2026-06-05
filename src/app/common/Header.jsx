@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { get_api, post_api } from '../api_helper/api_helper'
 import { setProductLoading, setProducts } from '../redux/slices/productSlice'
 import { setCartData, setCartDataLoading, setTotalAmountOfCart } from '../redux/slices/cartSlice'
+import { setwishlistData, setwishlistDataLoading } from '../redux/slices/wishlistSlice'
+import { fetchCartData } from '../redux/thunks/cartThunk'
+import { fetchwishlistData } from '../redux/thunks/wishListThunk'
 
 export default function Header() {
 
@@ -15,6 +18,17 @@ export default function Header() {
 
     const token = useSelector((state) => state.user.token)
 
+    useEffect(() => {
+        if (token) {
+            dispatch(fetchCartData(token));
+        }
+    }, [token]);
+
+    useEffect(() => {
+        if (token) {
+            dispatch(fetchwishlistData(token));
+        }
+    }, [token]);
 
     const fetchCategories = async () => {
 
@@ -76,45 +90,68 @@ export default function Header() {
         }
     };
 
-    const fetchAllCartItems = async () => {
-        try {
-            dispatch(setCartDataLoading(true));
+    // const fetchAllCartItems = async () => {
+    //     try {
+    //         dispatch(setCartDataLoading(true));
 
-            const response = await post_api({
-                body: {},
-                params: null,
-                path: "user/view-cart",
-                token,
-            })
-            
-            if (response?.data?.success) {
+    //         const response = await post_api({
+    //             body: {},
+    //             params: null,
+    //             path: "user/view-cart",
+    //             token,
+    //         })
 
-                dispatch(
-                    setTotalAmountOfCart(
-                        response.data.data.total || 0
-                    )
-                )
+    //         if (response?.data?.success) {
 
-                dispatch(
-                    setCartData(
-                        response?.data?.data?.items || []
-                    )
-                );
-            }
+    //             dispatch(
+    //                 setTotalAmountOfCart(
+    //                     response.data.data.total || 0
+    //                 )
+    //             )
 
-        } catch (error) {
-            console.log(error);
+    //             dispatch(
+    //                 setCartData(
+    //                     response?.data?.data?.items || []
+    //                 )
+    //             );
+    //         }
 
-        } finally {
-            dispatch(setCartDataLoading(false));
-        }
-    };
+    //     } catch (error) {
+    //         console.log(error);
 
-    useEffect(() => {
-        if (token) {
-            fetchAllCartItems();
-        }
-    }, [token]);
+    //     } finally {
+    //         dispatch(setCartDataLoading(false));
+    //     }
+    // };
+
+    // const fetchWishlistItems = async () => {
+    //     try {
+    //         dispatch(setwishlistDataLoading(true));
+
+    //         const response = await post_api({
+    //             body: {},
+    //             params: null,
+    //             path: "user/view-wishlist",
+    //             token,
+    //         })
+
+    //         if (response?.data?.success) {
+
+    //             dispatch(
+    //                 setwishlistData(
+    //                     response?.data?.data || []
+    //                 )
+    //             );
+    //         }
+
+    //     } catch (error) {
+    //         console.log(error);
+
+    //     } finally {
+    //         dispatch(setwishlistDataLoading(false));
+    //     }
+    // }
+
 
     useEffect(() => {
         fetchProducts()

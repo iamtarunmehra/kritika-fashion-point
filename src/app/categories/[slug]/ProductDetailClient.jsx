@@ -26,6 +26,7 @@ import { NoNewArrFound } from "@/app/home-page/NewArrivals";
 import ProductCardSkeleton from "./ProductSkelaton";
 import { useParams } from "next/navigation";
 import Loading from "../../../../Loading";
+import WishListButton from "@/app/common/WishListButton";
 
 export default function ProductDetailClient() {
 
@@ -51,7 +52,7 @@ export default function ProductDetailClient() {
 
     useEffect(() => {
         if (ProductBySlug?.index_image) {
-            setSelectedImage(ProductBySlug.index_image);
+            setSelectedImage(ProductBySlug?.index_image || null);
         }
     }, [ProductBySlug]);
 
@@ -121,24 +122,13 @@ export default function ProductDetailClient() {
                                 >
                                     <Image
                                         sizes="full"
-                                        src={selectedImage}
+                                        src={selectedImage || '/preview.jpg'}
                                         alt={p_title}
                                         width={800}
                                         height={800}
                                         className="w-full lg:h-[500] h-full object-cover rounded-2xl"
                                     />
-
-                                    <button
-                                        className="cursor-pointer  absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center border hover:scale-110 border-[#FFF2B3]  duration-200"
-                                        style={{
-                                            background:
-                                                "rgba(0,0,0,0.7)",
-                                        }}
-                                    >
-                                        <Heart
-                                            size={22}
-                                        />
-                                    </button>
+                                    <WishListButton ProductBySlug={ProductBySlug} />
                                 </div>
 
                                 {/* Thumbnail Images */}

@@ -211,7 +211,7 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                             )
                                                         `,
                                                     }}
-                                                    className="rounded-3xl p-4 backdrop-blur-xl hover:-translate-y-1 duration-300 group relative overflow-hidden"
+                                                    className="rounded-2xl p-4 backdrop-blur-xl hover:-translate-y-1 duration-300 group relative overflow-hidden"
                                                 >
 
                                                     {/* TOP SELLING BADGE */}
@@ -248,12 +248,12 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                                     top-0
                                                                     right-0
                                                                     py-1
-                                                                    px-5
+                                                                    px-2
                                                                     rounded-bl-lg
                                                                     tracking-wider
                                                                     text-white
                                                                     z-50
-                                                                    text-md
+                                                                    text-[13px]
                                                                     font-normal
                                                             "
                                                     >
@@ -267,7 +267,7 @@ export default function CartModel({ cartModelOpen, setCartModelOpen }) {
                                                             <div
                                                                 onClick={() => setCartModelOpen(false)}
                                                                 style={{ border: `1px solid ${gold.base}30` }}
-                                                                className="relative w-full h-[200] rounded-2xl overflow-hidden bg-black"
+                                                                className="relative w-full h-[200] rounded-xl overflow-hidden bg-black"
                                                             >
                                                                 <Image
                                                                     sizes="full"

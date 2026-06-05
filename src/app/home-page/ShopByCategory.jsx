@@ -97,8 +97,8 @@ export default function ShopByCategory() {
                                         <div
                                             className="
                             relative
-                            lg:w-[200]
-                            lg:h-[200]
+                           lg:w-[120]
+                            lg:h-[120]
                             md:w-[150]
                             md:h-[150]
                             sm:w-[130]
@@ -280,18 +280,18 @@ export default function ShopByCategory() {
                                                     {/* IMAGE CIRCLE */}
                                                     <div
                                                         style={{
-                                                            borderColor: gold.mid,
+                                                            borderColor: gold.dark,
                                                         }}
                                                         className="
                                         relative 
-                                        lg:w-[150]
-                            lg:h-[150]
-                            md:w-[150]
-                            md:h-[150]
-                            sm:w-[130]
-                            sm:h-[130]
-                            w-[150]
-                            h-[150]
+                                        lg:w-[120]
+                                        lg:h-[120]
+                                        md:w-[150]
+                                        md:h-[150]
+                                        sm:w-[130]
+                                        sm:h-[130]
+                                        w-[150]
+                                        h-[150]
                                         rounded-full 
                                         overflow-hidden 
                                         border-2

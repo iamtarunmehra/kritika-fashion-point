@@ -28,14 +28,6 @@ export default function AddToCartButton({
 
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-
-        if (token) {
-            dispatch(fetchCartData(token));
-        }
-
-    }, [token, dispatch]);
-
 
     const handleAddToCart = async (e) => {
         e.preventDefault();

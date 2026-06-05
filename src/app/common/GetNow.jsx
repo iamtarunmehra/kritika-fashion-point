@@ -26,7 +26,6 @@ export default function GetNow({ getNowModel, setGetNowModel, selectedProduct, q
 
     const token = useSelector((store) => store.user.token)
 
-    console.log(selectedProduct)
 
     const handleAdvancePayment = async (selectedProduct, actualQuantity) => {
         try {

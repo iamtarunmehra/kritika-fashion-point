@@ -2,7 +2,7 @@
 import React from 'react'
 
 export default function BuyNowButton({ setQuantity, getNowModel, item, setGetNowModel, customClasses, setSelectedProduct }) {
-
+    console.log('item',item)
 
     return (
         <button
